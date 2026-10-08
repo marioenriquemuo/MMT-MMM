@@ -23,33 +23,53 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | Path | Role |
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
-| `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM baseline) |
-| `README.md` | Human overview + Miniconda setup |
-| `CLAUDE.md` | Project brief / conventions |
+| `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pytest) |
+| `README.md` | Human overview + Miniconda setup + STORY-101/102 how-to |
+| `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
+| `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
+| `src/models/transformations.py` | STORY-102 geometric / Weibull adstock + Hill saturation |
+| `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
+| `tests/` | Generator, transforms, and `<1s` perf gate |
+| `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
+| `reports/figures/` | Plotly HTML adstock / Hill plots |
+| `docs/graphify-archify.md` | Index of graphify + archify artifacts |
+| `graphify-out/` | Knowledge graph outputs |
+| `.archify/` | Architecture diagram runs |
 | `.cursor/skills/` | Project Agent Skills (`SKILL.md` per skill) |
 | `.cursor/rules/` | Always-on Cursor rules (`.mdc`) |
 | `Secret/` | Local-only; **gitignored** — never commit |
 
+## Sprint 1 status
+
+Working branch: **`sprint-1-core-data-engine`**.
+
+- **STORY-101 done** — Path-C generator, integer counts, `DATA_CARD.md`
+- **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
+- **STORY-103 next** — ETL
+
 ## Skills
 
-Cursor discovers project skills from `.cursor/skills/*/SKILL.md`.
-
-Expected set (may land via a separate skills PR if not on your branch yet):
+Cursor discovers project skills from `.cursor/skills/*/SKILL.md` (already in repo):
 
 - Shared: `ponytail`, `ponytail-*`, `graphify`, `eli5-teacher`, `skill-author`, `text-review-documentation`
 - Project: `mmt-mmm`, `secret-hygiene`
-- Diagrams: `archify` (via `npx skills add`)
+- Diagrams: `archify`
 
 ## Rules
 
 Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-shit-done, Karpathy guidelines, graphify orientation, secret hygiene) — adapted without forex lab locks.
 
-## PR conventions
+## Remotes and PR conventions
 
-- Branch from `main`: `cursor/<short-topic>-…`
+| Remote | URL |
+| --- | --- |
+| `origin` | `https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git` |
+| `github` | `https://github.com/marioenriquemuo/MMT-MMM.git` |
+
+- Sprint integration work lands on `sprint-1-core-data-engine` (cut from `main`); push both remotes when asked
+- Feature branches: `cursor/<short-topic>-…` when opening separate PRs
 - One concern per PR when practical (env, docs, model code)
-- Origin remote: `https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git`
 - Do not commit `Secret/`, `.conda/`, `*.egg-info/`, or notebook checkpoints
 
 ## Local env
@@ -58,7 +78,8 @@ Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-sh
 cd "/home/mario/dev/MMT&MMM"
 conda env create -f environment.yml   # once
 conda activate mmt-mmm
-python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, yaml, pydantic; print('ok', pymc.__version__)"
+python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic; print('ok', pymc.__version__)"
+python -m pytest tests/ -q
 ```
 
 ## Definition of done (agent tasks)
@@ -67,3 +88,4 @@ python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, yaml, 
 - [ ] No secrets or conda env trees committed
 - [ ] `README.md` / `CLAUDE.md` / `AGENTS.md` updated if layout or setup changed
 - [ ] Leakage / assumption risks called out when touching measurement code
+- [ ] Sprint 1 validation plots stay Plotly scripts under `scripts/` / `reports/figures/` unless a story explicitly requires notebooks

@@ -1,6 +1,8 @@
 # graphify + archify artifacts
 
-Generated knowledge graph and architecture diagram for the MMT&MMM Path-C / STORY-101 slice.
+Generated knowledge graph and architecture diagram for the MMT&MMM Path-C slice after **STORY-101** (generator) and **STORY-102** (shared transforms + Plotly validation).
+
+Working branch: `sprint-1-core-data-engine`.
 
 ## graphify
 
@@ -13,13 +15,17 @@ Scoped via [`.graphifyignore`](../.graphifyignore) (excludes bulky `.cursor/skil
 | Graph JSON | [`graphify-out/graph.json`](../graphify-out/graph.json) |
 | Token benchmark | [`graphify-out/benchmark.txt`](../graphify-out/benchmark.txt) |
 
+Regenerated at pre–STORY-103 checkpoint (includes generator → `transformations` → Plotly figures / pytest). Re-run `graphify update .` after code changes.
+
 ## archify
 
-Repository-backed architecture of the STORY-101 generator with planned Meridian noted as external/future.
+Repository-backed architecture of STORY-101 + STORY-102: Path-C generator imports shared transforms; Plotly Express validation script (not Jupyter); unit + `<1s` perf tests; Meridian/PyMC noted as external/future.
 
 | Artifact | Path |
 | --- | --- |
-| HTML diagram | [`.archify/architecture-mmt-story101-20261008-161209/mmt-story101.html`](../.archify/architecture-mmt-story101-20261008-161209/mmt-story101.html) |
-| Candidate JSON | [`.archify/architecture-mmt-story101-20261008-161209/candidate.json`](../.archify/architecture-mmt-story101-20261008-161209/candidate.json) |
+| HTML diagram | [`.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html`](../.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html) |
+| Candidate JSON | [`.archify/architecture-mmt-story101-102-20261008-153042/candidate.json`](../.archify/architecture-mmt-story101-102-20261008-153042/candidate.json) |
 
-Pinned revision for evidence: `bdac1a44ab3ff175191d92f8f031bcd31ce19b86` (STORY-101 tip at run time).
+Pinned revision for evidence: `9a58cd0d69eca73753d235839dacee6c9ca01bbc` (STORY-102 tip at run time).
+
+Prior STORY-101-only run kept for history: [`.archify/architecture-mmt-story101-20261008-161209/`](../.archify/architecture-mmt-story101-20261008-161209/).

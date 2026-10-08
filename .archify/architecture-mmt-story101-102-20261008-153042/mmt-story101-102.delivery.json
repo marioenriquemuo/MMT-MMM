@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "48e6e667-f150-462c-b8fd-69e127b72cd1",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/candidate.json",
+  "output": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+  "specification": {
+    "sha256": "216bcc487bf6cc1676196600ec08012cfbd7be21c963623514f27d665a2f10f1",
+    "bytes": 9849
+  },
+  "artifact": {
+    "sha256": "7c0acd6a6b01bbf20f3d70f33b770f865e00ec067d10a5c3b363240eb6013e09",
+    "bytes": 782296
+  }
+}

@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-08T20:36:08.068Z",
+  "specification": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/candidate.json",
+    "sha256": "216bcc487bf6cc1676196600ec08012cfbd7be21c963623514f27d665a2f10f1",
+    "bytes": 9849
+  },
+  "artifact": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+    "sha256": "7c0acd6a6b01bbf20f3d70f33b770f865e00ec067d10a5c3b363240eb6013e09",
+    "bytes": 782296
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
+        "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/candidate.json",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/home/mario/dev/MMT&MMM",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "216bcc487bf6cc1676196600ec08012cfbd7be21c963623514f27d665a2f10f1",
+          "bytes": 9849
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 542,
+      "command": [
+        "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
+        "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/candidate.json",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/home/mario/dev/MMT&MMM",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "07eec5a5-4e84-4df3-a2b4-9e762e1e5be1",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/candidate.json",
+        "output": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "specification": {
+          "sha256": "216bcc487bf6cc1676196600ec08012cfbd7be21c963623514f27d665a2f10f1",
+          "bytes": 9849
+        },
+        "artifact": {
+          "sha256": "7c0acd6a6b01bbf20f3d70f33b770f865e00ec067d10a5c3b363240eb6013e09",
+          "bytes": 782296
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "evidence": {
+          "verified": true,
+          "repository": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+          "revision": "9a58cd0d69eca73753d235839dacee6c9ca01bbc",
+          "references": 22,
+          "linkMode": "local-only"
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 144,
+      "command": [
+        "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
+        "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
+        "check",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "artifact": {
+          "sha256": "7c0acd6a6b01bbf20f3d70f33b770f865e00ec067d10a5c3b363240eb6013e09",
+          "bytes": 782296
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 5,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 8.5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.9470967741935485,
+            "maxBends": 6,
+            "routesOverSuggestedBends": 4,
+            "maxStretch": 1.228,
+            "routesOverSuggestedStretch": 0,
+            "minSegmentPx": 15,
+            "minInteriorSegmentPx": 53,
+            "shortSegmentCount": 2,
+            "shortEndpointSegmentCount": 2,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "op-plot",
+                  "from": "operator",
+                  "to": "plot",
+                  "label": "plot script",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "op-tests",
+                  "from": "operator",
+                  "to": "tests",
+                  "label": "pytest",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "point": [
+                  127,
+                  384
+                ],
+                "sharedNode": "operator"
+              },
+              {
+                "left": {
+                  "id": "op-tests",
+                  "from": "operator",
+                  "to": "tests",
+                  "label": "pytest",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "tests-xf",
+                  "from": "tests",
+                  "to": "transforms",
+                  "label": "unit + perf",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  896,
+                  456.84615384615387
+                ],
+                "sharedNode": "tests"
+              },
+              {
+                "left": {
+                  "id": "op-tests",
+                  "from": "operator",
+                  "to": "tests",
+                  "label": "pytest",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "tests-gen",
+                  "from": "tests",
+                  "to": "generate",
+                  "label": "exercise API",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  896.1538461538461,
+                  449.00000000000006
+                ],
+                "sharedNode": "tests"
+              },
+              {
+                "left": {
+                  "id": "plot-xf",
+                  "from": "plot",
+                  "to": "transforms",
+                  "label": "pulse / response",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "tests-gen",
+                  "from": "tests",
+                  "to": "generate",
+                  "label": "exercise API",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  575.2303370786517,
+                  390.3314606741573
+                ]
+              },
+              {
+                "left": {
+                  "id": "write-gt",
+                  "from": "write",
+                  "to": "gt",
+                  "label": "json.dump",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "right": {
+                  "id": "csv-meridian",
+                  "from": "csv",
+                  "to": "meridian",
+                  "label": "future fit",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "point": [
+                  1317,
+                  304
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "op-plot",
+                  "from": "operator",
+                  "to": "plot",
+                  "label": "plot script",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "bends": 3,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "op-tests",
+                  "from": "operator",
+                  "to": "tests",
+                  "label": "pytest",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "bends": 3,
+                "stretch": 1.228
+              },
+              {
+                "relationship": {
+                  "id": "write-gt",
+                  "from": "write",
+                  "to": "gt",
+                  "label": "json.dump",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "bends": 3,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "tests-gen",
+                  "from": "tests",
+                  "to": "generate",
+                  "label": "exercise API",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "bends": 6,
+                "stretch": 1.188
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 30,
+            "emptyTopRatio": 0.048,
+            "occupiedTop": 30,
+            "viewBoxTop": 0,
+            "canvasHeight": 628,
+            "typicalNodeHeight": 60,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "recognized-declared-wide",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 1346,
+            "actualBudgetPx": 1346,
+            "actualReaderWidth": 1376,
+            "desiredReaderWidth": 1483.125,
+            "viewportCap": 1376,
+            "limit": "viewport-cap",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "edge",
+              "id": "op-gen",
+              "from": "operator",
+              "to": "gen_main"
+            },
+            "minimumSourceTextPx": 8,
+            "minimumProjectedTextPx": 6.9470967741935485,
+            "semanticTextCount": 48
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "07eec5a5-4e84-4df3-a2b4-9e762e1e5be1"
+      }
+    },
+    "browser-check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 2122,
+      "command": [
+        "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
+        "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
+        "browser-check",
+        "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "pass",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "07eec5a5-4e84-4df3-a2b4-9e762e1e5be1",
+        "artifact": {
+          "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+          "sha256": "7c0acd6a6b01bbf20f3d70f33b770f865e00ec067d10a5c3b363240eb6013e09",
+          "bytes": 782296
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "/usr/bin/google-chrome"
+        },
+        "diagnostics": [],
+        "containment": {
+          "status": "pass",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1376,
+              "diagramWidth": 1346,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 545,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 6.9470967741935485,
+              "minimumProjectedNonEdgeTextPx": 7.815483870967742,
+              "minimumProjectedEdgeTextPx": 6.9470967741935485,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1536,
+              "diagramWidth": 1506,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 610,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 7.772903225806451,
+              "minimumProjectedNonEdgeTextPx": 8.744516129032258,
+              "minimumProjectedEdgeTextPx": 7.772903225806451,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 740,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1920,
+              "diagramWidth": 1870,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 758,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "themeStates": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            }
+          ]
+        },
+        "readability": {
+          "status": "pass",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1376,
+              "diagramWidth": 1346,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 545,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 6.9470967741935485,
+              "minimumProjectedNonEdgeTextPx": 7.815483870967742,
+              "minimumProjectedEdgeTextPx": 6.9470967741935485,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1536,
+              "diagramWidth": 1506,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 610,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 7.772903225806451,
+              "minimumProjectedNonEdgeTextPx": 8.744516129032258,
+              "minimumProjectedEdgeTextPx": 7.772903225806451,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 740,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1920,
+              "diagramWidth": 1870,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 758,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "viewerChrome": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1376,
+              "diagramWidth": 1346,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 52,
+                "diagramChromePx": 78,
+                "svgPx": 545,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 6.9470967741935485,
+              "minimumProjectedNonEdgeTextPx": 7.815483870967742,
+              "minimumProjectedEdgeTextPx": 6.9470967741935485,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1536,
+              "diagramWidth": 1506,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 610,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 7.772903225806451,
+              "minimumProjectedNonEdgeTextPx": 8.744516129032258,
+              "minimumProjectedEdgeTextPx": 7.772903225806451,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 60,
+                "diagramChromePx": 84,
+                "svgPx": 740,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1920,
+              "diagramWidth": 1870,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 758,
+                "cardsPx": 0,
+                "viewBoxHeight": 628
+              },
+              "viewBoxWidth": 1550,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "python -m src.data.generator",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "op-gen",
+                "from": "operator",
+                "to": "gen_main"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "mmt-story101-102.browser-check.json",
+          "files": []
+        }
+      }
+    }
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.finalize.json",
+    "summaryReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.finalize-summary.json",
+    "browserCheckReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-08T20:36:11.006Z",
+  "durationMs": 2938,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-08T20:35:49.453Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

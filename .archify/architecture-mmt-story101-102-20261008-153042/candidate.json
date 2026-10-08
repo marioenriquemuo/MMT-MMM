@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MMT&MMM STORY-101+102 Core Data Engine",
+    "output": ".archify/architecture-mmt-story101-102-20261008-153042/mmt-story101-102.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "9a58cd0d69eca73753d235839dacee6c9ca01bbc"
+    }
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "Operator / CI",
+      "sublabel": "generator · plot · pytest",
+      "pos": [40, 300],
+      "size": [160, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 329, "end_line": 337, "label": "CLI main" },
+        { "path": "scripts/plot_adstock_validation.py", "line": 192, "end_line": 209, "label": "plot CLI" }
+      ]
+    },
+    {
+      "id": "gen_main",
+      "type": "backend",
+      "label": "generator.main",
+      "sublabel": "seed=42 entry",
+      "pos": [250, 220],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 329, "end_line": 333, "label": "main()" }
+      ]
+    },
+    {
+      "id": "generate",
+      "type": "backend",
+      "label": "generate()",
+      "sublabel": "728d × 4 channels",
+      "tag": "STORY-101",
+      "pos": [500, 220],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 239, "end_line": 282, "label": "generate()" }
+      ]
+    },
+    {
+      "id": "spend",
+      "type": "backend",
+      "label": "_spend_series",
+      "sublabel": "season + flight + AR(1)",
+      "pos": [500, 60],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 103, "end_line": 144, "label": "spend DGP" }
+      ]
+    },
+    {
+      "id": "transforms",
+      "type": "backend",
+      "label": "transformations",
+      "sublabel": "geometric · Weibull · Hill",
+      "tag": "STORY-102",
+      "pos": [690, 300],
+      "size": [170, 60],
+      "sources": [
+        { "path": "src/models/transformations.py", "line": 19, "end_line": 48, "label": "geometric_adstock" },
+        { "path": "src/models/transformations.py", "line": 111, "end_line": 147, "label": "weibull_adstock" },
+        { "path": "src/models/transformations.py", "line": 204, "end_line": 234, "label": "hill_saturation" }
+      ]
+    },
+    {
+      "id": "baseline",
+      "type": "backend",
+      "label": "_baseline_sales",
+      "sublabel": "imports shared transforms",
+      "pos": [690, 140],
+      "size": [170, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 20, "end_line": 20, "label": "import transforms" },
+        { "path": "src/data/generator.py", "line": 154, "end_line": 182, "label": "baseline KPI" },
+        { "path": "src/data/generator.py", "line": 166, "end_line": 168, "label": "adstock → Hill" }
+      ]
+    },
+    {
+      "id": "validate",
+      "type": "security",
+      "label": "assert_valid",
+      "sublabel": "schema · ints",
+      "pos": [920, 220],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 285, "end_line": 315, "label": "coerce + assert" }
+      ]
+    },
+    {
+      "id": "write",
+      "type": "backend",
+      "label": "write_outputs",
+      "sublabel": "CSV + JSON",
+      "pos": [1120, 220],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 318, "end_line": 326, "label": "write_outputs" }
+      ]
+    },
+    {
+      "id": "csv",
+      "type": "database",
+      "label": "synthetic_ad_spend.csv",
+      "sublabel": "2,912 channel-days",
+      "pos": [1120, 400],
+      "size": [170, 60],
+      "sources": [
+        { "path": "data/raw/DATA_CARD.md", "line": 1, "end_line": 24, "label": "DATA_CARD" }
+      ]
+    },
+    {
+      "id": "gt",
+      "type": "database",
+      "label": "ground_truth.json",
+      "sublabel": "planted α / Hill / β",
+      "pos": [1320, 400],
+      "size": [160, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 185, "end_line": 233, "label": "planted GT" }
+      ]
+    },
+    {
+      "id": "plot",
+      "type": "backend",
+      "label": "plot_adstock_validation",
+      "sublabel": "Plotly Express (no Jupyter)",
+      "tag": "STORY-102",
+      "pos": [480, 420],
+      "size": [180, 60],
+      "sources": [
+        { "path": "scripts/plot_adstock_validation.py", "line": 33, "end_line": 36, "label": "import transforms" },
+        { "path": "scripts/plot_adstock_validation.py", "line": 76, "end_line": 153, "label": "figure builders" },
+        { "path": "scripts/plot_adstock_validation.py", "line": 192, "end_line": 205, "label": "write HTML" }
+      ]
+    },
+    {
+      "id": "figures",
+      "type": "database",
+      "label": "reports/figures/",
+      "sublabel": "3 Plotly HTML plots",
+      "pos": [690, 480],
+      "size": [170, 60],
+      "sources": [
+        { "path": "scripts/plot_adstock_validation.py", "line": 40, "end_line": 42, "label": "output paths" }
+      ]
+    },
+    {
+      "id": "tests",
+      "type": "backend",
+      "label": "pytest suite",
+      "sublabel": "unit + <1s perf gate",
+      "pos": [920, 420],
+      "size": [160, 60],
+      "sources": [
+        { "path": "tests/test_generator.py", "line": 1, "end_line": 40, "label": "generator tests" },
+        { "path": "tests/test_transformations.py", "line": 36, "end_line": 59, "label": "transform tests" },
+        { "path": "tests/test_transformations_perf.py", "line": 32, "end_line": 47, "label": "perf gate" }
+      ]
+    },
+    {
+      "id": "meridian",
+      "type": "external",
+      "label": "Meridian / PyMC",
+      "sublabel": "planned (not in repo)",
+      "tag": "future",
+      "pos": [1320, 220],
+      "size": [160, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "STORY-101 Path-C generator",
+      "wraps": ["gen_main", "generate", "spend", "baseline", "validate", "write"]
+    },
+    {
+      "kind": "region",
+      "label": "STORY-102 shared transforms + validation",
+      "wraps": ["transforms", "plot", "figures", "tests"]
+    },
+    {
+      "kind": "region",
+      "label": "Committed Path-C artifacts",
+      "wraps": ["csv", "gt"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "op-gen",
+      "from": "operator",
+      "to": "gen_main",
+      "label": "python -m src.data.generator",
+      "variant": "emphasis"
+    },
+    {
+      "id": "op-plot",
+      "from": "operator",
+      "to": "plot",
+      "label": "plot script",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "op-tests",
+      "from": "operator",
+      "to": "tests",
+      "label": "pytest",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "main-gen",
+      "from": "gen_main",
+      "to": "generate",
+      "label": "generate()"
+    },
+    {
+      "id": "gen-spend",
+      "from": "generate",
+      "to": "spend",
+      "label": "per channel",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "gen-baseline",
+      "from": "generate",
+      "to": "baseline",
+      "label": "media contrib"
+    },
+    {
+      "id": "baseline-xf",
+      "from": "baseline",
+      "to": "transforms",
+      "label": "geometric + Hill",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "plot-xf",
+      "from": "plot",
+      "to": "transforms",
+      "label": "pulse / response",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "tests-xf",
+      "from": "tests",
+      "to": "transforms",
+      "label": "unit + perf",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "baseline-validate",
+      "from": "baseline",
+      "to": "validate",
+      "label": "DataFrame"
+    },
+    {
+      "id": "validate-write",
+      "from": "validate",
+      "to": "write",
+      "label": "pass DoD"
+    },
+    {
+      "id": "write-csv",
+      "from": "write",
+      "to": "csv",
+      "label": "to_csv",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "write-gt",
+      "from": "write",
+      "to": "gt",
+      "label": "json.dump",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "id": "plot-fig",
+      "from": "plot",
+      "to": "figures",
+      "label": "write_html",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "tests-gen",
+      "from": "tests",
+      "to": "generate",
+      "label": "exercise API",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "csv-meridian",
+      "from": "csv",
+      "to": "meridian",
+      "label": "future fit",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "gt-meridian",
+      "from": "gt",
+      "to": "meridian",
+      "label": "recovery",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "STORY-101 done",
+      "items": [
+        "Channel-day grain: meta, google, tiktok, tv",
+        "baseline_sales = site-wide order/unit counts (not revenue)",
+        "Integer post-process: round → clip ≥0 → int64"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "STORY-102 done",
+      "items": [
+        "Shared transforms in src/models/transformations.py",
+        "Path-C DGP imports geometric_adstock / hill_saturation",
+        "Plotly Express figures (not Jupyter); <1s perf gate"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Next / planned",
+      "items": [
+        "STORY-103 ETL on sprint-1-core-data-engine",
+        "Meridian / PyMC Bayesian MMM not implemented yet",
+        "Dual remotes: origin (Origin) + github"
+      ]
+    }
+  ]
+}

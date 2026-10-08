@@ -15,7 +15,8 @@ Enterprise measurement and optimization engine: Unified Measurement Architecture
 | --- | --- |
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
 | Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
-| GitHub | [MMT-MMM](https://github.com/marioenriquemuo/MMT-MMM) (private) — remote `github`; tip: `git push github main` |
+| GitHub | [MMT-MMM](https://github.com/marioenriquemuo/MMT-MMM) (private) — remote `github` |
+| Working branch | `sprint-1-core-data-engine` — tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
 | Docker | Later (deploy/CI only) |
@@ -53,7 +54,8 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 
 - Project Agent Skills: `.cursor/skills/*/SKILL.md` (see `AGENTS.md`)
 - Always-on Cursor rules: `.cursor/rules/*.mdc`
-- Prefer small feature branches (`cursor/<topic>-…`), focused commits, Origin PRs into `main`
+- Sprint 1 work lands on `sprint-1-core-data-engine`; feature branches `cursor/<topic>-…` when useful
+- Push intentional commits to both `origin` and `github`
 - Never commit `Secret/`, credentials, or local conda env directories
 
 ## Generate synthetic data
@@ -80,13 +82,13 @@ Committed CSV is locked to `seed=42` after integer post-processing.
 python -m pytest tests/test_generator.py -q
 ```
 
-## STORY-102 / transforms
+## STORY-102 / transforms (done)
 
-Steps 2–5 (this branch): **geometric + Weibull adstock + Hill saturation** in
-`src/models/transformations.py`; Path-C DGP imports those helpers (single source of
-truth). Jupyter DoD was adapted to a Plotly Express script (no notebook required).
+**geometric + Weibull adstock + Hill saturation** live in
+`src/models/transformations.py`. Path-C DGP imports those helpers (single source of
+truth). Validation DoD uses a Plotly Express script — **not** a Jupyter notebook.
 
-**Speed gate (Step 6):** `tests/test_transformations_perf.py` asserts wall time
+**Speed gate:** `tests/test_transformations_perf.py` asserts wall time
 &lt; 1s for `geometric_adstock` + `weibull_adstock` + `hill_saturation` on ~730
 days × 4 channels (`time.perf_counter`).
 

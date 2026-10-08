@@ -5,6 +5,7 @@ Path-C synthetic multi-channel marketing panel for portfolio / recovery tests.
 | Field | Value |
 | --- | --- |
 | Generator | `python -m src.data.generator` (`seed=42`) |
+| Transforms | DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (STORY-102) |
 | Rows | 2,912 = 728 days × 4 channels |
 | Grain | **Channel-day only** (`meta`, `google`, `tiktok`, `tv`) |
 | Locked artifact | Committed CSV matches seed=42 **after** integer post-processing |
