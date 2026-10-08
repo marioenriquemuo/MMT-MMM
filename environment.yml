@@ -17,4 +17,6 @@ dependencies:
   - plotly
   - pyyaml
   - pydantic
+  - pandera
+  - pyarrow
   - pytest

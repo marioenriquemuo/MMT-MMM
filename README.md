@@ -35,7 +35,7 @@ conda env create -f environment.yml
 conda activate mmt-mmm
 
 # Verify key imports
-python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, yaml, pydantic; print('ok', pymc.__version__)"
+python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 ```
 
 Recreate or refresh deps: `conda env update -f environment.yml --prune`.
@@ -103,6 +103,22 @@ python scripts/plot_adstock_validation.py
 # → reports/figures/weibull_adstock_pulse.html  (two shapes + geometric reference)
 # → reports/figures/hill_saturation_curves.html  (K / S response curves)
 ```
+
+## STORY-103 / ETL (done)
+
+Raw channel-day CSV → aligned date×channel panel → impute → Pandera validate → Parquet.
+
+```bash
+conda activate mmt-mmm
+conda env update -f environment.yml --prune   # pulls pandera + pyarrow
+
+python -m src.data.etl
+# → data/processed/clean_spend.parquet
+
+python -m pytest tests/test_etl.py -q
+```
+
+**Fill rules:** missing media after alignment → **0** (pause / not in export); missing `baseline_sales` → **forward-fill**. Dirty practice export: `tests/fixtures/dirty_ad_spend.csv`. See [`data/raw/DATA_CARD.md`](data/raw/DATA_CARD.md).
 
 ## Stack direction
 

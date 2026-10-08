@@ -51,3 +51,14 @@ Integer columns are produced by continuous DGP → `round` → clip ≥ 0 → `i
 - Multiple KPIs or revenue alongside units
 
 Those are planned later; this file stays channel-level only.
+
+## STORY-103 ETL → processed Parquet
+
+| Item | Value |
+| --- | --- |
+| Module | `python -m src.data.etl` (`src/data/etl.py`) |
+| Schema | Pandera `SpendPanelSchema` |
+| Output | `data/processed/clean_spend.parquet` |
+| Dirty practice fixture | `tests/fixtures/dirty_ad_spend.csv` (google omitted ~2 days; blank KPI one day) |
+
+**Fill rules (locked):** after date×channel alignment, missing `spend` / `impressions` / `clicks` → **0** (pause / absent from export). Missing `baseline_sales` → **forward-fill** site-wide daily KPI. Raw `synthetic_ad_spend.csv` stays clean/locked.

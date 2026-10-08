@@ -10,12 +10,12 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Local path | `/home/mario/dev/MMT&MMM` |
 | Language | Python 3.12 |
 | Env | Conda env `mmt-mmm` from `environment.yml` (Miniconda at `~/miniconda3`) |
-| Core libs | numpy, pandas, scipy, scikit-learn, pymc, arviz, matplotlib, jupyter, plotly, pyyaml, pydantic, pytest |
+| Core libs | numpy, pandas, scipy, scikit-learn, pymc, arviz, matplotlib, jupyter, plotly, pyyaml, pydantic, pandera, pyarrow, pytest |
 | Secrets | `Secret/` gitignored — never read into commits or paste into PRs |
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 + STORY-102 done on this branch; next is STORY-103 (ETL) |
+| Status | STORY-101 + STORY-102 + STORY-103 done on this branch; next is STORY-201 |
 
 ## What we build
 
@@ -28,8 +28,8 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 
 ```
 MMT&MMM/
-├── environment.yml           # conda env mmt-mmm (+ plotly, pytest)
-├── README.md                 # setup + STORY-101/102 how-to
+├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest)
+├── README.md                 # setup + STORY-101/102/103 how-to
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -38,10 +38,12 @@ MMT&MMM/
 ├── Secret/                   # local-only (gitignored)
 ├── src/
 │   ├── data/generator.py     # STORY-101 Path-C synthetic DGP
+│   ├── data/etl.py           # STORY-103 load/align/impute/Parquet
 │   └── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
-├── tests/                    # generator + transforms + <1s perf gate
+├── tests/                    # generator + transforms + ETL + <1s perf gate
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
+├── data/processed/           # clean_spend.parquet (STORY-103)
 ├── reports/figures/          # Plotly HTML validation plots
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -55,7 +57,7 @@ MMT&MMM/
 | --- | --- | --- |
 | STORY-101 | Done | Path-C generator → `data/raw/`; integer KPI; `DATA_CARD.md` |
 | STORY-102 | Done | Shared transforms; DGP imports them; Plotly figures (no notebook); `<1s` perf gate |
-| STORY-103 | Next | ETL / data plumbing |
+| STORY-103 | Done | Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet` |
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 
@@ -75,8 +77,9 @@ Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transf
 ```bash
 cd "/home/mario/dev/MMT&MMM"
 conda activate mmt-mmm
-python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic; print('ok', pymc.__version__)"
+python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 python -m pytest tests/ -q
+python -m src.data.etl
 ```
 
 See `AGENTS.md` for agent golden rules and the skills/rules index.
