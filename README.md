@@ -82,9 +82,9 @@ python -m pytest tests/test_generator.py -q
 
 ## STORY-102 / transforms
 
-Step 2 (this branch): **geometric adstock only** in `src/models/transformations.py`.
-Weibull adstock, Hill saturation, and the generator refactor land in later teaching
-steps. Jupyter DoD was adapted to a Plotly Express script (no notebook required).
+Steps 2–3 (this branch): **geometric + Weibull adstock** in `src/models/transformations.py`.
+Hill saturation and the generator refactor land in later teaching steps. Jupyter DoD
+was adapted to a Plotly Express script (no notebook required).
 
 ```bash
 conda activate mmt-mmm
@@ -94,6 +94,7 @@ conda env update -f environment.yml --prune
 python -m pytest tests/test_transformations.py -q
 python scripts/plot_adstock_validation.py
 # → reports/figures/geometric_adstock_pulse.html
+# → reports/figures/weibull_adstock_pulse.html  (two shapes + geometric reference)
 ```
 
 ## Stack direction

@@ -1,11 +1,11 @@
-"""Tests for STORY-102 geometric adstock (Step 2 only)."""
+"""Tests for STORY-102 geometric + Weibull adstock (Steps 2–3)."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from src.models.transformations import geometric_adstock
+from src.models.transformations import geometric_adstock, weibull_adstock
 
 # --- Fixtures ---
 
@@ -14,6 +14,14 @@ from src.models.transformations import geometric_adstock
 def pulse() -> np.ndarray:
     """Impulse of 100 on day 0, zeros after (hand-checkable decay)."""
     x = np.zeros(8)
+    x[0] = 100.0
+    return x
+
+
+@pytest.fixture
+def long_pulse() -> np.ndarray:
+    """Longer impulse for Weibull tail / peak-timing checks."""
+    x = np.zeros(40)
     x[0] = 100.0
     return x
 
@@ -87,3 +95,89 @@ def test_matches_recursive_definition():
     for i, xi in enumerate(x):
         prev = float(xi) + theta * prev
         assert y[i] == pytest.approx(prev, rel=1e-12, abs=1e-12)
+
+
+# --- weibull_adstock ---
+
+
+def test_weibull_length_preserved(long_pulse: np.ndarray):
+    y = weibull_adstock(long_pulse, shape=1.5, scale=5.0)
+    assert y.shape == long_pulse.shape
+
+
+def test_weibull_nonnegative(long_pulse: np.ndarray):
+    y = weibull_adstock(long_pulse, shape=0.8, scale=4.0)
+    assert np.all(y >= 0.0)
+
+
+def test_weibull_normalize_unit_mass_on_constant():
+    """Normalized weights sum to 1 → constant series stays at that level."""
+    x = np.full(50, 10.0)
+    y = weibull_adstock(x, shape=1.2, scale=3.0, normalize=True, max_lag=20)
+    # After warm-up (lag window), level ≈ 10
+    np.testing.assert_allclose(y[20:], 10.0, rtol=1e-10, atol=1e-10)
+
+
+def test_weibull_raw_mass_not_forced_to_one(long_pulse: np.ndarray):
+    """normalize=False keeps raw PDF-style weights (pulse response ≠ pulse)."""
+    y_raw = weibull_adstock(
+        long_pulse, shape=1.5, scale=5.0, normalize=False, max_lag=20
+    )
+    y_norm = weibull_adstock(
+        long_pulse, shape=1.5, scale=5.0, normalize=True, max_lag=20
+    )
+    # Raw total response mass differs from normalized (unless weights already sum≈1)
+    assert not np.allclose(y_raw, y_norm)
+    assert y_raw.sum() != pytest.approx(y_norm.sum())
+
+
+def test_weibull_larger_scale_longer_tail(long_pulse: np.ndarray):
+    """Larger scale stretches carryover — more mass in the late tail."""
+    y_short = weibull_adstock(
+        long_pulse, shape=1.5, scale=2.0, normalize=True, max_lag=35
+    )
+    y_long = weibull_adstock(
+        long_pulse, shape=1.5, scale=8.0, normalize=True, max_lag=35
+    )
+    # Days 15+ should hold more of the response when scale is larger
+    assert y_long[15:].sum() > y_short[15:].sum()
+
+
+def test_weibull_shape_controls_peak_timing(long_pulse: np.ndarray):
+    """shape < 1 peaks at lag 0; shape > 1 can peak after day 0."""
+    y_early = weibull_adstock(
+        long_pulse, shape=0.6, scale=5.0, normalize=True, max_lag=30
+    )
+    y_delayed = weibull_adstock(
+        long_pulse, shape=2.5, scale=6.0, normalize=True, max_lag=30
+    )
+    assert int(np.argmax(y_early)) == 0
+    assert int(np.argmax(y_delayed)) > 0
+
+
+def test_weibull_rejects_bad_params():
+    x = np.ones(5)
+    with pytest.raises(ValueError, match="shape"):
+        weibull_adstock(x, shape=0.0, scale=2.0)
+    with pytest.raises(ValueError, match="shape"):
+        weibull_adstock(x, shape=-1.0, scale=2.0)
+    with pytest.raises(ValueError, match="scale"):
+        weibull_adstock(x, shape=1.0, scale=0.0)
+    with pytest.raises(ValueError, match="scale"):
+        weibull_adstock(x, shape=1.0, scale=-3.0)
+
+
+def test_weibull_2d_channels_by_time():
+    x = np.zeros((2, 20))
+    x[0, 0] = 100.0
+    x[1, 0] = 40.0
+    y = weibull_adstock(x, shape=1.5, scale=4.0, axis=-1, normalize=True)
+    assert y.shape == x.shape
+    # Independent channels: ratio of responses ≈ ratio of pulses after normalize
+    np.testing.assert_allclose(y[0] * 0.4, y[1], rtol=1e-10, atol=1e-10)
+
+
+def test_weibull_two_runs_identical(long_pulse: np.ndarray):
+    a = weibull_adstock(long_pulse, shape=1.1, scale=3.5)
+    b = weibull_adstock(long_pulse, shape=1.1, scale=3.5)
+    np.testing.assert_array_equal(a, b)
