@@ -1,11 +1,15 @@
-"""Tests for STORY-102 geometric + Weibull adstock (Steps 2–3)."""
+"""Tests for STORY-102 geometric + Weibull adstock + Hill (Steps 2–4)."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from src.models.transformations import geometric_adstock, weibull_adstock
+from src.models.transformations import (
+    geometric_adstock,
+    hill_saturation,
+    weibull_adstock,
+)
 
 # --- Fixtures ---
 
@@ -181,3 +185,64 @@ def test_weibull_two_runs_identical(long_pulse: np.ndarray):
     a = weibull_adstock(long_pulse, shape=1.1, scale=3.5)
     b = weibull_adstock(long_pulse, shape=1.1, scale=3.5)
     np.testing.assert_array_equal(a, b)
+
+
+# --- hill_saturation ---
+
+
+def test_hill_bounds_in_unit_interval():
+    x = np.linspace(0.0, 500.0, 101)
+    y = hill_saturation(x, K=50.0, S=1.5)
+    assert np.all(y >= 0.0)
+    assert np.all(y < 1.0)
+    assert y[0] == pytest.approx(0.0)
+
+
+def test_hill_half_saturation_at_K():
+    """At x = K, y ≈ 0.5 for any valid S."""
+    for K, S in ((10.0, 0.8), (50.0, 1.0), (100.0, 2.5)):
+        y = hill_saturation(np.array([K]), K=K, S=S)
+        assert y[0] == pytest.approx(0.5, rel=1e-12, abs=1e-12)
+
+
+def test_hill_monotonic_in_x():
+    x = np.linspace(0.0, 200.0, 50)
+    y = hill_saturation(x, K=40.0, S=1.2)
+    assert np.all(np.diff(y) >= -1e-15)
+
+
+def test_hill_larger_S_steeper_around_K():
+    """Larger S → steeper slope near K (higher |dy/dx| at half-sat)."""
+    K = 50.0
+    # Finite difference around K
+    eps = 0.5
+    x = np.array([K - eps, K + eps])
+    slope_lo = np.diff(hill_saturation(x, K=K, S=1.0))[0] / (2 * eps)
+    slope_hi = np.diff(hill_saturation(x, K=K, S=3.0))[0] / (2 * eps)
+    assert slope_hi > slope_lo
+
+
+def test_hill_shape_preserved():
+    x = np.linspace(0.0, 80.0, 21).reshape(3, 7)
+    y = hill_saturation(x, K=20.0, S=1.5)
+    assert y.shape == x.shape
+
+
+def test_hill_clips_negative_x():
+    """Negative spend clipped to 0 → response 0 (documented)."""
+    y = hill_saturation(np.array([-10.0, 0.0, 25.0]), K=25.0, S=1.0)
+    assert y[0] == pytest.approx(0.0)
+    assert y[1] == pytest.approx(0.0)
+    assert y[2] == pytest.approx(0.5)
+
+
+def test_hill_rejects_bad_params():
+    x = np.ones(3)
+    with pytest.raises(ValueError, match="K"):
+        hill_saturation(x, K=0.0, S=1.0)
+    with pytest.raises(ValueError, match="K"):
+        hill_saturation(x, K=-5.0, S=1.0)
+    with pytest.raises(ValueError, match="S"):
+        hill_saturation(x, K=10.0, S=0.0)
+    with pytest.raises(ValueError, match="S"):
+        hill_saturation(x, K=10.0, S=-1.0)

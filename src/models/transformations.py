@@ -1,8 +1,7 @@
-"""STORY-102 media transforms (Step 3: geometric + Weibull adstock).
+"""STORY-102 media transforms (Steps 2–4: adstock + Hill saturation).
 
-Pure NumPy helpers for the modeling pipeline. Hill saturation lands in a
-later teaching step; the STORY-101 generator still owns its inline DGP math
-until the shared module is complete.
+Pure NumPy helpers for the modeling pipeline. The STORY-101 generator still
+owns its inline DGP math until the shared-module refactor (later teaching step).
 """
 
 from __future__ import annotations
@@ -196,3 +195,53 @@ def weibull_adstock(
         out_flat[i] = np.convolve(flat[i], weights, mode="full")[:n]
     out = out_flat.reshape(moved.shape)
     return np.moveaxis(out, -1, axis)
+
+
+# --- Hill saturation ---
+
+
+def hill_saturation(x: np.ndarray, K: float, S: float) -> np.ndarray:
+    """Hill / Michaelis–Menten saturation mapped to ``[0, 1)``.
+
+    Form::
+
+        y = x^S / (K^S + x^S)
+
+    with ``x >= 0``, ``K > 0``, ``S > 0``.
+
+    Parameters
+    ----------
+    x :
+        Media exposure (typically **adstocked** spend). Same shape in / out.
+    K :
+        Half-saturation: spend level at which response is ~50% of the
+        asymptotic max (``y(K) = 0.5``).
+    S :
+        Slope / shape. Larger ``S`` → steeper S-curve around ``K``.
+
+    Returns
+    -------
+    np.ndarray
+        Saturated response in ``[0, 1)``, same shape as ``x``.
+
+    Notes
+    -----
+    In the MMM pipeline this is applied **after** adstock
+    (``apply_to_adstocked=True`` in the teaching sense): spend → adstock → Hill.
+
+    Negative ``x`` is clipped to 0 before evaluation (spend cannot be
+    negative; avoids fractional powers of negatives). ``K`` and ``S`` must
+    be strictly positive.
+    """
+    arr = np.asarray(x, dtype=float)
+    k = float(K)
+    s = float(S)
+    if not (k > 0.0):
+        raise ValueError(f"K must be > 0, got {K!r}")
+    if not (s > 0.0):
+        raise ValueError(f"S must be > 0, got {S!r}")
+
+    x_safe = np.maximum(arr, 0.0)
+    num = np.power(x_safe, s)
+    den = (k**s) + num
+    return np.divide(num, den, out=np.zeros_like(num), where=den > 0)
