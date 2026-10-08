@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MMT&MMM STORY-101→103 Core Data Engine",
+    "output": ".archify/architecture-mmt-story101-103-20261008-165012/mmt-story101-103.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "65b3d419e969dc8374795c5796a433454f536638"
+    }
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "Operator / CI",
+      "sublabel": "gen · etl · plot · test",
+      "pos": [260, 300],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 329, "end_line": 337, "label": "generator CLI" },
+        { "path": "src/data/etl.py", "line": 148, "end_line": 158, "label": "etl CLI" },
+        { "path": "scripts/plot_adstock_validation.py", "line": 192, "end_line": 209, "label": "plot CLI" }
+      ]
+    },
+    {
+      "id": "transforms",
+      "type": "backend",
+      "label": "transformations",
+      "sublabel": "geometric · Weibull · Hill",
+      "tag": "STORY-102",
+      "pos": [40, 60],
+      "size": [160, 60],
+      "sources": [
+        { "path": "src/models/transformations.py", "line": 19, "end_line": 48, "label": "geometric_adstock" },
+        { "path": "src/models/transformations.py", "line": 111, "end_line": 147, "label": "weibull_adstock" },
+        { "path": "src/models/transformations.py", "line": 204, "end_line": 234, "label": "hill_saturation" }
+      ]
+    },
+    {
+      "id": "gen_main",
+      "type": "backend",
+      "label": "generator.main",
+      "sublabel": "seed=42 Path-C",
+      "tag": "STORY-101",
+      "pos": [300, 60],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 329, "end_line": 333, "label": "main()" }
+      ]
+    },
+    {
+      "id": "generate",
+      "type": "backend",
+      "label": "generate()",
+      "sublabel": "728d × 4 channels",
+      "pos": [540, 60],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 239, "end_line": 282, "label": "generate()" }
+      ]
+    },
+    {
+      "id": "write",
+      "type": "backend",
+      "label": "write_outputs",
+      "sublabel": "CSV + ground_truth",
+      "pos": [780, 60],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 318, "end_line": 326, "label": "write_outputs" }
+      ]
+    },
+    {
+      "id": "csv",
+      "type": "database",
+      "label": "synthetic_ad_spend.csv",
+      "sublabel": "raw channel-day panel",
+      "pos": [1020, 60],
+      "size": [170, 60],
+      "sources": [
+        { "path": "data/raw/DATA_CARD.md", "line": 1, "end_line": 24, "label": "DATA_CARD" }
+      ]
+    },
+    {
+      "id": "meridian",
+      "type": "external",
+      "label": "Meridian / PyMC",
+      "sublabel": "STORY-201 planned",
+      "tag": "future",
+      "pos": [1560, 60],
+      "size": [140, 60]
+    },
+    {
+      "id": "etl_main",
+      "type": "backend",
+      "label": "run_etl()",
+      "sublabel": "orchestrate pipeline",
+      "tag": "STORY-103",
+      "pos": [490, 300],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 130, "end_line": 145, "label": "run_etl()" },
+        { "path": "src/data/etl.py", "line": 148, "end_line": 154, "label": "main()" }
+      ]
+    },
+    {
+      "id": "load",
+      "type": "backend",
+      "label": "load_raw()",
+      "sublabel": "CSV → dtypes",
+      "pos": [720, 300],
+      "size": [130, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 58, "end_line": 71, "label": "load_raw" }
+      ]
+    },
+    {
+      "id": "align",
+      "type": "backend",
+      "label": "align grid",
+      "sublabel": "date × channel",
+      "pos": [920, 300],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 77, "end_line": 97, "label": "align" }
+      ]
+    },
+    {
+      "id": "impute",
+      "type": "backend",
+      "label": "impute_panel()",
+      "sublabel": "media→0 · KPI→ffill",
+      "pos": [1140, 300],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 103, "end_line": 124, "label": "impute rules" }
+      ]
+    },
+    {
+      "id": "schema",
+      "type": "security",
+      "label": "SpendPanelSchema",
+      "sublabel": "Pandera contract",
+      "pos": [1360, 300],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 37, "end_line": 52, "label": "schema" },
+        { "path": "src/data/etl.py", "line": 141, "end_line": 141, "label": "validate()" }
+      ]
+    },
+    {
+      "id": "parquet",
+      "type": "database",
+      "label": "clean_spend.parquet",
+      "sublabel": "pyarrow · processed",
+      "pos": [1560, 300],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 28, "end_line": 28, "label": "DEFAULT_OUT_PATH" },
+        { "path": "src/data/etl.py", "line": 143, "end_line": 144, "label": "to_parquet" }
+      ]
+    },
+    {
+      "id": "plot",
+      "type": "backend",
+      "label": "plot_adstock_validation",
+      "sublabel": "Plotly Express",
+      "tag": "STORY-102",
+      "pos": [40, 500],
+      "size": [160, 60],
+      "sources": [
+        { "path": "scripts/plot_adstock_validation.py", "line": 33, "end_line": 36, "label": "import transforms" },
+        { "path": "scripts/plot_adstock_validation.py", "line": 192, "end_line": 205, "label": "write HTML" }
+      ]
+    },
+    {
+      "id": "figures",
+      "type": "database",
+      "label": "reports/figures/",
+      "sublabel": "3 Plotly HTML plots",
+      "pos": [300, 500],
+      "size": [150, 60],
+      "sources": [
+        { "path": "scripts/plot_adstock_validation.py", "line": 40, "end_line": 42, "label": "output paths" }
+      ]
+    },
+    {
+      "id": "dirty",
+      "type": "database",
+      "label": "dirty_ad_spend.csv",
+      "sublabel": "practice gaps fixture",
+      "pos": [560, 500],
+      "size": [160, 60],
+      "sources": [
+        { "path": "tests/fixtures/dirty_ad_spend.csv", "line": 1, "end_line": 10, "label": "dirty export" },
+        { "path": "data/raw/DATA_CARD.md", "line": 55, "end_line": 64, "label": "ETL card" }
+      ]
+    },
+    {
+      "id": "tests",
+      "type": "backend",
+      "label": "pytest suite",
+      "sublabel": "ETL · transforms · perf",
+      "pos": [820, 500],
+      "size": [160, 60],
+      "sources": [
+        { "path": "tests/test_etl.py", "line": 1, "end_line": 30, "label": "ETL tests" },
+        { "path": "tests/test_transformations_perf.py", "line": 32, "end_line": 47, "label": "perf gate" }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "STORY-101 Path-C generator",
+      "wraps": ["gen_main", "generate", "write"]
+    },
+    {
+      "kind": "region",
+      "label": "STORY-102 transforms + Plotly",
+      "wraps": ["transforms", "plot", "figures"]
+    },
+    {
+      "kind": "region",
+      "label": "STORY-103 ETL",
+      "wraps": ["etl_main", "load", "align", "impute", "schema"]
+    },
+    {
+      "kind": "region",
+      "label": "Data artifacts",
+      "wraps": ["csv", "parquet", "dirty"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "op-etl",
+      "from": "operator",
+      "to": "etl_main",
+      "label": "etl CLI",
+      "variant": "emphasis"
+    },
+    {
+      "id": "op-gen",
+      "from": "operator",
+      "to": "gen_main",
+      "label": "generator",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "op-plot",
+      "from": "operator",
+      "to": "plot",
+      "label": "plot",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "op-tests",
+      "from": "operator",
+      "to": "tests",
+      "label": "pytest",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "xf-gen",
+      "from": "transforms",
+      "to": "generate",
+      "label": "DGP import"
+    },
+    {
+      "id": "main-gen",
+      "from": "gen_main",
+      "to": "generate",
+      "label": "generate()"
+    },
+    {
+      "id": "gen-write",
+      "from": "generate",
+      "to": "write",
+      "label": "frame"
+    },
+    {
+      "id": "write-csv",
+      "from": "write",
+      "to": "csv",
+      "label": "to_csv"
+    },
+    {
+      "id": "csv-load",
+      "from": "csv",
+      "to": "load",
+      "label": "raw path",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "etl-load",
+      "from": "etl_main",
+      "to": "load",
+      "label": "run_etl"
+    },
+    {
+      "id": "load-align",
+      "from": "load",
+      "to": "align",
+      "label": "panel"
+    },
+    {
+      "id": "align-impute",
+      "from": "align",
+      "to": "impute",
+      "label": "NaN gaps"
+    },
+    {
+      "id": "impute-schema",
+      "from": "impute",
+      "to": "schema",
+      "label": "filled"
+    },
+    {
+      "id": "schema-parquet",
+      "from": "schema",
+      "to": "parquet",
+      "label": "Parquet"
+    },
+    {
+      "id": "parquet-meridian",
+      "from": "parquet",
+      "to": "meridian",
+      "label": "future fit",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "plot-xf",
+      "from": "plot",
+      "to": "transforms",
+      "label": "pulse",
+      "variant": "dashed"
+    },
+    {
+      "id": "plot-fig",
+      "from": "plot",
+      "to": "figures",
+      "label": "HTML"
+    },
+    {
+      "id": "dirty-tests",
+      "from": "dirty",
+      "to": "tests",
+      "label": "fixture"
+    },
+    {
+      "id": "tests-etl",
+      "from": "tests",
+      "to": "align",
+      "label": "ETL tests",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "STORY-101 done",
+      "items": [
+        "Channel-day grain: meta, google, tiktok, tv",
+        "baseline_sales = site-wide order/unit counts (not revenue)",
+        "Integer post-process: round → clip ≥0 → int64"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "STORY-102 done",
+      "items": [
+        "Shared transforms in src/models/transformations.py",
+        "Path-C DGP imports geometric_adstock / hill_saturation",
+        "Plotly Express figures (not Jupyter); <1s perf gate"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "STORY-103 done",
+      "items": [
+        "Pandera SpendPanelSchema on clean panel",
+        "After align: media NaN → 0; baseline_sales → ffill",
+        "CLI: python -m src.data.etl → clean_spend.parquet"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Next / planned",
+      "items": [
+        "STORY-201 Meridian / PyMC Bayesian MMM spike",
+        "Model reads clean Parquet levels (transforms stay shared)",
+        "Dual remotes: origin (Origin) + github"
+      ]
+    }
+  ]
+}

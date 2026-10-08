@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 + STORY-102 + STORY-103 done on this branch; next is STORY-201 |
+| Status | STORY-101 + STORY-102 + STORY-103 done; docs/graphify/archify refreshed on `cursor/story-103-etl-*`; next is STORY-201 |
 
 ## What we build
 

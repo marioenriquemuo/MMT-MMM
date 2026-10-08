@@ -35,7 +35,7 @@ conda env create -f environment.yml
 conda activate mmt-mmm
 
 # Verify key imports
-python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
+python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 ```
 
 Recreate or refresh deps: `conda env update -f environment.yml --prune`.
@@ -49,6 +49,8 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `README.md` | This overview + setup |
 | `CLAUDE.md` | Project brief and conventions for Claude/Cursor |
 | `AGENTS.md` | Agent entrypoint: layout, golden rules, skills/rules index |
+| `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, STORY-103 ETL fill rules |
+| `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |
 
 ## Skills, rules, and PRs
 

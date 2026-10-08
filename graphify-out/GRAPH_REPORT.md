@@ -1,17 +1,17 @@
 # Graph Report - MMT&MMM  (2026-10-08)
 
 ## Corpus Check
-- 38 files · ~23,053 words
+- 38 files · ~23,161 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 16 file(s) not represented in the graph (top: (none) 6, .mdc 5, .parquet 2)
+- Unclassified: 15 file(s) not represented in the graph (top: (none) 6, .mdc 5, .csv 2)
 
 ## Summary
-- 331 nodes · 497 edges · 32 communities (22 shown, 10 thin omitted)
+- 331 nodes · 498 edges · 31 communities (21 shown, 10 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a03e77e6`
+- Built from commit: `65b3d419`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,7 +26,6 @@
 - MMT&MMM Project Conventions
 - Ponytail Help
 - Semantic Extraction Spec
-- test_transformations_perf.py
 - graphify reference: extra exports and benchmark
 - graphify reference: query, path, explain
 - graphify reference: add a URL and watch a folder
@@ -83,11 +82,11 @@
 - **Sprint 1 Core Data Engine stories** — agents_sprint_1_core_data_engine, agents_story_101, agents_story_102, agents_story_103 [EXTRACTED 1.00]
 - **Secret Hygiene Across Project Docs** — _cursor_skills_secret_hygiene_skill_secret_hygiene, _cursor_skills_mmt_mmm_skill_secret_folder [INFERRED 0.85]
 
-## Communities (32 total, 10 thin omitted)
+## Communities (31 total, 10 thin omitted)
 
 ### Community 0 - "test_transformations.py"
-Cohesion: 0.07
-Nodes (50): fixture, Shared modeling primitives (transforms, later likelihoods / inference)., geometric_adstock(), hill_saturation(), ndarray, Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull…, Hill / Michaelis–Menten saturation mapped to ``[0, 1)``. Form:: y = x^S / (K^S…, Apply one-parameter geometric adstock along ``axis``. Recurrence (carryover of… (+42 more)
+Cohesion: 0.06
+Nodes (59): fixture, numpy, Shared modeling primitives (transforms, later likelihoods / inference)., geometric_adstock(), hill_saturation(), ndarray, Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull…, Hill / Michaelis–Menten saturation mapped to ``[0, 1)``. Form:: y = x^S / (K^S… (+51 more)
 
 ### Community 1 - "/graphify"
 Cohesion: 0.11
@@ -124,10 +123,6 @@ Nodes (12): Ponytail Audit, ponytail: Comment Marker, Ponytail Debt, Ponytail Be
 ### Community 9 - "Semantic Extraction Spec"
 Cohesion: 0.25
 Nodes (8): Confidence Score Rubric, DEEP_MODE, Deterministic Node ID Format, Hyperedges, Semantic Extraction Spec, semantically_similar_to Relation, EXTRACTED/INFERRED/AMBIGUOUS Audit Trail, Honesty Rules
-
-### Community 10 - "test_transformations_perf.py"
-Cohesion: 0.27
-Nodes (9): numpy, _panel(), ndarray, STORY-102 Step 6 — wall-time gate for transforms on ~2y daily data., Non-negative spend panel shaped ``(channels, days)``., DoD: geometric + Weibull + Hill on 730×4 panel finishes in <1s., _run_transforms(), test_transforms_two_years_daily_under_one_second() (+1 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -188,7 +183,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `For /graphify add and --watch`, `For /graphify query`, `For the commit hook and native AGENTS.md integration` to the rest of the system?**
   _77 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `test_transformations.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.06787330316742081 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05764145954521417 - nodes in this community are weakly interconnected._
 - **Should `/graphify` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `generator.py` be split into smaller, more focused modules?**
