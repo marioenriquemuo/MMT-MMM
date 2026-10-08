@@ -6,7 +6,8 @@
     "tv": 0.7
   },
   "baseline_level": 45000.0,
-  "baseline_sales_semantics": "Same daily KPI repeated on each channel row for that date; groupby(date).mean() recovers the series.",
+  "baseline_sales_semantics": "Same site-wide daily KPI (integer order/unit counts) repeated on each channel row for that date; groupby(date).first() recovers the series \u2014 do not sum across channels.",
+  "baseline_sales_unit": "orders_units",
   "baseline_season_amp": 6000.0,
   "baseline_trend_per_day": 4.0,
   "channel_display": {
@@ -44,6 +45,16 @@
     "meta": 1.4,
     "tiktok": 1.6,
     "tv": 1.1
+  },
+  "integer_postprocess": {
+    "columns": [
+      "impressions",
+      "clicks",
+      "baseline_sales"
+    ],
+    "note": "Committed synthetic_ad_spend.csv is locked to seed=42 after this integer post-processing.",
+    "rule": "round then clip >= 0 to int64",
+    "spend": "float USD (unchanged)"
   },
   "media_beta": {
     "google": 2200.0,

@@ -11,6 +11,7 @@ import pytest
 from src.data.generator import (
     CHANNELS,
     COLUMNS,
+    INTEGER_COLUMNS,
     N_DAYS,
     SEED,
     assert_valid,
@@ -47,10 +48,26 @@ def test_bounds_non_negative_no_nulls():
     assert bool((numeric >= 0).all().all())
 
 
+def test_integer_count_columns():
+    df, _ = generate(seed=SEED)
+    for col in INTEGER_COLUMNS:
+        assert pd.api.types.is_integer_dtype(df[col]), col
+        assert bool((df[col] >= 0).all())
+    # spend remains float currency
+    assert pd.api.types.is_float_dtype(df["spend"])
+
+
 def test_baseline_sales_repeated_per_date():
     df, _ = generate(seed=SEED)
     grouped = df.groupby("date")["baseline_sales"]
     assert bool((grouped.nunique() == 1).all())
+
+
+def test_ground_truth_documents_integer_postprocess():
+    _, gt = generate(seed=SEED)
+    assert gt["baseline_sales_unit"] == "orders_units"
+    assert gt["integer_postprocess"]["columns"] == list(INTEGER_COLUMNS)
+    assert "seed=42" in gt["integer_postprocess"]["note"]
 
 
 def test_different_seed_changes_output():

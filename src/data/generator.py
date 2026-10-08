@@ -30,6 +30,8 @@ CHANNEL_DISPLAY = {
     "tv": "TV",
 }
 COLUMNS = ("date", "channel", "spend", "impressions", "clicks", "baseline_sales")
+# Count columns: round → clip ≥0 → int64 after the continuous DGP (spend stays float USD).
+INTEGER_COLUMNS = ("impressions", "clicks", "baseline_sales")
 START_DATE = "2023-01-02"  # Monday-aligned start for clean weekly structure
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -224,9 +226,20 @@ def planted_ground_truth() -> dict[str, Any]:
             "note": "Inline in generator only; STORY-102 owns shared transforms.",
         },
         "baseline_sales_semantics": (
-            "Same daily KPI repeated on each channel row for that date; "
-            "groupby(date).mean() recovers the series."
+            "Same site-wide daily KPI (integer order/unit counts) repeated on "
+            "each channel row for that date; groupby(date).first() recovers the "
+            "series — do not sum across channels."
         ),
+        "baseline_sales_unit": "orders_units",
+        "integer_postprocess": {
+            "columns": list(INTEGER_COLUMNS),
+            "rule": "round then clip >= 0 to int64",
+            "spend": "float USD (unchanged)",
+            "note": (
+                "Committed synthetic_ad_spend.csv is locked to seed=42 after "
+                "this integer post-processing."
+            ),
+        },
     }
 
 
@@ -270,12 +283,25 @@ def generate(seed: int = SEED) -> tuple[pd.DataFrame, dict[str, Any]]:
             )
 
     df = pd.DataFrame(rows, columns=list(COLUMNS))
+    df = coerce_integer_columns(df)
     assert_valid(df)
 
     ground_truth = planted_ground_truth()
     ground_truth["sales_meta"] = sales_meta
     ground_truth["seed_used"] = seed
     return df, ground_truth
+
+
+def coerce_integer_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Round → clip ≥0 → int64 for impressions, clicks, baseline_sales."""
+    out = df.copy()
+    for col in INTEGER_COLUMNS:
+        out[col] = (
+            np.rint(out[col].to_numpy(dtype=float))
+            .clip(min=0)
+            .astype(np.int64)
+        )
+    return out
 
 
 def assert_valid(df: pd.DataFrame) -> None:
@@ -287,6 +313,10 @@ def assert_valid(df: pd.DataFrame) -> None:
     numeric = df[["spend", "impressions", "clicks", "baseline_sales"]]
     if not bool((numeric >= 0).all().all()):
         raise AssertionError("negative values in numeric columns")
+    for col in INTEGER_COLUMNS:
+        values = df[col].to_numpy(dtype=float)
+        if not np.allclose(values, np.rint(values), equal_nan=False):
+            raise AssertionError(f"{col} must be integral (no fractional part)")
     if df["channel"].nunique() != 4:
         raise AssertionError("expected 4 channels")
     if df["date"].nunique() != N_DAYS:
