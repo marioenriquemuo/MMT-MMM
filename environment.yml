@@ -14,6 +14,7 @@ dependencies:
   - arviz
   - matplotlib
   - jupyter
+  - plotly
   - pyyaml
   - pydantic
   - pytest

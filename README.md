@@ -80,6 +80,22 @@ Committed CSV is locked to `seed=42` after integer post-processing.
 python -m pytest tests/test_generator.py -q
 ```
 
+## STORY-102 / transforms
+
+Step 2 (this branch): **geometric adstock only** in `src/models/transformations.py`.
+Weibull adstock, Hill saturation, and the generator refactor land in later teaching
+steps. Jupyter DoD was adapted to a Plotly Express script (no notebook required).
+
+```bash
+conda activate mmt-mmm
+# after env create/update — plotly is in environment.yml (conda-forge)
+conda env update -f environment.yml --prune
+
+python -m pytest tests/test_transformations.py -q
+python scripts/plot_adstock_validation.py
+# → reports/figures/geometric_adstock_pulse.html
+```
+
 ## Stack direction
 
 Python Bayesian MMM + optimization scripts (`pymc` / scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.
