@@ -82,16 +82,20 @@ python -m pytest tests/test_generator.py -q
 
 ## STORY-102 / transforms
 
-Steps 2–4 (this branch): **geometric + Weibull adstock + Hill saturation** in
-`src/models/transformations.py`. Generator refactor lands in a later teaching step.
-Jupyter DoD was adapted to a Plotly Express script (no notebook required).
+Steps 2–5 (this branch): **geometric + Weibull adstock + Hill saturation** in
+`src/models/transformations.py`; Path-C DGP imports those helpers (single source of
+truth). Jupyter DoD was adapted to a Plotly Express script (no notebook required).
+
+**Speed gate (Step 6):** `tests/test_transformations_perf.py` asserts wall time
+&lt; 1s for `geometric_adstock` + `weibull_adstock` + `hill_saturation` on ~730
+days × 4 channels (`time.perf_counter`).
 
 ```bash
 conda activate mmt-mmm
 # after env create/update — plotly is in environment.yml (conda-forge)
 conda env update -f environment.yml --prune
 
-python -m pytest tests/test_transformations.py -q
+python -m pytest tests/test_transformations.py tests/test_transformations_perf.py -q
 python scripts/plot_adstock_validation.py
 # → reports/figures/geometric_adstock_pulse.html
 # → reports/figures/weibull_adstock_pulse.html  (two shapes + geometric reference)
