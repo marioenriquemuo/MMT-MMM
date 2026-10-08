@@ -1,0 +1,7 @@
+---
+description: Simplicity reminders (complements the Karpathy rule)
+alwaysApply: true
+---
+- If one line does it, use one line. Standard library first, minimal dependencies.
+- After writing, re-read and delete anything not needed.
+- No placeholder code, no TODOs — deliver complete, runnable code (stubs only when the task explicitly asks for a starting scaffold).

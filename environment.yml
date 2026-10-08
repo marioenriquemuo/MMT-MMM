@@ -1,0 +1,18 @@
+# Conda env for martech-mmm-ai-allocator (Bayesian MMM).
+# Create:  conda env create -f environment.yml
+# Activate: conda activate mmt-mmm
+name: mmt-mmm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - pymc
+  - arviz
+  - matplotlib
+  - jupyter
+  - pyyaml
+  - pydantic
