@@ -14,7 +14,8 @@ Enterprise measurement and optimization engine: Unified Measurement Architecture
 | Item | Value |
 | --- | --- |
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
-| Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) |
+| Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
+| GitHub | [MMT-MMM](https://github.com/marioenriquemuo/MMT-MMM) (private) — remote `github`; tip: `git push github main` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
 | Docker | Later (deploy/CI only) |
