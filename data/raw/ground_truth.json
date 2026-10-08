@@ -85,8 +85,14 @@
   },
   "start_date": "2023-01-02",
   "transforms": {
-    "adstock": "geometric: y_t = x_t + decay * y_{t-1}",
-    "note": "Inline in generator only; STORY-102 owns shared transforms.",
-    "saturation": "hill: x^k / (x^k + half^k)"
+    "adstock": "geometric: y_t = x_t + theta * y_{t-1}",
+    "module": "src.models.transformations",
+    "note": "Path-C DGP calls geometric_adstock / hill_saturation from src.models.transformations (single source of truth).",
+    "param_map": {
+      "adstock_decay": "theta",
+      "hill_half": "K",
+      "hill_slope": "S"
+    },
+    "saturation": "hill: x^S / (K^S + x^S)"
   }
 }

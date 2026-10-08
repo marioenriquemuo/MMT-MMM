@@ -1,7 +1,8 @@
-"""STORY-102 media transforms (Steps 2–4: adstock + Hill saturation).
+"""STORY-102 media transforms (Steps 2–5: adstock + Hill saturation).
 
-Pure NumPy helpers for the modeling pipeline. The STORY-101 generator still
-owns its inline DGP math until the shared-module refactor (later teaching step).
+Pure NumPy helpers for the modeling pipeline. Path-C DGP in
+``src.data.generator`` calls these for planted media response (single source
+of truth for geometric adstock + Hill).
 """
 
 from __future__ import annotations

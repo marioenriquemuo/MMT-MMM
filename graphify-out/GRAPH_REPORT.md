@@ -1,17 +1,17 @@
 # Graph Report - MMT&MMM  (2026-10-08)
 
 ## Corpus Check
-- 35 files · ~21,317 words
+- 35 files · ~21,286 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: .mdc 5, (none) 5, .csv 1)
 
 ## Summary
-- 223 nodes · 331 edges · 22 communities (17 shown, 5 thin omitted)
+- 219 nodes · 328 edges · 22 communities (17 shown, 5 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3d72f9fb`
+- Built from commit: `a469a869`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,9 +41,9 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `generate()` - 21 edges
-2. `weibull_adstock()` - 18 edges
-3. `geometric_adstock()` - 16 edges
-4. `hill_saturation()` - 14 edges
+2. `geometric_adstock()` - 18 edges
+3. `weibull_adstock()` - 18 edges
+4. `hill_saturation()` - 16 edges
 5. `What You Must Do When Invoked` - 12 edges
 6. `/graphify` - 10 edges
 7. `graphify reference: extra exports and benchmark` - 8 edges
@@ -74,8 +74,8 @@
 ## Communities (22 total, 5 thin omitted)
 
 ### Community 0 - "generate"
-Cohesion: 0.09
-Nodes (41): Any, json, pandas, pathlib, skipif, assert_valid(), _baseline_sales(), coerce_integer_columns() (+33 more)
+Cohesion: 0.10
+Nodes (36): Any, json, pytest, skipif, assert_valid(), _baseline_sales(), coerce_integer_columns(), generate() (+28 more)
 
 ### Community 1 - "MMT&MMM Project Conventions"
 Cohesion: 0.14
@@ -86,8 +86,8 @@ Cohesion: 0.27
 Nodes (12): Ponytail Audit, ponytail: Comment Marker, Ponytail Debt, Ponytail Benchmark Medians, Ponytail Gain, Ponytail Intensity Levels (lite/full/ultra), Ponytail Help, Over-Engineering Review Tags (+4 more)
 
 ### Community 3 - "test_transformations.py"
-Cohesion: 0.21
-Nodes (14): pytest, geometric_adstock(), Apply one-parameter geometric adstock along ``axis``. Recurrence (carryover of…, Tests for STORY-102 geometric + Weibull adstock + Hill (Steps 2–4)., 100 then zeros, theta=0.5 → 100, 50, 25, 12.5, …, Shape (channels, T) with axis=-1 adstocks each channel independently., test_2d_channels_by_time(), test_length_preserved() (+6 more)
+Cohesion: 0.23
+Nodes (13): geometric_adstock(), Apply one-parameter geometric adstock along ``axis``. Recurrence (carryover of…, Tests for STORY-102 geometric + Weibull adstock + Hill (Steps 2–4)., 100 then zeros, theta=0.5 → 100, 50, 25, 12.5, …, Shape (channels, T) with axis=-1 adstocks each channel independently., test_2d_channels_by_time(), test_length_preserved(), test_matches_recursive_definition() (+5 more)
 
 ### Community 4 - "What You Must Do When Invoked"
 Cohesion: 0.08
@@ -102,8 +102,8 @@ Cohesion: 0.47
 Nodes (6): No Look-Ahead / Leakage Rule, baseline_sales KPI, Channel-Day Grain, DATA_CARD for synthetic_ad_spend.csv, STORY-101 Path-C Synthetic Generator, synthetic_ad_spend.csv
 
 ### Community 7 - "plot_adstock_validation.py"
-Cohesion: 0.20
-Nodes (13): plotly_express, build_geometric_figure(), build_hill_figure(), build_weibull_figure(), main(), _pulse_frame(), DataFrame, ndarray (+5 more)
+Cohesion: 0.17
+Nodes (15): pandas, pathlib, plotly_express, build_geometric_figure(), build_hill_figure(), build_weibull_figure(), main(), _pulse_frame() (+7 more)
 
 ### Community 10 - "hill_saturation"
 Cohesion: 0.17
@@ -111,7 +111,7 @@ Nodes (12): hill_saturation(), Hill / Michaelis–Menten saturation mapped to ``
 
 ### Community 11 - "transformations.py"
 Cohesion: 0.20
-Nodes (8): numpy, Shared modeling primitives (transforms, later likelihoods / inference)., ndarray, STORY-102 media transforms (Steps 2–4: adstock + Hill saturation). Pure NumPy…, Choose discrete lag support ``L`` for Weibull PDF weights. Default:…, Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive…, _weibull_n_lags(), _weibull_pdf_weights()
+Nodes (8): numpy, Shared modeling primitives (transforms, later likelihoods / inference)., ndarray, STORY-102 media transforms (Steps 2–5: adstock + Hill saturation). Pure NumPy…, Choose discrete lag support ``L`` for Weibull PDF weights. Default:…, Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive…, _weibull_n_lags(), _weibull_pdf_weights()
 
 ### Community 12 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -143,20 +143,22 @@ Nodes (3): archify, graphify, graphify + archify artifacts
 
 ## Knowledge Gaps
 - **46 isolated node(s):** `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)`, `Step 1 - Ensure graphify is installed`, `Step 2 - Detect files` (+41 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 100 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 98 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `geometric_adstock()` connect `test_transformations.py` to `generate`, `transformations.py`, `plot_adstock_validation.py`?**
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+- **Why does `hill_saturation()` connect `hill_saturation` to `generate`, `test_transformations.py`, `transformations.py`, `plot_adstock_validation.py`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Why does `weibull_adstock()` connect `weibull_adstock` to `test_transformations.py`, `transformations.py`, `plot_adstock_validation.py`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `geometric_adstock()` connect `test_transformations.py` to `transformations.py`, `plot_adstock_validation.py`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **What connects `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)` to the rest of the system?**
   _46 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `generate` be split into smaller, more focused modules?**
-  _Cohesion score 0.08970099667774087 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09957325746799431 - nodes in this community are weakly interconnected._
 - **Should `MMT&MMM Project Conventions` be split into smaller, more focused modules?**
   _Cohesion score 0.13852813852813853 - nodes in this community are weakly interconnected._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**

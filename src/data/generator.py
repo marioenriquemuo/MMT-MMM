@@ -4,8 +4,8 @@ Channels (stable IDs → display names):
   meta → Meta, google → Google, tiktok → TikTok, tv → TV
 
 US-DTC-like CPM/CTR constants are hard-coded below (no network calls).
-Geometric adstock and Hill saturation live inline here only — STORY-102
-owns the shared transformations module.
+Media response (geometric adstock + Hill) uses ``src.models.transformations``
+as the single source of truth — planted params map to ``theta`` / ``K`` / ``S``.
 """
 
 from __future__ import annotations
@@ -16,6 +16,8 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+
+from src.models.transformations import geometric_adstock, hill_saturation
 
 # --- Constants ---
 
@@ -95,28 +97,6 @@ BASELINE_SEASON_AMP = 6_000.0
 BASELINE_TREND_PER_DAY = 4.0
 
 
-# --- Inline media transforms (generator-only; not STORY-102) ---
-
-
-def geometric_adstock(spend: np.ndarray, decay: float) -> np.ndarray:
-    """One-parameter geometric adstock: y_t = x_t + decay * y_{t-1}."""
-    out = np.empty_like(spend, dtype=float)
-    prev = 0.0
-    for i, x in enumerate(spend):
-        prev = float(x) + decay * prev
-        out[i] = prev
-    return out
-
-
-def hill_saturation(x: np.ndarray, half: float, slope: float) -> np.ndarray:
-    """Hill / Michaelis–Menten style saturation in [0, 1)."""
-    x = np.asarray(x, dtype=float)
-    x_safe = np.maximum(x, 0.0)
-    num = np.power(x_safe, slope)
-    den = num + half**slope
-    return np.divide(num, den, out=np.zeros_like(num), where=den > 0)
-
-
 # --- Spend / KPI construction ---
 
 
@@ -183,6 +163,7 @@ def _baseline_sales(
     media_contrib = np.zeros(n)
     channel_contrib: dict[str, list[float]] = {}
     for ch in CHANNELS:
+        # Planted ADSTOCK_DECAY → theta; HILL_HALF → K; HILL_SLOPE → S
         adstocked = geometric_adstock(spend_by_channel[ch], ADSTOCK_DECAY[ch])
         sat = hill_saturation(adstocked, HILL_HALF[ch], HILL_SLOPE[ch])
         contrib = MEDIA_BETA[ch] * sat
@@ -221,9 +202,18 @@ def planted_ground_truth() -> dict[str, Any]:
         "baseline_season_amp": BASELINE_SEASON_AMP,
         "baseline_trend_per_day": BASELINE_TREND_PER_DAY,
         "transforms": {
-            "adstock": "geometric: y_t = x_t + decay * y_{t-1}",
-            "saturation": "hill: x^k / (x^k + half^k)",
-            "note": "Inline in generator only; STORY-102 owns shared transforms.",
+            "adstock": "geometric: y_t = x_t + theta * y_{t-1}",
+            "saturation": "hill: x^S / (K^S + x^S)",
+            "module": "src.models.transformations",
+            "param_map": {
+                "adstock_decay": "theta",
+                "hill_half": "K",
+                "hill_slope": "S",
+            },
+            "note": (
+                "Path-C DGP calls geometric_adstock / hill_saturation from "
+                "src.models.transformations (single source of truth)."
+            ),
         },
         "baseline_sales_semantics": (
             "Same site-wide daily KPI (integer order/unit counts) repeated on "
