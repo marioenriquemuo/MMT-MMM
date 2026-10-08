@@ -73,7 +73,7 @@ Writes:
 Columns: `date`, `channel`, `spend`, `impressions`, `clicks`, `baseline_sales`.
 
 ```bash
-pytest tests/test_generator.py -q
+python -m pytest tests/test_generator.py -q
 ```
 
 ## Stack direction
