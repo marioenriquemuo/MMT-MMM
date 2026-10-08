@@ -1,0 +1,92 @@
+{
+  "adstock_decay": {
+    "google": 0.45,
+    "meta": 0.35,
+    "tiktok": 0.25,
+    "tv": 0.7
+  },
+  "baseline_level": 45000.0,
+  "baseline_sales_semantics": "Same site-wide daily KPI (integer order/unit counts) repeated on each channel row for that date; groupby(date).first() recovers the series \u2014 do not sum across channels.",
+  "baseline_sales_unit": "orders_units",
+  "baseline_season_amp": 6000.0,
+  "baseline_trend_per_day": 4.0,
+  "channel_display": {
+    "google": "Google",
+    "meta": "Meta",
+    "tiktok": "TikTok",
+    "tv": "TV"
+  },
+  "channels": [
+    "meta",
+    "google",
+    "tiktok",
+    "tv"
+  ],
+  "cpm_usd": {
+    "google": 18.0,
+    "meta": 10.0,
+    "tiktok": 8.0,
+    "tv": 28.0
+  },
+  "ctr": {
+    "google": 0.028,
+    "meta": 0.01,
+    "tiktok": 0.014,
+    "tv": 0.0012
+  },
+  "hill_half": {
+    "google": 6500.0,
+    "meta": 5500.0,
+    "tiktok": 4000.0,
+    "tv": 12000.0
+  },
+  "hill_slope": {
+    "google": 1.2,
+    "meta": 1.4,
+    "tiktok": 1.6,
+    "tv": 1.1
+  },
+  "integer_postprocess": {
+    "columns": [
+      "impressions",
+      "clicks",
+      "baseline_sales"
+    ],
+    "note": "Committed synthetic_ad_spend.csv is locked to seed=42 after this integer post-processing.",
+    "rule": "round then clip >= 0 to int64",
+    "spend": "float USD (unchanged)"
+  },
+  "media_beta": {
+    "google": 2200.0,
+    "meta": 1800.0,
+    "tiktok": 1400.0,
+    "tv": 2600.0
+  },
+  "n_days": 728,
+  "n_weeks": 104,
+  "sales_meta": {
+    "baseline_level": 45000.0,
+    "baseline_season_amp": 6000.0,
+    "baseline_trend_per_day": 4.0,
+    "channel_contribution_means": {
+      "google": 1384.6262113605706,
+      "meta": 1048.1852475994758,
+      "tiktok": 699.6333107024464,
+      "tv": 1975.0041498237288
+    }
+  },
+  "seed": 42,
+  "seed_used": 42,
+  "spend_base": {
+    "google": 5100.0,
+    "meta": 4200.0,
+    "tiktok": 2800.0,
+    "tv": 9500.0
+  },
+  "start_date": "2023-01-02",
+  "transforms": {
+    "adstock": "geometric: y_t = x_t + decay * y_{t-1}",
+    "note": "Inline in generator only; STORY-102 owns shared transforms.",
+    "saturation": "hill: x^k / (x^k + half^k)"
+  }
+}

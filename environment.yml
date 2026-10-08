@@ -16,3 +16,4 @@ dependencies:
   - jupyter
   - pyyaml
   - pydantic
+  - pytest

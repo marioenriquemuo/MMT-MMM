@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b0a4fec0-842f-47e9-a5cc-a7b0e0ccb4dd",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/workspace/.archify/architecture-mmt-story101-20261008-161209/candidate.json",
+  "output": "/workspace/.archify/architecture-mmt-story101-20261008-161209/mmt-story101.html",
+  "specification": {
+    "sha256": "9d37d23ce39aa28f2bba8fad4847c3e7ca23e0fcbf5a478dd1e28f135268e4af",
+    "bytes": 7566
+  },
+  "artifact": {
+    "sha256": "eb0e819bd34707a07a20215e273d760a6f1f16f75bf2e488fc548e920ac381c3",
+    "bytes": 773209
+  }
+}

@@ -56,6 +56,30 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 - Prefer small feature branches (`cursor/<topic>-…`), focused commits, Origin PRs into `main`
 - Never commit `Secret/`, credentials, or local conda env directories
 
+## Generate synthetic data
+
+STORY-101 Path-C generator (reproducible `seed=42`):
+
+```bash
+conda activate mmt-mmm
+python -m src.data.generator
+```
+
+Writes:
+
+- `data/raw/synthetic_ad_spend.csv` — 728 days × 4 channels (`meta`, `google`, `tiktok`, `tv`)
+- `data/raw/ground_truth.json` — planted adstock / Hill / media-scale parameters
+- See [`data/raw/DATA_CARD.md`](data/raw/DATA_CARD.md) for long-format semantics, grain, and KPI notes
+
+Columns: `date`, `channel`, `spend` (float USD), `impressions` / `clicks` / `baseline_sales` (non-negative integers).  
+`baseline_sales` is the site-wide daily unit KPI **repeated** on each channel row — do not sum across channels.
+
+Committed CSV is locked to `seed=42` after integer post-processing.
+
+```bash
+python -m pytest tests/test_generator.py -q
+```
+
 ## Stack direction
 
 Python Bayesian MMM + optimization scripts (`pymc` / scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

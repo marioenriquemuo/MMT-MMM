@@ -1,0 +1,11 @@
+# Scope graphify to the MMT-MMM product + lean project skills.
+# Archify ships a full Node package under .cursor/skills — exclude its
+# implementation/tests so the knowledge graph reflects the MMM POC, not
+# diagram-tool internals. Re-run without these lines for a skills audit.
+
+.cursor/skills/archify/
+.cursor/skills/archify/**
+**/node_modules/
+**/package-lock.json
+graphify-out/
+.archify/
