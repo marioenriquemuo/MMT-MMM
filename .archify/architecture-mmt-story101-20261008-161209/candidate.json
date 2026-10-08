@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MMT&MMM STORY-101 Path-C Generator",
+    "output": ".archify/architecture-mmt-story101-20261008-161209/mmt-story101.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://origin.cursor.com/git/mario-mu-oz-dev/tmp-78156517c1ca3076.git",
+      "link_mode": "local-only",
+      "revision": "bdac1a44ab3ff175191d92f8f031bcd31ce19b86"
+    }
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "Operator / CI",
+      "sublabel": "python -m src.data.generator",
+      "pos": [40, 280],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 339, "end_line": 347, "label": "CLI main" }
+      ]
+    },
+    {
+      "id": "main",
+      "type": "backend",
+      "label": "generator.main",
+      "sublabel": "seed=42 entry",
+      "pos": [250, 280],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 339, "end_line": 343, "label": "main()" }
+      ]
+    },
+    {
+      "id": "generate",
+      "type": "backend",
+      "label": "generate()",
+      "sublabel": "728d × 4 channels",
+      "tag": "Path-C",
+      "pos": [500, 280],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 249, "end_line": 292, "label": "generate()" }
+      ]
+    },
+    {
+      "id": "spend",
+      "type": "backend",
+      "label": "_spend_series",
+      "sublabel": "season + flight + AR(1)",
+      "pos": [500, 110],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 123, "end_line": 164, "label": "spend DGP" }
+      ]
+    },
+    {
+      "id": "delivery",
+      "type": "backend",
+      "label": "impressions / clicks",
+      "sublabel": "CPM × CTR",
+      "pos": [730, 110],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 167, "end_line": 171, "label": "delivery" }
+      ]
+    },
+    {
+      "id": "baseline",
+      "type": "backend",
+      "label": "_baseline_sales",
+      "sublabel": "adstock → Hill → β",
+      "pos": [730, 280],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 174, "end_line": 201, "label": "baseline KPI" },
+        { "path": "src/data/generator.py", "line": 101, "end_line": 117, "label": "transforms" }
+      ]
+    },
+    {
+      "id": "validate",
+      "type": "security",
+      "label": "assert_valid",
+      "sublabel": "schema · ints",
+      "pos": [980, 280],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 307, "end_line": 325, "label": "assert_valid" },
+        { "path": "src/data/generator.py", "line": 295, "end_line": 304, "label": "int coerce" }
+      ]
+    },
+    {
+      "id": "write",
+      "type": "backend",
+      "label": "write_outputs",
+      "sublabel": "CSV + JSON",
+      "pos": [1210, 280],
+      "size": [140, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 328, "end_line": 336, "label": "write_outputs" }
+      ]
+    },
+    {
+      "id": "csv",
+      "type": "database",
+      "label": "synthetic_ad_spend.csv",
+      "sublabel": "2,912 channel-days",
+      "pos": [1210, 460],
+      "size": [170, 60],
+      "sources": [
+        { "path": "data/raw/DATA_CARD.md", "line": 1, "end_line": 23, "label": "DATA_CARD" },
+        { "path": "src/data/generator.py", "line": 37, "end_line": 39, "label": "paths" }
+      ]
+    },
+    {
+      "id": "gt",
+      "type": "database",
+      "label": "ground_truth.json",
+      "sublabel": "planted α / Hill / β",
+      "pos": [1430, 460],
+      "size": [150, 60],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 204, "end_line": 243, "label": "planted GT" }
+      ]
+    },
+    {
+      "id": "tests",
+      "type": "backend",
+      "label": "pytest suite",
+      "sublabel": "seed lock · schema",
+      "pos": [730, 460],
+      "size": [150, 60],
+      "sources": [
+        { "path": "tests/test_generator.py", "line": 27, "end_line": 41, "label": "stability+schema" }
+      ]
+    },
+    {
+      "id": "meridian",
+      "type": "external",
+      "label": "Meridian / PyMC",
+      "sublabel": "planned (not in repo)",
+      "tag": "future",
+      "pos": [1430, 280],
+      "size": [150, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "STORY-101 src/data generator",
+      "wraps": ["main", "generate", "spend", "delivery", "baseline", "validate", "write"]
+    },
+    {
+      "kind": "region",
+      "label": "Committed Path-C artifacts",
+      "wraps": ["csv", "gt"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "op-main",
+      "from": "operator",
+      "to": "main",
+      "label": "invoke",
+      "variant": "emphasis"
+    },
+    {
+      "id": "main-gen",
+      "from": "main",
+      "to": "generate",
+      "label": "calls generate"
+    },
+    {
+      "id": "gen-spend",
+      "from": "generate",
+      "to": "spend",
+      "label": "per channel",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "spend-delivery",
+      "from": "spend",
+      "to": "delivery",
+      "label": "USD spend"
+    },
+    {
+      "id": "gen-baseline",
+      "from": "generate",
+      "to": "baseline",
+      "label": "media contrib"
+    },
+    {
+      "id": "delivery-baseline",
+      "from": "delivery",
+      "to": "baseline",
+      "label": "date join",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "baseline-validate",
+      "from": "baseline",
+      "to": "validate",
+      "label": "DataFrame"
+    },
+    {
+      "id": "validate-write",
+      "from": "validate",
+      "to": "write",
+      "label": "pass DoD"
+    },
+    {
+      "id": "write-csv",
+      "from": "write",
+      "to": "csv",
+      "label": "to_csv",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "write-gt",
+      "from": "write",
+      "to": "gt",
+      "label": "json.dump",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "id": "tests-gen",
+      "from": "tests",
+      "to": "generate",
+      "label": "exercise API",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "tests-csv",
+      "from": "tests",
+      "to": "csv",
+      "label": "lock seed=42",
+      "variant": "dashed"
+    },
+    {
+      "id": "csv-meridian",
+      "from": "csv",
+      "to": "meridian",
+      "label": "future fit",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "gt-meridian",
+      "from": "gt",
+      "to": "meridian",
+      "label": "recovery",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "STORY-101 slice",
+      "items": [
+        "Channel-day grain only: meta, google, tiktok, tv",
+        "baseline_sales = site-wide order/unit counts (not revenue)",
+        "Integer post-process: round → clip ≥0 → int64"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Planned next",
+      "items": [
+        "Meridian / PyMC Bayesian MMM is not implemented yet",
+        "STORY-102 will own shared adstock/Hill transforms",
+        "Campaign/funnel grain deferred beyond Path-C"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Env",
+      "items": [
+        "Conda env mmt-mmm via environment.yml (Python 3.12)",
+        "Secrets stay in gitignored Secret/"
+      ]
+    }
+  ]
+}
