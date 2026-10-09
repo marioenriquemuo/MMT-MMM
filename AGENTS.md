@@ -24,7 +24,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
 | `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest) |
-| `README.md` | Human overview + Miniconda setup + STORY-101/102/103 how-to |
+| `README.md` | Human overview + Miniconda setup + STORY-101–104 how-to |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
 | `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
@@ -50,8 +50,8 @@ Working branch: **`sprint-1-core-data-engine`**.
 - **STORY-101 done** — Path-C generator, integer counts, `DATA_CARD.md`
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
-- **STORY-104 done (pending DoD/merge)** — media QA repair + audit; overwrite parquet; hard-fail if unrepaired
-- **STORY-201 next** — Meridian Bayesian MMM spike (after 104 merges to sprint)
+- **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
+- **STORY-201 next** — Meridian Bayesian MMM spike
 
 ## Skills
 

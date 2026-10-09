@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-104-20261009-151448/candidate.json",
+    "sha256": "dbc98d3a27fa8fca4a6f1d16649bb03df10c4a7c1f988eace180240690692ddf",
+    "bytes": 18321
+  },
+  "artifact": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-104-20261009-151448/mmt-story101-104.html",
+    "sha256": "091a7d59a5a617c94ea929eeb339d1a33c8cc2fafe96cad7f6c853d2c96a4f88",
+    "bytes": 805874
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/label-route-clearance",
+      "severity": "error",
+      "message": "[composition/label-route-clearance] showcase architecture label \"HTML\" on connections[23] id \"plot-fig\" \"plot\" -> \"figures\" label \"HTML\" is 0px from connections[4] id \"op-tests\" \"operator\" -> \"tests\" label \"test\" segment 1 [214, 429] -> [214, 664] (label rect [200, 550, 30, 14]; minimum 4px) — adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 23,
+        "id": "plot-fig",
+        "from": "plot",
+        "to": "figures"
+      },
+      "evidence": {
+        "label": "HTML",
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 4,
+          "id": "op-tests",
+          "from": "operator",
+          "to": "tests"
+        },
+        "segmentIndex": 1,
+        "clearancePx": 0,
+        "minimumPx": 4,
+        "labelRect": {
+          "relation": {
+            "id": "plot-fig",
+            "from": "plot",
+            "to": "figures",
+            "label": "HTML"
+          },
+          "relationIndex": 23,
+          "label": "HTML",
+          "x": 200,
+          "y": 550,
+          "width": 30,
+          "height": 14,
+          "lx": 215,
+          "ly": 560
+        },
+        "from": [
+          214,
+          429
+        ],
+        "to": [
+          214,
+          664
+        ]
+      },
+      "supportedFixes": [
+        "adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel"
+      ]
+    },
+    {
+      "code": "layout/constraint",
+      "severity": "error",
+      "message": "Components \"qa_log\" and \"tests\" are less than 8px apart — move one or shrink its size.\n  \"qa_log\" [960, 520, 150, 60]; \"tests\" [900, 560, 160, 80]\n  Suggested fix: move \"tests\" pos to [1118, 560] (right of \"qa_log\") or [900, 588] (below)",
+      "subject": {
+        "diagramType": "architecture"
+      }
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 2,
+    "shown": 2,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-104-20261009-151448/review-2/mmt-story101-104.finalize.json",
+    "summaryReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-104-20261009-151448/review-2/mmt-story101-104.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-08T20:35:49.453Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 555,
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-104-20261009-151448/candidate.json",
+    "constraint": "Preserve all semantics and user-fixed geometry. Use references/architecture-layout-repair.md to choose a local repair or connected-scene reflow; edit the existing candidate.",
+    "then": "finalize-once"
+  }
+}

@@ -49,7 +49,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `README.md` | This overview + setup |
 | `CLAUDE.md` | Project brief and conventions for Claude/Cursor |
 | `AGENTS.md` | Agent entrypoint: layout, golden rules, skills/rules index |
-| `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, STORY-103 ETL fill rules |
+| `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate |
 | `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |
 
 ## Skills, rules, and PRs
