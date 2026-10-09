@@ -78,7 +78,7 @@ Those are planned later; this file stays channel-level only.
 
 ## STORY-201 Meridian grain (weekly)
 
-Meridian national InputData defaults to **weekly** periods (`freq="W"`, week ending Sunday) via `src/models/meridian_data.py`.
+Meridian national InputData defaults to **weekly** periods (`freq="W"`, week ending Sunday) via `src/models/meridian_data.py`. Spike learnings + **open rank-recovery issue**: [`docs/learnings/story-201-meridian.md`](../../docs/learnings/story-201-meridian.md).
 
 | Series | Weekly aggregation |
 | --- | --- |
@@ -87,3 +87,5 @@ Meridian national InputData defaults to **weekly** periods (`freq="W"`, week end
 | `revenue_per_kpi` | Mean (synthetic constant 1.0) |
 
 Do **not** confuse with long-format channel stacking: daily KPI is still recovered with `groupby("date").first()` before the week sum.
+
+**Open issue (post-POC):** Meridian iROAS channel order does not match Path-C contribution / `media_beta` order (Spearman ≈ −0.6). See the learning doc — not a silent pass.

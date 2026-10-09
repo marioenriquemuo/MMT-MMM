@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-201-20261009-171324/candidate.json",
+    "sha256": "296c00b2f5cf7f3a6801cb15a5208c0cab07c674c2c5186411cb77c60a1ee6ad",
+    "bytes": 22828
+  },
+  "artifact": {
+    "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-201-20261009-171324/mmt-story101-201.html",
+    "sha256": "f98134b9fe8d01e23a962b87133c00226a3ac49c2f4c68701c05fbfb11259bdd",
+    "bytes": 821512
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/label-route-clearance",
+      "severity": "error",
+      "message": "[composition/label-route-clearance] showcase architecture label \"chains\" on connections[24] id \"spike-rhat\" \"spike\" -> \"rhat\" label \"chains\" is 0px from connections[32] id \"tests-qa\" \"tests\" -> \"detect\" label \"prove\" segment 1 [837, 737] -> [837, 443] (label rect [801, 570, 39, 14]; minimum 4px) — adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 24,
+        "id": "spike-rhat",
+        "from": "spike",
+        "to": "rhat"
+      },
+      "evidence": {
+        "label": "chains",
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 32,
+          "id": "tests-qa",
+          "from": "tests",
+          "to": "detect"
+        },
+        "segmentIndex": 1,
+        "clearancePx": 0,
+        "minimumPx": 4,
+        "labelRect": {
+          "relation": {
+            "id": "spike-rhat",
+            "from": "spike",
+            "to": "rhat",
+            "label": "chains"
+          },
+          "relationIndex": 24,
+          "label": "chains",
+          "x": 800.6,
+          "y": 570,
+          "width": 38.8,
+          "height": 14,
+          "lx": 820,
+          "ly": 580
+        },
+        "from": [
+          837,
+          737
+        ],
+        "to": [
+          837,
+          443
+        ]
+      },
+      "supportedFixes": [
+        "adjust labelAt, labelDx, labelDy, or labelSegment; otherwise adjust the other relationship route/via/channel"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-201-20261009-171324/review-2/mmt-story101-201.finalize.json",
+    "summaryReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-201-20261009-171324/review-2/mmt-story101-201.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-09T22:15:30.090Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 663,
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-story101-201-20261009-171324/candidate.json",
+    "constraint": "Preserve all semantics and user-fixed geometry. Use references/architecture-layout-repair.md to choose a local repair or connected-scene reflow; edit the existing candidate.",
+    "then": "finalize-once"
+  }
+}

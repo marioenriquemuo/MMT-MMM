@@ -52,7 +52,8 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `README.md` | This overview + setup |
 | `CLAUDE.md` | Project brief and conventions for Claude/Cursor |
 | `AGENTS.md` | Agent entrypoint: layout, golden rules, skills/rules index |
-| `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate |
+| `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate, Meridian week grain |
+| `docs/learnings/story-201-meridian.md` | STORY-201 Meridian spike learnings + **open rank-recovery issue** |
 | `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |
 
 ## Skills, rules, and PRs
@@ -138,9 +139,10 @@ python -m pytest tests/test_qa.py -q
 
 **Artifacts:** overwrite `data/processed/clean_spend.parquet`; optional audit `data/processed/qa_repair_log.csv` (only when repairs ran). Anomaly fixture: `tests/fixtures/anomalous_spend.csv`.
 
-## STORY-201 / Meridian spike
+## STORY-201 / Meridian spike (done)
 
 National Google Meridian fit on post-QA `clean_spend.parquet` (weekly grain by default).
+Learnings + **open rank-recovery issue**: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md).
 
 ```bash
 conda activate mmt-mmm
@@ -164,6 +166,8 @@ python scripts/02_model_spike.py --mode full
 ```
 
 Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions`, spend=`spend`). Weekly KPI is **sum of daily units** (flow aggregation). Override MCMC sizes with `--n-chains` / `--n-adapt` / `--n-burnin` / `--n-keep`. Daily grain: `--freq D` (much slower).
+
+**Open issue:** Meridian iROAS rank (meta&gt;tiktok&gt;tv&gt;google) disagrees with Path-C (tv&gt;google&gt;meta&gt;tiktok); Spearman ≈ −0.6. Status-only for this spike — see the learning doc.
 
 ## Stack direction
 

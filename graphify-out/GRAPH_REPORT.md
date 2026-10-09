@@ -1,17 +1,17 @@
 # Graph Report - MMT&MMM  (2026-10-09)
 
 ## Corpus Check
-- 46 files · ~32,395 words
+- 47 files · ~33,159 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 16 file(s) not represented in the graph (top: (none) 6, .mdc 5, .csv 3)
 
 ## Summary
-- 450 nodes · 744 edges · 36 communities (24 shown, 12 thin omitted)
+- 463 nodes · 758 edges · 35 communities (23 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c934dc1e`
+- Built from commit: `9cb46b58`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,7 +24,6 @@
 - test_qa.py
 - What You Must Do When Invoked
 - MMT&MMM Project Conventions
-- test_meridian_data.py
 - Semantic Extraction Spec
 - 02_model_spike.py
 - graphify reference: extra exports and benchmark
@@ -32,7 +31,7 @@
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native AGENTS.md integration
 - graphify reference: incremental update and cluster-only
-- graphify + archify artifacts
+- STORY-201 learnings — Meridian Bayesian MMM spike
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
 - extraction-spec.md
@@ -71,8 +70,8 @@
   CLAUDE.md → README.md
 - `graphify-out artifacts` --references--> `/graphify`  [EXTRACTED]
   docs/graphify-archify.md → .cursor/skills/graphify/SKILL.md
-- `main()` --calls--> `load_meridian_input()`  [EXTRACTED]
-  scripts/02_model_spike.py → src/models/meridian_data.py
+- `build_geometric_figure()` --calls--> `geometric_adstock()`  [EXTRACTED]
+  scripts/plot_adstock_validation.py → src/models/transformations.py
 
 ## Import Cycles
 - None detected.
@@ -87,7 +86,7 @@
 - **Sprint 1 Core Data Engine stories** — agents_sprint_1_core_data_engine, agents_story_101, agents_story_102, agents_story_103 [EXTRACTED 1.00]
 - **Secret Hygiene Across Project Docs** — _cursor_skills_secret_hygiene_skill_secret_hygiene, _cursor_skills_mmt_mmm_skill_secret_folder [INFERRED 0.85]
 
-## Communities (36 total, 12 thin omitted)
+## Communities (35 total, 12 thin omitted)
 
 ### Community 0 - "test_transformations.py"
 Cohesion: 0.06
@@ -111,7 +110,7 @@ Nodes (32): github remote, martech-mmm-ai-allocator, mmt-mmm conda env, No leaka
 
 ### Community 5 - "test_qa.py"
 Cohesion: 0.09
-Nodes (48): RuntimeError, detect_anomalies(), load_panel(), main(), _prior_activity(), DataFrame, Path, STORY-104 media QA: detect + repair channel-day anomalies (pre-Meridian gate).… (+40 more)
+Nodes (47): RuntimeError, detect_anomalies(), load_panel(), main(), _prior_activity(), DataFrame, Path, STORY-104 media QA: detect + repair channel-day anomalies (pre-Meridian gate).… (+39 more)
 
 ### Community 6 - "What You Must Do When Invoked"
 Cohesion: 0.13
@@ -121,17 +120,13 @@ Nodes (15): Part A - Structural extraction for code files, Part B - Semantic ext
 Cohesion: 0.12
 Nodes (24): ELI5 Teacher, Four-Phase Teaching Structure, archify Skill, MMT&MMM Project Conventions, Secret/ Local-Only Path, Ponytail Audit, ponytail: Comment Marker, Ponytail Debt (+16 more)
 
-### Community 8 - "test_meridian_data.py"
-Cohesion: 0.16
-Nodes (22): InputData, meridian_data_input_data, load_clean_panel(), load_meridian_input(), panel_to_national_wide(), DataFrame, Path, STORY-201: map QA'd ``clean_spend.parquet`` → Meridian national ``InputData``.… (+14 more)
-
 ### Community 9 - "Semantic Extraction Spec"
 Cohesion: 0.25
 Nodes (8): Confidence Score Rubric, DEEP_MODE, Deterministic Node ID Format, Hyperedges, Semantic Extraction Spec, semantically_similar_to Relation, EXTRACTED/INFERRED/AMBIGUOUS Audit Trail, Honesty Rules
 
 ### Community 10 - "02_model_spike.py"
-Cohesion: 0.14
-Nodes (25): argparse, matplotlib, matplotlib_pyplot, Namespace, _analyzer(), _build_mmm(), _core_rhat_rows(), _jsonable() (+17 more)
+Cohesion: 0.07
+Nodes (49): argparse, InputData, matplotlib, matplotlib_pyplot, meridian_data_input_data, Namespace, pandas, pathlib (+41 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -153,13 +148,13 @@ Nodes (3): For git commit hook, For native AGENTS.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
-### Community 16 - "graphify + archify artifacts"
-Cohesion: 0.50
-Nodes (3): archify, graphify, graphify + archify artifacts
+### Community 16 - "STORY-201 learnings — Meridian Bayesian MMM spike"
+Cohesion: 0.12
+Nodes (15): archify, graphify, graphify + archify artifacts, How to run, Likely investigation axes (post-POC), Meridian is a local pip library, National weekly adapter, Open issue — rank recovery vs Path-C is inconsistent (+7 more)
 
 ### Community 26 - "test_etl.py"
-Cohesion: 0.11
-Nodes (31): pandas, pandera_errors, pandera_pandas, pathlib, align_date_channel_grid(), impute_panel(), load_raw(), main() (+23 more)
+Cohesion: 0.12
+Nodes (29): pandera_errors, pandera_pandas, align_date_channel_grid(), impute_panel(), load_raw(), main(), DataFrame, Path (+21 more)
 
 ### Community 27 - "Incremental Update (--update)"
 Cohesion: 0.27
@@ -182,23 +177,23 @@ Cohesion: 0.40
 Nodes (4): Estimated iROAS (posterior mean, units per $), Parameter recovery note (STORY-201), Path-C planted signals, Rank comparison
 
 ### Community 33 - "test_model_spike_helpers.py"
-Cohesion: 0.17
-Nodes (8): importlib_util, pytest, _load_spike(), fixture, Unit tests for STORY-201 spike helpers (no Meridian MCMC)., Import scripts/02_model_spike.py without running main (no Meridian import)., spike(), xarray
+Cohesion: 0.15
+Nodes (9): importlib_util, pytest, sys, _load_spike(), fixture, Unit tests for STORY-201 spike helpers (no Meridian MCMC)., Import scripts/02_model_spike.py without running main (no Meridian import)., spike() (+1 more)
 
 ## Knowledge Gaps
-- **80 isolated node(s):** `Estimated iROAS (posterior mean, units per $)`, `Path-C planted signals`, `Rank comparison`, `For /graphify add and --watch`, `For /graphify query` (+75 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 198 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **89 isolated node(s):** `Meridian is a local pip library`, `Smoke vs full`, `R-hat`, `National weekly adapter`, `Warnings that are normal` (+84 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 206 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `/graphify` connect `/graphify` to `transformations.py`, `What You Must Do When Invoked`, `Semantic Extraction Spec`, `Incremental Update (--update)`, `Whisper Video/Audio Transcription`, `save-result Feedback Loop`, `graphify merge-graphs`, `graphify-out artifacts`?**
-  _High betweenness centrality (0.235) - this node is a cross-community bridge._
+  _High betweenness centrality (0.234) - this node is a cross-community bridge._
 - **Why does `STORY-101` connect `transformations.py` to `plot_adstock_validation.py`?**
   _High betweenness centrality (0.227) - this node is a cross-community bridge._
-- **What connects `Estimated iROAS (posterior mean, units per $)`, `Path-C planted signals`, `Rank comparison` to the rest of the system?**
-  _80 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Meridian is a local pip library`, `Smoke vs full`, `R-hat` to the rest of the system?**
+  _89 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `test_transformations.py` be split into smaller, more focused modules?**
   _Cohesion score 0.05764145954521417 - nodes in this community are weakly interconnected._
 - **Should `/graphify` be split into smaller, more focused modules?**

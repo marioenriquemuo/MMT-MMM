@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 → 104 done; STORY-201 Meridian spike on `cursor/story-201-meridian-702b` |
+| Status | STORY-101 → 104 + STORY-201 Meridian spike done on sprint; see `docs/learnings/story-201-meridian.md` |
 
 ## What we build
 
@@ -49,6 +49,7 @@ MMT&MMM/
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
 ├── reports/figures/          # Plotly HTML + Meridian PPC PNG
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
+├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
 ├── .archify/                 # architecture diagram runs
 └── .cursor/                  # skills + rules
@@ -65,6 +66,8 @@ MMT&MMM/
 | STORY-201 | Done (spike) | `google-meridian` national weekly; R-hat &lt; 1.05; metrics + PPC + recovery note |
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
+
+**STORY-201 open issue:** channel rank recovery vs Path-C is inconsistent (Spearman ≈ −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md).
 
 ## Key conventions
 

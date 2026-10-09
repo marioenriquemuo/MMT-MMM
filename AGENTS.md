@@ -24,9 +24,10 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
 | `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest) |
-| `README.md` | Human overview + Miniconda setup + STORY-101–104 how-to |
+| `README.md` | Human overview + Miniconda setup + STORY-101–201 how-to |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
+| `docs/learnings/story-201-meridian.md` | STORY-201 Meridian learnings + open rank-recovery issue |
 | `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
 | `src/data/etl.py` | STORY-103 load / align / impute / Pandera / Parquet |
 | `src/data/qa.py` | STORY-104 media detect / repair / hard-fail gate |
@@ -53,7 +54,7 @@ Working branch: **`sprint-1-core-data-engine`**.
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
-- **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`)
+- **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 
 ## Skills
 

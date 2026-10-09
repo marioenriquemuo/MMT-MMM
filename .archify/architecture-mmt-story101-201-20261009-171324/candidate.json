@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "From raw ads to a fitted budget model",
+    "subtitle": "Make data → fill gaps → check media → shape weeks → fit Meridian → check chains.",
+    "output": ".archify/architecture-mmt-story101-201-20261009-171324/mmt-story101-201.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "9cb46b586201926fb6e8c2da9f448fb6e0c72b3c"
+    }
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "You run the steps",
+      "sublabel": "make · clean · check · fit",
+      "pos": [40, 320],
+      "size": [150, 70],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 148, "end_line": 158, "label": "etl CLI"},
+        {"path": "src/data/qa.py", "line": 321, "end_line": 343, "label": "qa CLI"},
+        {"path": "scripts/02_model_spike.py", "line": 407, "end_line": 511, "label": "spike CLI"}
+      ]
+    },
+    {
+      "id": "transforms",
+      "type": "backend",
+      "label": "Ad memory math",
+      "sublabel": "linger + diminish returns",
+      "tag": "102",
+      "pos": [40, 50],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/models/transformations.py", "line": 19, "end_line": 48, "label": "geometric_adstock"},
+        {"path": "src/models/transformations.py", "line": 111, "end_line": 147, "label": "weibull_adstock"},
+        {"path": "src/models/transformations.py", "line": 204, "end_line": 234, "label": "hill_saturation"}
+      ]
+    },
+    {
+      "id": "gen_main",
+      "type": "backend",
+      "label": "Make fake ad data",
+      "sublabel": "repeatable practice set",
+      "tag": "101",
+      "pos": [240, 50],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/generator.py", "line": 329, "end_line": 333, "label": "main()"}
+      ]
+    },
+    {
+      "id": "generate",
+      "type": "backend",
+      "label": "Build the panel",
+      "sublabel": "2 years × 4 channels",
+      "pos": [440, 50],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/generator.py", "line": 239, "end_line": 282, "label": "generate()"}
+      ]
+    },
+    {
+      "id": "write",
+      "type": "backend",
+      "label": "Save the files",
+      "sublabel": "CSV + answer key",
+      "pos": [640, 50],
+      "size": [140, 60],
+      "sources": [
+        {"path": "src/data/generator.py", "line": 318, "end_line": 326, "label": "write_outputs"}
+      ]
+    },
+    {
+      "id": "csv",
+      "type": "database",
+      "label": "Raw daily ad export",
+      "sublabel": "partner-style CSV",
+      "pos": [840, 50],
+      "size": [150, 60],
+      "sources": [
+        {"path": "data/raw/DATA_CARD.md", "line": 1, "end_line": 24, "label": "DATA_CARD"}
+      ]
+    },
+    {
+      "id": "etl_main",
+      "type": "backend",
+      "label": "Clean the export",
+      "sublabel": "complete every day",
+      "tag": "103",
+      "pos": [240, 200],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 130, "end_line": 145, "label": "run_etl()"},
+        {"path": "src/data/etl.py", "line": 148, "end_line": 154, "label": "main()"}
+      ]
+    },
+    {
+      "id": "load",
+      "type": "backend",
+      "label": "Read the CSV",
+      "sublabel": "dates & numbers",
+      "pos": [430, 200],
+      "size": [140, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 58, "end_line": 71, "label": "load_raw"}
+      ]
+    },
+    {
+      "id": "align",
+      "type": "backend",
+      "label": "Fill every day",
+      "sublabel": "one row per channel-day",
+      "pos": [620, 200],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 77, "end_line": 97, "label": "align"}
+      ]
+    },
+    {
+      "id": "impute",
+      "type": "backend",
+      "label": "Fill gaps sensibly",
+      "sublabel": "zero spend · keep sales",
+      "pos": [820, 200],
+      "size": [160, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 103, "end_line": 124, "label": "impute rules"}
+      ]
+    },
+    {
+      "id": "schema",
+      "type": "security",
+      "label": "Check columns valid",
+      "sublabel": "types & non-negatives",
+      "pos": [1020, 200],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 37, "end_line": 52, "label": "schema"},
+        {"path": "src/data/etl.py", "line": 141, "end_line": 141, "label": "ETL validate"},
+        {"path": "src/data/qa.py", "line": 314, "end_line": 314, "label": "QA validate"}
+      ]
+    },
+    {
+      "id": "parquet",
+      "type": "database",
+      "label": "Clean training table",
+      "sublabel": "ready after QA pass",
+      "pos": [1220, 200],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/etl.py", "line": 143, "end_line": 144, "label": "ETL to_parquet"},
+        {"path": "src/data/qa.py", "line": 33, "end_line": 33, "label": "DEFAULT_PANEL_PATH"},
+        {"path": "src/data/qa.py", "line": 316, "end_line": 316, "label": "QA to_parquet"}
+      ]
+    },
+    {
+      "id": "qa_main",
+      "type": "backend",
+      "label": "Media quality check",
+      "sublabel": "before any model fit",
+      "tag": "104",
+      "pos": [400, 380],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/qa.py", "line": 294, "end_line": 318, "label": "run_qa()"},
+        {"path": "src/data/qa.py", "line": 321, "end_line": 339, "label": "main() exit"}
+      ]
+    },
+    {
+      "id": "detect",
+      "type": "backend",
+      "label": "Looks normal?",
+      "sublabel": "vs recent channel days",
+      "pos": [600, 380],
+      "size": [140, 60],
+      "sources": [
+        {"path": "src/data/qa.py", "line": 99, "end_line": 174, "label": "detect rules"}
+      ]
+    },
+    {
+      "id": "repair",
+      "type": "backend",
+      "label": "Fix odd media",
+      "sublabel": "never change spend",
+      "pos": [820, 380],
+      "size": [140, 60],
+      "sources": [
+        {"path": "src/data/qa.py", "line": 180, "end_line": 264, "label": "repair_panel"}
+      ]
+    },
+    {
+      "id": "hardfail",
+      "type": "security",
+      "label": "Stop if still broken",
+      "sublabel": "refuse bad training data",
+      "pos": [1040, 380],
+      "size": [140, 60],
+      "sources": [
+        {"path": "src/data/qa.py", "line": 282, "end_line": 291, "label": "UnrepairedAnomaliesError"},
+        {"path": "src/data/qa.py", "line": 308, "end_line": 310, "label": "refuse overwrite"},
+        {"path": "src/data/qa.py", "line": 329, "end_line": 332, "label": "CLI exit 1"}
+      ]
+    },
+    {
+      "id": "qa_log",
+      "type": "database",
+      "label": "What we fixed",
+      "sublabel": "short audit list",
+      "pos": [1280, 460],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/data/qa.py", "line": 34, "end_line": 34, "label": "DEFAULT_LOG_PATH"},
+        {"path": "src/data/qa.py", "line": 267, "end_line": 276, "label": "write_repair_log"}
+      ]
+    },
+    {
+      "id": "adapter",
+      "type": "backend",
+      "label": "Shape for Meridian",
+      "sublabel": "daily → national weeks",
+      "tag": "201",
+      "pos": [400, 560],
+      "size": [160, 60],
+      "sources": [
+        {"path": "src/models/meridian_data.py", "line": 40, "end_line": 95, "label": "panel_to_national_wide"},
+        {"path": "src/models/meridian_data.py", "line": 98, "end_line": 122, "label": "wide_to_input_data"},
+        {"path": "src/models/meridian_data.py", "line": 124, "end_line": 132, "label": "load_meridian_input"}
+      ]
+    },
+    {
+      "id": "spike",
+      "type": "backend",
+      "label": "Fit the budget model",
+      "sublabel": "smoke then fuller",
+      "tag": "201",
+      "pos": [620, 560],
+      "size": [160, 60],
+      "sources": [
+        {"path": "scripts/02_model_spike.py", "line": 83, "end_line": 85, "label": "SMOKE / FULL"},
+        {"path": "scripts/02_model_spike.py", "line": 158, "end_line": 171, "label": "_build_mmm"},
+        {"path": "scripts/02_model_spike.py", "line": 407, "end_line": 436, "label": "sample posterior"}
+      ]
+    },
+    {
+      "id": "rhat",
+      "type": "security",
+      "label": "Chains agree?",
+      "sublabel": "R-hat under 1.05",
+      "pos": [840, 560],
+      "size": [150, 60],
+      "sources": [
+        {"path": "scripts/02_model_spike.py", "line": 87, "end_line": 100, "label": "CORE_RHAT_PREFIXES"},
+        {"path": "scripts/02_model_spike.py", "line": 438, "end_line": 453, "label": "smoke warn"},
+        {"path": "scripts/02_model_spike.py", "line": 499, "end_line": 507, "label": "full gate"}
+      ]
+    },
+    {
+      "id": "reports",
+      "type": "database",
+      "label": "Model scorecard",
+      "sublabel": "metrics · chart · ranks",
+      "pos": [1060, 560],
+      "size": [160, 60],
+      "sources": [
+        {"path": "scripts/02_model_spike.py", "line": 41, "end_line": 43, "label": "artifact paths"},
+        {"path": "scripts/02_model_spike.py", "line": 455, "end_line": 497, "label": "write DoD"},
+        {"path": "reports/parameter_recovery.md", "line": 1, "end_line": 43, "label": "recovery note"}
+      ]
+    },
+    {
+      "id": "learnings",
+      "type": "database",
+      "label": "What we learned",
+      "sublabel": "incl. open rank issue",
+      "pos": [1320, 660],
+      "size": [150, 60],
+      "sources": [
+        {"path": "reports/parameter_recovery.md", "line": 38, "end_line": 43, "label": "rank mismatch"},
+        {"path": "README.md", "line": 141, "end_line": 164, "label": "STORY-201 how-to"}
+      ]
+    },
+    {
+      "id": "plot",
+      "type": "backend",
+      "label": "Draw teaching charts",
+      "sublabel": "how the math behaves",
+      "tag": "102",
+      "pos": [40, 720],
+      "size": [150, 60],
+      "sources": [
+        {"path": "scripts/plot_adstock_validation.py", "line": 33, "end_line": 36, "label": "import transforms"},
+        {"path": "scripts/plot_adstock_validation.py", "line": 192, "end_line": 205, "label": "write HTML"}
+      ]
+    },
+    {
+      "id": "figures",
+      "type": "database",
+      "label": "Chart files",
+      "sublabel": "HTML + PPC PNG",
+      "pos": [240, 720],
+      "size": [140, 60],
+      "sources": [
+        {"path": "scripts/plot_adstock_validation.py", "line": 40, "end_line": 42, "label": "HTML paths"},
+        {"path": "scripts/02_model_spike.py", "line": 42, "end_line": 42, "label": "PPC path"}
+      ]
+    },
+    {
+      "id": "dirty",
+      "type": "database",
+      "label": "Practice gaps file",
+      "sublabel": "missing partner-days",
+      "pos": [420, 720],
+      "size": [150, 60],
+      "sources": [
+        {"path": "tests/fixtures/dirty_ad_spend.csv", "line": 1, "end_line": 10, "label": "dirty export"},
+        {"path": "data/raw/DATA_CARD.md", "line": 55, "end_line": 64, "label": "ETL card"}
+      ]
+    },
+    {
+      "id": "anomalous",
+      "type": "database",
+      "label": "Bad-media practice",
+      "sublabel": "odd clicks / impressions",
+      "pos": [620, 720],
+      "size": [150, 60],
+      "sources": [
+        {"path": "tests/fixtures/anomalous_spend.csv", "line": 1, "end_line": 10, "label": "anomaly fixture"},
+        {"path": "data/raw/DATA_CARD.md", "line": 66, "end_line": 77, "label": "QA card"}
+      ]
+    },
+    {
+      "id": "tests",
+      "type": "backend",
+      "label": "Automated checks",
+      "sublabel": "prove each step works",
+      "pos": [840, 720],
+      "size": [160, 60],
+      "sources": [
+        {"path": "tests/test_qa.py", "line": 1, "end_line": 40, "label": "QA tests"},
+        {"path": "tests/test_meridian_data.py", "line": 1, "end_line": 40, "label": "adapter tests"},
+        {"path": "tests/test_model_spike_helpers.py", "line": 1, "end_line": 40, "label": "spike helpers"}
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "1 · Make practice data",
+      "wraps": ["gen_main", "generate", "write"]
+    },
+    {
+      "kind": "region",
+      "label": "2 · Shared ad math",
+      "wraps": ["transforms"]
+    },
+    {
+      "kind": "region",
+      "label": "3 · Clean & complete (ETL)",
+      "wraps": ["etl_main", "load", "align", "impute", "schema"]
+    },
+    {
+      "kind": "region",
+      "label": "4 · Check media quality (QA)",
+      "wraps": ["qa_main", "detect", "repair", "hardfail"]
+    },
+    {
+      "kind": "region",
+      "label": "5 · Meridian fit",
+      "wraps": ["adapter", "spike", "rhat"]
+    },
+    {
+      "kind": "region",
+      "label": "Practice fixtures",
+      "wraps": ["dirty", "anomalous"]
+    }
+  ],
+  "connections": [
+    {"id": "op-etl", "from": "operator", "to": "etl_main", "label": "clean", "variant": "emphasis"},
+    {"id": "op-qa", "from": "operator", "to": "qa_main", "label": "check", "variant": "emphasis"},
+    {"id": "op-spike", "from": "operator", "to": "spike", "label": "fit", "variant": "emphasis"},
+    {"id": "op-gen", "from": "operator", "to": "gen_main", "label": "make", "variant": "dashed"},
+    {"id": "op-plot", "from": "operator", "to": "plot", "label": "chart", "variant": "dashed"},
+    {"id": "op-tests", "from": "operator", "to": "tests", "label": "test", "variant": "dashed"},
+    {"id": "xf-gen", "from": "transforms", "to": "generate", "label": "uses math"},
+    {"id": "main-gen", "from": "gen_main", "to": "generate", "label": "build"},
+    {"id": "gen-write", "from": "generate", "to": "write", "label": "rows"},
+    {"id": "write-csv", "from": "write", "to": "csv", "label": "save"},
+    {
+      "id": "csv-load",
+      "from": "csv",
+      "to": "load",
+      "label": "read",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {"id": "etl-load", "from": "etl_main", "to": "load", "label": "start"},
+    {"id": "load-align", "from": "load", "to": "align", "label": "grid"},
+    {"id": "align-impute", "from": "align", "to": "impute", "label": "holes"},
+    {"id": "impute-schema", "from": "impute", "to": "schema", "label": "filled"},
+    {"id": "schema-parquet", "from": "schema", "to": "parquet", "label": "save"},
+    {
+      "id": "parquet-qa",
+      "from": "parquet",
+      "to": "qa_main",
+      "label": "read",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {"id": "qa-detect", "from": "qa_main", "to": "detect", "label": "scan"},
+    {"id": "detect-repair", "from": "detect", "to": "repair", "label": "fix"},
+    {"id": "repair-gate", "from": "repair", "to": "hardfail", "label": "stop?"},
+    {
+      "id": "gate-parquet",
+      "from": "hardfail",
+      "to": "parquet",
+      "label": "save if OK",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {"id": "gate-log", "from": "hardfail", "to": "qa_log", "label": "note fixes"},
+    {
+      "id": "parquet-adapter",
+      "from": "parquet",
+      "to": "adapter",
+      "label": "after QA",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {"id": "adapter-spike", "from": "adapter", "to": "spike", "label": "InputData"},
+    {"id": "spike-rhat", "from": "spike", "to": "rhat", "label": "chains"},
+    {"id": "rhat-reports", "from": "rhat", "to": "reports", "label": "if OK"},
+    {"id": "reports-learn", "from": "reports", "to": "learnings", "label": "write-up"},
+    {
+      "id": "plot-xf",
+      "from": "plot",
+      "to": "transforms",
+      "label": "demo",
+      "variant": "dashed"
+    },
+    {"id": "plot-fig", "from": "plot", "to": "figures", "label": "HTML"},
+    {"id": "reports-fig", "from": "reports", "to": "figures", "label": "PPC", "variant": "dashed"},
+    {"id": "dirty-tests", "from": "dirty", "to": "tests", "label": "gaps"},
+    {"id": "anom-tests", "from": "anomalous", "to": "tests", "label": "bad media"},
+    {
+      "id": "tests-qa",
+      "from": "tests",
+      "to": "detect",
+      "label": "prove",
+      "variant": "dashed"
+    },
+    {
+      "id": "tests-adapter",
+      "from": "tests",
+      "to": "adapter",
+      "label": "prove",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "1 · Practice data",
+      "items": [
+        "Four channels, day by day (Meta, Google, TikTok, TV)",
+        "Sales = site-wide orders (same number on every channel that day)",
+        "Locked fake export so everyone practices on the same file"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "2 · Ad math helpers",
+      "items": [
+        "Shared formulas for “ads linger” and “extra spend helps less”",
+        "Used to invent the practice data and draw teaching charts",
+        "Charts open in a browser — no notebook required"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "3 · ETL + QA strip",
+      "items": [
+        "Fill missing partner-days; zero media pauses; forward-fill sales",
+        "Ask: do impressions and clicks look normal vs recent days?",
+        "If we cannot fix odd media, stop — do not train on a bad table"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "4 · Meridian fit",
+      "items": [
+        "Local pip library (google-meridian) — not a cloud API key call",
+        "Daily table → national weeks → smoke chains, then fuller fit",
+        "Fuller run must show chains agree (R-hat under 1.05)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Open finding",
+      "items": [
+        "Channel rank vs Path-C answer key is inconsistent (Spearman ≈ −0.6)",
+        "Meridian order meta>tiktok>tv>google vs Path-C tv>google>meta>tiktok",
+        "Status only for this spike — investigate scaling / priors / weeks later"
+      ]
+    }
+  ]
+}
