@@ -31,8 +31,10 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/data/etl.py` | STORY-103 load / align / impute / Pandera / Parquet |
 | `src/data/qa.py` | STORY-104 media detect / repair / hard-fail gate |
 | `src/models/transformations.py` | STORY-102 geometric / Weibull adstock + Hill saturation |
+| `src/models/meridian_data.py` | STORY-201 clean parquet → Meridian national `InputData` |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
-| `tests/` | Generator, transforms, ETL, QA, and `<1s` perf gate |
+| `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
+| `tests/` | Generator, transforms, ETL, QA, Meridian adapter, `<1s` perf gate |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
 | `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
 | `reports/figures/` | Plotly HTML adstock / Hill plots |
@@ -51,7 +53,7 @@ Working branch: **`sprint-1-core-data-engine`**.
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
-- **STORY-201 next** — Meridian Bayesian MMM spike
+- **STORY-201 in progress** — Meridian national spike (`google-meridian`, adapter, `scripts/02_model_spike.py`)
 
 ## Skills
 
@@ -84,9 +86,11 @@ cd "/home/mario/dev/MMT&MMM"
 conda env create -f environment.yml   # once
 conda activate mmt-mmm
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
+python -c "import meridian; print('meridian', meridian.__version__)"
 python -m pytest tests/ -q
 python -m src.data.etl
 python -m src.data.qa
+# Fuller Meridian spike (slow on CPU): python scripts/02_model_spike.py --mode full
 ```
 
 ## Definition of done (agent tasks)

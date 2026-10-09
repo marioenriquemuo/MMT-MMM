@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 + STORY-102 + STORY-103 + STORY-104 done; next is STORY-201 |
+| Status | STORY-101 → 104 done; STORY-201 Meridian spike in progress on `cursor/story-201-meridian-702b` |
 
 ## What we build
 
@@ -28,8 +28,8 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 
 ```
 MMT&MMM/
-├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest)
-├── README.md                 # setup + STORY-101–104 how-to
+├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest, google-meridian)
+├── README.md                 # setup + STORY-101–201 how-to
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -40,12 +40,14 @@ MMT&MMM/
 │   ├── data/generator.py     # STORY-101 Path-C synthetic DGP
 │   ├── data/etl.py           # STORY-103 load/align/impute/Parquet
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
-│   └── models/transformations.py  # STORY-102 geometric/Weibull/Hill
+│   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
+│   └── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
-├── tests/                    # generator + transforms + ETL + QA + <1s perf gate
+├── scripts/02_model_spike.py           # STORY-201 Meridian smoke/full MCMC
+├── tests/                    # generator + transforms + ETL + QA + Meridian adapter + <1s perf
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
-├── reports/figures/          # Plotly HTML validation plots
+├── reports/figures/          # Plotly HTML + Meridian PPC PNG
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
 ├── .archify/                 # architecture diagram runs
@@ -60,6 +62,7 @@ MMT&MMM/
 | STORY-102 | Done | Shared transforms; DGP imports them; Plotly figures (no notebook); `<1s` perf gate |
 | STORY-103 | Done | Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet` |
 | STORY-104 | Done | Media QA detect/repair + audit log; overwrite parquet; hard-fail if unrepaired |
+| STORY-201 | In progress | `google-meridian` national spike; adapter + `scripts/02_model_spike.py` |
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 
@@ -80,6 +83,7 @@ Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transf
 cd "/home/mario/dev/MMT&MMM"
 conda activate mmt-mmm
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
+python -c "import meridian; print('meridian', meridian.__version__)"
 python -m pytest tests/ -q
 python -m src.data.etl
 python -m src.data.qa

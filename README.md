@@ -36,9 +36,12 @@ conda activate mmt-mmm
 
 # Verify key imports
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
+
+# STORY-201 Meridian (pip dep in environment.yml)
+python -c "import meridian; print('meridian', getattr(meridian, '__version__', 'ok'))"
 ```
 
-Recreate or refresh deps: `conda env update -f environment.yml --prune`.
+Recreate or refresh deps: `conda env update -f environment.yml --prune` (runs the `pip:` section for `google-meridian`).
 
 Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-version`).
 
@@ -135,6 +138,33 @@ python -m pytest tests/test_qa.py -q
 
 **Artifacts:** overwrite `data/processed/clean_spend.parquet`; optional audit `data/processed/qa_repair_log.csv` (only when repairs ran). Anomaly fixture: `tests/fixtures/anomalous_spend.csv`.
 
+## STORY-201 / Meridian spike
+
+National Google Meridian fit on post-QA `clean_spend.parquet` (weekly grain by default).
+
+```bash
+conda activate mmt-mmm
+conda env update -f environment.yml --prune   # installs google-meridian via pip
+python -c "import meridian; print(meridian.__version__)"
+
+python -m src.data.etl
+python -m src.data.qa
+
+# Fast adapter tests (no MCMC)
+python -m pytest tests/test_meridian_data.py -q
+
+# Smoke: short chains + R-hat peek
+python scripts/02_model_spike.py --mode smoke
+
+# Fuller DoD (CPU; can take a long time): R-hat < 1.05 gate + artifacts
+python scripts/02_model_spike.py --mode full
+# → reports/metrics.json
+# → reports/figures/posterior_predictive.png
+# → reports/parameter_recovery.md
+```
+
+Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions`, spend=`spend`). Override MCMC sizes with `--n-chains` / `--n-adapt` / `--n-burnin` / `--n-keep`. Daily grain: `--freq D` (much slower).
+
 ## Stack direction
 
-Python Bayesian MMM + optimization scripts (`pymc` / scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.
+Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

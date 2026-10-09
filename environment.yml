@@ -20,3 +20,10 @@ dependencies:
   - pandera
   - pyarrow
   - pytest
+  - pip
+  - pip:
+      # STORY-201 Meridian spike (CPU). Pulls TensorFlow / JAX / arviz pin.
+      # After conda create/update: verify `python -c "import meridian"`.
+      # Note: pip may downgrade arviz below pymc's preference; Meridian is the
+      # spike dependency — re-pin pymc/arviz later if both must coexist.
+      - google-meridian

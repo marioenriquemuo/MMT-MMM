@@ -18,6 +18,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.data.etl import SpendPanelSchema
+from src.data.generator import CHANNELS
 
 # --- Constants (locked v1 thresholds) ---
 
@@ -309,8 +310,14 @@ def run_qa(
     if len(unrepaired) > 0:
         raise UnrepairedAnomaliesError(unrepaired)
 
-    # Match ETL grain order (date × channel) before validate/write.
-    panel = panel.sort_values(["date", "channel"]).reset_index(drop=True)
+    # Match ETL grain order (date × CHANNELS) before validate/write.
+    rank = {c: i for i, c in enumerate(CHANNELS)}
+    panel = (
+        panel.assign(_ch_rank=panel["channel"].map(rank))
+        .sort_values(["date", "_ch_rank"])
+        .drop(columns="_ch_rank")
+        .reset_index(drop=True)
+    )
     panel = SpendPanelSchema.validate(panel)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     panel.to_parquet(out_path, engine="pyarrow", index=False)

@@ -1,4 +1,4 @@
-"""Shared modeling primitives (transforms, later likelihoods / inference)."""
+"""Shared modeling primitives (transforms, Meridian adapter, inference)."""
 
 from src.models.transformations import (
     geometric_adstock,
