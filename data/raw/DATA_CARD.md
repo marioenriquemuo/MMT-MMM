@@ -62,3 +62,16 @@ Those are planned later; this file stays channel-level only.
 | Dirty practice fixture | `tests/fixtures/dirty_ad_spend.csv` (google omitted ~2 days; blank KPI one day) |
 
 **Fill rules (locked):** after date×channel alignment, missing `spend` / `impressions` / `clicks` → **0** (pause / absent from export). Missing `baseline_sales` → **forward-fill** site-wide daily KPI. Raw `synthetic_ad_spend.csv` stays clean/locked.
+
+## STORY-104 media QA (post-ETL)
+
+| Item | Value |
+| --- | --- |
+| Module | `python -m src.data.qa` (`src/data/qa.py`) |
+| Input / output | Overwrites `data/processed/clean_spend.parquet` when clean or fully repaired |
+| Audit log | `data/processed/qa_repair_log.csv` (written only when ≥1 repair) |
+| Hard fail | Exit ≠ 0 if unrepaired anomalies remain → training parquet not overwritten |
+| Immutable | `spend`, `baseline_sales` never changed |
+| Fixture | `tests/fixtures/anomalous_spend.csv` (CTR collapse + IPS spike + insufficient-history case) |
+
+**Rules (v1):** 14-day trailing activity window; ≥7 prior `spend > 0` days to repair. CTR collapse when impressions ≥ 1000 and clicks ≪ median CTR; IPS outlier when spend ≈ median but impressions/spend outside [0.5×, 2.0×] median IPS.

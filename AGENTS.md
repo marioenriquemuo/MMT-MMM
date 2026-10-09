@@ -29,11 +29,12 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `AGENTS.md` | This file — agent entrypoint |
 | `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
 | `src/data/etl.py` | STORY-103 load / align / impute / Pandera / Parquet |
+| `src/data/qa.py` | STORY-104 media detect / repair / hard-fail gate |
 | `src/models/transformations.py` | STORY-102 geometric / Weibull adstock + Hill saturation |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
-| `tests/` | Generator, transforms, ETL, and `<1s` perf gate |
+| `tests/` | Generator, transforms, ETL, QA, and `<1s` perf gate |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
-| `data/processed/` | `clean_spend.parquet` (STORY-103) |
+| `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
 | `reports/figures/` | Plotly HTML adstock / Hill plots |
 | `docs/graphify-archify.md` | Index of graphify + archify artifacts |
 | `graphify-out/` | Knowledge graph outputs |
@@ -49,7 +50,8 @@ Working branch: **`sprint-1-core-data-engine`**.
 - **STORY-101 done** — Path-C generator, integer counts, `DATA_CARD.md`
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
-- **STORY-201 next** — Meridian Bayesian MMM spike
+- **STORY-104 done (pending DoD/merge)** — media QA repair + audit; overwrite parquet; hard-fail if unrepaired
+- **STORY-201 next** — Meridian Bayesian MMM spike (after 104 merges to sprint)
 
 ## Skills
 
@@ -84,6 +86,7 @@ conda activate mmt-mmm
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 python -m pytest tests/ -q
 python -m src.data.etl
+python -m src.data.qa
 ```
 
 ## Definition of done (agent tasks)

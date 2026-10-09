@@ -122,6 +122,19 @@ python -m pytest tests/test_etl.py -q
 
 **Fill rules:** missing media after alignment → **0** (pause / not in export); missing `baseline_sales` → **forward-fill**. Dirty practice export: `tests/fixtures/dirty_ad_spend.csv`. See [`data/raw/DATA_CARD.md`](data/raw/DATA_CARD.md).
 
+## STORY-104 / media QA (done)
+
+After ETL, check that impressions/clicks look believable vs each channel’s recent history. Repair when history exists; **hard-fail** (exit ≠ 0) if anomalies remain unrepaired so Meridian never trains on bad media. Never mutates `spend` or `baseline_sales`.
+
+```bash
+conda activate mmt-mmm
+python -m src.data.etl          # refresh clean_spend.parquet if needed
+python -m src.data.qa           # overwrite clean_spend.parquet; exit 0 or ≠ 0
+python -m pytest tests/test_qa.py -q
+```
+
+**Artifacts:** overwrite `data/processed/clean_spend.parquet`; optional audit `data/processed/qa_repair_log.csv` (only when repairs ran). Anomaly fixture: `tests/fixtures/anomalous_spend.csv`.
+
 ## Stack direction
 
 Python Bayesian MMM + optimization scripts (`pymc` / scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

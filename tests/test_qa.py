@@ -1,18 +1,24 @@
-"""Tests for STORY-104 QA detect + repair (no CLI / parquet overwrite yet)."""
+"""Tests for STORY-104 QA detect + repair + run_qa gate."""
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from src.data.etl import DEFAULT_OUT_PATH
 from src.data.qa import (
     ANOMALY_COLUMNS,
     LOG_COLUMNS,
+    UnrepairedAnomaliesError,
     detect_anomalies,
     load_panel,
+    main,
     repair_panel,
+    run_qa,
     write_repair_log,
 )
 
@@ -167,3 +173,108 @@ def test_repair_clean_panel_noop():
         original.reset_index(drop=True),
         check_dtype=False,
     )
+
+
+# --- run_qa / CLI (Step 3) ---
+
+
+def test_run_qa_success_on_clean_parquet(tmp_path: Path):
+    assert DEFAULT_OUT_PATH.is_file(), "run python -m src.data.etl first"
+    out = tmp_path / "clean_spend.parquet"
+    log = tmp_path / "qa_repair_log.csv"
+    original = load_panel(DEFAULT_OUT_PATH)
+
+    panel = run_qa(DEFAULT_OUT_PATH, out, log)
+
+    assert out.is_file()
+    assert not log.exists()  # nothing repaired → skip log file
+    loaded = load_panel(out)
+    pd.testing.assert_series_equal(
+        loaded["spend"].reset_index(drop=True),
+        original["spend"].reset_index(drop=True),
+    )
+    pd.testing.assert_series_equal(
+        loaded["baseline_sales"].reset_index(drop=True),
+        original["baseline_sales"].reset_index(drop=True),
+    )
+    assert len(panel) == len(original)
+
+
+def test_run_qa_hard_fail_does_not_overwrite(tmp_path: Path):
+    out = tmp_path / "clean_spend.parquet"
+    log = tmp_path / "qa_repair_log.csv"
+    out.write_text("sentinel-do-not-clobber", encoding="utf-8")
+
+    with pytest.raises(UnrepairedAnomaliesError) as excinfo:
+        run_qa(ANOMALOUS_FIXTURE, out, log)
+
+    assert len(excinfo.value.unrepaired) >= 1
+    assert out.read_text(encoding="utf-8") == "sentinel-do-not-clobber"
+    assert not log.exists()
+
+
+def test_run_qa_repairs_and_overwrites_when_fully_fixable(tmp_path: Path):
+    """Drop tiktok (insufficient history) so meta CTR+IPS repairs can succeed."""
+    src = load_panel(ANOMALOUS_FIXTURE)
+    src = src.loc[src["channel"] != "tiktok"].reset_index(drop=True)
+    in_path = tmp_path / "meta_google.csv"
+    src.to_csv(in_path, index=False)
+
+    out = tmp_path / "clean_spend.parquet"
+    log = tmp_path / "qa_repair_log.csv"
+    panel = run_qa(in_path, out, log)
+
+    assert out.is_file()
+    assert log.is_file()
+    loaded_log = pd.read_csv(log)
+    assert set(loaded_log["rule"]) == {"ctr_collapse", "ips_outlier"}
+
+    # Compare on keys (run_qa re-sorts to date × channel like ETL).
+    left = panel.sort_values(["date", "channel"]).reset_index(drop=True)
+    right = src.sort_values(["date", "channel"]).reset_index(drop=True)
+    pd.testing.assert_series_equal(left["spend"], right["spend"])
+    pd.testing.assert_series_equal(left["baseline_sales"], right["baseline_sales"])
+
+
+def test_main_exit_0_on_clean(tmp_path: Path):
+    assert DEFAULT_OUT_PATH.is_file(), "run python -m src.data.etl first"
+    code = main(
+        in_path=DEFAULT_OUT_PATH,
+        out_path=tmp_path / "clean_spend.parquet",
+        log_path=tmp_path / "qa_repair_log.csv",
+    )
+    assert code == 0
+
+
+def test_main_exit_nonzero_when_unrepaired(tmp_path: Path):
+    out = tmp_path / "clean_spend.parquet"
+    out.write_bytes(b"keep")
+    code = main(
+        in_path=ANOMALOUS_FIXTURE,
+        out_path=out,
+        log_path=tmp_path / "qa_repair_log.csv",
+    )
+    assert code != 0
+    assert out.read_bytes() == b"keep"
+
+
+def test_cli_module_exit_0_on_clean(tmp_path: Path):
+    """``python -m src.data.qa`` entry exits 0 on clean panel (tmp out — no clobber)."""
+    assert DEFAULT_OUT_PATH.is_file(), "run python -m src.data.etl first"
+    out = tmp_path / "clean_spend.parquet"
+    log = tmp_path / "qa_repair_log.csv"
+    script = (
+        "from pathlib import Path; "
+        "from src.data.etl import DEFAULT_OUT_PATH; "
+        "from src.data.qa import main; "
+        f"raise SystemExit(main(DEFAULT_OUT_PATH, Path({str(out)!r}), Path({str(log)!r})))"
+    )
+    proc = subprocess.run(
+        [sys.executable, "-c", script],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert out.is_file()

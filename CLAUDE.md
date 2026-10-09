@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 + STORY-102 + STORY-103 done; docs/graphify/archify refreshed on `cursor/story-103-etl-*`; next is STORY-201 |
+| Status | STORY-101–104 done on story branch (104 pending DoD/merge); next after merge is STORY-201 |
 
 ## What we build
 
@@ -39,11 +39,12 @@ MMT&MMM/
 ├── src/
 │   ├── data/generator.py     # STORY-101 Path-C synthetic DGP
 │   ├── data/etl.py           # STORY-103 load/align/impute/Parquet
+│   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   └── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
-├── tests/                    # generator + transforms + ETL + <1s perf gate
+├── tests/                    # generator + transforms + ETL + QA + <1s perf gate
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
-├── data/processed/           # clean_spend.parquet (STORY-103)
+├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
 ├── reports/figures/          # Plotly HTML validation plots
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -58,6 +59,7 @@ MMT&MMM/
 | STORY-101 | Done | Path-C generator → `data/raw/`; integer KPI; `DATA_CARD.md` |
 | STORY-102 | Done | Shared transforms; DGP imports them; Plotly figures (no notebook); `<1s` perf gate |
 | STORY-103 | Done | Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet` |
+| STORY-104 | Done (DoD review) | Media QA repair + audit log; overwrite parquet; hard-fail if unrepaired |
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 
@@ -80,6 +82,7 @@ conda activate mmt-mmm
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 python -m pytest tests/ -q
 python -m src.data.etl
+python -m src.data.qa
 ```
 
 See `AGENTS.md` for agent golden rules and the skills/rules index.

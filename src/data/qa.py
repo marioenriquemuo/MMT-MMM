@@ -1,4 +1,4 @@
-"""STORY-104 media QA: detect + repair channel-day anomalies (Step 2).
+"""STORY-104 media QA: detect + repair channel-day anomalies (pre-Meridian gate).
 
 Why this exists
 ---------------
@@ -6,15 +6,18 @@ ETL (103) builds a complete date×channel grid. QA asks whether *media ratios*
 on active days still look believable vs that channel's recent history.
 Bad impressions/clicks poison Meridian; spend and baseline_sales stay immutable.
 
-Step 2 adds history-based repair + audit log. No parquet overwrite / CLI gate yet
-(those are Step 3).
+Pipeline: load → repair → hard-fail if unrepaired → Pandera validate → overwrite
+``clean_spend.parquet`` + optional ``qa_repair_log.csv``.
 """
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import pandas as pd
+
+from src.data.etl import SpendPanelSchema
 
 # --- Constants (locked v1 thresholds) ---
 
@@ -271,3 +274,70 @@ def write_repair_log(log_df: pd.DataFrame, path: str | Path | None = None) -> Pa
     frame["date"] = pd.to_datetime(frame["date"]).dt.strftime("%Y-%m-%d")
     frame.to_csv(out_path, index=False)
     return out_path
+
+
+# --- Orchestrate (Step 3) ---
+
+
+class UnrepairedAnomaliesError(RuntimeError):
+    """Raised when anomalies remain after repair; training parquet must not be overwritten."""
+
+    def __init__(self, unrepaired: pd.DataFrame) -> None:
+        self.unrepaired = unrepaired
+        n = len(unrepaired)
+        super().__init__(
+            f"{n} unrepaired anomal{'y' if n == 1 else 'ies'}; "
+            "refusing to overwrite training parquet"
+        )
+
+
+def run_qa(
+    in_path: str | Path = DEFAULT_PANEL_PATH,
+    out_path: str | Path = DEFAULT_PANEL_PATH,
+    log_path: str | Path = DEFAULT_LOG_PATH,
+) -> pd.DataFrame:
+    """Load → repair → validate → overwrite parquet (C1) + repair log.
+
+    On unrepaired anomalies: raises ``UnrepairedAnomaliesError`` and does **not**
+    write ``out_path`` (training panel stays untouched).
+    """
+    in_path = Path(in_path)
+    out_path = Path(out_path)
+    log_path = Path(log_path)
+
+    panel, log_df, unrepaired = repair_panel(in_path)
+    if len(unrepaired) > 0:
+        raise UnrepairedAnomaliesError(unrepaired)
+
+    # Match ETL grain order (date × channel) before validate/write.
+    panel = panel.sort_values(["date", "channel"]).reset_index(drop=True)
+    panel = SpendPanelSchema.validate(panel)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    panel.to_parquet(out_path, engine="pyarrow", index=False)
+    write_repair_log(log_df, log_path)
+    return panel
+
+
+def main(
+    in_path: str | Path = DEFAULT_PANEL_PATH,
+    out_path: str | Path = DEFAULT_PANEL_PATH,
+    log_path: str | Path = DEFAULT_LOG_PATH,
+) -> int:
+    """CLI entry: exit 0 on success; exit 1 when unrepaired anomalies remain."""
+    try:
+        panel = run_qa(in_path=in_path, out_path=out_path, log_path=log_path)
+    except UnrepairedAnomaliesError as exc:
+        print(exc, file=sys.stderr)
+        print(exc.unrepaired.to_string(index=False), file=sys.stderr)
+        return 1
+
+    print(
+        f"QA ok → wrote {out_path} "
+        f"({len(panel)} rows, {panel['date'].nunique()} days × "
+        f"{panel['channel'].nunique()} channels)"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
