@@ -75,3 +75,15 @@ Those are planned later; this file stays channel-level only.
 | Fixture | `tests/fixtures/anomalous_spend.csv` (CTR collapse + IPS spike + insufficient-history case) |
 
 **Rules (v1):** 14-day trailing activity window; ≥7 prior `spend > 0` days to repair. CTR collapse when impressions ≥ 1000 and clicks ≪ median CTR; IPS outlier when spend ≈ median but impressions/spend outside [0.5×, 2.0×] median IPS.
+
+## STORY-201 Meridian grain (weekly)
+
+Meridian national InputData defaults to **weekly** periods (`freq="W"`, week ending Sunday) via `src/models/meridian_data.py`.
+
+| Series | Weekly aggregation |
+| --- | --- |
+| KPI (`baseline_sales` → national daily first, then week) | **Sum of daily units** (flow / count aggregation) |
+| `spend`, `impressions` per channel | Sum |
+| `revenue_per_kpi` | Mean (synthetic constant 1.0) |
+
+Do **not** confuse with long-format channel stacking: daily KPI is still recovered with `groupby("date").first()` before the week sum.

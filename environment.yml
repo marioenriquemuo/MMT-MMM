@@ -12,7 +12,8 @@ dependencies:
   - scikit-learn
   - pymc
   - arviz
-  - matplotlib
+  # arviz 0.19 (pulled by google-meridian) needs matplotlib.style.core — broken on 3.11+.
+  - matplotlib>=3.8,<3.11
   - jupyter
   - plotly
   - pyyaml
@@ -22,8 +23,8 @@ dependencies:
   - pytest
   - pip
   - pip:
-      # STORY-201 Meridian spike (CPU). Pulls TensorFlow / JAX / arviz pin.
-      # After conda create/update: verify `python -c "import meridian"`.
-      # Note: pip may downgrade arviz below pymc's preference; Meridian is the
-      # spike dependency — re-pin pymc/arviz later if both must coexist.
-      - google-meridian
+      # STORY-201 Meridian spike (CPU). Pin matches tested install.
+      # After conda create/update: `import pymc` and `import meridian` should both work.
+      # Tested combo: google-meridian==2.1.0 + arviz 0.19.x + matplotlib 3.10.x + pymc 6.x.
+      # pip may still adjust arviz; keep matplotlib <3.11 for Meridian/arviz coexistence.
+      - google-meridian==2.1.0

@@ -4,6 +4,10 @@ Directional check only — Meridian ROI / Hill parameterization ≠ Path-C
 `media_beta` × geometric adstock × Hill saturation. Compare ranks, not
 point estimates.
 
+**Not a hard fail for this spike.** `dod.directional_recovery` /
+`recovery_spearman` in `metrics.json` record status only; a mismatch
+does not exit non-zero.
+
 ## Estimated iROAS (posterior mean, units per $)
 
 - `meta`: 1.0308
@@ -36,4 +40,4 @@ adstock_decay (higher = longer memory):
 - Meridian iROAS rank: ['meta', 'tiktok', 'tv', 'google']
 - Path-C contribution rank: ['tv', 'google', 'meta', 'tiktok']
 - Spearman rank correlation (iROAS vs contribution): -0.600
-- Verdict: **directional mismatch** — investigate media scaling / priors.
+- Verdict: **directional mismatch** — investigate media scaling / priors. (Status only; spike script does not hard-fail.)

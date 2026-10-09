@@ -10,6 +10,7 @@ import pandas as pd
 import pytest
 
 from src.data.etl import DEFAULT_OUT_PATH
+from src.data.generator import CHANNELS
 from src.data.qa import (
     ANOMALY_COLUMNS,
     LOG_COLUMNS,
@@ -19,6 +20,7 @@ from src.data.qa import (
     main,
     repair_panel,
     run_qa,
+    sort_panel_by_channel,
     write_repair_log,
 )
 
@@ -256,6 +258,28 @@ def test_main_exit_nonzero_when_unrepaired(tmp_path: Path):
     )
     assert code != 0
     assert out.read_bytes() == b"keep"
+
+
+def test_sort_panel_unknown_channel_after_known():
+    """Unknown channels rank after CHANNELS (fillna), then alpha — not NaN-first."""
+    df = pd.DataFrame(
+        {
+            "date": pd.to_datetime(["2023-01-01"] * 3),
+            "channel": ["zzz_new", "meta", "aaa_extra"],
+            "spend": [1.0, 2.0, 3.0],
+        }
+    )
+    sorted_df = sort_panel_by_channel(df)
+    assert list(sorted_df["channel"]) == ["meta", "aaa_extra", "zzz_new"]
+    # Known CHANNELS keep declared order relative to each other.
+    known = pd.DataFrame(
+        {
+            "date": pd.to_datetime(["2023-01-02"] * len(CHANNELS)),
+            "channel": list(reversed(CHANNELS)),
+            "spend": range(len(CHANNELS)),
+        }
+    )
+    assert list(sort_panel_by_channel(known)["channel"]) == list(CHANNELS)
 
 
 def test_cli_module_exit_0_on_clean(tmp_path: Path):

@@ -6,12 +6,15 @@ Examples::
     conda activate mmt-mmm
     python -m src.data.etl && python -m src.data.qa
     python scripts/02_model_spike.py --mode smoke
+    python scripts/02_model_spike.py --mode smoke --fail-on-rhat
     python scripts/02_model_spike.py --mode full
 
 Fuller mode writes ``reports/metrics.json``,
 ``reports/figures/posterior_predictive.png``, and
 ``reports/parameter_recovery.md``. Exits non-zero if max R-hat on core
-params ≥ 1.05.
+params ≥ 1.05. Smoke mode prints ``SMOKE_RHAT_WARN`` when R-hat is high but
+still exits 0 unless ``--fail-on-rhat``. Parameter-recovery Spearman is
+recorded in metrics / DoD flags only — never a hard fail for this spike.
 """
 
 from __future__ import annotations
@@ -30,9 +33,6 @@ import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
-
-from meridian.analysis import analyzer  # noqa: E402
-from meridian.model import model, prior_distribution, spec  # noqa: E402
 
 from src.models.meridian_data import DEFAULT_PARQUET, load_meridian_input  # noqa: E402
 
@@ -79,9 +79,6 @@ def _jsonable(obj):
     return str(obj)
 
 
-def _analyzer(mmm) -> analyzer.Analyzer:
-    return analyzer.Analyzer(mmm)
-
 # Smallest configs that still exercise Meridian MCMC on CPU.
 SMOKE = dict(n_chains=2, n_adapt=50, n_burnin=20, n_keep=20, n_prior=50)
 # Lean fuller: aim R-hat < 1.05 without multi-hour runtime on laptop CPU.
@@ -123,7 +120,13 @@ def _parse_args() -> argparse.Namespace:
         "--rhat-threshold",
         type=float,
         default=1.05,
-        help="fail full mode if max core R-hat ≥ this (default 1.05)",
+        help="full mode fails if max core R-hat ≥ this (default 1.05)",
+    )
+    p.add_argument(
+        "--fail-on-rhat",
+        action="store_true",
+        help="smoke mode: exit 1 when max core R-hat ≥ threshold "
+        "(default: warn only, exit 0)",
     )
     p.add_argument("--n-chains", type=int, default=None)
     p.add_argument("--n-adapt", type=int, default=None)
@@ -146,7 +149,15 @@ def _mcmc_cfg(args: argparse.Namespace) -> dict:
     return base
 
 
+def _analyzer(mmm):
+    from meridian.analysis import analyzer
+
+    return analyzer.Analyzer(mmm)
+
+
 def _build_mmm(input_data, *, max_lag: int = 8):
+    from meridian.model import model, prior_distribution, spec
+
     model_spec = spec.ModelSpec(
         prior=prior_distribution.PriorDistribution(),
         media_effects_dist="log_normal",
@@ -200,10 +211,41 @@ def _roi_by_channel(mmm) -> dict[str, float]:
     return {ch: float(v) for ch, v in zip(channels, roi)}
 
 
+def response_curve_means(curves) -> dict:
+    """Per-channel mean / ci_lo / ci_hi vs spend_multiplier (plot-ready).
+
+    Expects Meridian ``Analyzer.response_curves`` xarray Dataset with
+    ``incremental_outcome`` dims (spend_multiplier, channel, metric).
+    """
+    means: dict = {}
+    if curves is None or "incremental_outcome" not in getattr(curves, "data_vars", {}):
+        return means
+
+    outcome = curves["incremental_outcome"]
+    channels = [str(c) for c in curves.coords["channel"].values]
+    multipliers = [float(x) for x in curves.coords["spend_multiplier"].values]
+    spend = curves["spend"] if "spend" in curves.data_vars else None
+
+    for ch in channels:
+        ch_out = outcome.sel(channel=ch)
+        entry = {
+            "spend_multiplier": multipliers,
+            "mean": [float(x) for x in np.asarray(ch_out.sel(metric="mean")).reshape(-1)],
+            "ci_lo": [float(x) for x in np.asarray(ch_out.sel(metric="ci_lo")).reshape(-1)],
+            "ci_hi": [float(x) for x in np.asarray(ch_out.sel(metric="ci_hi")).reshape(-1)],
+        }
+        if spend is not None:
+            entry["spend"] = [
+                float(x) for x in np.asarray(spend.sel(channel=ch)).reshape(-1)
+            ]
+        means[ch] = entry
+    return means
+
+
 def _response_curve_summary(mmm) -> dict:
     an = _analyzer(mmm)
     curves = an.response_curves(use_posterior=True, use_kpi=True)
-    out: dict = {"coords": {}, "means": {}}
+    out: dict = {"coords": {}, "means": response_curve_means(curves)}
     for name, coord in curves.coords.items():
         out["coords"][name] = [str(x) for x in coord.values]
     # Store mean incremental outcome across posterior for each spend multiplier.
@@ -269,14 +311,39 @@ def _write_ppc(mmm, path: Path) -> None:
     print(f"wrote {path}")
 
 
-def _parameter_recovery(iroas: dict[str, float]) -> str:
+def recovery_rank_stats(
+    iroas: dict[str, float],
+    contrib: dict[str, float],
+) -> dict:
+    """Spearman of iROAS rank vs contribution rank; directional if Spearman > 0.
+
+    Not a hard DoD gate for STORY-201 — status only.
+    """
+    est_rank = sorted(iroas, key=iroas.get, reverse=True)
+    truth_rank = sorted(contrib, key=contrib.get, reverse=True) if contrib else []
+    spearman = None
+    common = [c for c in truth_rank if c in est_rank]
+    if len(common) >= 2:
+        t_ranks = {c: i for i, c in enumerate(truth_rank)}
+        e_ranks = {c: i for i, c in enumerate(est_rank)}
+        n = len(common)
+        d2 = sum((t_ranks[c] - e_ranks[c]) ** 2 for c in common)
+            spearman = round(1 - 6 * d2 / (n * (n * n - 1)), 6)
+    directional = bool(spearman is not None and spearman > 0)
+    return {
+        "est_rank": est_rank,
+        "truth_rank": truth_rank,
+        "recovery_spearman": spearman,
+        "directional_recovery": directional,
+    }
+
+
+def _parameter_recovery(iroas: dict[str, float]) -> tuple[str, dict]:
     truth = json.loads(GROUND_TRUTH.read_text()) if GROUND_TRUTH.is_file() else {}
     contrib = truth.get("sales_meta", {}).get("channel_contribution_means", {})
     beta = truth.get("media_beta", {})
     decay = truth.get("adstock_decay", {})
-
-    est_rank = sorted(iroas, key=iroas.get, reverse=True)
-    truth_rank = sorted(contrib, key=contrib.get, reverse=True) if contrib else []
+    stats = recovery_rank_stats(iroas, contrib)
 
     lines = [
         "# Parameter recovery note (STORY-201)",
@@ -284,6 +351,10 @@ def _parameter_recovery(iroas: dict[str, float]) -> str:
         "Directional check only — Meridian ROI / Hill parameterization ≠ Path-C",
         "`media_beta` × geometric adstock × Hill saturation. Compare ranks, not",
         "point estimates.",
+        "",
+        "**Not a hard fail for this spike.** `dod.directional_recovery` /",
+        "`recovery_spearman` in `metrics.json` record status only; a mismatch",
+        "does not exit non-zero.",
         "",
         "## Estimated iROAS (posterior mean, units per $)",
         "",
@@ -311,30 +382,26 @@ def _parameter_recovery(iroas: dict[str, float]) -> str:
             "",
             "## Rank comparison",
             "",
-            f"- Meridian iROAS rank: {est_rank}",
-            f"- Path-C contribution rank: {truth_rank}",
+            f"- Meridian iROAS rank: {stats['est_rank']}",
+            f"- Path-C contribution rank: {stats['truth_rank']}",
         ]
     )
-    if est_rank and truth_rank:
-        # Spearmans on overlapping channels.
-        common = [c for c in truth_rank if c in est_rank]
-        if len(common) >= 2:
-            t_ranks = {c: i for i, c in enumerate(truth_rank)}
-            e_ranks = {c: i for i, c in enumerate(est_rank)}
-            n = len(common)
-            d2 = sum((t_ranks[c] - e_ranks[c]) ** 2 for c in common)
-            spearman = 1 - 6 * d2 / (n * (n * n - 1))
-            lines.append(f"- Spearman rank correlation (iROAS vs contribution): {spearman:.3f}")
-            if spearman > 0:
-                lines.append(
-                    "- Verdict: **directional match** (positive rank correlation)."
-                )
-            else:
-                lines.append(
-                    "- Verdict: **directional mismatch** — investigate media scaling / priors."
-                )
+    spearman = stats["recovery_spearman"]
+    if spearman is not None:
+        lines.append(
+            f"- Spearman rank correlation (iROAS vs contribution): {spearman:.3f}"
+        )
+        if stats["directional_recovery"]:
+            lines.append(
+                "- Verdict: **directional match** (positive rank correlation)."
+            )
+        else:
+            lines.append(
+                "- Verdict: **directional mismatch** — investigate media scaling / "
+                "priors. (Status only; spike script does not hard-fail.)"
+            )
     lines.append("")
-    return "\n".join(lines)
+    return "\n".join(lines), stats
 
 
 def main() -> int:
@@ -371,7 +438,18 @@ def main() -> int:
     rhat_info = _rhat_peek(mmm, args.rhat_threshold)
 
     if args.mode == "smoke":
-        print("smoke OK — R-hat peek printed above")
+        if not rhat_info["rhat_pass"]:
+            extra = "" if args.fail_on_rhat else "; pass --fail-on-rhat to exit 1"
+            print(
+                f"SMOKE_RHAT_WARN: max core R-hat {rhat_info['max_rhat_core']:.4f} "
+                f">= {args.rhat_threshold} "
+                f"(smoke chains are short; use --mode full for DoD gate{extra})",
+                file=sys.stderr,
+            )
+            if args.fail_on_rhat:
+                return 1
+        else:
+            print("smoke OK — R-hat peek printed above")
         return 0
 
     # --- Fuller DoD artifacts ---
@@ -384,7 +462,7 @@ def main() -> int:
     post_sum = _posterior_summaries(mmm)
     _write_ppc(mmm, PPC_PATH)
 
-    recovery_md = _parameter_recovery(iroas)
+    recovery_md, recovery_stats = _parameter_recovery(iroas)
     RECOVERY_PATH.write_text(recovery_md)
     print(f"wrote {RECOVERY_PATH}")
 
@@ -398,6 +476,7 @@ def main() -> int:
         "channels": [str(c) for c in input_data.media.coords["media_channel"].values],
         "rhat": rhat_info,
         "iroas_units_per_dollar": iroas,
+        "recovery_spearman": recovery_stats["recovery_spearman"],
         "posterior_summaries": post_sum,
         "response_curves": response,
         "artifacts": {
@@ -410,6 +489,8 @@ def main() -> int:
             "metrics_json": True,
             "ppc_png": PPC_PATH.is_file(),
             "parameter_recovery": RECOVERY_PATH.is_file(),
+            # Status only — mismatch must not be read as a silent green recovery.
+            "directional_recovery": recovery_stats["directional_recovery"],
         },
     }
     METRICS_PATH.write_text(json.dumps(_jsonable(metrics), indent=2) + "\n")
@@ -422,7 +503,7 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-    print("full DoD: R-hat PASS")
+    print("full DoD: R-hat PASS (recovery status recorded; not a hard fail)")
     return 0
 
 

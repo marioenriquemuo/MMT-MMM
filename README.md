@@ -34,14 +34,14 @@ conda env create -f environment.yml
 # Activate
 conda activate mmt-mmm
 
-# Verify key imports
+# Verify key imports (pymc + Meridian both expected after env update)
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
-
-# STORY-201 Meridian (pip dep in environment.yml)
-python -c "import meridian; print('meridian', getattr(meridian, '__version__', 'ok'))"
+python -c "import pymc, meridian; print('pymc', pymc.__version__, 'meridian', getattr(meridian, '__version__', 'ok'))"
 ```
 
-Recreate or refresh deps: `conda env update -f environment.yml --prune` (runs the `pip:` section for `google-meridian`).
+Recreate or refresh deps: `conda env update -f environment.yml --prune` (pins `google-meridian==2.1.0` via pip).
+
+**Tested Meridian combo:** `google-meridian==2.1.0` + `arviz` 0.19.x + `matplotlib` 3.10.x (`matplotlib<3.11` in `environment.yml` — arviz 0.19 breaks on matplotlib 3.11+ `style.core` removal) + `pymc` 6.x.
 
 Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-version`).
 
@@ -144,26 +144,26 @@ National Google Meridian fit on post-QA `clean_spend.parquet` (weekly grain by d
 
 ```bash
 conda activate mmt-mmm
-conda env update -f environment.yml --prune   # installs google-meridian via pip
-python -c "import meridian; print(meridian.__version__)"
+conda env update -f environment.yml --prune   # pins google-meridian==2.1.0 via pip
+python -c "import pymc, meridian; print(pymc.__version__, meridian.__version__)"
 
 python -m src.data.etl
 python -m src.data.qa
 
-# Fast adapter tests (no MCMC)
-python -m pytest tests/test_meridian_data.py -q
+# Fast adapter / spike-helper tests (no MCMC)
+python -m pytest tests/test_meridian_data.py tests/test_model_spike_helpers.py -q
 
-# Smoke: short chains + R-hat peek
+# Smoke: short chains + R-hat peek (warns SMOKE_RHAT_WARN; exit 0 unless --fail-on-rhat)
 python scripts/02_model_spike.py --mode smoke
 
 # Fuller DoD (CPU; can take a long time): R-hat < 1.05 gate + artifacts
 python scripts/02_model_spike.py --mode full
-# → reports/metrics.json
+# → reports/metrics.json  (includes recovery_spearman + dod.directional_recovery; not a hard fail)
 # → reports/figures/posterior_predictive.png
 # → reports/parameter_recovery.md
 ```
 
-Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions`, spend=`spend`). Override MCMC sizes with `--n-chains` / `--n-adapt` / `--n-burnin` / `--n-keep`. Daily grain: `--freq D` (much slower).
+Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions`, spend=`spend`). Weekly KPI is **sum of daily units** (flow aggregation). Override MCMC sizes with `--n-chains` / `--n-adapt` / `--n-burnin` / `--n-keep`. Daily grain: `--freq D` (much slower).
 
 ## Stack direction
 
