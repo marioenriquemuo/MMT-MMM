@@ -328,7 +328,7 @@ def recovery_rank_stats(
         e_ranks = {c: i for i, c in enumerate(est_rank)}
         n = len(common)
         d2 = sum((t_ranks[c] - e_ranks[c]) ** 2 for c in common)
-            spearman = round(1 - 6 * d2 / (n * (n * n - 1)), 6)
+        spearman = round(1 - 6 * d2 / (n * (n * n - 1)), 6)
     directional = bool(spearman is not None and spearman > 0)
     return {
         "est_rank": est_rank,
