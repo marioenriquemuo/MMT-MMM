@@ -43,6 +43,45 @@ PPC_PATH = FIGURES / "posterior_predictive.png"
 RECOVERY_PATH = REPORTS / "parameter_recovery.md"
 GROUND_TRUTH = REPO_ROOT / "data" / "raw" / "ground_truth.json"
 
+
+def _jsonable(obj):
+    """Recursively convert numpy / JAX leftovers for strict JSON."""
+    if obj is None or isinstance(obj, (str, bool)):
+        return obj
+    if isinstance(obj, float):
+        if np.isnan(obj) or np.isinf(obj):
+            return None
+        return obj
+    if isinstance(obj, int) and not isinstance(obj, bool):
+        return obj
+    if isinstance(obj, dict):
+        return {str(k): _jsonable(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_jsonable(v) for v in obj]
+    if isinstance(obj, np.ndarray):
+        return _jsonable(obj.tolist())
+    if isinstance(obj, np.generic):
+        return _jsonable(obj.item())
+    if obj is pd.NA:
+        return None
+    tolist = getattr(obj, "tolist", None)
+    if callable(tolist) and not isinstance(obj, (str, bytes)):
+        try:
+            return _jsonable(tolist())
+        except Exception:
+            pass
+    item = getattr(obj, "item", None)
+    if callable(item):
+        try:
+            return _jsonable(item())
+        except Exception:
+            pass
+    return str(obj)
+
+
+def _analyzer(mmm) -> analyzer.Analyzer:
+    return analyzer.Analyzer(mmm)
+
 # Smallest configs that still exercise Meridian MCMC on CPU.
 SMOKE = dict(n_chains=2, n_adapt=50, n_burnin=20, n_keep=20, n_prior=50)
 # Lean fuller: aim R-hat < 1.05 without multi-hour runtime on laptop CPU.
@@ -132,7 +171,7 @@ def _core_rhat_rows(rhat_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _rhat_peek(mmm, threshold: float) -> dict:
-    an = analyzer.Analyzer(mmm)
+    an = _analyzer(mmm)
     summary = an.rhat_summary(bad_rhat_threshold=threshold)
     core = _core_rhat_rows(summary)
     max_col = "max_r_hat" if "max_r_hat" in summary.columns else summary.columns[-1]
@@ -142,7 +181,7 @@ def _rhat_peek(mmm, threshold: float) -> dict:
     print(summary.to_string(index=False))
     print(f"max R-hat (all)={max_all:.4f}  max R-hat (core)={max_core:.4f}")
     return {
-        "rhat_summary": summary.to_dict(orient="records"),
+        "rhat_summary": _jsonable(summary.to_dict(orient="records")),
         "max_rhat_all": max_all,
         "max_rhat_core": max_core,
         "rhat_pass": bool(max_core < threshold),
@@ -151,7 +190,7 @@ def _rhat_peek(mmm, threshold: float) -> dict:
 
 
 def _roi_by_channel(mmm) -> dict[str, float]:
-    an = analyzer.Analyzer(mmm)
+    an = _analyzer(mmm)
     channels = list(mmm.input_data.media.coords["media_channel"].values)
     # use_kpi=True → incremental units / spend (iROAS-like for non_revenue KPI)
     roi = np.asarray(an.roi(use_posterior=True, use_kpi=True))
@@ -162,7 +201,7 @@ def _roi_by_channel(mmm) -> dict[str, float]:
 
 
 def _response_curve_summary(mmm) -> dict:
-    an = analyzer.Analyzer(mmm)
+    an = _analyzer(mmm)
     curves = an.response_curves(use_posterior=True, use_kpi=True)
     out: dict = {"coords": {}, "means": {}}
     for name, coord in curves.coords.items():
@@ -181,7 +220,7 @@ def _response_curve_summary(mmm) -> dict:
 
 
 def _posterior_summaries(mmm) -> dict:
-    an = analyzer.Analyzer(mmm)
+    an = _analyzer(mmm)
     try:
         sm = an.summary_metrics(use_kpi=True, aggregate_geos=True, aggregate_times=True)
         summary = {}
@@ -198,35 +237,28 @@ def _posterior_summaries(mmm) -> dict:
 
 
 def _write_ppc(mmm, path: Path) -> None:
-    an = analyzer.Analyzer(mmm)
+    an = _analyzer(mmm)
     eva = an.expected_vs_actual_data(
         aggregate_geos=True, aggregate_times=False, use_kpi=True
     )
-    # Common var names across Meridian versions.
-    actual_name = next(
-        (v for v in ("actual", "kpi", "outcome") if v in eva), list(eva.data_vars)[0]
-    )
-    expected_name = next(
-        (
-            v
-            for v in ("expected", "expected_outcome", "mean", "prediction")
-            if v in eva
-        ),
-        [v for v in eva.data_vars if v != actual_name][0],
-    )
-    actual = np.asarray(eva[actual_name]).reshape(-1)
-    expected = np.asarray(eva[expected_name]).reshape(-1)
-    # If expected still has chain/draw dims collapsed poorly, take nanmean trailing.
-    if expected.shape != actual.shape:
-        # Broadcast / reduce trailing dims.
-        while expected.ndim > 1 and expected.shape[-1] == actual.shape[0]:
-            expected = expected.mean(axis=tuple(range(expected.ndim - 1)))
-        expected = expected.reshape(-1)[: actual.shape[0]]
+    actual = np.asarray(eva["actual"]).reshape(-1)
+    # Meridian returns expected as (time, metric) with mean / ci_lo / ci_hi.
+    exp = eva["expected"]
+    if "metric" in getattr(exp, "dims", ()):
+        expected = np.asarray(exp.sel(metric="mean")).reshape(-1)
+        ci_lo = np.asarray(exp.sel(metric="ci_lo")).reshape(-1)
+        ci_hi = np.asarray(exp.sel(metric="ci_hi")).reshape(-1)
+    else:
+        expected = np.asarray(exp).reshape(-1)
+        ci_lo = ci_hi = None
 
     path.parent.mkdir(parents=True, exist_ok=True)
     fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(actual, label="actual KPI", color="#333333", linewidth=1.2)
-    ax.plot(expected, label="posterior expected", color="#1f77b4", linewidth=1.2)
+    x = np.arange(len(actual))
+    ax.plot(x, actual, label="actual KPI", color="#333333", linewidth=1.2)
+    ax.plot(x, expected, label="posterior expected (mean)", color="#1f77b4", linewidth=1.2)
+    if ci_lo is not None and ci_hi is not None:
+        ax.fill_between(x, ci_lo, ci_hi, color="#1f77b4", alpha=0.2, label="90% CI")
     ax.set_title("Meridian posterior predictive (national, weekly)")
     ax.set_xlabel("time index")
     ax.set_ylabel("KPI (units)")
@@ -363,7 +395,7 @@ def main() -> int:
         "mcmc": cfg,
         "seed": args.seed,
         "n_times": int(input_data.kpi.shape[1]),
-        "channels": list(input_data.media.coords["media_channel"].values),
+        "channels": [str(c) for c in input_data.media.coords["media_channel"].values],
         "rhat": rhat_info,
         "iroas_units_per_dollar": iroas,
         "posterior_summaries": post_sum,
@@ -380,7 +412,7 @@ def main() -> int:
             "parameter_recovery": RECOVERY_PATH.is_file(),
         },
     }
-    METRICS_PATH.write_text(json.dumps(metrics, indent=2) + "\n")
+    METRICS_PATH.write_text(json.dumps(_jsonable(metrics), indent=2) + "\n")
     print(f"wrote {METRICS_PATH}")
 
     if not rhat_info["rhat_pass"]:

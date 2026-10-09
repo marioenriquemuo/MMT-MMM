@@ -102,33 +102,33 @@
     "semantic_hash": "98c524508d475b44f0997e0a56ee4a0f"
   },
   "AGENTS.md": {
-    "mtime": 1791576910.1483808,
-    "seen": 1791576915.9653919,
-    "ast_hash": "8603639419d60a02a6190ffcec43a1fe",
+    "mtime": 1791579338.36217,
+    "seen": 1791579941.0115743,
+    "ast_hash": "67dad2d432a458b0a8fb4cf7e9a8a077",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791576910.4692364,
-    "seen": 1791576915.9653928,
-    "ast_hash": "f964076a32b24e85c0c47ea499028a31",
+    "mtime": 1791579338.0021734,
+    "seen": 1791579941.0115752,
+    "ast_hash": "3725a4d902f58e9157486a570329944c",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791576909.8601296,
-    "seen": 1791576915.965394,
-    "ast_hash": "d02d5c00bf74289d89cadab6fee8a0d0",
+    "mtime": 1791579307.9262862,
+    "seen": 1791579941.0115762,
+    "ast_hash": "7b3f661b1bfeff42e55786d65dc382b3",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
-    "mtime": 1791576450.4568908,
-    "seen": 1791576915.965395,
+    "mtime": 1791577442.262852,
+    "seen": 1791579941.0115771,
     "ast_hash": "6e9dbc243e420e0f7ee637793ba31c78",
     "semantic_hash": ""
   },
   "environment.yml": {
-    "mtime": 1791574349.4318469,
-    "seen": 1791576915.9653966,
-    "ast_hash": "3a320d6072228180cadde630363cb167",
+    "mtime": 1791579307.7404609,
+    "seen": 1791579941.011579,
+    "ast_hash": "132abbd7219c327e3d93a087679713af",
     "semantic_hash": ""
   },
   "scripts/plot_adstock_validation.py": {
@@ -138,10 +138,10 @@
     "semantic_hash": "973132b32c0c0f31affd16b02e66b372"
   },
   "src/models/__init__.py": {
-    "mtime": 1791489331.2625818,
-    "seen": 1791491681.1600344,
-    "ast_hash": "5be16d005df35530372f6023eac4179e",
-    "semantic_hash": "5be16d005df35530372f6023eac4179e"
+    "mtime": 1791579306.7597008,
+    "seen": 1791579941.0115416,
+    "ast_hash": "f3c2199e758a556d5105810af73d9566",
+    "semantic_hash": ""
   },
   "src/models/transformations.py": {
     "mtime": 1791490461.9388037,
@@ -210,9 +210,9 @@
     "semantic_hash": "9378bd03d56baaf78bd738ab3848f142"
   },
   "docs/graphify-archify.md": {
-    "mtime": 1791576909.8583837,
-    "seen": 1791576915.965396,
-    "ast_hash": "17a2ac09c76c18f16054e664e2b495d8",
+    "mtime": 1791577442.2629936,
+    "seen": 1791579941.011578,
+    "ast_hash": "9a12081f7296d4ec28dc49f176bcf18d",
     "semantic_hash": ""
   },
   "reports/figures/geometric_adstock_pulse.html": {
@@ -252,15 +252,51 @@
     "semantic_hash": ""
   },
   "src/data/qa.py": {
-    "mtime": 1791576541.7108698,
-    "seen": 1791576915.9653578,
-    "ast_hash": "531e9fefe9a18e6deea29f8de015b1b8",
+    "mtime": 1791579484.7104335,
+    "seen": 1791579941.0115404,
+    "ast_hash": "b3fcb1ca8dae30d4e047051325ac04c3",
     "semantic_hash": ""
   },
   "tests/test_qa.py": {
-    "mtime": 1791576597.344343,
-    "seen": 1791576915.965365,
+    "mtime": 1791577442.2669334,
+    "seen": 1791579941.0115485,
     "ast_hash": "8a072aaf2e2fff8b8714f8e2c398a1c6",
+    "semantic_hash": ""
+  },
+  "reports/metrics.json": {
+    "mtime": 1791579879.2909555,
+    "seen": 1791579941.0115259,
+    "ast_hash": "c1145ea83852d6aa17502b687cae2a41",
+    "semantic_hash": ""
+  },
+  "scripts/02_model_spike.py": {
+    "mtime": 1791579836.1624725,
+    "seen": 1791579941.0115283,
+    "ast_hash": "38053f30e3a1283c6cd4d45ebd91b717",
+    "semantic_hash": ""
+  },
+  "src/models/meridian_data.py": {
+    "mtime": 1791579436.7372377,
+    "seen": 1791579941.0115428,
+    "ast_hash": "171424147acd8a4b7e28678375325abc",
+    "semantic_hash": ""
+  },
+  "tests/test_meridian_data.py": {
+    "mtime": 1791579246.3012877,
+    "seen": 1791579941.0115473,
+    "ast_hash": "2bdd8adc3fdad31ed1190d457269c31f",
+    "semantic_hash": ""
+  },
+  "reports/parameter_recovery.md": {
+    "mtime": 1791579879.2898269,
+    "seen": 1791579941.0115836,
+    "ast_hash": "93a0adbbcd38094e194aacd57e053fd7",
+    "semantic_hash": ""
+  },
+  "reports/figures/posterior_predictive.png": {
+    "mtime": 1791579879.2889562,
+    "seen": 1791579941.0115845,
+    "ast_hash": "584294231f91ae718c125f4b30ef2ffb",
     "semantic_hash": ""
   }
 }

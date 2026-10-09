@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 → 104 done; STORY-201 Meridian spike in progress on `cursor/story-201-meridian-702b` |
+| Status | STORY-101 → 104 done; STORY-201 Meridian spike on `cursor/story-201-meridian-702b` |
 
 ## What we build
 
@@ -62,7 +62,7 @@ MMT&MMM/
 | STORY-102 | Done | Shared transforms; DGP imports them; Plotly figures (no notebook); `<1s` perf gate |
 | STORY-103 | Done | Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet` |
 | STORY-104 | Done | Media QA detect/repair + audit log; overwrite parquet; hard-fail if unrepaired |
-| STORY-201 | In progress | `google-meridian` national spike; adapter + `scripts/02_model_spike.py` |
+| STORY-201 | Done (spike) | `google-meridian` national weekly; R-hat &lt; 1.05; metrics + PPC + recovery note |
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 

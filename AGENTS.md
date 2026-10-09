@@ -53,7 +53,7 @@ Working branch: **`sprint-1-core-data-engine`**.
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
-- **STORY-201 in progress** — Meridian national spike (`google-meridian`, adapter, `scripts/02_model_spike.py`)
+- **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`)
 
 ## Skills
 

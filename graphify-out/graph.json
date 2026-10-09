@@ -131,7 +131,7 @@
       "file_type": "code",
       "norm_label": "unrepairedanomalieserror",
       "source_file": "src/data/qa.py",
-      "source_location": "L282"
+      "source_location": "L283"
     },
     {
       "id": "src_models_transformations_geometric_adstock",
@@ -528,6 +528,162 @@
       "norm_label": "test_weibull_two_runs_identical()",
       "source_file": "tests/test_transformations.py",
       "source_location": "L184"
+    },
+    {
+      "id": "scripts_02_model_spike_analyzer",
+      "label": "_analyzer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_analyzer()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L82"
+    },
+    {
+      "id": "scripts_02_model_spike_build_mmm",
+      "label": "_build_mmm()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_build_mmm()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L149"
+    },
+    {
+      "id": "scripts_02_model_spike_core_rhat_rows",
+      "label": "_core_rhat_rows()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_core_rhat_rows()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L163"
+    },
+    {
+      "id": "scripts_02_model_spike_jsonable",
+      "label": "_jsonable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_jsonable()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L47"
+    },
+    {
+      "id": "scripts_02_model_spike_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L347"
+    },
+    {
+      "id": "scripts_02_model_spike_mcmc_cfg",
+      "label": "_mcmc_cfg()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_mcmc_cfg()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L135"
+    },
+    {
+      "id": "scripts_02_model_spike_parameter_recovery",
+      "label": "_parameter_recovery()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_parameter_recovery()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L279"
+    },
+    {
+      "id": "scripts_02_model_spike_parse_args",
+      "label": "_parse_args()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_parse_args()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L106"
+    },
+    {
+      "id": "scripts_02_model_spike_posterior_summaries",
+      "label": "_posterior_summaries()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_posterior_summaries()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L222"
+    },
+    {
+      "id": "scripts_02_model_spike_response_curve_summary",
+      "label": "_response_curve_summary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_response_curve_summary()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L203"
+    },
+    {
+      "id": "scripts_02_model_spike_rhat_peek",
+      "label": "_rhat_peek()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_rhat_peek()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L173"
+    },
+    {
+      "id": "scripts_02_model_spike_roi_by_channel",
+      "label": "_roi_by_channel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_roi_by_channel()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L192"
+    },
+    {
+      "id": "scripts_02_model_spike_write_ppc",
+      "label": "_write_ppc()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "_write_ppc()",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L239"
     },
     {
       "id": "src_data_generator_assert_valid",
@@ -1019,7 +1175,7 @@
       "file_type": "code",
       "norm_label": "detect_anomalies()",
       "source_file": "src/data/qa.py",
-      "source_location": "L99"
+      "source_location": "L100"
     },
     {
       "id": "src_data_qa_load_panel",
@@ -1031,7 +1187,7 @@
       "file_type": "code",
       "norm_label": "load_panel()",
       "source_file": "src/data/qa.py",
-      "source_location": "L64"
+      "source_location": "L65"
     },
     {
       "id": "src_data_qa_main",
@@ -1043,7 +1199,7 @@
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "src/data/qa.py",
-      "source_location": "L321"
+      "source_location": "L328"
     },
     {
       "id": "src_data_qa_prior_activity",
@@ -1055,7 +1211,7 @@
       "file_type": "code",
       "norm_label": "_prior_activity()",
       "source_file": "src/data/qa.py",
-      "source_location": "L82"
+      "source_location": "L83"
     },
     {
       "id": "src_data_qa_repair_panel",
@@ -1067,7 +1223,7 @@
       "file_type": "code",
       "norm_label": "repair_panel()",
       "source_file": "src/data/qa.py",
-      "source_location": "L180"
+      "source_location": "L181"
     },
     {
       "id": "src_data_qa_row_index",
@@ -1079,7 +1235,7 @@
       "file_type": "code",
       "norm_label": "_row_index()",
       "source_file": "src/data/qa.py",
-      "source_location": "L89"
+      "source_location": "L90"
     },
     {
       "id": "src_data_qa_run_qa",
@@ -1091,7 +1247,7 @@
       "file_type": "code",
       "norm_label": "run_qa()",
       "source_file": "src/data/qa.py",
-      "source_location": "L294"
+      "source_location": "L295"
     },
     {
       "id": "src_data_qa_unrepairedanomalieserror_init",
@@ -1103,7 +1259,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "src/data/qa.py",
-      "source_location": "L285"
+      "source_location": "L286"
     },
     {
       "id": "src_data_qa_write_repair_log",
@@ -1115,7 +1271,7 @@
       "file_type": "code",
       "norm_label": "write_repair_log()",
       "source_file": "src/data/qa.py",
-      "source_location": "L267"
+      "source_location": "L268"
     },
     {
       "id": "tests_test_qa_test_clean_synthetic_parquet_has_zero_anomalies",
@@ -1310,6 +1466,126 @@
       "source_location": "L147"
     },
     {
+      "id": "src_models_meridian_data_load_clean_panel",
+      "label": "load_clean_panel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "load_clean_panel()",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L28"
+    },
+    {
+      "id": "src_models_meridian_data_load_meridian_input",
+      "label": "load_meridian_input()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "load_meridian_input()",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L124"
+    },
+    {
+      "id": "src_models_meridian_data_panel_to_national_wide",
+      "label": "panel_to_national_wide()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "panel_to_national_wide()",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L40"
+    },
+    {
+      "id": "src_models_meridian_data_wide_to_input_data",
+      "label": "wide_to_input_data()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "wide_to_input_data()",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L98"
+    },
+    {
+      "id": "tests_test_meridian_data_mini_panel",
+      "label": "_mini_panel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "_mini_panel()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L22"
+    },
+    {
+      "id": "tests_test_meridian_data_test_load_clean_panel_missing_columns",
+      "label": "test_load_clean_panel_missing_columns()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_load_clean_panel_missing_columns()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L74"
+    },
+    {
+      "id": "tests_test_meridian_data_test_load_meridian_input_from_committed_parquet",
+      "label": "test_load_meridian_input_from_committed_parquet()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_load_meridian_input_from_committed_parquet()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L82"
+    },
+    {
+      "id": "tests_test_meridian_data_test_panel_to_national_wide_daily_kpi_not_summed_across_channels",
+      "label": "test_panel_to_national_wide_daily_kpi_not_summed_across_channels()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_panel_to_national_wide_daily_kpi_not_summed_across_channels()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L40"
+    },
+    {
+      "id": "tests_test_meridian_data_test_panel_to_national_wide_weekly_aggregates",
+      "label": "test_panel_to_national_wide_weekly_aggregates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_panel_to_national_wide_weekly_aggregates()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L56"
+    },
+    {
+      "id": "tests_test_meridian_data_test_wide_to_input_data_shapes",
+      "label": "test_wide_to_input_data_shapes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_wide_to_input_data_shapes()",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L63"
+    },
+    {
       "id": "fixture",
       "label": "fixture",
       "_origin": "ast",
@@ -1388,12 +1664,12 @@
     },
     {
       "id": "src_models_init_rationale_1",
-      "label": "Shared modeling primitives (transforms, later likelihoods / inference).",
+      "label": "Shared modeling primitives (transforms, Meridian adapter, inference).",
       "_origin": "ast",
       "community": 0,
       "community_name": "test_transformations.py",
       "file_type": "rationale",
-      "norm_label": "shared modeling primitives (transforms, later likelihoods / inference).",
+      "norm_label": "shared modeling primitives (transforms, meridian adapter, inference).",
       "source_file": "src/models/__init__.py",
       "source_location": "L1"
     },
@@ -1718,6 +1994,72 @@
       "norm_label": "what graphify is for",
       "source_file": ".cursor/skills/graphify/SKILL.md",
       "source_location": "L45"
+    },
+    {
+      "id": "namespace",
+      "label": "Namespace",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "namespace",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "scripts_02_model_spike",
+      "label": "02_model_spike.py",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "02_model_spike.py",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_02_model_spike_py_dataframe",
+      "label": "DataFrame",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "dataframe",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "scripts_02_model_spike_py_path",
+      "label": "Path",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "code",
+      "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "scripts_02_model_spike_rationale_2",
+      "label": "STORY-201 Meridian national MMM spike (smoke + fuller MCMC). Examples:: conda\u2026",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "rationale",
+      "norm_label": "story-201 meridian national mmm spike (smoke + fuller mcmc). examples:: conda...",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L2"
+    },
+    {
+      "id": "scripts_02_model_spike_rationale_48",
+      "label": "Recursively convert numpy / JAX leftovers for strict JSON.",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "file_type": "rationale",
+      "norm_label": "recursively convert numpy / jax leftovers for strict json.",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L48"
     },
     {
       "id": "cursor_skills_graphify_references_exports",
@@ -2199,17 +2541,6 @@
       "source_location": ""
     },
     {
-      "id": "skipif",
-      "label": "skipif",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "generator.py",
-      "file_type": "code",
-      "norm_label": "skipif",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "src_data_generator",
       "label": "generator.py",
       "_origin": "ast",
@@ -2272,6 +2603,17 @@
       "community_name": "generator.py",
       "file_type": "code",
       "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "tests_test_generator_py_skipif",
+      "label": "skipif",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "generator.py",
+      "file_type": "code",
+      "norm_label": "skipif",
       "source_file": "",
       "source_location": ""
     },
@@ -2595,6 +2937,66 @@
       "source_location": "L81"
     },
     {
+      "id": "reports_parameter_recovery",
+      "label": "parameter_recovery.md",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Parameter recovery note (STORY-201)",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "parameter_recovery.md",
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "reports_parameter_recovery_estimated_iroas_posterior_mean_units_per",
+      "label": "Estimated iROAS (posterior mean, units per $)",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Parameter recovery note (STORY-201)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "estimated iroas (posterior mean, units per $)",
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "reports_parameter_recovery_parameter_recovery_note_story_201",
+      "label": "Parameter recovery note (STORY-201)",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Parameter recovery note (STORY-201)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "parameter recovery note (story-201)",
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "reports_parameter_recovery_path_c_planted_signals",
+      "label": "Path-C planted signals",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Parameter recovery note (STORY-201)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "path-c planted signals",
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "reports_parameter_recovery_rank_comparison",
+      "label": "Rank comparison",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Parameter recovery note (STORY-201)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rank comparison",
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L34"
+    },
+    {
       "id": "scripts_plot_adstock_validation",
       "label": "plot_adstock_validation.py",
       "_origin": "ast",
@@ -2760,7 +3162,7 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_qa_rationale_100",
+      "id": "src_data_qa_rationale_101",
       "label": "Flag CTR-collapse and impression-vs-spend (IPS) anomalies per channel-day.\u2026",
       "_origin": "ast",
       "community": 5,
@@ -2768,10 +3170,10 @@
       "file_type": "rationale",
       "norm_label": "flag ctr-collapse and impression-vs-spend (ips) anomalies per channel-day....",
       "source_file": "src/data/qa.py",
-      "source_location": "L100"
+      "source_location": "L101"
     },
     {
-      "id": "src_data_qa_rationale_183",
+      "id": "src_data_qa_rationale_184",
       "label": "Detect anomalies, repair impressions then clicks when history is enough.\u2026",
       "_origin": "ast",
       "community": 5,
@@ -2779,10 +3181,10 @@
       "file_type": "rationale",
       "norm_label": "detect anomalies, repair impressions then clicks when history is enough....",
       "source_file": "src/data/qa.py",
-      "source_location": "L183"
+      "source_location": "L184"
     },
     {
-      "id": "src_data_qa_rationale_268",
+      "id": "src_data_qa_rationale_269",
       "label": "Write repair audit CSV. Skips write (returns None) when ``log_df`` is empty.",
       "_origin": "ast",
       "community": 5,
@@ -2790,10 +3192,10 @@
       "file_type": "rationale",
       "norm_label": "write repair audit csv. skips write (returns none) when ``log_df`` is empty.",
       "source_file": "src/data/qa.py",
-      "source_location": "L268"
+      "source_location": "L269"
     },
     {
-      "id": "src_data_qa_rationale_283",
+      "id": "src_data_qa_rationale_284",
       "label": "Raised when anomalies remain after repair; training parquet must not be\u2026",
       "_origin": "ast",
       "community": 5,
@@ -2801,10 +3203,10 @@
       "file_type": "rationale",
       "norm_label": "raised when anomalies remain after repair; training parquet must not be...",
       "source_file": "src/data/qa.py",
-      "source_location": "L283"
+      "source_location": "L284"
     },
     {
-      "id": "src_data_qa_rationale_299",
+      "id": "src_data_qa_rationale_300",
       "label": "Load \u2192 repair \u2192 validate \u2192 overwrite parquet (C1) + repair log. On unrepaired\u2026",
       "_origin": "ast",
       "community": 5,
@@ -2812,10 +3214,10 @@
       "file_type": "rationale",
       "norm_label": "load \u2192 repair \u2192 validate \u2192 overwrite parquet (c1) + repair log. on unrepaired...",
       "source_file": "src/data/qa.py",
-      "source_location": "L299"
+      "source_location": "L300"
     },
     {
-      "id": "src_data_qa_rationale_326",
+      "id": "src_data_qa_rationale_333",
       "label": "CLI entry: exit 0 on success; exit 1 when unrepaired anomalies remain.",
       "_origin": "ast",
       "community": 5,
@@ -2823,10 +3225,10 @@
       "file_type": "rationale",
       "norm_label": "cli entry: exit 0 on success; exit 1 when unrepaired anomalies remain.",
       "source_file": "src/data/qa.py",
-      "source_location": "L326"
+      "source_location": "L333"
     },
     {
-      "id": "src_data_qa_rationale_65",
+      "id": "src_data_qa_rationale_66",
       "label": "Load a channel-day panel from a DataFrame, Parquet path, or CSV path.",
       "_origin": "ast",
       "community": 5,
@@ -2834,10 +3236,10 @@
       "file_type": "rationale",
       "norm_label": "load a channel-day panel from a dataframe, parquet path, or csv path.",
       "source_file": "src/data/qa.py",
-      "source_location": "L65"
+      "source_location": "L66"
     },
     {
-      "id": "src_data_qa_rationale_83",
+      "id": "src_data_qa_rationale_84",
       "label": "Prior calendar days in ``[as_of \u2212 14d, as_of)`` with ``spend > 0``.",
       "_origin": "ast",
       "community": 5,
@@ -2845,7 +3247,7 @@
       "file_type": "rationale",
       "norm_label": "prior calendar days in ``[as_of \u2212 14d, as_of)`` with ``spend > 0``.",
       "source_file": "src/data/qa.py",
-      "source_location": "L83"
+      "source_location": "L84"
     },
     {
       "id": "tests_test_qa_rationale_1",
@@ -3059,6 +3461,149 @@
       "norm_label": "what you must do when invoked",
       "source_file": ".cursor/skills/graphify/SKILL.md",
       "source_location": "L49"
+    },
+    {
+      "id": "inputdata",
+      "label": "InputData",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "inputdata",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_models_meridian_data",
+      "label": "meridian_data.py",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "meridian_data.py",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_models_meridian_data_py_dataframe",
+      "label": "DataFrame",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "dataframe",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_models_meridian_data_py_path",
+      "label": "Path",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "tests_test_meridian_data",
+      "label": "test_meridian_data.py",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "test_meridian_data.py",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_meridian_data_py_dataframe",
+      "label": "DataFrame",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "dataframe",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "tests_test_meridian_data_py_skipif",
+      "label": "skipif",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "code",
+      "norm_label": "skipif",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_models_meridian_data_rationale_1",
+      "label": "STORY-201: map QA'd ``clean_spend.parquet`` \u2192 Meridian national ``InputData``.\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "story-201: map qa'd ``clean_spend.parquet`` \u2192 meridian national ``inputdata``....",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_models_meridian_data_rationale_129",
+      "label": "Load parquet \u2192 national Meridian ``InputData`` (default weekly).",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "load parquet \u2192 national meridian ``inputdata`` (default weekly).",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L129"
+    },
+    {
+      "id": "src_models_meridian_data_rationale_29",
+      "label": "Load post-QA parquet; require expected columns.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "load post-qa parquet; require expected columns.",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_models_meridian_data_rationale_46",
+      "label": "Pivot long channel-day panel to Meridian-friendly wide national frame. Columns:\u2026",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "pivot long channel-day panel to meridian-friendly wide national frame. columns:...",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L46"
+    },
+    {
+      "id": "src_models_meridian_data_rationale_99",
+      "label": "Build Meridian ``InputData`` from a national wide DataFrame.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "build meridian ``inputdata`` from a national wide dataframe.",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L99"
+    },
+    {
+      "id": "tests_test_meridian_data_rationale_1",
+      "label": "Fast unit tests for STORY-201 Meridian adapter (no MCMC).",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "file_type": "rationale",
+      "norm_label": "fast unit tests for story-201 meridian adapter (no mcmc).",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L1"
     },
     {
       "id": "cursor_skills_graphify_skill_honesty_rules",
@@ -4798,14 +5343,14 @@
       "type": "external"
     },
     {
-      "id": "pytest",
-      "label": "pytest",
+      "id": "pathlib",
+      "label": "pathlib",
       "_origin": "semantic",
       "community": 2,
       "community_name": "generator.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "pytest",
+      "norm_label": "pathlib",
       "source_file": "",
       "type": "external"
     },
@@ -4861,18 +5406,6 @@
       "type": "concept"
     },
     {
-      "id": "pandas",
-      "label": "pandas",
-      "_origin": "semantic",
-      "community": 26,
-      "community_name": "test_etl.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "pandas",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "pandera_errors",
       "label": "pandera_errors",
       "_origin": "semantic",
@@ -4897,6 +5430,18 @@
       "type": "external"
     },
     {
+      "id": "pytest",
+      "label": "pytest",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "test_etl.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pytest",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "plotly_express",
       "label": "plotly_express",
       "_origin": "semantic",
@@ -4909,14 +5454,14 @@
       "type": "external"
     },
     {
-      "id": "pathlib",
-      "label": "pathlib",
+      "id": "subprocess",
+      "label": "subprocess",
       "_origin": "semantic",
       "community": 5,
       "community_name": "test_qa.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "pathlib",
+      "norm_label": "subprocess",
       "source_file": "",
       "type": "external"
     },
@@ -4933,18 +5478,313 @@
       "type": "external"
     },
     {
-      "id": "subprocess",
-      "label": "subprocess",
-      "community": 5,
-      "community_name": "test_qa.py",
+      "id": "pandas",
+      "label": "pandas",
+      "_origin": "semantic",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "subprocess",
+      "norm_label": "pandas",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "argparse",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "matplotlib",
+      "label": "matplotlib",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "matplotlib",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "matplotlib_pyplot",
+      "label": "matplotlib_pyplot",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "matplotlib_pyplot",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "meridian_analysis",
+      "label": "meridian_analysis",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "meridian_analysis",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "meridian_model",
+      "label": "meridian_model",
+      "community": 10,
+      "community_name": "02_model_spike.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "meridian_model",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "meridian_data_input_data",
+      "label": "meridian_data_input_data",
+      "community": 8,
+      "community_name": "test_meridian_data.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "meridian_data_input_data",
       "source_file": "",
       "type": "external"
     }
   ],
   "links": [
+    {
+      "source": "scripts_02_model_spike_jsonable",
+      "target": "scripts_02_model_spike_jsonable",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_parse_args",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L348",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_mcmc_cfg",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L349",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "src_models_meridian_data_load_meridian_input",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L360",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_build_mmm",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L367",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_rhat_peek",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_roi_by_channel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L388",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_response_curve_summary",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L390",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_posterior_summaries",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L391",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_write_ppc",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L392",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_parameter_recovery",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L394",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_main",
+      "target": "scripts_02_model_spike_jsonable",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L422",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_posterior_summaries",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L223",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_response_curve_summary",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_rhat_peek",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_rhat_peek",
+      "target": "scripts_02_model_spike_core_rhat_rows",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_rhat_peek",
+      "target": "scripts_02_model_spike_jsonable",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_roi_by_channel",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_write_ppc",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L240",
+      "weight": 1.0
+    },
     {
       "source": "scripts_plot_adstock_validation_build_geometric_figure",
       "target": "scripts_plot_adstock_validation_pulse_frame",
@@ -5230,7 +6070,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L105",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -5242,7 +6082,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L111",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -5254,7 +6094,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L328",
+      "source_location": "L335",
       "weight": 1.0
     },
     {
@@ -5266,7 +6106,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L194",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
@@ -5278,7 +6118,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L198",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -5290,7 +6130,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L203",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -5302,7 +6142,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L207",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -5314,7 +6154,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L308",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -5326,7 +6166,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L310",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
@@ -5338,7 +6178,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L317",
+      "source_location": "L324",
       "weight": 1.0
     },
     {
@@ -5350,7 +6190,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/data/qa.py",
-      "source_location": "L288",
+      "source_location": "L289",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_meridian_input",
+      "target": "src_models_meridian_data_load_clean_panel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_meridian_input",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L131",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_meridian_input",
+      "target": "src_models_meridian_data_wide_to_input_data",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -5663,6 +6539,114 @@
       "context": "call",
       "source_file": "tests/test_generator.py",
       "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_load_clean_panel_missing_columns",
+      "target": "src_models_meridian_data_load_clean_panel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_load_meridian_input_from_committed_parquet",
+      "target": "src_models_meridian_data_load_meridian_input",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_panel_to_national_wide_daily_kpi_not_summed_across_channels",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_panel_to_national_wide_daily_kpi_not_summed_across_channels",
+      "target": "tests_test_meridian_data_mini_panel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_panel_to_national_wide_weekly_aggregates",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_panel_to_national_wide_weekly_aggregates",
+      "target": "tests_test_meridian_data_mini_panel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_wide_to_input_data_shapes",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_wide_to_input_data_shapes",
+      "target": "tests_test_meridian_data_mini_panel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_wide_to_input_data_shapes",
+      "target": "src_models_meridian_data_wide_to_input_data",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -6267,7 +7251,7 @@
     },
     {
       "source": "tests_test_generator_test_committed_csv_matches_generator",
-      "target": "skipif",
+      "target": "tests_test_generator_py_skipif",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6279,7 +7263,7 @@
     },
     {
       "source": "tests_test_generator_test_committed_ground_truth_has_planted_params",
-      "target": "skipif",
+      "target": "tests_test_generator_py_skipif",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6287,6 +7271,18 @@
       "context": "decorator",
       "source_file": "tests/test_generator.py",
       "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_test_load_meridian_input_from_committed_parquet",
+      "target": "tests_test_meridian_data_py_skipif",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "decorator",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -6442,7 +7438,103 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/data/qa.py",
-      "source_location": "L180",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "argparse",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "matplotlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "numpy",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "pandas",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "src_models_meridian_data_load_meridian_input",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -6674,6 +7766,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_models_meridian_data",
+      "target": "pandas",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
       "source": "src_models_transformations",
       "target": "numpy",
       "relation": "imports",
@@ -6839,6 +7943,78 @@
       "context": "import",
       "source_file": "tests/test_generator.py",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "src_models_meridian_data_load_clean_panel",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "src_models_meridian_data_load_meridian_input",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "src_models_meridian_data_wide_to_input_data",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "pandas",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "pytest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -7094,6 +8270,54 @@
       "weight": 1.0
     },
     {
+      "source": "scripts_02_model_spike",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "meridian_analysis",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "meridian_model",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "src_models_meridian_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
       "source": "scripts_plot_adstock_validation",
       "target": "pathlib",
       "relation": "imports_from",
@@ -7202,6 +8426,42 @@
       "weight": 1.0
     },
     {
+      "source": "src_data_qa",
+      "target": "src_data_generator",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/data/qa.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data",
+      "target": "meridian_data_input_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_etl",
       "target": "src_data_etl",
       "relation": "imports_from",
@@ -7262,6 +8522,30 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_meridian_data",
+      "target": "src_models_meridian_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_qa",
       "target": "src_data_etl",
       "relation": "imports_from",
@@ -7319,6 +8603,30 @@
       "context": "import",
       "source_file": "tests/test_transformations_perf.py",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_mcmc_cfg",
+      "target": "namespace",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_write_ppc",
+      "target": "scripts_02_model_spike_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -7390,7 +8698,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L99",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
@@ -7402,7 +8710,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -7414,7 +8722,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L321",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -7426,7 +8734,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -7438,7 +8746,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -7450,7 +8758,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -7462,7 +8770,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -7474,7 +8782,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L294",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -7486,7 +8794,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L285",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -7498,7 +8806,43 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L267",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_clean_panel",
+      "target": "src_models_meridian_data_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_meridian_input",
+      "target": "src_models_meridian_data_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_wide_to_input_data",
+      "target": "src_models_meridian_data_py_dataframe",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -7754,6 +9098,30 @@
       "weight": 1.0
     },
     {
+      "source": "scripts_02_model_spike_core_rhat_rows",
+      "target": "scripts_02_model_spike_py_dataframe",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_parse_args",
+      "target": "namespace",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
       "source": "src_data_etl_align_date_channel_grid",
       "target": "src_data_etl_py_dataframe",
       "relation": "references",
@@ -7834,7 +9202,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L99",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
@@ -7846,7 +9214,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -7858,7 +9226,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -7870,7 +9238,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L294",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -7882,7 +9250,55 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/data/qa.py",
-      "source_location": "L267",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_clean_panel",
+      "target": "src_models_meridian_data_py_dataframe",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_load_meridian_input",
+      "target": "inputdata",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_panel_to_national_wide",
+      "target": "src_models_meridian_data_py_dataframe",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_wide_to_input_data",
+      "target": "inputdata",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -7943,6 +9359,18 @@
       "context": "return_type",
       "source_file": "tests/test_etl.py",
       "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_mini_panel",
+      "target": "tests_test_meridian_data_py_dataframe",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -8576,6 +10004,193 @@
       "weight": 1.0
     },
     {
+      "source": "reports_parameter_recovery",
+      "target": "reports_parameter_recovery_parameter_recovery_note_story_201",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "reports_parameter_recovery_parameter_recovery_note_story_201",
+      "target": "reports_parameter_recovery_path_c_planted_signals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "reports_parameter_recovery_parameter_recovery_note_story_201",
+      "target": "reports_parameter_recovery_rank_comparison",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "reports_parameter_recovery_parameter_recovery_note_story_201",
+      "target": "reports_parameter_recovery_estimated_iroas_posterior_mean_units_per",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "reports/parameter_recovery.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_parse_args",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_mcmc_cfg",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_build_mmm",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_core_rhat_rows",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_rhat_peek",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_roi_by_channel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_response_curve_summary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L203",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_posterior_summaries",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_write_ppc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_parameter_recovery",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L279",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_main",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L347",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_jsonable",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike",
+      "target": "scripts_02_model_spike_analyzer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
       "source": "scripts_plot_adstock_validation",
       "target": "scripts_plot_adstock_validation_build_weibull_figure",
       "relation": "contains",
@@ -8786,13 +10401,24 @@
     },
     {
       "source": "src_data_qa",
+      "target": "src_data_qa_detect_anomalies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/data/qa.py",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_qa",
       "target": "src_data_qa_repair_panel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -8803,7 +10429,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L267",
+      "source_location": "L268",
       "weight": 1.0
     },
     {
@@ -8814,7 +10440,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L282",
+      "source_location": "L283",
       "weight": 1.0
     },
     {
@@ -8825,7 +10451,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L294",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -8836,7 +10462,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L321",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -8847,7 +10473,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -8858,7 +10484,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -8869,18 +10495,51 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa",
-      "target": "src_data_qa_detect_anomalies",
+      "source": "src_models_meridian_data",
+      "target": "src_models_meridian_data_load_meridian_input",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "src/data/qa.py",
-      "source_location": "L99",
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data",
+      "target": "src_models_meridian_data_load_clean_panel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data",
+      "target": "src_models_meridian_data_wide_to_input_data",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -9156,6 +10815,72 @@
       "confidence_score": 1.0,
       "source_file": "tests/test_generator.py",
       "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_mini_panel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_test_panel_to_national_wide_daily_kpi_not_summed_across_channels",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_test_panel_to_national_wide_weekly_aggregates",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_test_wide_to_input_data_shapes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_test_load_clean_panel_missing_columns",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data",
+      "target": "tests_test_meridian_data_test_load_meridian_input_from_committed_parquet",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -9661,7 +11386,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L282",
+      "source_location": "L283",
       "weight": 1.0
     },
     {
@@ -9672,7 +11397,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L285",
+      "source_location": "L286",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_rationale_2",
+      "target": "scripts_02_model_spike",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_02_model_spike_rationale_48",
+      "target": "scripts_02_model_spike_jsonable",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/02_model_spike.py",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -9885,91 +11632,91 @@
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_100",
+      "source": "src_data_qa_rationale_101",
       "target": "src_data_qa_detect_anomalies",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L100",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_183",
+      "source": "src_data_qa_rationale_184",
       "target": "src_data_qa_repair_panel",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L183",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_268",
+      "source": "src_data_qa_rationale_269",
       "target": "src_data_qa_write_repair_log",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L268",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_283",
+      "source": "src_data_qa_rationale_284",
       "target": "src_data_qa_unrepairedanomalieserror",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L283",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_299",
+      "source": "src_data_qa_rationale_300",
       "target": "src_data_qa_run_qa",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L299",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_326",
+      "source": "src_data_qa_rationale_333",
       "target": "src_data_qa_main",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L326",
+      "source_location": "L333",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_65",
+      "source": "src_data_qa_rationale_66",
       "target": "src_data_qa_load_panel",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L65",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
-      "source": "src_data_qa_rationale_83",
+      "source": "src_data_qa_rationale_84",
       "target": "src_data_qa_prior_activity",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/qa.py",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -9992,6 +11739,61 @@
       "confidence_score": 1.0,
       "source_file": "src/models/__init__.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_rationale_1",
+      "target": "src_models_meridian_data",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_rationale_129",
+      "target": "src_models_meridian_data_load_meridian_input",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_rationale_29",
+      "target": "src_models_meridian_data_load_clean_panel",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_rationale_46",
+      "target": "src_models_meridian_data_panel_to_national_wide",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "src_models_meridian_data_rationale_99",
+      "target": "src_models_meridian_data_wide_to_input_data",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/models/meridian_data.py",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -10090,6 +11892,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_generator.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_meridian_data_rationale_1",
+      "target": "tests_test_meridian_data",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_meridian_data.py",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -12047,5 +13860,5 @@
       "source_file": ".cursor/skills/secret-hygiene/SKILL.md"
     }
   ],
-  "built_at_commit": "61ef445b53c95d129f0f748f6cd787d2af62be1e"
+  "built_at_commit": "bd47315a3101ca9b8b7d6629faaaf3ad987ee4d1"
 }
