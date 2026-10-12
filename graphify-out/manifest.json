@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "src/optimize/__init__.py": {
-    "mtime": 1791822297.4572153,
-    "seen": 1791822304.2982504,
-    "ast_hash": "37ddd1598d2841379ad422609abc42c7",
+    "mtime": 1791822895.245246,
+    "seen": 1791822908.2819862,
+    "ast_hash": "c6e10a354d8d1b75a32a678e9a97d400",
     "semantic_hash": ""
   },
   "src/optimize/curves.py": {
@@ -360,15 +360,27 @@
     "semantic_hash": ""
   },
   "src/optimize/allocator.py": {
-    "mtime": 1791822285.0192378,
-    "seen": 1791822304.298253,
-    "ast_hash": "d1724627cb0f64bd7e35a8724cd211d5",
+    "mtime": 1791822853.1390033,
+    "seen": 1791822908.2819874,
+    "ast_hash": "fb18542348b73454e12cef50a41115eb",
     "semantic_hash": ""
   },
   "tests/test_allocator.py": {
-    "mtime": 1791822297.4572153,
-    "seen": 1791822304.2982576,
-    "ast_hash": "577c9a02aa75dfd0abe5892dad8a467a",
+    "mtime": 1791822895.245246,
+    "seen": 1791822908.2819908,
+    "ast_hash": "840e4c5a9d23174d3bd981b112b0cc14",
+    "semantic_hash": ""
+  },
+  "reports/allocation.json": {
+    "mtime": 1791822906.0618758,
+    "seen": 1791822908.2819614,
+    "ast_hash": "8bea306f0ace61bc2ff1a86d6e19d5d8",
+    "semantic_hash": ""
+  },
+  "scripts/03_allocate_budget.py": {
+    "mtime": 1791822883.8832355,
+    "seen": 1791822908.2819688,
+    "ast_hash": "4a39397237ca73d3b4e8bbed2775092b",
     "semantic_hash": ""
   }
 }

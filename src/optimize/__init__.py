@@ -1,7 +1,7 @@
 """Budget optimization helpers (STORY-301).
 
 Step 1: offline response-curve providers.
-Step 2: SLSQP maximize-KPI allocator under budget + bounds.
+Step 2–3: SLSQP maximize-KPI / target-KPI allocator + plan-shaped JSON.
 """
 
 from src.optimize.allocator import optimize_budget
