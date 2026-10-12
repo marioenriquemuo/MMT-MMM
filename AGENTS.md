@@ -46,9 +46,11 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `.cursor/rules/` | Always-on Cursor rules (`.mdc`) |
 | `Secret/` | Local-only; **gitignored** — never commit |
 
-## Sprint 1 status
+## Sprint status
 
-Working branch: **`sprint-1-core-data-engine`**.
+Working branch: **`sprint-2-mvp-optimization-agentic-ui`** (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment), cut from `main`.
+
+Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-core-data-engine` kept at the same tip.
 
 - **STORY-101 done** — Path-C generator, integer counts, `DATA_CARD.md`
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
@@ -75,7 +77,7 @@ Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-sh
 | `origin` | `https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git` |
 | `github` | `https://github.com/marioenriquemuo/MMT-MMM.git` |
 
-- Sprint integration work lands on `sprint-1-core-data-engine` (cut from `main`); push both remotes when asked
+- Sprint integration work lands on `sprint-2-mvp-optimization-agentic-ui` (cut from `main`); push both remotes when asked
 - Feature branches: `cursor/<short-topic>-…` when opening separate PRs
 - One concern per PR when practical (env, docs, model code)
 - Do not commit `Secret/`, `.conda/`, `*.egg-info/`, or notebook checkpoints

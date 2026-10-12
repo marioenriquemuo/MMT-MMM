@@ -13,7 +13,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Core libs | numpy, pandas, scipy, scikit-learn, pymc, arviz, matplotlib, jupyter, plotly, pyyaml, pydantic, pandera, pyarrow, pytest |
 | Secrets | `Secret/` gitignored — never read into commits or paste into PRs |
 | Docker | Later (deploy/CI); not required for local MMM work |
-| Working branch | `sprint-1-core-data-engine` (Sprint 1 — Core Data Engine) |
+| Working branch | `sprint-2-mvp-optimization-agentic-ui` (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment); Sprint 1 archived on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
 | Status | STORY-101 → 104 + STORY-201 Meridian spike done on sprint; see `docs/learnings/story-201-meridian.md` |
 
@@ -55,7 +55,7 @@ MMT&MMM/
 └── .cursor/                  # skills + rules
 ```
 
-## Sprint 1 progress (this branch)
+## Sprint 1 progress (complete on `main`)
 
 | Story | Status | Notes |
 | --- | --- | --- |

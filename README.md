@@ -16,7 +16,7 @@ Enterprise measurement and optimization engine: Unified Measurement Architecture
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
 | Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
 | GitHub | [MMT-MMM](https://github.com/marioenriquemuo/MMT-MMM) (private) — remote `github` |
-| Working branch | `sprint-1-core-data-engine` — tip: `git push origin HEAD && git push github HEAD` |
+| Working branch | `sprint-2-mvp-optimization-agentic-ui` — tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
 | Docker | Later (deploy/CI only) |
@@ -60,7 +60,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 
 - Project Agent Skills: `.cursor/skills/*/SKILL.md` (see `AGENTS.md`)
 - Always-on Cursor rules: `.cursor/rules/*.mdc`
-- Sprint 1 work lands on `sprint-1-core-data-engine`; feature branches `cursor/<topic>-…` when useful
+- Sprint 2 work lands on `sprint-2-mvp-optimization-agentic-ui`; feature branches `cursor/<topic>-…` when useful
 - Push intentional commits to both `origin` and `github`
 - Never commit `Secret/`, credentials, or local conda env directories
 
