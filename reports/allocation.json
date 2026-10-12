@@ -1,0 +1,39 @@
+{
+  "channels": {
+    "meta": 100000.0,
+    "google": 0.0,
+    "tiktok": 0.0,
+    "tv": 0.0
+  },
+  "total_spend": 100000.0,
+  "expected_incremental_kpi": 196380.8287809409,
+  "incremental_kpi_delta_vs_baseline": 30773.13269173811,
+  "constraints": {
+    "mode": "maximize",
+    "total_budget": 100000.0,
+    "target_kpi": null,
+    "min_spend": {
+      "meta": 0.0,
+      "google": 0.0,
+      "tiktok": 0.0,
+      "tv": 0.0
+    },
+    "max_spend": {
+      "meta": 100000.0,
+      "google": 100000.0,
+      "tiktok": 100000.0,
+      "tv": 100000.0
+    },
+    "channels": [
+      "meta",
+      "google",
+      "tiktok",
+      "tv"
+    ]
+  },
+  "solver": {
+    "success": true,
+    "message": "Optimization terminated successfully"
+  },
+  "curve_source": "reports/metrics.json"
+}
