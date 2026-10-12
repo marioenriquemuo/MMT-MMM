@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "src/optimize/__init__.py": {
-    "mtime": 1791821405.1611385,
-    "seen": 1791821443.992875,
-    "ast_hash": "c2f5c6707cca99c4ea55769b12d20b1c",
+    "mtime": 1791822297.4572153,
+    "seen": 1791822304.2982504,
+    "ast_hash": "37ddd1598d2841379ad422609abc42c7",
     "semantic_hash": ""
   },
   "src/optimize/curves.py": {
@@ -348,15 +348,27 @@
     "semantic_hash": ""
   },
   "reports/figures/story_301_fixture_curves.html": {
-    "mtime": 1791821442.2132397,
-    "seen": 1791821443.9929218,
-    "ast_hash": "48d98588342c2e7bb69635e6c07e13d9",
+    "mtime": 1791821856.104869,
+    "seen": 1791822304.298342,
+    "ast_hash": "0b379cac369e11ecbbd4f43d763bde68",
     "semantic_hash": ""
   },
   "reports/figures/story_301_toy_diminishing_returns.html": {
     "mtime": 1791820175.08362,
     "seen": 1791821443.9929228,
     "ast_hash": "6f1167e80cdc70efa5408ae8b118df86",
+    "semantic_hash": ""
+  },
+  "src/optimize/allocator.py": {
+    "mtime": 1791822285.0192378,
+    "seen": 1791822304.298253,
+    "ast_hash": "d1724627cb0f64bd7e35a8724cd211d5",
+    "semantic_hash": ""
+  },
+  "tests/test_allocator.py": {
+    "mtime": 1791822297.4572153,
+    "seen": 1791822304.2982576,
+    "ast_hash": "577c9a02aa75dfd0abe5892dad8a467a",
     "semantic_hash": ""
   }
 }
