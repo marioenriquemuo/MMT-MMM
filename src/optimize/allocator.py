@@ -140,14 +140,15 @@ def _maximize(
     spends = {ch: float(result.x[i]) for i, ch in enumerate(chans)}
     kpi = _total_kpi(provider, chans, result.x)
     ok, msg = _validate_maximize(spends, chans, lo, hi, budget, tol, result)
-    delta = float(kpi - baseline_kpi) if ok else None
+    if not ok:
+        return _fail_result(msg, curve_source=curve_source, constraints=cons_meta)
 
     return _ok_result(
         spends,
         kpi,
-        delta,
+        float(kpi - baseline_kpi),
         cons_meta,
-        ok,
+        True,
         msg,
         curve_source,
     )
@@ -227,8 +228,10 @@ def _minimize_for_target(
     spends = {ch: float(result.x[i]) for i, ch in enumerate(chans)}
     kpi = _total_kpi(provider, chans, result.x)
     ok, msg = _validate_target(spends, chans, lo, hi, target, kpi, tol, result)
+    if not ok:
+        return _fail_result(msg, curve_source=curve_source, constraints=cons_meta)
 
-    return _ok_result(spends, kpi, None, cons_meta, ok, msg, curve_source)
+    return _ok_result(spends, kpi, None, cons_meta, True, msg, curve_source)
 
 
 # --- Bounds / KPI / start / validate ---

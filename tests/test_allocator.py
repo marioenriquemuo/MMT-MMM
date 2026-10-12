@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
+import numpy as np
 import pytest
 
 from src.optimize.allocator import optimize_budget
@@ -84,6 +86,28 @@ def test_infeasible_maxes_below_budget(fixture_provider: MetricsJsonCurveProvide
     assert out["success"] is False
     assert "infeasible" in out["message"].lower()
     assert out["channels"] == {}
+
+
+def test_post_solve_validate_fail_clears_channels(
+    fixture_provider: MetricsJsonCurveProvider,
+):
+    """SLSQP failure after solve must match early-gate empty-channel shape."""
+    fake = MagicMock()
+    fake.success = False
+    fake.message = "Iteration limit reached"
+    fake.x = np.array([20.0, 20.0, 20.0])
+
+    with patch("src.optimize.allocator.minimize", return_value=fake):
+        out = optimize_budget(
+            fixture_provider, total_budget=60.0, min_spend=0.0, max_spend=40.0, tol=TOL
+        )
+    assert out["success"] is False
+    assert out["channels"] == {}
+    assert out["spends"] == {}
+    assert out["total_spend"] == 0.0
+    assert out["expected_incremental_kpi"] == 0.0
+    assert out["incremental_kpi_delta_vs_baseline"] is None
+    assert "SLSQP failed" in out["message"]
 
 
 # --- Step 3: target KPI ---
