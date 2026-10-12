@@ -15,7 +15,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Docker | Later (deploy/CI); not required for local MMM work |
 | Working branch | `sprint-2-mvp-optimization-agentic-ui` (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment); Sprint 1 archived on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
-| Status | STORY-101 → 104 + STORY-201 Meridian spike done on sprint; see `docs/learnings/story-201-meridian.md` |
+| Status | Sprint 1 done on `main`; Sprint 2: STORY-301 budget allocator on feature branch (PR #9); Meridian rank caveat still open — `docs/learnings/story-201-meridian.md` |
 
 ## What we build
 
@@ -29,7 +29,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 ```
 MMT&MMM/
 ├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest, google-meridian)
-├── README.md                 # setup + STORY-101–201 how-to
+├── README.md                 # setup + STORY-101–301 how-to
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -41,13 +41,19 @@ MMT&MMM/
 │   ├── data/etl.py           # STORY-103 load/align/impute/Parquet
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
-│   └── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
+│   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
+│   └── optimize/             # STORY-301 curves + SLSQP allocator
+│       ├── curves.py         # offline response-curve provider
+│       └── allocator.py      # maximize KPI / hit target under bounds
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
 ├── scripts/02_model_spike.py           # STORY-201 Meridian smoke/full MCMC
-├── tests/                    # generator + transforms + ETL + QA + Meridian adapter + <1s perf
+├── scripts/03_allocate_budget.py       # STORY-301 CLI → allocation.json
+├── scripts/plot_allocation_teaching.py # STORY-301 Plotly teaching figures
+├── tests/                    # + curves / allocator bounds tests
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
-├── reports/figures/          # Plotly HTML + Meridian PPC PNG
+├── reports/                  # metrics.json, allocation.json
+├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -68,6 +74,16 @@ MMT&MMM/
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 
 **STORY-201 open issue:** channel rank recovery vs Path-C is inconsistent (Spearman ≈ −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md).
+
+## Sprint 2 progress
+
+Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this story: `cursor/story-301-budget-opt-702b` (PR #9).
+
+| Story | Status | Notes |
+| --- | --- | --- |
+| STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
+
+Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 
 ## Key conventions
 

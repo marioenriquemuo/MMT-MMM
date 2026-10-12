@@ -24,7 +24,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
 | `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest) |
-| `README.md` | Human overview + Miniconda setup + STORY-101–201 how-to |
+| `README.md` | Human overview + Miniconda setup + STORY-101–301 how-to |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian learnings + open rank-recovery issue |
@@ -33,12 +33,17 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/data/qa.py` | STORY-104 media detect / repair / hard-fail gate |
 | `src/models/transformations.py` | STORY-102 geometric / Weibull adstock + Hill saturation |
 | `src/models/meridian_data.py` | STORY-201 clean parquet → Meridian national `InputData` |
+| `src/optimize/curves.py` | STORY-301 offline response-curve provider |
+| `src/optimize/allocator.py` | STORY-301 SLSQP budget optimizer (bounds + target KPI) |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
 | `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
-| `tests/` | Generator, transforms, ETL, QA, Meridian adapter, `<1s` perf gate |
+| `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
+| `scripts/plot_allocation_teaching.py` | STORY-301 Plotly teaching figures |
+| `tests/` | Generator, transforms, ETL, QA, Meridian, curves, allocator, `<1s` perf |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
 | `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
-| `reports/figures/` | Plotly HTML adstock / Hill plots |
+| `reports/` | `metrics.json`, `allocation.json` |
+| `reports/figures/` | Plotly HTML + Meridian PPC + `story_301_*.html` |
 | `docs/graphify-archify.md` | Index of graphify + archify artifacts |
 | `graphify-out/` | Knowledge graph outputs |
 | `.archify/` | Architecture diagram runs |
@@ -57,6 +62,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
+- **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
 
 ## Skills
 
@@ -94,6 +100,7 @@ python -m pytest tests/ -q
 python -m src.data.etl
 python -m src.data.qa
 # Fuller Meridian spike (slow on CPU): python scripts/02_model_spike.py --mode full
+# Budget allocate (synthetic fixture): python scripts/03_allocate_budget.py --curves tests/fixtures/synthetic_response_curves.json --budget 60 --min-spend 5 --max-spend 30
 ```
 
 ## Definition of done (agent tasks)
@@ -102,4 +109,4 @@ python -m src.data.qa
 - [ ] No secrets or conda env trees committed
 - [ ] `README.md` / `CLAUDE.md` / `AGENTS.md` updated if layout or setup changed
 - [ ] Leakage / assumption risks called out when touching measurement code
-- [ ] Sprint 1 validation plots stay Plotly scripts under `scripts/` / `reports/figures/` unless a story explicitly requires notebooks
+- [ ] Teaching / validation plots stay Plotly scripts under `scripts/` / `reports/figures/` unless a story explicitly requires notebooks

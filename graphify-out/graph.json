@@ -160,28 +160,40 @@
       "source_location": "L297"
     },
     {
-      "id": "tests_test_transformations_long_pulse",
-      "label": "long_pulse()",
+      "id": "src_models_transformations_weibull_adstock",
+      "label": "weibull_adstock()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
-      "norm_label": "long_pulse()",
-      "source_file": "tests/test_transformations.py",
-      "source_location": "L26"
+      "norm_label": "weibull_adstock()",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L111"
     },
     {
-      "id": "tests_test_transformations_pulse",
-      "label": "pulse()",
+      "id": "src_models_transformations_weibull_pdf_weights",
+      "label": "_weibull_pdf_weights()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
-      "norm_label": "pulse()",
+      "norm_label": "_weibull_pdf_weights()",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L95"
+    },
+    {
+      "id": "tests_test_transformations_test_weibull_2d_channels_by_time",
+      "label": "test_weibull_2d_channels_by_time()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "code",
+      "norm_label": "test_weibull_2d_channels_by_time()",
       "source_file": "tests/test_transformations.py",
-      "source_location": "L18"
+      "source_location": "L174"
     },
     {
       "id": "tests_test_transformations_test_weibull_larger_scale_longer_tail",
@@ -189,7 +201,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_larger_scale_longer_tail()",
       "source_file": "tests/test_transformations.py",
@@ -201,7 +213,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_length_preserved()",
       "source_file": "tests/test_transformations.py",
@@ -213,11 +225,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_nonnegative()",
       "source_file": "tests/test_transformations.py",
       "source_location": "L112"
+    },
+    {
+      "id": "tests_test_transformations_test_weibull_normalize_unit_mass_on_constant",
+      "label": "test_weibull_normalize_unit_mass_on_constant()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "code",
+      "norm_label": "test_weibull_normalize_unit_mass_on_constant()",
+      "source_file": "tests/test_transformations.py",
+      "source_location": "L117"
     },
     {
       "id": "tests_test_transformations_test_weibull_raw_mass_not_forced_to_one",
@@ -225,11 +249,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_raw_mass_not_forced_to_one()",
       "source_file": "tests/test_transformations.py",
       "source_location": "L125"
+    },
+    {
+      "id": "tests_test_transformations_test_weibull_rejects_bad_params",
+      "label": "test_weibull_rejects_bad_params()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "code",
+      "norm_label": "test_weibull_rejects_bad_params()",
+      "source_file": "tests/test_transformations.py",
+      "source_location": "L162"
     },
     {
       "id": "tests_test_transformations_test_weibull_shape_controls_peak_timing",
@@ -237,7 +273,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_shape_controls_peak_timing()",
       "source_file": "tests/test_transformations.py",
@@ -249,7 +285,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "test_weibull_two_runs_identical()",
       "source_file": "tests/test_transformations.py",
@@ -386,6 +422,18 @@
       "norm_label": "assert_valid()",
       "source_file": "src/data/generator.py",
       "source_location": "L297"
+    },
+    {
+      "id": "src_data_generator_baseline_sales",
+      "label": "_baseline_sales()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "generate",
+      "file_type": "code",
+      "norm_label": "_baseline_sales()",
+      "source_file": "src/data/generator.py",
+      "source_location": "L154"
     },
     {
       "id": "src_data_generator_coerce_integer_columns",
@@ -772,18 +820,6 @@
       "source_location": "L29"
     },
     {
-      "id": "scripts_plot_story_301_fixture_curves_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "MetricsJsonCurveProvider",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "scripts/plot_story_301_fixture_curves.py",
-      "source_location": "L26"
-    },
-    {
       "id": "src_optimize_curves_metricsjsoncurveprovider_channels",
       "label": ".channels()",
       "_callable": true,
@@ -1029,7 +1065,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "_extract_means_map()",
       "source_file": "src/optimize/curves.py",
@@ -1041,7 +1077,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "load_curve_means()",
       "source_file": "src/optimize/curves.py",
@@ -1053,7 +1089,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "load_curve_means_json()",
       "source_file": "src/optimize/curves.py",
@@ -1065,7 +1101,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "_looks_like_arrays()",
       "source_file": "src/optimize/curves.py",
@@ -1077,7 +1113,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "src/optimize/curves.py",
@@ -1089,7 +1125,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_fixture_nested_means()",
       "source_file": "tests/test_curves.py",
@@ -1101,7 +1137,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_flat_channel_map()",
       "source_file": "tests/test_curves.py",
@@ -1113,11 +1149,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_means_only_wrapper()",
       "source_file": "tests/test_curves.py",
       "source_location": "L41"
+    },
+    {
+      "id": "src_models_transformations_weibull_n_lags",
+      "label": "_weibull_n_lags()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "transformations.py",
+      "file_type": "code",
+      "norm_label": "_weibull_n_lags()",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L80"
     },
     {
       "id": "tests_test_transformations_perf_panel",
@@ -1154,18 +1202,6 @@
       "norm_label": "test_transforms_two_years_daily_under_one_second()",
       "source_file": "tests/test_transformations_perf.py",
       "source_location": "L32"
-    },
-    {
-      "id": "src_data_generator_baseline_sales",
-      "label": "_baseline_sales()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "hill_saturation",
-      "file_type": "code",
-      "norm_label": "_baseline_sales()",
-      "source_file": "src/data/generator.py",
-      "source_location": "L154"
     },
     {
       "id": "src_models_transformations_hill_saturation",
@@ -1393,7 +1429,7 @@
       "file_type": "code",
       "norm_label": "fixture_provider()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L19"
+      "source_location": "L21"
     },
     {
       "id": "tests_test_allocator_test_cli_run_allocate_writes_json",
@@ -1405,7 +1441,7 @@
       "file_type": "code",
       "norm_label": "test_cli_run_allocate_writes_json()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L152"
+      "source_location": "L176"
     },
     {
       "id": "tests_test_allocator_test_infeasible_maxes_below_budget",
@@ -1417,7 +1453,7 @@
       "file_type": "code",
       "norm_label": "test_infeasible_maxes_below_budget()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L80"
+      "source_location": "L82"
     },
     {
       "id": "tests_test_allocator_test_infeasible_mins_exceed_budget",
@@ -1429,7 +1465,7 @@
       "file_type": "code",
       "norm_label": "test_infeasible_mins_exceed_budget()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L71"
+      "source_location": "L73"
     },
     {
       "id": "tests_test_allocator_test_optimized_spends_respect_per_channel_bounds",
@@ -1441,7 +1477,7 @@
       "file_type": "code",
       "norm_label": "test_optimized_spends_respect_per_channel_bounds()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L42"
+      "source_location": "L44"
     },
     {
       "id": "tests_test_allocator_test_optimized_spends_respect_scalar_bounds",
@@ -1453,7 +1489,19 @@
       "file_type": "code",
       "norm_label": "test_optimized_spends_respect_scalar_bounds()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L26"
+      "source_location": "L28"
+    },
+    {
+      "id": "tests_test_allocator_test_post_solve_validate_fail_clears_channels",
+      "label": "test_post_solve_validate_fail_clears_channels()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "optimize_budget",
+      "file_type": "code",
+      "norm_label": "test_post_solve_validate_fail_clears_channels()",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L91"
     },
     {
       "id": "tests_test_allocator_test_require_exactly_one_mode",
@@ -1465,7 +1513,7 @@
       "file_type": "code",
       "norm_label": "test_require_exactly_one_mode()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L140"
+      "source_location": "L164"
     },
     {
       "id": "tests_test_allocator_test_sum_equals_total_budget",
@@ -1477,7 +1525,7 @@
       "file_type": "code",
       "norm_label": "test_sum_equals_total_budget()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L62"
+      "source_location": "L64"
     },
     {
       "id": "tests_test_allocator_test_target_mode_fails_when_impossible",
@@ -1489,7 +1537,7 @@
       "file_type": "code",
       "norm_label": "test_target_mode_fails_when_impossible()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L111"
+      "source_location": "L135"
     },
     {
       "id": "tests_test_allocator_test_target_mode_hits_kpi_when_feasible",
@@ -1501,7 +1549,7 @@
       "file_type": "code",
       "norm_label": "test_target_mode_hits_kpi_when_feasible()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L92"
+      "source_location": "L116"
     },
     {
       "id": "tests_test_allocator_test_target_mode_respects_bounds",
@@ -1513,7 +1561,7 @@
       "file_type": "code",
       "norm_label": "test_target_mode_respects_bounds()",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L125"
+      "source_location": "L149"
     },
     {
       "id": "scripts_plot_allocation_teaching_bar_frame",
@@ -1609,7 +1657,7 @@
       "file_type": "code",
       "norm_label": "_bounds_dict()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L361"
+      "source_location": "L364"
     },
     {
       "id": "src_optimize_allocator_bounds_gate",
@@ -1621,7 +1669,7 @@
       "file_type": "code",
       "norm_label": "_bounds_gate()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L297"
+      "source_location": "L300"
     },
     {
       "id": "src_optimize_allocator_constraints",
@@ -1633,7 +1681,7 @@
       "file_type": "code",
       "norm_label": "_constraints()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L365"
+      "source_location": "L368"
     },
     {
       "id": "src_optimize_allocator_curve_max_spends",
@@ -1645,7 +1693,7 @@
       "file_type": "code",
       "norm_label": "_curve_max_spends()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L270"
+      "source_location": "L273"
     },
     {
       "id": "src_optimize_allocator_fail_result",
@@ -1657,7 +1705,7 @@
       "file_type": "code",
       "norm_label": "_fail_result()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L407"
+      "source_location": "L410"
     },
     {
       "id": "src_optimize_allocator_feasible_start",
@@ -1669,7 +1717,7 @@
       "file_type": "code",
       "norm_label": "_feasible_start()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L281"
+      "source_location": "L284"
     },
     {
       "id": "src_optimize_allocator_maximize",
@@ -1705,7 +1753,7 @@
       "file_type": "code",
       "norm_label": "_minimize_for_target()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L159"
+      "source_location": "L160"
     },
     {
       "id": "src_optimize_allocator_minimize_for_target_objective",
@@ -1717,7 +1765,7 @@
       "file_type": "code",
       "norm_label": "objective()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L215"
+      "source_location": "L216"
     },
     {
       "id": "src_optimize_allocator_ok_result",
@@ -1729,7 +1777,7 @@
       "file_type": "code",
       "norm_label": "_ok_result()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L383"
+      "source_location": "L386"
     },
     {
       "id": "src_optimize_allocator_resolve_bounds",
@@ -1741,7 +1789,7 @@
       "file_type": "code",
       "norm_label": "_resolve_bounds()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L237"
+      "source_location": "L240"
     },
     {
       "id": "src_optimize_allocator_total_kpi",
@@ -1753,7 +1801,7 @@
       "file_type": "code",
       "norm_label": "_total_kpi()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L291"
+      "source_location": "L294"
     },
     {
       "id": "src_optimize_allocator_validate_maximize",
@@ -1765,7 +1813,7 @@
       "file_type": "code",
       "norm_label": "_validate_maximize()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L315"
+      "source_location": "L318"
     },
     {
       "id": "src_optimize_allocator_validate_target",
@@ -1777,7 +1825,7 @@
       "file_type": "code",
       "norm_label": "_validate_target()",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L336"
+      "source_location": "L339"
     },
     {
       "id": "src_optimize_curves_curveprovider_channels",
@@ -1809,7 +1857,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "build_parser()",
       "source_file": "scripts/03_allocate_budget.py",
@@ -1821,7 +1869,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "scripts/03_allocate_budget.py",
@@ -1833,7 +1881,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "_parse_spend_arg()",
       "source_file": "scripts/03_allocate_budget.py",
@@ -1845,7 +1893,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "run_allocate()",
       "source_file": "scripts/03_allocate_budget.py",
@@ -1876,76 +1924,40 @@
       "source_location": "L137"
     },
     {
-      "id": "src_models_transformations_weibull_adstock",
-      "label": "weibull_adstock()",
+      "id": "tests_test_transformations_long_pulse",
+      "label": "long_pulse()",
       "_callable": true,
       "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
+      "community": 46,
+      "community_name": "long_pulse",
       "file_type": "code",
-      "norm_label": "weibull_adstock()",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L111"
-    },
-    {
-      "id": "src_models_transformations_weibull_n_lags",
-      "label": "_weibull_n_lags()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "code",
-      "norm_label": "_weibull_n_lags()",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L80"
-    },
-    {
-      "id": "src_models_transformations_weibull_pdf_weights",
-      "label": "_weibull_pdf_weights()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "code",
-      "norm_label": "_weibull_pdf_weights()",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L95"
-    },
-    {
-      "id": "tests_test_transformations_test_weibull_2d_channels_by_time",
-      "label": "test_weibull_2d_channels_by_time()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "code",
-      "norm_label": "test_weibull_2d_channels_by_time()",
+      "norm_label": "long_pulse()",
       "source_file": "tests/test_transformations.py",
-      "source_location": "L174"
+      "source_location": "L26"
     },
     {
-      "id": "tests_test_transformations_test_weibull_normalize_unit_mass_on_constant",
-      "label": "test_weibull_normalize_unit_mass_on_constant()",
+      "id": "tests_test_transformations_pulse",
+      "label": "pulse()",
       "_callable": true,
       "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
+      "community": 46,
+      "community_name": "long_pulse",
       "file_type": "code",
-      "norm_label": "test_weibull_normalize_unit_mass_on_constant()",
+      "norm_label": "pulse()",
       "source_file": "tests/test_transformations.py",
-      "source_location": "L117"
+      "source_location": "L18"
     },
     {
-      "id": "tests_test_transformations_test_weibull_rejects_bad_params",
-      "label": "test_weibull_rejects_bad_params()",
+      "id": "scripts_plot_story_301_fixture_curves_main",
+      "label": "main()",
       "_callable": true,
       "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
+      "community": 5,
+      "community_name": "test_qa.py",
       "file_type": "code",
-      "norm_label": "test_weibull_rejects_bad_params()",
-      "source_file": "tests/test_transformations.py",
-      "source_location": "L162"
+      "norm_label": "main()",
+      "source_file": "scripts/plot_story_301_fixture_curves.py",
+      "source_location": "L26"
     },
     {
       "id": "src_data_qa_detect_anomalies",
@@ -2452,13 +2464,13 @@
       "source_location": "L281"
     },
     {
-      "id": "tests_test_transformations_py_fixture",
-      "label": "fixture",
+      "id": "src_models_transformations_py_ndarray",
+      "label": "ndarray",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
-      "norm_label": "fixture",
+      "norm_label": "ndarray",
       "source_file": "",
       "source_location": ""
     },
@@ -2467,18 +2479,51 @@
       "label": "ndarray",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "code",
       "norm_label": "ndarray",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "src_models_transformations_rationale_120",
+      "label": "Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull\u2026",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "rationale",
+      "norm_label": "apply two-parameter weibull adstock along ``axis``. builds discrete weibull...",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L120"
+    },
+    {
+      "id": "src_models_transformations_rationale_96",
+      "label": "Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive\u2026",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "rationale",
+      "norm_label": "discrete weibull pdf-style weights on lags ``0 .. l-1``. evaluated at positive...",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L96"
+    },
+    {
+      "id": "tests_test_transformations_rationale_118",
+      "label": "Normalized weights sum to 1 \u2192 constant series stays at that level.",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "weibull_adstock",
+      "file_type": "rationale",
+      "norm_label": "normalized weights sum to 1 \u2192 constant series stays at that level.",
+      "source_file": "tests/test_transformations.py",
+      "source_location": "L118"
+    },
+    {
       "id": "tests_test_transformations_rationale_126",
       "label": "normalize=False keeps raw PDF-style weights (pulse response \u2260 pulse).",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "rationale",
       "norm_label": "normalize=false keeps raw pdf-style weights (pulse response = pulse).",
       "source_file": "tests/test_transformations.py",
@@ -2489,7 +2534,7 @@
       "label": "Larger scale stretches carryover \u2014 more mass in the late tail.",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "rationale",
       "norm_label": "larger scale stretches carryover \u2014 more mass in the late tail.",
       "source_file": "tests/test_transformations.py",
@@ -2500,33 +2545,11 @@
       "label": "shape < 1 peaks at lag 0; shape > 1 can peak after day 0.",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ndarray",
+      "community_name": "weibull_adstock",
       "file_type": "rationale",
       "norm_label": "shape < 1 peaks at lag 0; shape > 1 can peak after day 0.",
       "source_file": "tests/test_transformations.py",
       "source_location": "L151"
-    },
-    {
-      "id": "tests_test_transformations_rationale_19",
-      "label": "Impulse of 100 on day 0, zeros after (hand-checkable decay).",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ndarray",
-      "file_type": "rationale",
-      "norm_label": "impulse of 100 on day 0, zeros after (hand-checkable decay).",
-      "source_file": "tests/test_transformations.py",
-      "source_location": "L19"
-    },
-    {
-      "id": "tests_test_transformations_rationale_27",
-      "label": "Longer impulse for Weibull tail / peak-timing checks.",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ndarray",
-      "file_type": "rationale",
-      "norm_label": "longer impulse for weibull tail / peak-timing checks.",
-      "source_file": "tests/test_transformations.py",
-      "source_location": "L27"
     },
     {
       "id": "cursor_skills_graphify_skill",
@@ -3497,6 +3520,17 @@
       "source_location": "L104"
     },
     {
+      "id": "src_data_generator_rationale_158",
+      "label": "National baseline + media contribution after adstock/Hill.",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "generate",
+      "file_type": "rationale",
+      "norm_label": "national baseline + media contribution after adstock/hill.",
+      "source_file": "src/data/generator.py",
+      "source_location": "L158"
+    },
+    {
       "id": "src_data_generator_rationale_186",
       "label": "Serializable planted Path-C parameters for later recovery tests.",
       "_origin": "ast",
@@ -3975,22 +4009,44 @@
       "source_location": "L77"
     },
     {
+      "id": "abc",
+      "label": "ABC",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "curves.py",
+      "file_type": "code",
+      "norm_label": "abc",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "curvearrays",
       "label": "CurveArrays",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "curvearrays",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "src_optimize_curves",
+      "label": "curves.py",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "curves.py",
+      "file_type": "code",
+      "norm_label": "curves.py",
+      "source_file": "src/optimize/curves.py",
+      "source_location": "L1"
+    },
+    {
       "id": "src_optimize_curves_py_any",
       "label": "Any",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "any",
       "source_file": "",
@@ -4001,21 +4057,21 @@
       "label": "Path",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "src_optimize_init",
-      "label": "optimize/__init__.py",
+      "id": "src_optimize_curves_rationale_1",
+      "label": "Offline response-curve providers for STORY-301 (Step 1). Reads Meridian\u2026",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
-      "file_type": "code",
-      "norm_label": "optimize/__init__.py",
-      "source_file": "src/optimize/__init__.py",
+      "community_name": "curves.py",
+      "file_type": "rationale",
+      "norm_label": "offline response-curve providers for story-301 (step 1). reads meridian...",
+      "source_file": "src/optimize/curves.py",
       "source_location": "L1"
     },
     {
@@ -4023,7 +4079,7 @@
       "label": "Load curve arrays from a JSON file path.",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "load curve arrays from a json file path.",
       "source_file": "src/optimize/curves.py",
@@ -4034,7 +4090,7 @@
       "label": "True if mapping is already channel -> (spend, mean) array pairs.",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "true if mapping is already channel -> (spend, mean) array pairs.",
       "source_file": "src/optimize/curves.py",
@@ -4045,22 +4101,11 @@
       "label": "Normalize Meridian metrics or synthetic fixture into spend/mean arrays.\u2026",
       "_origin": "ast",
       "community": 37,
-      "community_name": "load_curve_means",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "normalize meridian metrics or synthetic fixture into spend/mean arrays....",
       "source_file": "src/optimize/curves.py",
       "source_location": "L49"
-    },
-    {
-      "id": "src_optimize_init_rationale_1",
-      "label": "Budget optimization helpers (STORY-301). Step 1: offline response-curve\u2026",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "load_curve_means",
-      "file_type": "rationale",
-      "norm_label": "budget optimization helpers (story-301). step 1: offline response-curve...",
-      "source_file": "src/optimize/__init__.py",
-      "source_location": "L1"
     },
     {
       "id": "src_models_transformations",
@@ -4107,6 +4152,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_models_transformations_rationale_81",
+      "label": "Choose discrete lag support ``L`` for Weibull PDF weights. Default:\u2026",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "transformations.py",
+      "file_type": "rationale",
+      "norm_label": "choose discrete lag support ``l`` for weibull pdf weights. default:...",
+      "source_file": "src/models/transformations.py",
+      "source_location": "L81"
+    },
+    {
       "id": "tests_test_transformations_perf_rationale_1",
       "label": "STORY-102 Step 6 \u2014 wall-time gate for transforms on ~2y daily data.",
       "_origin": "ast",
@@ -4149,17 +4205,6 @@
       "norm_label": "models/__init__.py",
       "source_file": "src/models/__init__.py",
       "source_location": "L1"
-    },
-    {
-      "id": "src_data_generator_rationale_158",
-      "label": "National baseline + media contribution after adstock/Hill.",
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "hill_saturation",
-      "file_type": "rationale",
-      "norm_label": "national baseline + media contribution after adstock/hill.",
-      "source_file": "src/data/generator.py",
-      "source_location": "L158"
     },
     {
       "id": "src_models_init_rationale_1",
@@ -4327,6 +4372,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tests_test_allocator_rationale_94",
+      "label": "SLSQP failure after solve must match early-gate empty-channel shape.",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "optimize_budget",
+      "file_type": "rationale",
+      "norm_label": "slsqp failure after solve must match early-gate empty-channel shape.",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L94"
+    },
+    {
       "id": "scripts_plot_allocation_teaching",
       "label": "plot_allocation_teaching.py",
       "_origin": "ast",
@@ -4426,6 +4482,17 @@
       "source_location": ""
     },
     {
+      "id": "src_optimize_init",
+      "label": "optimize/__init__.py",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "allocator.py",
+      "file_type": "code",
+      "norm_label": "optimize/__init__.py",
+      "source_file": "src/optimize/__init__.py",
+      "source_location": "L1"
+    },
+    {
       "id": "src_optimize_allocator_rationale_1",
       "label": "SLSQP budget allocator (STORY-301 Steps 2\u20133). **Maximize mode:** fixed\u2026",
       "_origin": "ast",
@@ -4437,7 +4504,7 @@
       "source_location": "L1"
     },
     {
-      "id": "src_optimize_allocator_rationale_271",
+      "id": "src_optimize_allocator_rationale_274",
       "label": "Per-channel upper default = max observed spend knot (flat beyond).",
       "_origin": "ast",
       "community": 43,
@@ -4445,10 +4512,10 @@
       "file_type": "rationale",
       "norm_label": "per-channel upper default = max observed spend knot (flat beyond).",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L271"
+      "source_location": "L274"
     },
     {
-      "id": "src_optimize_allocator_rationale_282",
+      "id": "src_optimize_allocator_rationale_285",
       "label": "Start at mins, then fill remaining budget proportional to room (equal-room).",
       "_origin": "ast",
       "community": 43,
@@ -4456,7 +4523,7 @@
       "file_type": "rationale",
       "norm_label": "start at mins, then fill remaining budget proportional to room (equal-room).",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L282"
+      "source_location": "L285"
     },
     {
       "id": "src_optimize_curves_rationale_34",
@@ -4492,22 +4559,22 @@
       "source_location": "L42"
     },
     {
-      "id": "abc",
-      "label": "ABC",
+      "id": "src_optimize_init_rationale_1",
+      "label": "Budget optimization helpers (STORY-301). Step 1: offline response-curve\u2026",
       "_origin": "ast",
-      "community": 44,
-      "community_name": "curves.py",
-      "file_type": "code",
-      "norm_label": "abc",
-      "source_file": "",
-      "source_location": ""
+      "community": 43,
+      "community_name": "allocator.py",
+      "file_type": "rationale",
+      "norm_label": "budget optimization helpers (story-301). step 1: offline response-curve...",
+      "source_file": "src/optimize/__init__.py",
+      "source_location": "L1"
     },
     {
       "id": "scripts_03_allocate_budget",
       "label": "03_allocate_budget.py",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "03_allocate_budget.py",
       "source_file": "scripts/03_allocate_budget.py",
@@ -4518,7 +4585,7 @@
       "label": "Any",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "any",
       "source_file": "",
@@ -4529,7 +4596,7 @@
       "label": "ArgumentParser",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "argumentparser",
       "source_file": "",
@@ -4540,29 +4607,18 @@
       "label": "Path",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "src_optimize_curves",
-      "label": "curves.py",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "curves.py",
-      "file_type": "code",
-      "norm_label": "curves.py",
-      "source_file": "src/optimize/curves.py",
-      "source_location": "L1"
-    },
-    {
       "id": "scripts_03_allocate_budget_rationale_117",
       "label": "Library entrypoint (also used by tests). Writes JSON when ``out`` is set.",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "rationale",
       "norm_label": "library entrypoint (also used by tests). writes json when ``out`` is set.",
       "source_file": "scripts/03_allocate_budget.py",
@@ -4573,7 +4629,7 @@
       "label": "STORY-301 Step 3 \u2014 allocate budget from offline response curves. Examples::\u2026",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "rationale",
       "norm_label": "story-301 step 3 \u2014 allocate budget from offline response curves. examples::...",
       "source_file": "scripts/03_allocate_budget.py",
@@ -4584,22 +4640,11 @@
       "label": "Scalar float, JSON object string, or ``@path`` / path to JSON file.",
       "_origin": "ast",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "file_type": "rationale",
       "norm_label": "scalar float, json object string, or ``@path`` / path to json file.",
       "source_file": "scripts/03_allocate_budget.py",
       "source_location": "L39"
-    },
-    {
-      "id": "src_optimize_curves_rationale_1",
-      "label": "Offline response-curve providers for STORY-301 (Step 1). Reads Meridian\u2026",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "curves.py",
-      "file_type": "rationale",
-      "norm_label": "offline response-curve providers for story-301 (step 1). reads meridian...",
-      "source_file": "src/optimize/curves.py",
-      "source_location": "L1"
     },
     {
       "id": "src_optimize_curves_py_ndarray",
@@ -4635,59 +4680,37 @@
       "source_location": "L142"
     },
     {
-      "id": "src_models_transformations_py_ndarray",
-      "label": "ndarray",
+      "id": "tests_test_transformations_py_fixture",
+      "label": "fixture",
       "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
+      "community": 46,
+      "community_name": "long_pulse",
       "file_type": "code",
-      "norm_label": "ndarray",
+      "norm_label": "fixture",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "src_models_transformations_rationale_120",
-      "label": "Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull\u2026",
+      "id": "tests_test_transformations_rationale_19",
+      "label": "Impulse of 100 on day 0, zeros after (hand-checkable decay).",
       "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
+      "community": 46,
+      "community_name": "long_pulse",
       "file_type": "rationale",
-      "norm_label": "apply two-parameter weibull adstock along ``axis``. builds discrete weibull...",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L120"
-    },
-    {
-      "id": "src_models_transformations_rationale_81",
-      "label": "Choose discrete lag support ``L`` for Weibull PDF weights. Default:\u2026",
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "rationale",
-      "norm_label": "choose discrete lag support ``l`` for weibull pdf weights. default:...",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L81"
-    },
-    {
-      "id": "src_models_transformations_rationale_96",
-      "label": "Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive\u2026",
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "rationale",
-      "norm_label": "discrete weibull pdf-style weights on lags ``0 .. l-1``. evaluated at positive...",
-      "source_file": "src/models/transformations.py",
-      "source_location": "L96"
-    },
-    {
-      "id": "tests_test_transformations_rationale_118",
-      "label": "Normalized weights sum to 1 \u2192 constant series stays at that level.",
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "weibull_adstock",
-      "file_type": "rationale",
-      "norm_label": "normalized weights sum to 1 \u2192 constant series stays at that level.",
+      "norm_label": "impulse of 100 on day 0, zeros after (hand-checkable decay).",
       "source_file": "tests/test_transformations.py",
-      "source_location": "L118"
+      "source_location": "L19"
+    },
+    {
+      "id": "tests_test_transformations_rationale_27",
+      "label": "Longer impulse for Weibull tail / peak-timing checks.",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "long_pulse",
+      "file_type": "rationale",
+      "norm_label": "longer impulse for weibull tail / peak-timing checks.",
+      "source_file": "tests/test_transformations.py",
+      "source_location": "L27"
     },
     {
       "id": "runtimeerror",
@@ -7101,6 +7124,18 @@
       "type": "external"
     },
     {
+      "id": "json",
+      "label": "json",
+      "_origin": "semantic",
+      "community": 37,
+      "community_name": "curves.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "json",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "numpy",
       "label": "numpy",
       "_origin": "semantic",
@@ -7125,6 +7160,18 @@
       "type": "external"
     },
     {
+      "id": "plotly_subplots",
+      "label": "plotly_subplots",
+      "_origin": "semantic",
+      "community": 42,
+      "community_name": "plot_allocation_teaching.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "plotly_subplots",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "scipy_optimize",
       "label": "scipy_optimize",
       "_origin": "semantic",
@@ -7141,22 +7188,10 @@
       "label": "argparse",
       "_origin": "semantic",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "argparse",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "json",
-      "label": "json",
-      "_origin": "semantic",
-      "community": 44,
-      "community_name": "curves.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "json",
       "source_file": "",
       "type": "external"
     },
@@ -7165,7 +7200,7 @@
       "label": "typing",
       "_origin": "semantic",
       "community": 44,
-      "community_name": "curves.py",
+      "community_name": "03_allocate_budget.py",
       "external": true,
       "file_type": "concept",
       "norm_label": "typing",
@@ -7269,13 +7304,13 @@
       "type": "external"
     },
     {
-      "id": "plotly_subplots",
-      "label": "plotly_subplots",
-      "community": 42,
-      "community_name": "plot_allocation_teaching.py",
+      "id": "unittest_mock",
+      "label": "unittest_mock",
+      "community": 41,
+      "community_name": "optimize_budget",
       "external": true,
       "file_type": "concept",
-      "norm_label": "plotly_subplots",
+      "norm_label": "unittest_mock",
       "source_file": "",
       "type": "external"
     }
@@ -8190,7 +8225,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L307",
+      "source_location": "L310",
       "weight": 1.0
     },
     {
@@ -8274,7 +8309,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L145",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -8322,7 +8357,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L170",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -8334,7 +8369,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L175",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -8346,7 +8381,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L176",
+      "source_location": "L177",
       "weight": 1.0
     },
     {
@@ -8358,7 +8393,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L177",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -8370,7 +8405,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L178",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -8382,7 +8417,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L181",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -8394,7 +8429,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L185",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -8406,7 +8441,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -8418,7 +8453,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L229",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -8526,7 +8561,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L81",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -8538,7 +8573,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L72",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -8550,7 +8585,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -8562,7 +8597,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L29",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_allocator_test_post_solve_validate_fail_clears_channels",
+      "target": "src_optimize_allocator_optimize_budget",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -8574,7 +8621,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L141",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -8586,7 +8633,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L64",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -8598,7 +8645,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L113",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -8610,7 +8657,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L95",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -8622,7 +8669,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L127",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -9690,7 +9737,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -9966,7 +10013,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L297",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -9978,7 +10025,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L365",
+      "source_location": "L368",
       "weight": 1.0
     },
     {
@@ -9990,7 +10037,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L407",
+      "source_location": "L410",
       "weight": 1.0
     },
     {
@@ -10014,7 +10061,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L159",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -10026,7 +10073,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L383",
+      "source_location": "L386",
       "weight": 1.0
     },
     {
@@ -10050,7 +10097,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L237",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -10775,7 +10822,7 @@
     },
     {
       "source": "tests_test_allocator",
-      "target": "src_optimize_allocator_optimize_budget",
+      "target": "pytest",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10787,6 +10834,18 @@
     },
     {
       "source": "tests_test_allocator",
+      "target": "src_optimize_allocator_optimize_budget",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_allocator",
       "target": "src_optimize_curves_metricsjsoncurveprovider",
       "relation": "imports",
       "_origin": "ast",
@@ -10794,7 +10853,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -10811,14 +10870,14 @@
     },
     {
       "source": "tests_test_allocator",
-      "target": "pytest",
+      "target": "numpy",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11814,7 +11873,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -11826,7 +11885,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -11839,6 +11898,18 @@
       "context": "import",
       "source_file": "tests/test_allocator.py",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_allocator",
+      "target": "unittest_mock",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12318,7 +12389,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L361",
+      "source_location": "L364",
       "weight": 1.0
     },
     {
@@ -12330,7 +12401,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L297",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -12342,7 +12413,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L291",
+      "source_location": "L294",
       "weight": 1.0
     },
     {
@@ -12354,7 +12425,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L315",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -12366,7 +12437,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L336",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -12414,7 +12485,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L152",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -12990,7 +13061,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L270",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -13002,7 +13073,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L281",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -14606,7 +14677,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L159",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -14617,7 +14688,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L237",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -14628,7 +14699,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L270",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -14639,7 +14710,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L281",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -14650,18 +14721,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L291",
-      "weight": 1.0
-    },
-    {
-      "source": "src_optimize_allocator",
-      "target": "src_optimize_allocator_bounds_gate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/optimize/allocator.py",
-      "source_location": "L297",
+      "source_location": "L294",
       "weight": 1.0
     },
     {
@@ -14677,13 +14737,24 @@
     },
     {
       "source": "src_optimize_allocator",
+      "target": "src_optimize_allocator_bounds_gate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/optimize/allocator.py",
+      "source_location": "L300",
+      "weight": 1.0
+    },
+    {
+      "source": "src_optimize_allocator",
       "target": "src_optimize_allocator_validate_maximize",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L315",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -14694,7 +14765,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L336",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -14705,7 +14776,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L361",
+      "source_location": "L364",
       "weight": 1.0
     },
     {
@@ -14716,7 +14787,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L365",
+      "source_location": "L368",
       "weight": 1.0
     },
     {
@@ -14727,7 +14798,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L383",
+      "source_location": "L386",
       "weight": 1.0
     },
     {
@@ -14738,7 +14809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L407",
+      "source_location": "L410",
       "weight": 1.0
     },
     {
@@ -14760,7 +14831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L215",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -14831,13 +14902,24 @@
     },
     {
       "source": "tests_test_allocator",
+      "target": "tests_test_allocator_test_target_mode_hits_kpi_when_feasible",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_allocator",
       "target": "tests_test_allocator_test_target_mode_fails_when_impossible",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L111",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -14848,7 +14930,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L125",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -14859,7 +14941,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L140",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -14870,7 +14952,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L152",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -14881,7 +14963,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -14892,7 +14974,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -14903,7 +14985,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -14914,7 +14996,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L62",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -14925,7 +15007,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L71",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -14936,18 +15018,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L80",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
       "source": "tests_test_allocator",
-      "target": "tests_test_allocator_test_target_mode_hits_kpi_when_feasible",
+      "target": "tests_test_allocator_test_post_solve_validate_fail_clears_channels",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
-      "source_location": "L92",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -16623,25 +16705,25 @@
       "weight": 1.0
     },
     {
-      "source": "src_optimize_allocator_rationale_271",
+      "source": "src_optimize_allocator_rationale_274",
       "target": "src_optimize_allocator_curve_max_spends",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L271",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
-      "source": "src_optimize_allocator_rationale_282",
+      "source": "src_optimize_allocator_rationale_285",
       "target": "src_optimize_allocator_feasible_start",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L282",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -16785,6 +16867,17 @@
       "confidence_score": 1.0,
       "source_file": "tests/test_allocator.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_allocator_rationale_94",
+      "target": "tests_test_allocator_test_post_solve_validate_fail_clears_channels",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -17127,7 +17220,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L219",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -17175,7 +17268,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L270",
+      "source_location": "L273",
       "weight": 0.8
     },
     {
@@ -17199,7 +17292,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L160",
+      "source_location": "L161",
       "weight": 0.8
     },
     {
@@ -17223,7 +17316,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "src/optimize/allocator.py",
-      "source_location": "L291",
+      "source_location": "L294",
       "weight": 0.8
     },
     {
@@ -17235,7 +17328,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L80",
+      "source_location": "L82",
       "weight": 0.8
     },
     {
@@ -17247,7 +17340,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L71",
+      "source_location": "L73",
       "weight": 0.8
     },
     {
@@ -17259,7 +17352,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L43",
+      "source_location": "L45",
       "weight": 0.8
     },
     {
@@ -17271,47 +17364,11 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 0.8
     },
     {
-      "source": "tests_test_allocator_test_require_exactly_one_mode",
-      "target": "src_optimize_curves_metricsjsoncurveprovider",
-      "relation": "uses",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "parameter_type",
-      "source_file": "tests/test_allocator.py",
-      "source_location": "L140",
-      "weight": 0.8
-    },
-    {
-      "source": "tests_test_allocator_test_sum_equals_total_budget",
-      "target": "src_optimize_curves_metricsjsoncurveprovider",
-      "relation": "uses",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "parameter_type",
-      "source_file": "tests/test_allocator.py",
-      "source_location": "L62",
-      "weight": 0.8
-    },
-    {
-      "source": "tests_test_allocator_test_target_mode_fails_when_impossible",
-      "target": "src_optimize_curves_metricsjsoncurveprovider",
-      "relation": "uses",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "parameter_type",
-      "source_file": "tests/test_allocator.py",
-      "source_location": "L111",
-      "weight": 0.8
-    },
-    {
-      "source": "tests_test_allocator_test_target_mode_hits_kpi_when_feasible",
+      "source": "tests_test_allocator_test_post_solve_validate_fail_clears_channels",
       "target": "src_optimize_curves_metricsjsoncurveprovider",
       "relation": "uses",
       "_origin": "ast",
@@ -17323,6 +17380,54 @@
       "weight": 0.8
     },
     {
+      "source": "tests_test_allocator_test_require_exactly_one_mode",
+      "target": "src_optimize_curves_metricsjsoncurveprovider",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "parameter_type",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L164",
+      "weight": 0.8
+    },
+    {
+      "source": "tests_test_allocator_test_sum_equals_total_budget",
+      "target": "src_optimize_curves_metricsjsoncurveprovider",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "parameter_type",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L64",
+      "weight": 0.8
+    },
+    {
+      "source": "tests_test_allocator_test_target_mode_fails_when_impossible",
+      "target": "src_optimize_curves_metricsjsoncurveprovider",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "parameter_type",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L135",
+      "weight": 0.8
+    },
+    {
+      "source": "tests_test_allocator_test_target_mode_hits_kpi_when_feasible",
+      "target": "src_optimize_curves_metricsjsoncurveprovider",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "parameter_type",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L116",
+      "weight": 0.8
+    },
+    {
       "source": "tests_test_allocator_test_target_mode_respects_bounds",
       "target": "src_optimize_curves_metricsjsoncurveprovider",
       "relation": "uses",
@@ -17331,7 +17436,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L125",
+      "source_location": "L149",
       "weight": 0.8
     },
     {
@@ -17403,7 +17508,7 @@
       "confidence_score": 0.95,
       "context": "return_type",
       "source_file": "tests/test_allocator.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 0.8
     },
     {
@@ -19185,5 +19290,5 @@
       "source_file": ".cursor/skills/secret-hygiene/SKILL.md"
     }
   ],
-  "built_at_commit": "acb658c39e2c676fb25546036d7a87f043148c96"
+  "built_at_commit": "1558a3bcf620c4f2a53d29aae1317ef9f9a4d762"
 }

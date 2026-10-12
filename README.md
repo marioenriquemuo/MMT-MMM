@@ -175,6 +175,8 @@ Constrained budget optimizer on offline response curves (`scipy.optimize` SLSQP)
 Reads Meridian `reports/metrics.json` `response_curves.means` (or a synthetic fixture).
 **Caveat:** allocator trusts those curves even though Meridian channel-rank recovery vs Path-C is still open ([`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md)) — do not treat allocations as Path-C ground truth.
 
+On failure (`solver.success=false` — infeasible bounds/target or post-solve check), `channels` is an empty object `{}` so callers do not read a partial plan.
+
 ```bash
 conda activate mmt-mmm
 

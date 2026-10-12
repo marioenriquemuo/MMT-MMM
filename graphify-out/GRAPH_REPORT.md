@@ -1,22 +1,22 @@
 # Graph Report - MMT&MMM  (2026-10-12)
 
 ## Corpus Check
-- 58 files · ~37,827 words
+- 58 files · ~37,914 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 16 file(s) not represented in the graph (top: (none) 6, .mdc 5, .csv 3)
 
 ## Summary
-- 578 nodes · 1025 edges · 47 communities (35 shown, 12 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.92)
+- 581 nodes · 1031 edges · 47 communities (35 shown, 12 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `acb658c3`
+- Built from commit: `1558a3bc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- ndarray
+- weibull_adstock
 - /graphify
 - generate
 - MetricsJsonCurveProvider
@@ -50,21 +50,21 @@
 - meridian_analysis
 - meridian_model
 - plot_adstock_validation.py
-- load_curve_means
+- curves.py
 - transformations.py
 - hill_saturation
 - test_transformations.py
 - optimize_budget
 - plot_allocation_teaching.py
 - allocator.py
-- curves.py
+- 03_allocate_budget.py
 - .mean_grid
-- weibull_adstock
+- long_pulse
 
 ## God Nodes (most connected - your core abstractions)
-1. `MetricsJsonCurveProvider` - 37 edges
+1. `MetricsJsonCurveProvider` - 38 edges
 2. `/graphify` - 33 edges
-3. `optimize_budget()` - 22 edges
+3. `optimize_budget()` - 23 edges
 4. `generate()` - 21 edges
 5. `geometric_adstock()` - 20 edges
 6. `weibull_adstock()` - 20 edges
@@ -100,21 +100,21 @@
 
 ## Communities (47 total, 12 thin omitted)
 
-### Community 0 - "ndarray"
+### Community 0 - "weibull_adstock"
 Cohesion: 0.14
-Nodes (15): long_pulse(), pulse(), fixture, ndarray, normalize=False keeps raw PDF-style weights (pulse response ≠ pulse)., Larger scale stretches carryover — more mass in the late tail., shape < 1 peaks at lag 0; shape > 1 can peak after day 0., Impulse of 100 on day 0, zeros after (hand-checkable decay). (+7 more)
+Nodes (19): ndarray, Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull…, Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive…, weibull_adstock(), _weibull_pdf_weights(), ndarray, Normalized weights sum to 1 → constant series stays at that level., normalize=False keeps raw PDF-style weights (pulse response ≠ pulse). (+11 more)
 
 ### Community 1 - "/graphify"
 Cohesion: 0.11
 Nodes (19): FalkorDB Export, GraphML Export (--graphml), Neo4j Export, SVG Export (--svg), Token Reduction Benchmark, Wiki Export (--wiki), AGENTS.md Graphify Integration, Cluster-Only Mode (+11 more)
 
 ### Community 2 - "generate"
-Cohesion: 0.11
-Nodes (30): assert_valid(), coerce_integer_columns(), generate(), _impressions_clicks(), main(), planted_ground_truth(), Any, DataFrame (+22 more)
+Cohesion: 0.10
+Nodes (32): assert_valid(), _baseline_sales(), coerce_integer_columns(), generate(), _impressions_clicks(), main(), planted_ground_truth(), Any (+24 more)
 
 ### Community 3 - "MetricsJsonCurveProvider"
-Cohesion: 0.17
-Nodes (14): main(), MetricsJsonCurveProvider, Linear-interpolated curves from Meridian metrics or synthetic fixture JSON., fixture_provider(), fixture, skipif, STORY-301 Step 1 — response curve provider (interpolation + loaders)., Fixture curves are concave / non-decreasing in spend. (+6 more)
+Cohesion: 0.18
+Nodes (13): MetricsJsonCurveProvider, Linear-interpolated curves from Meridian metrics or synthetic fixture JSON., fixture_provider(), fixture, skipif, STORY-301 Step 1 — response curve provider (interpolation + loaders)., Fixture curves are concave / non-decreasing in spend., test_clamp_outside_range() (+5 more)
 
 ### Community 4 - "Path-C synthetic multi-channel marketing panel"
 Cohesion: 0.08
@@ -122,7 +122,7 @@ Nodes (32): archify, data/raw/, github remote, martech-mmm-ai-allocator, mmt-mmm
 
 ### Community 5 - "test_qa.py"
 Cohesion: 0.07
-Nodes (57): pandas, pandera_pandas, pathlib, plotly_express, ground_truth.json, RuntimeError, STORY-301 Step 0 — toy diminishing-returns curve (not Meridian, not optimizer).…, STORY-301 Step 1 — Plotly Express of synthetic fixture response curves. Usage… (+49 more)
+Nodes (58): pandas, pandera_pandas, pathlib, plotly_express, ground_truth.json, RuntimeError, STORY-301 Step 0 — toy diminishing-returns curve (not Meridian, not optimizer).…, main() (+50 more)
 
 ### Community 6 - "What You Must Do When Invoked"
 Cohesion: 0.13
@@ -200,65 +200,65 @@ Nodes (8): importlib_util, pytest, _load_spike(), fixture, Unit tests for STORY-
 Cohesion: 0.19
 Nodes (14): reports/figures/, STORY-102, Plotly Express over Jupyter for Sprint 1, build_geometric_figure(), build_hill_figure(), build_weibull_figure(), main(), _pulse_frame() (+6 more)
 
-### Community 37 - "load_curve_means"
+### Community 37 - "curves.py"
 Cohesion: 0.18
-Nodes (14): CurveArrays, _extract_means_map(), load_curve_means(), load_curve_means_json(), _looks_like_arrays(), Any, Path, Load curve arrays from a JSON file path. (+6 more)
+Nodes (16): ABC, CurveArrays, json, _extract_means_map(), load_curve_means(), load_curve_means_json(), _looks_like_arrays(), Any (+8 more)
 
 ### Community 38 - "transformations.py"
-Cohesion: 0.23
-Nodes (10): numpy, STORY-102 media transforms (Steps 2–5: adstock + Hill saturation). Pure NumPy…, _panel(), ndarray, STORY-102 Step 6 — wall-time gate for transforms on ~2y daily data., Non-negative spend panel shaped ``(channels, days)``., DoD: geometric + Weibull + Hill on 730×4 panel finishes in <1s., _run_transforms() (+2 more)
+Cohesion: 0.19
+Nodes (12): numpy, STORY-102 media transforms (Steps 2–5: adstock + Hill saturation). Pure NumPy…, Choose discrete lag support ``L`` for Weibull PDF weights. Default:…, _weibull_n_lags(), _panel(), ndarray, STORY-102 Step 6 — wall-time gate for transforms on ~2y daily data., Non-negative spend panel shaped ``(channels, days)``. (+4 more)
 
 ### Community 39 - "hill_saturation"
-Cohesion: 0.12
-Nodes (15): _baseline_sales(), National baseline + media contribution after adstock/Hill., Shared modeling primitives (transforms, Meridian adapter, inference)., hill_saturation(), Hill / Michaelis–Menten saturation mapped to ``[0, 1)``. Form:: y = x^S / (K^S…, At x = K, y ≈ 0.5 for any valid S., Larger S → steeper slope near K (higher |dy/dx| at half-sat)., Negative spend clipped to 0 → response 0 (documented). (+7 more)
+Cohesion: 0.14
+Nodes (13): Shared modeling primitives (transforms, Meridian adapter, inference)., hill_saturation(), Hill / Michaelis–Menten saturation mapped to ``[0, 1)``. Form:: y = x^S / (K^S…, At x = K, y ≈ 0.5 for any valid S., Larger S → steeper slope near K (higher |dy/dx| at half-sat)., Negative spend clipped to 0 → response 0 (documented)., test_hill_bounds_in_unit_interval(), test_hill_clips_negative_x() (+5 more)
 
 ### Community 40 - "test_transformations.py"
 Cohesion: 0.23
 Nodes (13): geometric_adstock(), Apply one-parameter geometric adstock along ``axis``. Recurrence (carryover of…, Tests for STORY-102 geometric + Weibull adstock + Hill (Steps 2–4)., 100 then zeros, theta=0.5 → 100, 50, 25, 12.5, …, Shape (channels, T) with axis=-1 adstocks each channel independently., test_2d_channels_by_time(), test_length_preserved(), test_matches_recursive_definition() (+5 more)
 
 ### Community 41 - "optimize_budget"
-Cohesion: 0.18
-Nodes (16): optimize_budget(), Allocate spend across channels (maximize KPI or hit a KPI target). Exactly one…, fixture_provider(), fixture, Path, STORY-301 Steps 2–3 — SLSQP allocator bounds, budget sum, target KPI., test_cli_run_allocate_writes_json(), test_infeasible_maxes_below_budget() (+8 more)
+Cohesion: 0.15
+Nodes (19): optimize_budget(), Allocate spend across channels (maximize KPI or hit a KPI target). Exactly one…, fixture_provider(), fixture, Path, STORY-301 Steps 2–3 — SLSQP allocator bounds, budget sum, target KPI., SLSQP failure after solve must match early-gate empty-channel shape., test_cli_run_allocate_writes_json() (+11 more)
 
 ### Community 42 - "plot_allocation_teaching.py"
 Cohesion: 0.23
 Nodes (13): plotly_subplots, _bar_frame(), build_curves_figure(), build_parser(), _curve_frame(), _equal_room_baseline(), main(), ArgumentParser (+5 more)
 
 ### Community 43 - "allocator.py"
-Cohesion: 0.17
-Nodes (24): scipy_optimize, _bounds_dict(), _bounds_gate(), _constraints(), _curve_max_spends(), _fail_result(), _feasible_start(), _maximize() (+16 more)
-
-### Community 44 - "curves.py"
 Cohesion: 0.15
-Nodes (15): ABC, argparse, json, build_parser(), main(), _parse_spend_arg(), Any, ArgumentParser (+7 more)
+Nodes (25): scipy_optimize, _bounds_dict(), _bounds_gate(), _constraints(), _curve_max_spends(), _fail_result(), _feasible_start(), _maximize() (+17 more)
+
+### Community 44 - "03_allocate_budget.py"
+Cohesion: 0.19
+Nodes (12): argparse, build_parser(), main(), _parse_spend_arg(), Any, ArgumentParser, Path, Library entrypoint (also used by tests). Writes JSON when ``out`` is set. (+4 more)
 
 ### Community 45 - ".mean_grid"
 Cohesion: 0.40
 Nodes (3): ndarray, Observed spend knots for ``channel`` (teaching / tests)., Observed mean incremental KPI knots for ``channel``.
 
-### Community 47 - "weibull_adstock"
-Cohesion: 0.20
-Nodes (11): ndarray, Apply two-parameter Weibull adstock along ``axis``. Builds discrete Weibull…, Choose discrete lag support ``L`` for Weibull PDF weights. Default:…, Discrete Weibull PDF-style weights on lags ``0 .. L-1``. Evaluated at positive…, weibull_adstock(), _weibull_n_lags(), _weibull_pdf_weights(), Normalized weights sum to 1 → constant series stays at that level. (+3 more)
+### Community 46 - "long_pulse"
+Cohesion: 0.40
+Nodes (5): long_pulse(), pulse(), fixture, Impulse of 100 on day 0, zeros after (hand-checkable decay)., Longer impulse for Weibull tail / peak-timing checks.
 
 ## Knowledge Gaps
 - **89 isolated node(s):** `Meridian is a local pip library`, `Smoke vs full`, `R-hat`, `National weekly adapter`, `Warnings that are normal` (+84 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 242 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 244 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `/graphify` connect `/graphify` to `Path-C synthetic multi-channel marketing panel`, `What You Must Do When Invoked`, `Semantic Extraction Spec`, `Incremental Update (--update)`, `Whisper Video/Audio Transcription`, `save-result Feedback Loop`, `graphify merge-graphs`, `graphify-out artifacts`?**
-  _High betweenness centrality (0.200) - this node is a cross-community bridge._
-- **Are the 20 inferred relationships involving `MetricsJsonCurveProvider` (e.g. with `_bar_frame()` and `build_curves_figure()`) actually correct?**
-  _`MetricsJsonCurveProvider` has 20 INFERRED edges - model-reasoned connections that need verification._
+  _High betweenness centrality (0.199) - this node is a cross-community bridge._
+- **Are the 21 inferred relationships involving `MetricsJsonCurveProvider` (e.g. with `_bar_frame()` and `build_curves_figure()`) actually correct?**
+  _`MetricsJsonCurveProvider` has 21 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Meridian is a local pip library`, `Smoke vs full`, `R-hat` to the rest of the system?**
   _89 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `ndarray` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+- **Should `weibull_adstock` be split into smaller, more focused modules?**
+  _Cohesion score 0.14035087719298245 - nodes in this community are weakly interconnected._
 - **Should `/graphify` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `generate` be split into smaller, more focused modules?**
-  _Cohesion score 0.10967741935483871 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10416666666666667 - nodes in this community are weakly interconnected._
 - **Should `Path-C synthetic multi-channel marketing panel` be split into smaller, more focused modules?**
   _Cohesion score 0.07661290322580645 - nodes in this community are weakly interconnected._

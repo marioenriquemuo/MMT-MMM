@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "From response curves to a budget plan",
+    "subtitle": "Read curves → pick a goal → stay in bounds → solve → save the plan (or clear channels on fail).",
+    "output": ".archify/architecture-mmt-story301-20261012-120314/mmt-story301.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "642366ee16de2226fa93b65db6937c5bdfeae07e"
+    }
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "You run allocate",
+      "sublabel": "budget · bounds · target",
+      "pos": [40, 280],
+      "size": [150, 70],
+      "sources": [
+        {"path": "scripts/03_allocate_budget.py", "line": 63, "end_line": 105, "label": "CLI flags"},
+        {"path": "scripts/03_allocate_budget.py", "line": 146, "end_line": 164, "label": "main()"}
+      ]
+    },
+    {
+      "id": "metrics",
+      "type": "database",
+      "label": "Model scorecard",
+      "sublabel": "Meridian curves JSON",
+      "tag": "201",
+      "pos": [40, 60],
+      "size": [160, 60],
+      "sources": [
+        {"path": "scripts/02_model_spike.py", "line": 41, "end_line": 41, "label": "METRICS_PATH"},
+        {"path": "scripts/02_model_spike.py", "line": 245, "end_line": 247, "label": "response_curves"},
+        {"path": "scripts/02_model_spike.py", "line": 481, "end_line": 496, "label": "write metrics"}
+      ]
+    },
+    {
+      "id": "fixture",
+      "type": "database",
+      "label": "Practice curves",
+      "sublabel": "toy JSON for tests",
+      "pos": [260, 60],
+      "size": [150, 60],
+      "sources": [
+        {"path": "tests/fixtures/synthetic_response_curves.json", "line": 1, "end_line": 20, "label": "synthetic fixture"}
+      ]
+    },
+    {
+      "id": "load_curves",
+      "type": "backend",
+      "label": "Load the curves",
+      "sublabel": "spend → lift per channel",
+      "tag": "301",
+      "pos": [520, 60],
+      "size": [160, 60],
+      "sources": [
+        {"path": "src/optimize/curves.py", "line": 102, "end_line": 110, "label": "load_curve_means_json"},
+        {"path": "src/optimize/curves.py", "line": 113, "end_line": 143, "label": "MetricsJsonCurveProvider"}
+      ]
+    },
+    {
+      "id": "cli",
+      "type": "backend",
+      "label": "Allocate command",
+      "sublabel": "pick goal + write file",
+      "tag": "301",
+      "pos": [240, 280],
+      "size": [150, 60],
+      "sources": [
+        {"path": "scripts/03_allocate_budget.py", "line": 108, "end_line": 143, "label": "run_allocate"},
+        {"path": "scripts/03_allocate_budget.py", "line": 146, "end_line": 164, "label": "main()"}
+      ]
+    },
+    {
+      "id": "optimize",
+      "type": "backend",
+      "label": "Find best spends",
+      "sublabel": "max lift or hit a target",
+      "tag": "301",
+      "pos": [460, 280],
+      "size": [160, 60],
+      "sources": [
+        {"path": "src/optimize/allocator.py", "line": 30, "end_line": 80, "label": "optimize_budget"},
+        {"path": "src/optimize/allocator.py", "line": 83, "end_line": 157, "label": "_maximize"},
+        {"path": "src/optimize/allocator.py", "line": 160, "end_line": 238, "label": "_minimize_for_target"}
+      ]
+    },
+    {
+      "id": "bounds",
+      "type": "security",
+      "label": "Stay in bounds",
+      "sublabel": "min / max per channel",
+      "pos": [700, 280],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/optimize/allocator.py", "line": 240, "end_line": 271, "label": "_resolve_bounds"},
+        {"path": "src/optimize/allocator.py", "line": 300, "end_line": 316, "label": "_bounds_gate"},
+        {"path": "src/optimize/allocator.py", "line": 318, "end_line": 362, "label": "post-solve checks"}
+      ]
+    },
+    {
+      "id": "fail_clear",
+      "type": "security",
+      "label": "Fail → empty plan",
+      "sublabel": "no partial channel spends",
+      "pos": [700, 420],
+      "size": [160, 60],
+      "sources": [
+        {"path": "src/optimize/allocator.py", "line": 410, "end_line": 427, "label": "_fail_result"},
+        {"path": "tests/test_allocator.py", "line": 91, "end_line": 114, "label": "clears channels"}
+      ]
+    },
+    {
+      "id": "ok_result",
+      "type": "backend",
+      "label": "Plan looks good",
+      "sublabel": "spends + expected lift",
+      "pos": [920, 280],
+      "size": [150, 60],
+      "sources": [
+        {"path": "src/optimize/allocator.py", "line": 386, "end_line": 408, "label": "_ok_result"}
+      ]
+    },
+    {
+      "id": "allocation",
+      "type": "database",
+      "label": "Budget plan file",
+      "sublabel": "allocation.json",
+      "pos": [1120, 280],
+      "size": [150, 60],
+      "sources": [
+        {"path": "scripts/03_allocate_budget.py", "line": 127, "end_line": 142, "label": "write JSON"},
+        {"path": "README.md", "line": 193, "end_line": 197, "label": "Meridian → out"}
+      ]
+    },
+    {
+      "id": "teach",
+      "type": "backend",
+      "label": "Draw teaching charts",
+      "sublabel": "curves vs equal split",
+      "tag": "301",
+      "pos": [240, 480],
+      "size": [160, 60],
+      "sources": [
+        {"path": "scripts/plot_allocation_teaching.py", "line": 100, "end_line": 110, "label": "curves figure"},
+        {"path": "scripts/plot_allocation_teaching.py", "line": 112, "end_line": 151, "label": "bars figure"},
+        {"path": "scripts/plot_allocation_teaching.py", "line": 163, "end_line": 210, "label": "main()"}
+      ]
+    },
+    {
+      "id": "figures",
+      "type": "database",
+      "label": "Chart files",
+      "sublabel": "story_301_*.html",
+      "pos": [460, 480],
+      "size": [150, 60],
+      "sources": [
+        {"path": "scripts/plot_allocation_teaching.py", "line": 163, "end_line": 210, "label": "write HTML"},
+        {"path": "README.md", "line": 199, "end_line": 202, "label": "figure paths"}
+      ]
+    },
+    {
+      "id": "tests",
+      "type": "backend",
+      "label": "Automated checks",
+      "sublabel": "bounds · target · fail clear",
+      "pos": [920, 480],
+      "size": [160, 60],
+      "sources": [
+        {"path": "tests/test_curves.py", "line": 1, "end_line": 40, "label": "curve tests"},
+        {"path": "tests/test_allocator.py", "line": 1, "end_line": 40, "label": "allocator tests"}
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "1 · Curve inputs",
+      "wraps": ["metrics", "fixture", "load_curves"]
+    },
+    {
+      "kind": "region",
+      "label": "2 · Budget solver",
+      "wraps": ["cli", "optimize", "bounds", "ok_result", "fail_clear"]
+    },
+    {
+      "kind": "region",
+      "label": "3 · Outputs & teaching",
+      "wraps": ["allocation", "teach", "figures"]
+    }
+  ],
+  "connections": [
+    {"id": "op-cli", "from": "operator", "to": "cli", "label": "run", "variant": "emphasis"},
+    {"id": "op-teach", "from": "operator", "to": "teach", "label": "chart", "variant": "dashed"},
+    {"id": "op-tests", "from": "operator", "to": "tests", "label": "test", "variant": "dashed"},
+    {"id": "metrics-load", "from": "metrics", "to": "load_curves", "label": "read"},
+    {"id": "fixture-load", "from": "fixture", "to": "load_curves", "label": "toy"},
+    {"id": "load-cli", "from": "load_curves", "to": "cli", "label": "provider"},
+    {"id": "cli-opt", "from": "cli", "to": "optimize", "label": "solve"},
+    {"id": "opt-bounds", "from": "optimize", "to": "bounds", "label": "check"},
+    {"id": "bounds-ok", "from": "bounds", "to": "ok_result", "label": "if OK"},
+    {"id": "bounds-fail", "from": "bounds", "to": "fail_clear", "label": "if not"},
+    {"id": "ok-alloc", "from": "ok_result", "to": "allocation", "label": "save"},
+    {"id": "cli-teach", "from": "cli", "to": "teach", "label": "curves + plan", "variant": "dashed"},
+    {"id": "teach-fig", "from": "teach", "to": "figures", "label": "HTML"},
+    {"id": "tests-opt", "from": "tests", "to": "optimize", "label": "prove", "variant": "dashed"},
+    {"id": "tests-fail", "from": "tests", "to": "fail_clear", "label": "prove", "variant": "dashed"}
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "What this step does",
+      "items": [
+        "Takes offline response curves (from Meridian metrics or a toy fixture)",
+        "Picks spends that maximize lift under a budget, or hit a KPI with least spend",
+        "Writes a structured plan JSON — or clears channels when the solve fails"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Guardrails",
+      "items": [
+        "Min/max spend per channel must be feasible with the total budget",
+        "After solving, re-check bounds and mode rules before accepting the plan",
+        "On failure: channels is {} so nothing looks half-allocated"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Caveat (from STORY-201)",
+      "items": [
+        "Allocator trusts the curves it is given",
+        "Meridian channel ranks still disagree with Path-C (Spearman ≈ −0.6)",
+        "Do not treat allocations as Path-C ground truth"
+      ]
+    }
+  ]
+}

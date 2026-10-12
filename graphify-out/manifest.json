@@ -102,21 +102,21 @@
     "semantic_hash": "98c524508d475b44f0997e0a56ee4a0f"
   },
   "AGENTS.md": {
-    "mtime": 1791818769.8065944,
-    "seen": 1791821443.9929125,
-    "ast_hash": "aee9e8d78217b559f158830442036fca",
+    "mtime": 1791824665.924377,
+    "seen": 1791824672.6736858,
+    "ast_hash": "c2dc48de63516a97e7e4ce8375cbad58",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791818780.130114,
-    "seen": 1791821443.9929137,
-    "ast_hash": "d2b9e19d5bb8f292e80ea243061f4672",
+    "mtime": 1791824664.246363,
+    "seen": 1791824672.673687,
+    "ast_hash": "7238096ed4343b4761f03a9a94db8f8f",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791823593.63538,
-    "seen": 1791823741.2862954,
-    "ast_hash": "66bf787b76d62c20ee708d38f55bff80",
+    "mtime": 1791824663.7303586,
+    "seen": 1791824672.6736877,
+    "ast_hash": "eba7fcc5dfa77349266d311ab3f59a9e",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
@@ -360,20 +360,20 @@
     "semantic_hash": ""
   },
   "src/optimize/allocator.py": {
-    "mtime": 1791822853.1390033,
-    "seen": 1791822908.2819874,
-    "ast_hash": "fb18542348b73454e12cef50a41115eb",
+    "mtime": 1791824215.418616,
+    "seen": 1791824223.0843353,
+    "ast_hash": "c5ea3ed7efc5bcd05dafe1039dc4df3b",
     "semantic_hash": ""
   },
   "tests/test_allocator.py": {
-    "mtime": 1791822895.245246,
-    "seen": 1791822908.2819908,
-    "ast_hash": "840e4c5a9d23174d3bd981b112b0cc14",
+    "mtime": 1791824215.5121715,
+    "seen": 1791824223.0843391,
+    "ast_hash": "9f937367c7b134fd48de1ba84a9a5951",
     "semantic_hash": ""
   },
   "reports/allocation.json": {
-    "mtime": 1791823599.3255572,
-    "seen": 1791823741.286229,
+    "mtime": 1791824466.6082597,
+    "seen": 1791824672.6736233,
     "ast_hash": "8bea306f0ace61bc2ff1a86d6e19d5d8",
     "semantic_hash": ""
   },
@@ -390,15 +390,15 @@
     "semantic_hash": ""
   },
   "reports/figures/story_301_allocation_vs_baseline.html": {
-    "mtime": 1791823600.921608,
-    "seen": 1791823741.2863035,
-    "ast_hash": "0aa4fe66a7212d204176e722071ec611",
+    "mtime": 1791823890.1815293,
+    "seen": 1791824223.0843854,
+    "ast_hash": "4dbb2c16289e3ed64bbf802c4acf89d9",
     "semantic_hash": ""
   },
   "reports/figures/story_301_response_curves.html": {
-    "mtime": 1791823600.7989655,
-    "seen": 1791823741.286306,
-    "ast_hash": "5525a5a3a72bdeb9ec49f897413f9ec1",
+    "mtime": 1791823890.0867856,
+    "seen": 1791824223.0843878,
+    "ast_hash": "ff96bb287b064af37a0dee0ab3c3b684",
     "semantic_hash": ""
   }
 }

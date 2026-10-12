@@ -1,10 +1,10 @@
 # graphify + archify artifacts
 
-Generated knowledge graph and architecture diagram for the MMT&MMM Path-C slice after **STORY-101** (generator), **STORY-102** (shared transforms + Plotly validation), **STORY-103** (Pandera ETL → Parquet), **STORY-104** (media QA detect/repair + hard-fail gate), and **STORY-201** (Meridian national weekly spike).
+Generated knowledge graph and architecture diagram for the MMT&MMM Path-C slice after **STORY-101** (generator), **STORY-102** (shared transforms + Plotly validation), **STORY-103** (Pandera ETL → Parquet), **STORY-104** (media QA detect/repair + hard-fail gate), **STORY-201** (Meridian national weekly spike), and **STORY-301** (offline response curves → SLSQP budget allocator).
 
-Working branch for this refresh: `cursor/story-201-meridian-702b` (merges into `sprint-1-core-data-engine`).
+Working branch for this refresh: `cursor/story-301-budget-opt-702b` (merges into `sprint-2-mvp-optimization-agentic-ui`).
 
-Spike learnings (incl. **open rank-recovery issue**): [`docs/learnings/story-201-meridian.md`](learnings/story-201-meridian.md).
+Spike learnings (incl. **open rank-recovery issue** that still applies to allocator inputs): [`docs/learnings/story-201-meridian.md`](learnings/story-201-meridian.md).
 
 ## graphify
 
@@ -17,23 +17,24 @@ Scoped via [`.graphifyignore`](../.graphifyignore) (excludes bulky `.cursor/skil
 | Graph JSON | [`graphify-out/graph.json`](../graphify-out/graph.json) |
 | Token benchmark | [`graphify-out/benchmark.txt`](../graphify-out/benchmark.txt) |
 
-Regenerated after STORY-201 (includes `src/models/meridian_data.py` + `scripts/02_model_spike.py` → adapter / smoke+full MCMC / R-hat gate / reports, plus QA → ETL → generator → `transformations` → Plotly / pytest). Re-run `graphify update .` after code changes.
+Regenerated after STORY-301 (includes `src/optimize/` + `scripts/03_allocate_budget.py` + teaching plots / allocator tests, plus Meridian → QA → ETL → generator → `transformations`). Re-run `graphify update .` after code changes.
 
 ## archify
 
-Repository-backed architecture of STORY-101 → 201: Path-C generator writes raw CSV; shared transforms feed DGP + Plotly; **ETL** loads/aligns/imputes/validates into `clean_spend.parquet`; **QA** detects/repairs media anomalies (or hard-fails) and overwrites the same Parquet; **Meridian** shapes national weeks, fits smoke then fuller chains, gates on R-hat, and writes metrics / PPC / recovery note.
+**Current:** repository-backed architecture of STORY-301 — load Meridian (or practice) response curves, pick a budget goal, stay in min/max bounds, solve, save `allocation.json` (or clear channels on fail), plus teaching charts.
 
 | Artifact | Path |
 | --- | --- |
-| HTML diagram | [`.archify/architecture-mmt-story101-201-20261009-171324/mmt-story101-201.html`](../.archify/architecture-mmt-story101-201-20261009-171324/mmt-story101-201.html) |
-| Candidate JSON | [`.archify/architecture-mmt-story101-201-20261009-171324/candidate.json`](../.archify/architecture-mmt-story101-201-20261009-171324/candidate.json) |
+| HTML diagram | [`.archify/architecture-mmt-story301-20261012-120314/mmt-story301.html`](../.archify/architecture-mmt-story301-20261012-120314/mmt-story301.html) |
+| Candidate JSON | [`.archify/architecture-mmt-story301-20261012-120314/candidate.json`](../.archify/architecture-mmt-story301-20261012-120314/candidate.json) |
 
-Pinned revision for evidence: `9cb46b586201926fb6e8c2da9f448fb6e0c72b3c` (STORY-201 Meridian code tip at run time).
+Pinned revision for evidence: `642366ee16de2226fa93b65db6937c5bdfeae07e` (STORY-301 tip with empty-`channels`-on-fail).
 
-**Wording style:** plain-language node/edge labels for non-experts (e.g. “Shape for Meridian”, “Chains agree?”, “Stop if still broken”) plus one teaching subtitle — not function names or jargon. Open rank-recovery finding called out on a card.
+**Wording style:** plain-language node/edge labels for non-experts (e.g. “Load the curves”, “Fail → empty plan”, “Stay in bounds”) plus a teaching subtitle — not function names or jargon. Meridian≠Path-C caveat called out on a card.
 
 Prior runs kept for history:
 
+- STORY-101→201: [`.archify/architecture-mmt-story101-201-20261009-171324/`](../.archify/architecture-mmt-story101-201-20261009-171324/)
 - STORY-101→104: [`.archify/architecture-mmt-story101-104-20261009-151448/`](../.archify/architecture-mmt-story101-104-20261009-151448/)
 - STORY-101→103: [`.archify/architecture-mmt-story101-103-20261008-165012/`](../.archify/architecture-mmt-story101-103-20261008-165012/)
 - STORY-101+102: [`.archify/architecture-mmt-story101-102-20261008-153042/`](../.archify/architecture-mmt-story101-102-20261008-153042/)
