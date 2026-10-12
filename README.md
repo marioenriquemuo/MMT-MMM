@@ -169,6 +169,41 @@ Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions
 
 **Open issue:** Meridian iROAS rank (meta&gt;tiktok&gt;tv&gt;google) disagrees with Path-C (tv&gt;google&gt;meta&gt;tiktok); Spearman ≈ −0.6. Status-only for this spike — see the learning doc.
 
+## STORY-301 / budget allocator
+
+Constrained budget optimizer on offline response curves (`scipy.optimize` SLSQP).
+Reads Meridian `reports/metrics.json` `response_curves.means` (or a synthetic fixture).
+**Caveat:** allocator trusts those curves even though Meridian channel-rank recovery vs Path-C is still open ([`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md)) — do not treat allocations as Path-C ground truth.
+
+```bash
+conda activate mmt-mmm
+
+# Maximize incremental KPI under a fixed budget (+ bounds)
+python scripts/03_allocate_budget.py \
+  --curves tests/fixtures/synthetic_response_curves.json \
+  --budget 60 --min-spend 5 --max-spend 30
+
+# Or hit a KPI target with minimum total spend
+python scripts/03_allocate_budget.py \
+  --curves tests/fixtures/synthetic_response_curves.json \
+  --target-kpi 20 --min-spend 0
+
+# Meridian metrics → reports/allocation.json
+python scripts/03_allocate_budget.py \
+  --curves reports/metrics.json \
+  --budget 100000 --min-spend 0 \
+  --out reports/allocation.json
+
+# Teaching plots (Plotly Express HTML)
+python scripts/plot_allocation_teaching.py
+# → reports/figures/story_301_response_curves.html
+# → reports/figures/story_301_allocation_vs_baseline.html
+
+python -m pytest tests/test_curves.py tests/test_allocator.py -q
+```
+
+Modules: `src/optimize/curves.py`, `src/optimize/allocator.py`. CLI: `scripts/03_allocate_budget.py`.
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

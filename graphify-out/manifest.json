@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791818769.9563375,
-    "seen": 1791821443.9929147,
-    "ast_hash": "5f89e9040a0ca58b0d89968d5512638f",
+    "mtime": 1791823593.63538,
+    "seen": 1791823741.2862954,
+    "ast_hash": "66bf787b76d62c20ee708d38f55bff80",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "reports/figures/story_301_fixture_curves.html": {
-    "mtime": 1791821856.104869,
-    "seen": 1791822304.298342,
-    "ast_hash": "0b379cac369e11ecbbd4f43d763bde68",
+    "mtime": 1791822941.2509437,
+    "seen": 1791823741.2863045,
+    "ast_hash": "48d98588342c2e7bb69635e6c07e13d9",
     "semantic_hash": ""
   },
   "reports/figures/story_301_toy_diminishing_returns.html": {
@@ -372,8 +372,8 @@
     "semantic_hash": ""
   },
   "reports/allocation.json": {
-    "mtime": 1791822906.0618758,
-    "seen": 1791822908.2819614,
+    "mtime": 1791823599.3255572,
+    "seen": 1791823741.286229,
     "ast_hash": "8bea306f0ace61bc2ff1a86d6e19d5d8",
     "semantic_hash": ""
   },
@@ -381,6 +381,24 @@
     "mtime": 1791822883.8832355,
     "seen": 1791822908.2819688,
     "ast_hash": "4a39397237ca73d3b4e8bbed2775092b",
+    "semantic_hash": ""
+  },
+  "scripts/plot_allocation_teaching.py": {
+    "mtime": 1791823593.7989233,
+    "seen": 1791823741.2862387,
+    "ast_hash": "b9f8ca8f727fb6bad8e80458e668b16f",
+    "semantic_hash": ""
+  },
+  "reports/figures/story_301_allocation_vs_baseline.html": {
+    "mtime": 1791823600.921608,
+    "seen": 1791823741.2863035,
+    "ast_hash": "0aa4fe66a7212d204176e722071ec611",
+    "semantic_hash": ""
+  },
+  "reports/figures/story_301_response_curves.html": {
+    "mtime": 1791823600.7989655,
+    "seen": 1791823741.286306,
+    "ast_hash": "5525a5a3a72bdeb9ec49f897413f9ec1",
     "semantic_hash": ""
   }
 }
