@@ -5,16 +5,16 @@
   "status": "pass",
   "type": "architecture",
   "quality": "showcase",
-  "startedAt": "2026-10-13T21:51:42.812Z",
+  "startedAt": "2026-10-13T23:39:35.039Z",
   "specification": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/candidate.json",
-    "sha256": "a5a287631618a051cac839330ae44bcd37d0bc4dccf13d8d26511e974231e4c2",
-    "bytes": 13170
+    "sha256": "e2a957223d16bb83a542bf3fddbd8b485d587d526221b98983c50cd66cfd6998",
+    "bytes": 17751
   },
   "artifact": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
-    "sha256": "ebf4830a0c04a5dc7f7ddb9718b1415312d4cbe19f4cfdf16ab8729a14288efa",
-    "bytes": 780732
+    "sha256": "e82f5cd6b181a5aa9aa061693d74b6c67ba3e15fd9dc83e6a7d91d0497baef53",
+    "bytes": 797566
   },
   "stages": {
     "validate": {
@@ -40,8 +40,8 @@
         "ok": true,
         "command": "validate",
         "specification": {
-          "sha256": "a5a287631618a051cac839330ae44bcd37d0bc4dccf13d8d26511e974231e4c2",
-          "bytes": 13170
+          "sha256": "e2a957223d16bb83a542bf3fddbd8b485d587d526221b98983c50cd66cfd6998",
+          "bytes": 17751
         },
         "validation": {
           "checksPassed": 9,
@@ -56,7 +56,7 @@
     "deliver": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 396,
+      "durationMs": 570,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -72,19 +72,19 @@
       ],
       "receipt": {
         "schemaVersion": 1,
-        "receiptId": "a2454f9f-66bf-454e-b53f-56fe47d028ea",
+        "receiptId": "746da520-1535-4649-85e4-d33fbaa2ad25",
         "ok": true,
         "command": "deliver",
         "type": "architecture",
         "input": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/candidate.json",
         "output": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
         "specification": {
-          "sha256": "a5a287631618a051cac839330ae44bcd37d0bc4dccf13d8d26511e974231e4c2",
-          "bytes": 13170
+          "sha256": "e2a957223d16bb83a542bf3fddbd8b485d587d526221b98983c50cd66cfd6998",
+          "bytes": 17751
         },
         "artifact": {
-          "sha256": "ebf4830a0c04a5dc7f7ddb9718b1415312d4cbe19f4cfdf16ab8729a14288efa",
-          "bytes": 780732
+          "sha256": "e82f5cd6b181a5aa9aa061693d74b6c67ba3e15fd9dc83e6a7d91d0497baef53",
+          "bytes": 797566
         },
         "validation": {
           "checksPassed": 9,
@@ -97,8 +97,8 @@
         "evidence": {
           "verified": true,
           "repository": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
-          "revision": "3dffd009a6bf344822e0d2cdf7f61687a4ed45b2",
-          "references": 33,
+          "revision": "8d4adcba56412f50c90ea01e27d952306c723a66",
+          "references": 46,
           "linkMode": "local-only"
         },
         "update": {
@@ -117,7 +117,7 @@
     "check": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 146,
+      "durationMs": 144,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -129,8 +129,8 @@
         "ok": true,
         "file": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
         "artifact": {
-          "sha256": "ebf4830a0c04a5dc7f7ddb9718b1415312d4cbe19f4cfdf16ab8729a14288efa",
-          "bytes": 780732
+          "sha256": "e82f5cd6b181a5aa9aa061693d74b6c67ba3e15fd9dc83e6a7d91d0497baef53",
+          "bytes": 797566
         },
         "checks": [
           {
@@ -191,22 +191,22 @@
           },
           "metrics": {
             "properCrossings": 0,
-            "resolvedCrossovers": 0,
+            "resolvedCrossovers": 2,
             "ambiguousCorridors": 0,
             "arrowheadCollisions": 0,
             "containerBorderRuns": 0,
             "labelRouteClearanceIssues": 0,
             "labelCanvasOverflowIssues": 0,
-            "minLabelRouteClearance": 73.4,
+            "minLabelRouteClearance": 5,
             "desktopReadabilityIssues": 0,
             "viewportHeightIssues": 0,
             "minProjectedNodeTextPx": 6.009693053311794,
-            "maxBends": 0,
-            "routesOverSuggestedBends": 0,
-            "maxStretch": 1,
+            "maxBends": 4,
+            "routesOverSuggestedBends": 2,
+            "maxStretch": 1.037,
             "routesOverSuggestedStretch": 0,
-            "minSegmentPx": 56,
-            "minInteriorSegmentPx": null,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 118,
             "shortSegmentCount": 0,
             "shortEndpointSegmentCount": 0,
             "shortInteriorSegmentCount": 0,
@@ -219,16 +219,86 @@
             "microSegmentPx": 8
           },
           "routeReview": {
-            "crossings": [],
-            "detours": []
+            "crossings": [
+              {
+                "left": {
+                  "id": "spend-etl",
+                  "from": "spend",
+                  "to": "etl",
+                  "label": "rows",
+                  "collectionIndex": 0,
+                  "artifactIndex": 1
+                },
+                "right": {
+                  "id": "curves-sliders",
+                  "from": "curves",
+                  "to": "sliders",
+                  "label": "knots",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "point": [
+                  236,
+                  84
+                ]
+              },
+              {
+                "left": {
+                  "id": "rules-solver",
+                  "from": "rules",
+                  "to": "solver",
+                  "label": "bounds",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "offline-insights",
+                  "from": "offline",
+                  "to": "insights",
+                  "label": "click",
+                  "collectionIndex": 20,
+                  "artifactIndex": 21
+                },
+                "point": [
+                  975,
+                  596
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "curves-sliders",
+                  "from": "curves",
+                  "to": "sliders",
+                  "label": "knots",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "bends": 4,
+                "stretch": 1.037
+              },
+              {
+                "relationship": {
+                  "id": "offline-insights",
+                  "from": "offline",
+                  "to": "insights",
+                  "label": "click",
+                  "collectionIndex": 20,
+                  "artifactIndex": 21
+                },
+                "bends": 4,
+                "stretch": 1
+              }
+            ]
           },
           "leadingSpace": {
             "measured": true,
-            "emptyTopPx": 18,
-            "emptyTopRatio": 0.014,
-            "occupiedTop": 18,
+            "emptyTopPx": 4,
+            "emptyTopRatio": 0.003,
+            "occupiedTop": 4,
             "viewBoxTop": 0,
-            "canvasHeight": 1280,
+            "canvasHeight": 1480,
             "typicalNodeHeight": 72,
             "reviewSuggested": false
           },
@@ -250,18 +320,18 @@
             },
             "minimumSourceTextPx": 8,
             "minimumProjectedTextPx": 6.009693053311794,
-            "semanticTextCount": 53
+            "semanticTextCount": 73
           },
           "issues": []
         },
         "provenance": "current",
-        "deliveryReceiptId": "a2454f9f-66bf-454e-b53f-56fe47d028ea"
+        "deliveryReceiptId": "746da520-1535-4649-85e4-d33fbaa2ad25"
       }
     },
     "browser-check": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 2020,
+      "durationMs": 2444,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -279,11 +349,11 @@
         "status": "pass",
         "visualReview": "not-requested",
         "provenance": "current",
-        "deliveryReceiptId": "a2454f9f-66bf-454e-b53f-56fe47d028ea",
+        "deliveryReceiptId": "746da520-1535-4649-85e4-d33fbaa2ad25",
         "artifact": {
           "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
-          "sha256": "ebf4830a0c04a5dc7f7ddb9718b1415312d4cbe19f4cfdf16ab8729a14288efa",
-          "bytes": 780732
+          "sha256": "e82f5cd6b181a5aa9aa061693d74b6c67ba3e15fd9dc83e6a7d91d0497baef53",
+          "bytes": 797566
         },
         "state": {
           "detail": "read",
@@ -305,7 +375,7 @@
               "innerWidth": 1440,
               "innerHeight": 900,
               "scrollWidth": 1440,
-              "scrollHeight": 1256,
+              "scrollHeight": 1402,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -318,11 +388,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 12,
-                "headerPx": 99,
+                "headerPx": 78,
                 "diagramChromePx": 78,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -357,7 +427,7 @@
               "innerWidth": 1600,
               "innerHeight": 1000,
               "scrollWidth": 1600,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -370,11 +440,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -409,7 +479,7 @@
               "innerWidth": 1920,
               "innerHeight": 1080,
               "scrollWidth": 1920,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -422,11 +492,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -461,13 +531,13 @@
               "innerWidth": 2048,
               "innerHeight": 1320,
               "scrollWidth": 2048,
-              "scrollHeight": 1320,
+              "scrollHeight": 1485,
               "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
               "readerLayout": "adaptive",
-              "readerOverflow": null,
+              "readerOverflow": "authored",
               "readerFit": "intrinsic-height",
               "ok": true,
               "readerWidth": 1082,
@@ -476,9 +546,9 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 94,
                 "diagramChromePx": 94,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -566,7 +636,7 @@
               "innerWidth": 1440,
               "innerHeight": 900,
               "scrollWidth": 1440,
-              "scrollHeight": 1256,
+              "scrollHeight": 1402,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -579,11 +649,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 12,
-                "headerPx": 99,
+                "headerPx": 78,
                 "diagramChromePx": 78,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -618,7 +688,7 @@
               "innerWidth": 1600,
               "innerHeight": 1000,
               "scrollWidth": 1600,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -631,11 +701,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -670,7 +740,7 @@
               "innerWidth": 1920,
               "innerHeight": 1080,
               "scrollWidth": 1920,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -683,11 +753,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -722,13 +792,13 @@
               "innerWidth": 2048,
               "innerHeight": 1320,
               "scrollWidth": 2048,
-              "scrollHeight": 1320,
+              "scrollHeight": 1485,
               "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
               "readerLayout": "adaptive",
-              "readerOverflow": null,
+              "readerOverflow": "authored",
               "readerFit": "intrinsic-height",
               "ok": true,
               "readerWidth": 1082,
@@ -737,9 +807,9 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 94,
                 "diagramChromePx": 94,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -779,7 +849,7 @@
               "innerWidth": 1440,
               "innerHeight": 900,
               "scrollWidth": 1440,
-              "scrollHeight": 1256,
+              "scrollHeight": 1402,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -792,11 +862,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 12,
-                "headerPx": 99,
+                "headerPx": 78,
                 "diagramChromePx": 78,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -831,7 +901,7 @@
               "innerWidth": 1600,
               "innerHeight": 1000,
               "scrollWidth": 1600,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -844,11 +914,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -883,7 +953,7 @@
               "innerWidth": 1920,
               "innerHeight": 1080,
               "scrollWidth": 1920,
-              "scrollHeight": 1322,
+              "scrollHeight": 1468,
               "overflowX": false,
               "overflowY": true,
               "verticalScrollAccepted": true,
@@ -896,11 +966,11 @@
               "diagramWidth": 1032,
               "pageComposition": {
                 "bodyPaddingPx": 64,
-                "headerPx": 107,
+                "headerPx": 86,
                 "diagramChromePx": 84,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -935,13 +1005,13 @@
               "innerWidth": 2048,
               "innerHeight": 1320,
               "scrollWidth": 2048,
-              "scrollHeight": 1320,
+              "scrollHeight": 1485,
               "overflowX": false,
-              "overflowY": false,
-              "verticalScrollAccepted": false,
-              "overflowDisposition": "contained",
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
               "readerLayout": "adaptive",
-              "readerOverflow": null,
+              "readerOverflow": "authored",
               "readerFit": "intrinsic-height",
               "ok": true,
               "readerWidth": 1082,
@@ -950,9 +1020,9 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 94,
                 "diagramChromePx": 94,
-                "svgPx": 1067,
+                "svgPx": 1234,
                 "cardsPx": 0,
-                "viewBoxHeight": 1280
+                "viewBoxHeight": 1480
               },
               "viewBoxWidth": 1238,
               "minimumProjectedNodeTextPx": 6.668820678513732,
@@ -1001,8 +1071,8 @@
     "browserCheckReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.browser-check.json"
   },
   "visualReview": "not-requested",
-  "finishedAt": "2026-10-13T21:51:45.507Z",
-  "durationMs": 2695,
+  "finishedAt": "2026-10-13T23:39:38.349Z",
+  "durationMs": 3309,
   "update": {
     "status": "update_available",
     "installedVersion": "3.0.1",

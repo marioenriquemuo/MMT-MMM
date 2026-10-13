@@ -7,13 +7,13 @@
   "quality": "showcase",
   "specification": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/candidate.json",
-    "sha256": "a5a287631618a051cac839330ae44bcd37d0bc4dccf13d8d26511e974231e4c2",
-    "bytes": 13170
+    "sha256": "e2a957223d16bb83a542bf3fddbd8b485d587d526221b98983c50cd66cfd6998",
+    "bytes": 17751
   },
   "artifact": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
-    "sha256": "ebf4830a0c04a5dc7f7ddb9718b1415312d4cbe19f4cfdf16ab8729a14288efa",
-    "bytes": 780732
+    "sha256": "e82f5cd6b181a5aa9aa061693d74b6c67ba3e15fd9dc83e6a7d91d0497baef53",
+    "bytes": 797566
   },
   "gates": {
     "validate": "pass",
@@ -45,5 +45,95 @@
     "eventKey": "archify@sha256:ffedc53390c9da6e859f41e432c5d2d0615a23cf00a503181f07efbba88a7ce8"
   },
   "visualReview": "not-requested",
-  "durationMs": 2695
+  "durationMs": 3309,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 2,
+      "routesOverSuggestedBends": 2
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "spend-etl",
+            "from": "spend",
+            "to": "etl",
+            "label": "rows",
+            "collectionIndex": 0,
+            "artifactIndex": 1
+          },
+          "right": {
+            "id": "curves-sliders",
+            "from": "curves",
+            "to": "sliders",
+            "label": "knots",
+            "collectionIndex": 16,
+            "artifactIndex": 17
+          },
+          "point": [
+            236,
+            84
+          ]
+        },
+        {
+          "left": {
+            "id": "rules-solver",
+            "from": "rules",
+            "to": "solver",
+            "label": "bounds",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "right": {
+            "id": "offline-insights",
+            "from": "offline",
+            "to": "insights",
+            "label": "click",
+            "collectionIndex": 20,
+            "artifactIndex": 21
+          },
+          "point": [
+            975,
+            596
+          ]
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "curves-sliders",
+            "from": "curves",
+            "to": "sliders",
+            "label": "knots",
+            "collectionIndex": 16,
+            "artifactIndex": 17
+          },
+          "bends": 4,
+          "stretch": 1.037
+        },
+        {
+          "relationship": {
+            "id": "offline-insights",
+            "from": "offline",
+            "to": "insights",
+            "label": "click",
+            "collectionIndex": 20,
+            "artifactIndex": 21
+          },
+          "bends": 4,
+          "stretch": 1
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "spend → etl crosses curves → sliders: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "rules → solver crosses offline → insights: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "curves → sliders needs 4 bends: move node curves or sliders so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "offline → insights needs 4 bends: move node offline or insights so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
 }
