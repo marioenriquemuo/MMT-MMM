@@ -2,16 +2,28 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import MagicMock
 
 import pytest
 
-from src.report.brief import CAVEAT_KPI, CAVEAT_RANK, build_messages, render_offline
+from src.report.brief import (
+    CAVEAT_KPI,
+    CAVEAT_RANK,
+    DEFAULT_MODEL,
+    MissingApiKey,
+    build_messages,
+    load_api_key,
+    render_live,
+    render_offline,
+)
 from src.report.facts import build_fact_pack, numbers_match
-from src.report.schema import CsuiteBrief
+from src.report.schema import CsuiteBrief, emit_brief_json_schema
 
 REPO = Path(__file__).resolve().parents[1]
 FIXTURE = REPO / "tests" / "fixtures" / "story_302_allocation.json"
@@ -117,7 +129,95 @@ def test_cli_failed_allocation_exits_nonzero(tmp_path: Path):
     assert "no fact pack" in proc.stderr
 
 
-def test_cli_without_offline_exits_2():
-    proc = _run("--allocation", str(FIXTURE))
-    assert proc.returncode == 2
-    assert "Step 3" in proc.stderr
+def _cli():
+    name = "csuite_brief_cli"
+    if name in sys.modules:
+        return sys.modules[name]
+    spec = importlib.util.spec_from_file_location(name, SCRIPT)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def _fake_client(payload: dict, captured: dict | None = None) -> MagicMock:
+    client = MagicMock()
+
+    def create(**kwargs):
+        if captured is not None:
+            captured.update(kwargs)
+        block = SimpleNamespace(type="tool_use", name="emit_brief", input=payload)
+        return SimpleNamespace(content=[block])
+
+    client.messages.create.side_effect = create
+    return client
+
+
+def _matching_payload() -> tuple[dict, dict]:
+    pack = build_fact_pack(_allocation())
+    return pack, render_offline(pack).model_dump()
+
+
+# --- Live path (mocked client, no network) ---
+
+
+def test_live_accepts_matching_tool_payload():
+    pack, payload = _matching_payload()
+    captured: dict = {}
+    brief = render_live(pack, client=_fake_client(payload, captured), model=DEFAULT_MODEL)
+    assert numbers_match(pack, brief)
+    assert captured["model"] == DEFAULT_MODEL
+    assert captured["tool_choice"] == {"type": "tool", "name": "emit_brief"}
+    assert captured["tools"][0]["name"] == "emit_brief"
+    assert captured["tools"][0]["input_schema"] == emit_brief_json_schema()
+
+
+def test_live_rejects_drifted_spend_or_kpi():
+    pack, payload = _matching_payload()
+    drifted_spend = json.loads(json.dumps(payload))
+    drifted_spend["shifts"][0]["recommended_spend"] += 1
+    with pytest.raises(RuntimeError, match="do not match"):
+        render_live(pack, client=_fake_client(drifted_spend))
+
+    drifted_kpi = json.loads(json.dumps(payload))
+    drifted_kpi["predicted_incremental_kpi"] += 1
+    with pytest.raises(RuntimeError, match="do not match"):
+        render_live(pack, client=_fake_client(drifted_kpi))
+
+    before = OUT.read_bytes()
+    code = _cli().main(
+        ["--allocation", str(FIXTURE)],
+        client=_fake_client(drifted_spend),
+    )
+    assert code != 0
+    assert OUT.read_bytes() == before
+
+
+def test_missing_key_names_env_and_file(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    with pytest.raises(MissingApiKey) as exc:
+        load_api_key(tmp_path / "anthropic_api_key")
+    text = str(exc.value)
+    assert "ANTHROPIC_API_KEY" in text
+    assert "anthropic_api_key" in text
+    assert "sk-" not in text
+
+
+def test_env_key_used_before_file(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-env-key")
+    path = tmp_path / "anthropic_api_key"
+    path.write_text("test-file-key\n", encoding="utf-8")
+    assert load_api_key(path) == "test-env-key"
+
+
+def test_failed_allocation_does_not_call_model(tmp_path: Path):
+    bad = tmp_path / "failed.json"
+    bad.write_text(
+        json.dumps({"channels": {}, "solver": {"success": False, "message": "infeasible"}}),
+        encoding="utf-8",
+    )
+    client = MagicMock()
+    code = _cli().main(["--allocation", str(bad)], client=client)
+    assert code != 0
+    client.messages.create.assert_not_called()

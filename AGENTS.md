@@ -43,7 +43,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
 | `scripts/plot_allocation_teaching.py` | STORY-301 Plotly teaching figures |
 | `scripts/plot_story_302_concepts.py` | STORY-302 Plotly teaching figures (shift, saturation, lift) |
-| `scripts/04_csuite_brief.py` | STORY-302 offline brief → `reports/csuite_brief.json` |
+| `scripts/04_csuite_brief.py` | STORY-302 brief → `reports/csuite_brief.json` (`--offline` or live) |
 | `tests/` | Generator, transforms, ETL, QA, Meridian, curves, allocator, `<1s` perf |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
 | `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
@@ -68,7 +68,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
-- **STORY-302 in progress (step 0–2)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack, schema, and offline brief in `src/report/` (`scripts/04_csuite_brief.py --offline`). No Anthropic client yet.
+- **STORY-302 in progress (step 0–3)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack, schema, offline brief, and live Anthropic `emit_brief` in `src/report/` (`scripts/04_csuite_brief.py`, default model `claude-sonnet-4-5`). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit).
 
 ## Skills
 

@@ -88,7 +88,7 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this st
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
-| STORY-302 | In progress (step 0–2) | Teaching plots, fact pack, offline brief CLI. No Anthropic client yet |
+| STORY-302 | In progress (step 0–3) | Teaching plots, fact pack, offline brief, live Anthropic `emit_brief` (`claude-sonnet-4-5`) with number lock |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 

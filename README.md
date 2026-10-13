@@ -206,9 +206,13 @@ python -m pytest tests/test_curves.py tests/test_allocator.py -q
 
 Modules: `src/optimize/curves.py`, `src/optimize/allocator.py`. CLI: `scripts/03_allocate_budget.py`.
 
-## STORY-302 / C-suite brief (step 0–2)
+## STORY-302 / C-suite brief (step 0–3)
 
-Teaching figures for budget shift, saturation, and KPI lift. The recommended mix is fixed (alpha 27, beta 18, gamma 15) because equal-room on this fixture is 20/20/20 and SLSQP does not leave that point. The offline CLI fills the brief from that allocation JSON. Live model calls are Step 3.
+Teaching figures for budget shift, saturation, and KPI lift. The recommended mix is fixed (alpha 27, beta 18, gamma 15) because equal-room on this fixture is 20/20/20 and SLSQP does not leave that point.
+
+Offline rendering stays `--offline`. Without that flag the CLI calls Anthropic with a forced `emit_brief` tool, then rejects the brief if the numbers drift from the fact pack. Default model id: `claude-sonnet-4-5` (`--model` overrides it).
+
+Key load order: environment variable `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The CLI never prints the key.
 
 ```bash
 conda activate mmt-mmm
@@ -219,7 +223,10 @@ python scripts/plot_story_302_concepts.py
 
 python scripts/04_csuite_brief.py \
   --allocation tests/fixtures/story_302_allocation.json --offline
-# prints the brief; writes reports/csuite_brief.json
+
+python scripts/04_csuite_brief.py \
+  --allocation tests/fixtures/story_302_allocation.json
+# live; writes reports/csuite_brief.json only after the number lock passes
 
 python -m pytest tests/test_csuite_facts.py tests/test_csuite_brief.py -q
 ```

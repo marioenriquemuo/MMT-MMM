@@ -102,21 +102,21 @@
     "semantic_hash": "98c524508d475b44f0997e0a56ee4a0f"
   },
   "AGENTS.md": {
-    "mtime": 1791920708.535977,
-    "seen": 1791920745.5894403,
-    "ast_hash": "b198e8040f1ed6a132ba63f4862e1e02",
+    "mtime": 1791921795.45326,
+    "seen": 1791921883.5677218,
+    "ast_hash": "6da9ed5d726ceb6687962d5ad0802c32",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791920680.9605277,
-    "seen": 1791920745.589441,
-    "ast_hash": "a25a9269e8596e730b2a8af7400bceb0",
+    "mtime": 1791921781.1782324,
+    "seen": 1791921883.567725,
+    "ast_hash": "68cf1a7d6f5bd257db24d099900849a4",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791920679.4454846,
-    "seen": 1791920745.589442,
-    "ast_hash": "00f8e3eae5c52e24d81de8485ce83f17",
+    "mtime": 1791921781.0953197,
+    "seen": 1791921883.567729,
+    "ast_hash": "44ab6bcb652e6d08f1ce878a63b4eb22",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   "environment.yml": {
-    "mtime": 1791584481.4170702,
-    "seen": 1791821443.9929185,
-    "ast_hash": "350f662d789971b720112087284e8ba0",
+    "mtime": 1791921709.5440357,
+    "seen": 1791921883.5677462,
+    "ast_hash": "75e36602c64809f9c7c4b41469e9b2b3",
     "semantic_hash": ""
   },
   "scripts/plot_adstock_validation.py": {
@@ -408,9 +408,9 @@
     "semantic_hash": ""
   },
   "src/report/__init__.py": {
-    "mtime": 1791920679.3387337,
-    "seen": 1791920745.5893977,
-    "ast_hash": "bb531016c9f80de87834fae29aef2efa",
+    "mtime": 1791921710.05703,
+    "seen": 1791921883.5675728,
+    "ast_hash": "942adae30ce16e02d7d71b01198235c7",
     "semantic_hash": ""
   },
   "src/report/facts.py": {
@@ -456,27 +456,27 @@
     "semantic_hash": ""
   },
   "reports/csuite_brief.json": {
-    "mtime": 1791920743.8937128,
-    "seen": 1791920745.589368,
+    "mtime": 1791921879.0507805,
+    "seen": 1791921883.5675092,
     "ast_hash": "bc4c0d794f6feb7cfca93ece7d26c69f",
     "semantic_hash": ""
   },
   "scripts/04_csuite_brief.py": {
-    "mtime": 1791920721.4257772,
-    "seen": 1791920745.589375,
-    "ast_hash": "10729554ffcbdf80e92c38a5e35463c0",
+    "mtime": 1791921720.7524316,
+    "seen": 1791921883.567522,
+    "ast_hash": "9791d95f419f7c77cb19c06e06619933",
     "semantic_hash": ""
   },
   "src/report/brief.py": {
-    "mtime": 1791920728.1250951,
-    "seen": 1791920745.5893989,
-    "ast_hash": "b64bff505f158c59b4f9ff7f51d7a723",
+    "mtime": 1791921720.75191,
+    "seen": 1791921883.567575,
+    "ast_hash": "4a2b404f8349d562a8c2294e34ffa9d4",
     "semantic_hash": ""
   },
   "tests/test_csuite_brief.py": {
-    "mtime": 1791920679.2855487,
-    "seen": 1791920745.5894055,
-    "ast_hash": "141db0c5a11d2c891f33257a76cd37c9",
+    "mtime": 1791921781.8762248,
+    "seen": 1791921883.5675938,
+    "ast_hash": "571398029f8c886bd9dd97a03639104d",
     "semantic_hash": ""
   }
 }

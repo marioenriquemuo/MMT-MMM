@@ -1,17 +1,28 @@
-"""Offline C-suite brief (STORY-302 Step 2).
+"""C-suite brief (STORY-302 Steps 2–3).
 
 Builds a system+user prompt from the fact pack only (allocation JSON, not
-CSVs) and fills ``CsuiteBrief`` without calling a model. Live Anthropic
-rendering is Step 3.
+CSVs). ``render_offline`` fills the brief locally. ``render_live`` asks
+Anthropic to call ``emit_brief`` and then locks the numbers to the fact pack.
 """
 
 from __future__ import annotations
 
 import json
+import os
+from pathlib import Path
 from typing import Any, Mapping
 
+from pydantic import ValidationError
+
 from src.report.facts import numbers_match
-from src.report.schema import CsuiteBrief
+from src.report.schema import CsuiteBrief, emit_brief_json_schema
+
+# --- Live call defaults ---
+
+DEFAULT_MODEL = "claude-sonnet-4-5"
+_TOOL_NAME = "emit_brief"
+_SECRET = Path(__file__).resolve().parents[2] / "Secret" / "anthropic_api_key"
+_MISSING_KEY = "Set ANTHROPIC_API_KEY or put one line in Secret/anthropic_api_key"
 
 # --- Caveats (always on the brief) ---
 
@@ -161,3 +172,81 @@ def _lift_bullet(kpi: float, delta: Any) -> str:
             "Lift vs baseline was not computed."
         )
     return f"Predicted incremental KPI is {kpi:g}, lift vs baseline {float(delta):+.6g}."
+
+
+# --- Live Anthropic path ---
+
+
+class MissingApiKey(RuntimeError):
+    """Raised when neither the env var nor the secret file has a key."""
+
+
+def load_api_key(secret_path: Path | None = None) -> str:
+    """Env ``ANTHROPIC_API_KEY``, else the first line of the secret file.
+
+    The returned string is the key. Callers must not print it.
+    """
+    env = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if env:
+        return env
+    path = secret_path if secret_path is not None else _SECRET
+    if path.is_file():
+        text = path.read_text(encoding="utf-8").strip()
+        line = text.splitlines()[0].strip() if text else ""
+        if line:
+            return line
+    raise MissingApiKey(_MISSING_KEY)
+
+
+def render_live(
+    fact_pack: Mapping[str, Any],
+    *,
+    client: Any,
+    model: str = DEFAULT_MODEL,
+) -> CsuiteBrief:
+    """Force the ``emit_brief`` tool, validate, then lock numbers.
+
+    Raises ``ValueError`` on a missing tool call or schema failure, and
+    ``RuntimeError`` when ``numbers_match`` fails. Does not write a file.
+    """
+    messages = build_messages(fact_pack)
+    response = client.messages.create(
+        model=model,
+        max_tokens=1024,
+        system=messages["system"],
+        messages=[{"role": "user", "content": messages["user"]}],
+        tools=[
+            {
+                "name": _TOOL_NAME,
+                "description": "Emit the C-suite brief using only fact-pack numbers.",
+                "input_schema": emit_brief_json_schema(),
+            }
+        ],
+        tool_choice={"type": "tool", "name": _TOOL_NAME},
+    )
+    payload = _tool_input(response)
+    try:
+        brief = CsuiteBrief.model_validate(payload)
+    except ValidationError as exc:
+        raise ValueError(f"emit_brief schema failed: {exc}") from exc
+    if not numbers_match(fact_pack, brief):
+        raise RuntimeError("brief numbers do not match the fact pack")
+    return brief
+
+
+def _tool_input(response: Any) -> Mapping[str, Any]:
+    for block in getattr(response, "content", None) or []:
+        if _field(block, "type") != "tool_use" or _field(block, "name") != _TOOL_NAME:
+            continue
+        raw = _field(block, "input")
+        if isinstance(raw, str):
+            raw = json.loads(raw)
+        if isinstance(raw, Mapping):
+            return raw
+    raise ValueError("emit_brief tool call missing")
+
+
+def _field(block: Any, name: str) -> Any:
+    if isinstance(block, Mapping):
+        return block.get(name)
+    return getattr(block, name, None)

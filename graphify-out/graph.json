@@ -121,6 +121,19 @@
   },
   "nodes": [
     {
+      "id": "src_report_brief_missingapikey",
+      "label": "MissingApiKey",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "missingapikey",
+      "source_file": "src/report/brief.py",
+      "source_location": "L180"
+    },
+    {
       "id": "src_report_schema_channelfact",
       "label": "ChannelFact",
       "_callable": true,
@@ -881,7 +894,19 @@
       "file_type": "code",
       "norm_label": "build_parser()",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L37"
+      "source_location": "L48"
+    },
+    {
+      "id": "scripts_04_csuite_brief_fail",
+      "label": "_fail()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_fail()",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L75"
     },
     {
       "id": "scripts_04_csuite_brief_main",
@@ -893,7 +918,19 @@
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L53"
+      "source_location": "L80"
+    },
+    {
+      "id": "scripts_04_csuite_brief_redact",
+      "label": "_redact()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_redact()",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L69"
     },
     {
       "id": "src_report_brief_build_messages",
@@ -905,7 +942,19 @@
       "file_type": "code",
       "norm_label": "build_messages()",
       "source_file": "src/report/brief.py",
-      "source_location": "L38"
+      "source_location": "L49"
+    },
+    {
+      "id": "src_report_brief_field",
+      "label": "_field()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_field()",
+      "source_file": "src/report/brief.py",
+      "source_location": "L249"
     },
     {
       "id": "src_report_brief_format_brief",
@@ -917,7 +966,7 @@
       "file_type": "code",
       "norm_label": "format_brief()",
       "source_file": "src/report/brief.py",
-      "source_location": "L93"
+      "source_location": "L104"
     },
     {
       "id": "src_report_brief_headline",
@@ -929,7 +978,7 @@
       "file_type": "code",
       "norm_label": "_headline()",
       "source_file": "src/report/brief.py",
-      "source_location": "L123"
+      "source_location": "L134"
     },
     {
       "id": "src_report_brief_lift_bullet",
@@ -941,7 +990,31 @@
       "file_type": "code",
       "norm_label": "_lift_bullet()",
       "source_file": "src/report/brief.py",
-      "source_location": "L157"
+      "source_location": "L168"
+    },
+    {
+      "id": "src_report_brief_load_api_key",
+      "label": "load_api_key()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "load_api_key()",
+      "source_file": "src/report/brief.py",
+      "source_location": "L184"
+    },
+    {
+      "id": "src_report_brief_render_live",
+      "label": "render_live()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "render_live()",
+      "source_file": "src/report/brief.py",
+      "source_location": "L201"
     },
     {
       "id": "src_report_brief_render_offline",
@@ -953,7 +1026,7 @@
       "file_type": "code",
       "norm_label": "render_offline()",
       "source_file": "src/report/brief.py",
-      "source_location": "L50"
+      "source_location": "L61"
     },
     {
       "id": "src_report_brief_saturation_bullet",
@@ -965,7 +1038,7 @@
       "file_type": "code",
       "norm_label": "_saturation_bullet()",
       "source_file": "src/report/brief.py",
-      "source_location": "L152"
+      "source_location": "L163"
     },
     {
       "id": "src_report_brief_shift_bullet",
@@ -977,7 +1050,19 @@
       "file_type": "code",
       "norm_label": "_shift_bullet()",
       "source_file": "src/report/brief.py",
-      "source_location": "L141"
+      "source_location": "L152"
+    },
+    {
+      "id": "src_report_brief_tool_input",
+      "label": "_tool_input()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_tool_input()",
+      "source_file": "src/report/brief.py",
+      "source_location": "L237"
     },
     {
       "id": "src_report_facts_bound",
@@ -1085,7 +1170,55 @@
       "file_type": "code",
       "norm_label": "_allocation()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L22"
+      "source_location": "L34"
+    },
+    {
+      "id": "tests_test_csuite_brief_cli",
+      "label": "_cli()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_cli()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L132"
+    },
+    {
+      "id": "tests_test_csuite_brief_fake_client",
+      "label": "_fake_client()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_fake_client()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L144"
+    },
+    {
+      "id": "tests_test_csuite_brief_fake_client_create",
+      "label": "create()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "create()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L147"
+    },
+    {
+      "id": "tests_test_csuite_brief_matching_payload",
+      "label": "_matching_payload()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "_matching_payload()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L157"
     },
     {
       "id": "tests_test_csuite_brief_run",
@@ -1097,7 +1230,7 @@
       "file_type": "code",
       "norm_label": "_run()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L26"
+      "source_location": "L38"
     },
     {
       "id": "tests_test_csuite_brief_test_cli_failed_allocation_exits_nonzero",
@@ -1109,7 +1242,7 @@
       "file_type": "code",
       "norm_label": "test_cli_failed_allocation_exits_nonzero()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L103"
+      "source_location": "L115"
     },
     {
       "id": "tests_test_csuite_brief_test_cli_prints_offline_brief_and_writes_json",
@@ -1121,19 +1254,55 @@
       "file_type": "code",
       "norm_label": "test_cli_prints_offline_brief_and_writes_json()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L85"
+      "source_location": "L97"
     },
     {
-      "id": "tests_test_csuite_brief_test_cli_without_offline_exits_2",
-      "label": "test_cli_without_offline_exits_2()",
+      "id": "tests_test_csuite_brief_test_env_key_used_before_file",
+      "label": "test_env_key_used_before_file()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "test_csuite_brief.py",
       "file_type": "code",
-      "norm_label": "test_cli_without_offline_exits_2()",
+      "norm_label": "test_env_key_used_before_file()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L120"
+      "source_location": "L207"
+    },
+    {
+      "id": "tests_test_csuite_brief_test_failed_allocation_does_not_call_model",
+      "label": "test_failed_allocation_does_not_call_model()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "test_failed_allocation_does_not_call_model()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L214"
+    },
+    {
+      "id": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "label": "test_live_accepts_matching_tool_payload()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "test_live_accepts_matching_tool_payload()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L165"
+    },
+    {
+      "id": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "label": "test_live_rejects_drifted_spend_or_kpi()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "test_live_rejects_drifted_spend_or_kpi()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L176"
     },
     {
       "id": "tests_test_csuite_brief_test_lock_failure_refuses_the_brief",
@@ -1145,7 +1314,19 @@
       "file_type": "code",
       "norm_label": "test_lock_failure_refuses_the_brief()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L75"
+      "source_location": "L87"
+    },
+    {
+      "id": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "label": "test_missing_key_names_env_and_file()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "test_missing_key_names_env_and_file()",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L197"
     },
     {
       "id": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
@@ -1157,7 +1338,7 @@
       "file_type": "code",
       "norm_label": "test_null_delta_does_not_invent_lift()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L63"
+      "source_location": "L75"
     },
     {
       "id": "tests_test_csuite_brief_test_offline_brief_validates_and_locks_numbers",
@@ -1169,7 +1350,7 @@
       "file_type": "code",
       "norm_label": "test_offline_brief_validates_and_locks_numbers()",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L39"
+      "source_location": "L51"
     },
     {
       "id": "tests_test_csuite_facts_brief_from",
@@ -1388,24 +1569,12 @@
       "source_location": "L62"
     },
     {
-      "id": "scripts_plot_story_301_fixture_curves_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "pathlib",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "scripts/plot_story_301_fixture_curves.py",
-      "source_location": "L26"
-    },
-    {
       "id": "scripts_plot_story_302_concepts_equal_room_baseline",
       "label": "_equal_room_baseline()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "_equal_room_baseline()",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -1417,7 +1586,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "_kpi()",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -1429,7 +1598,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "_long_frame()",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -1441,7 +1610,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -1453,7 +1622,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "_write()",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -1705,7 +1874,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "_extract_means_map()",
       "source_file": "src/optimize/curves.py",
@@ -1717,7 +1886,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "load_curve_means()",
       "source_file": "src/optimize/curves.py",
@@ -1729,7 +1898,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "load_curve_means_json()",
       "source_file": "src/optimize/curves.py",
@@ -1741,7 +1910,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "_looks_like_arrays()",
       "source_file": "src/optimize/curves.py",
@@ -1753,71 +1922,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "src/optimize/curves.py",
       "source_location": "L116"
-    },
-    {
-      "id": "tests_test_curves_fixture_provider",
-      "label": "fixture_provider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "fixture_provider()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L51"
-    },
-    {
-      "id": "tests_test_curves_test_clamp_outside_range",
-      "label": "test_clamp_outside_range()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_clamp_outside_range()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L68"
-    },
-    {
-      "id": "tests_test_curves_test_diminishing_nondecreasing",
-      "label": "test_diminishing_nondecreasing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_diminishing_nondecreasing()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L76"
-    },
-    {
-      "id": "tests_test_curves_test_exact_knots",
-      "label": "test_exact_knots()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_exact_knots()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L55"
-    },
-    {
-      "id": "tests_test_curves_test_load_committed_metrics_json",
-      "label": "test_load_committed_metrics_json()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_load_committed_metrics_json()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L93"
     },
     {
       "id": "tests_test_curves_test_load_fixture_nested_means",
@@ -1825,7 +1934,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_fixture_nested_means()",
       "source_file": "tests/test_curves.py",
@@ -1837,7 +1946,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_flat_channel_map()",
       "source_file": "tests/test_curves.py",
@@ -1849,35 +1958,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "test_load_means_only_wrapper()",
       "source_file": "tests/test_curves.py",
       "source_location": "L41"
-    },
-    {
-      "id": "tests_test_curves_test_midpoint_interpolation",
-      "label": "test_midpoint_interpolation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_midpoint_interpolation()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L63"
-    },
-    {
-      "id": "tests_test_curves_test_unknown_channel_raises",
-      "label": "test_unknown_channel_raises()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_unknown_channel_raises()",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L84"
     },
     {
       "id": "src_optimize_allocator_optimize_budget",
@@ -1926,6 +2011,18 @@
       "norm_label": "fixture_provider()",
       "source_file": "tests/test_allocator.py",
       "source_location": "L21"
+    },
+    {
+      "id": "tests_test_allocator_test_cli_run_allocate_writes_json",
+      "label": "test_cli_run_allocate_writes_json()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "MetricsJsonCurveProvider",
+      "file_type": "code",
+      "norm_label": "test_cli_run_allocate_writes_json()",
+      "source_file": "tests/test_allocator.py",
+      "source_location": "L176"
     },
     {
       "id": "tests_test_allocator_test_infeasible_maxes_below_budget",
@@ -2257,7 +2354,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "_bar_frame()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2269,7 +2366,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "build_curves_figure()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2281,7 +2378,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "build_parser()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2293,7 +2390,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "_curve_frame()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2305,7 +2402,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "_equal_room_baseline()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2317,7 +2414,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -2329,11 +2426,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "write_allocation_bars()",
       "source_file": "scripts/plot_allocation_teaching.py",
       "source_location": "L112"
+    },
+    {
+      "id": "scripts_plot_story_301_fixture_curves_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "pathlib",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "scripts/plot_story_301_fixture_curves.py",
+      "source_location": "L26"
     },
     {
       "id": "scripts_03_allocate_budget_build_parser",
@@ -2444,16 +2553,88 @@
       "source_location": "L137"
     },
     {
-      "id": "tests_test_allocator_test_cli_run_allocate_writes_json",
-      "label": "test_cli_run_allocate_writes_json()",
+      "id": "tests_test_curves_fixture_provider",
+      "label": "fixture_provider()",
       "_callable": true,
       "_origin": "ast",
       "community": 49,
-      "community_name": "test_cli_run_allocate_writes_json",
+      "community_name": "test_curves.py",
       "file_type": "code",
-      "norm_label": "test_cli_run_allocate_writes_json()",
-      "source_file": "tests/test_allocator.py",
-      "source_location": "L176"
+      "norm_label": "fixture_provider()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L51"
+    },
+    {
+      "id": "tests_test_curves_test_clamp_outside_range",
+      "label": "test_clamp_outside_range()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_clamp_outside_range()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L68"
+    },
+    {
+      "id": "tests_test_curves_test_diminishing_nondecreasing",
+      "label": "test_diminishing_nondecreasing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_diminishing_nondecreasing()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L76"
+    },
+    {
+      "id": "tests_test_curves_test_exact_knots",
+      "label": "test_exact_knots()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_exact_knots()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L55"
+    },
+    {
+      "id": "tests_test_curves_test_load_committed_metrics_json",
+      "label": "test_load_committed_metrics_json()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_load_committed_metrics_json()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L93"
+    },
+    {
+      "id": "tests_test_curves_test_midpoint_interpolation",
+      "label": "test_midpoint_interpolation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_midpoint_interpolation()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L63"
+    },
+    {
+      "id": "tests_test_curves_test_unknown_channel_raises",
+      "label": "test_unknown_channel_raises()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "test_unknown_channel_raises()",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L84"
     },
     {
       "id": "src_data_qa_detect_anomalies",
@@ -4291,6 +4472,17 @@
       "source_location": "L135"
     },
     {
+      "id": "baseexception",
+      "label": "BaseException",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "baseexception",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "basemodel",
       "label": "BaseModel",
       "_origin": "ast",
@@ -4335,6 +4527,17 @@
       "source_location": "L1"
     },
     {
+      "id": "scripts_04_csuite_brief_py_any",
+      "label": "Any",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "any",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "scripts_04_csuite_brief_py_argumentparser",
       "label": "ArgumentParser",
       "_origin": "ast",
@@ -4364,6 +4567,28 @@
       "community_name": "test_csuite_brief.py",
       "file_type": "code",
       "norm_label": "any",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_report_brief_py_path",
+      "label": "Path",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_report_brief_py_runtimeerror",
+      "label": "RuntimeError",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "code",
+      "norm_label": "runtimeerror",
       "source_file": "",
       "source_location": ""
     },
@@ -4468,50 +4693,28 @@
     },
     {
       "id": "scripts_04_csuite_brief_rationale_2",
-      "label": "STORY-302 Step 2 \u2014 offline C-suite brief from an allocation JSON. Live model\u2026",
+      "label": "STORY-302 \u2014 C-suite brief from an allocation JSON. ``--offline`` fills the\u2026",
       "_origin": "ast",
       "community": 3,
       "community_name": "test_csuite_brief.py",
       "file_type": "rationale",
-      "norm_label": "story-302 step 2 \u2014 offline c-suite brief from an allocation json. live model...",
+      "norm_label": "story-302 \u2014 c-suite brief from an allocation json. ``--offline`` fills the...",
       "source_file": "scripts/04_csuite_brief.py",
       "source_location": "L2"
     },
     {
       "id": "src_report_brief_rationale_1",
-      "label": "Offline C-suite brief (STORY-302 Step 2). Builds a system+user prompt from the\u2026",
+      "label": "C-suite brief (STORY-302 Steps 2\u20133). Builds a system+user prompt from the fact\u2026",
       "_origin": "ast",
       "community": 3,
       "community_name": "test_csuite_brief.py",
       "file_type": "rationale",
-      "norm_label": "offline c-suite brief (story-302 step 2). builds a system+user prompt from the...",
+      "norm_label": "c-suite brief (story-302 steps 2\u20133). builds a system+user prompt from the fact...",
       "source_file": "src/report/brief.py",
       "source_location": "L1"
     },
     {
-      "id": "src_report_brief_rationale_39",
-      "label": "System and user prompt. The user turn is the fact pack JSON only.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "test_csuite_brief.py",
-      "file_type": "rationale",
-      "norm_label": "system and user prompt. the user turn is the fact pack json only.",
-      "source_file": "src/report/brief.py",
-      "source_location": "L39"
-    },
-    {
-      "id": "src_report_brief_rationale_51",
-      "label": "Fill the brief from the fact pack and refuse it if numbers drift.",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "test_csuite_brief.py",
-      "file_type": "rationale",
-      "norm_label": "fill the brief from the fact pack and refuse it if numbers drift.",
-      "source_file": "src/report/brief.py",
-      "source_location": "L51"
-    },
-    {
-      "id": "src_report_brief_rationale_94",
+      "id": "src_report_brief_rationale_105",
       "label": "Plain-text brief for the terminal.",
       "_origin": "ast",
       "community": 3,
@@ -4519,7 +4722,62 @@
       "file_type": "rationale",
       "norm_label": "plain-text brief for the terminal.",
       "source_file": "src/report/brief.py",
-      "source_location": "L94"
+      "source_location": "L105"
+    },
+    {
+      "id": "src_report_brief_rationale_181",
+      "label": "Raised when neither the env var nor the secret file has a key.",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "rationale",
+      "norm_label": "raised when neither the env var nor the secret file has a key.",
+      "source_file": "src/report/brief.py",
+      "source_location": "L181"
+    },
+    {
+      "id": "src_report_brief_rationale_185",
+      "label": "Env ``ANTHROPIC_API_KEY``, else the first line of the secret file. The returned\u2026",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "rationale",
+      "norm_label": "env ``anthropic_api_key``, else the first line of the secret file. the returned...",
+      "source_file": "src/report/brief.py",
+      "source_location": "L185"
+    },
+    {
+      "id": "src_report_brief_rationale_207",
+      "label": "Force the ``emit_brief`` tool, validate, then lock numbers. Raises\u2026",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "rationale",
+      "norm_label": "force the ``emit_brief`` tool, validate, then lock numbers. raises...",
+      "source_file": "src/report/brief.py",
+      "source_location": "L207"
+    },
+    {
+      "id": "src_report_brief_rationale_50",
+      "label": "System and user prompt. The user turn is the fact pack JSON only.",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "rationale",
+      "norm_label": "system and user prompt. the user turn is the fact pack json only.",
+      "source_file": "src/report/brief.py",
+      "source_location": "L50"
+    },
+    {
+      "id": "src_report_brief_rationale_62",
+      "label": "Fill the brief from the fact pack and refuse it if numbers drift.",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "file_type": "rationale",
+      "norm_label": "fill the brief from the fact pack and refuse it if numbers drift.",
+      "source_file": "src/report/brief.py",
+      "source_location": "L62"
     },
     {
       "id": "src_report_facts_rationale_1",
@@ -4567,12 +4825,12 @@
     },
     {
       "id": "src_report_init_rationale_1",
-      "label": "STORY-302 C-suite brief (fact pack, schema, offline renderer).",
+      "label": "STORY-302 C-suite brief (fact pack, schema, offline and live render).",
       "_origin": "ast",
       "community": 3,
       "community_name": "test_csuite_brief.py",
       "file_type": "rationale",
-      "norm_label": "story-302 c-suite brief (fact pack, schema, offline renderer).",
+      "norm_label": "story-302 c-suite brief (fact pack, schema, offline and live render).",
       "source_file": "src/report/__init__.py",
       "source_location": "L1"
     },
@@ -4835,33 +5093,11 @@
       "source_location": "L77"
     },
     {
-      "id": "scripts_plot_budget_opt_toy",
-      "label": "plot_budget_opt_toy.py",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "pathlib",
-      "file_type": "code",
-      "norm_label": "plot_budget_opt_toy.py",
-      "source_file": "scripts/plot_budget_opt_toy.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_plot_story_301_fixture_curves",
-      "label": "plot_story_301_fixture_curves.py",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "pathlib",
-      "file_type": "code",
-      "norm_label": "plot_story_301_fixture_curves.py",
-      "source_file": "scripts/plot_story_301_fixture_curves.py",
-      "source_location": "L1"
-    },
-    {
       "id": "scripts_plot_story_302_concepts",
       "label": "plot_story_302_concepts.py",
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "plot_story_302_concepts.py",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -4872,7 +5108,7 @@
       "label": "DataFrame",
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "dataframe",
       "source_file": "",
@@ -4883,40 +5119,18 @@
       "label": "Path",
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "scripts_plot_budget_opt_toy_rationale_1",
-      "label": "STORY-301 Step 0 \u2014 toy diminishing-returns curve (not Meridian, not optimizer).\u2026",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "pathlib",
-      "file_type": "rationale",
-      "norm_label": "story-301 step 0 \u2014 toy diminishing-returns curve (not meridian, not optimizer)....",
-      "source_file": "scripts/plot_budget_opt_toy.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_plot_story_301_fixture_curves_rationale_1",
-      "label": "STORY-301 Step 1 \u2014 Plotly Express of synthetic fixture response curves. Usage\u2026",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "pathlib",
-      "file_type": "rationale",
-      "norm_label": "story-301 step 1 \u2014 plotly express of synthetic fixture response curves. usage...",
-      "source_file": "scripts/plot_story_301_fixture_curves.py",
-      "source_location": "L1"
-    },
-    {
       "id": "scripts_plot_story_302_concepts_rationale_1",
       "label": "STORY-302 Step 0 \u2014 Plotly Express teaching plots for a C-suite brief. Three\u2026",
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "rationale",
       "norm_label": "story-302 step 0 \u2014 plotly express teaching plots for a c-suite brief. three...",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -4927,7 +5141,7 @@
       "label": "Same fill as allocator._feasible_start: mins, then leftover proportional to\u2026",
       "_origin": "ast",
       "community": 37,
-      "community_name": "pathlib",
+      "community_name": "plot_story_302_concepts.py",
       "file_type": "rationale",
       "norm_label": "same fill as allocator._feasible_start: mins, then leftover proportional to...",
       "source_file": "scripts/plot_story_302_concepts.py",
@@ -5121,22 +5335,44 @@
       "source_location": "L74"
     },
     {
+      "id": "abc",
+      "label": "ABC",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "curves.py",
+      "file_type": "code",
+      "norm_label": "abc",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "curvearrays",
       "label": "CurveArrays",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "curvearrays",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "src_optimize_curves",
+      "label": "curves.py",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "curves.py",
+      "file_type": "code",
+      "norm_label": "curves.py",
+      "source_file": "src/optimize/curves.py",
+      "source_location": "L1"
+    },
+    {
       "id": "src_optimize_curves_py_any",
       "label": "Any",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "any",
       "source_file": "",
@@ -5147,51 +5383,29 @@
       "label": "Path",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "tests_test_curves",
-      "label": "test_curves.py",
+      "id": "src_optimize_curves_rationale_1",
+      "label": "Offline response-curve providers for STORY-301 (Step 1). Reads Meridian\u2026",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "test_curves.py",
-      "source_file": "tests/test_curves.py",
+      "community_name": "curves.py",
+      "file_type": "rationale",
+      "norm_label": "offline response-curve providers for story-301 (step 1). reads meridian...",
+      "source_file": "src/optimize/curves.py",
       "source_location": "L1"
-    },
-    {
-      "id": "tests_test_curves_py_fixture",
-      "label": "fixture",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "tests_test_curves_py_skipif",
-      "label": "skipif",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "code",
-      "norm_label": "skipif",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "src_optimize_curves_rationale_103",
       "label": "Load curve arrays from a JSON file path.",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "load curve arrays from a json file path.",
       "source_file": "src/optimize/curves.py",
@@ -5202,7 +5416,7 @@
       "label": "True if mapping is already channel -> (spend, mean) array pairs.",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "true if mapping is already channel -> (spend, mean) array pairs.",
       "source_file": "src/optimize/curves.py",
@@ -5213,33 +5427,11 @@
       "label": "Normalize Meridian metrics or synthetic fixture into spend/mean arrays.\u2026",
       "_origin": "ast",
       "community": 41,
-      "community_name": "test_curves.py",
+      "community_name": "curves.py",
       "file_type": "rationale",
       "norm_label": "normalize meridian metrics or synthetic fixture into spend/mean arrays....",
       "source_file": "src/optimize/curves.py",
       "source_location": "L49"
-    },
-    {
-      "id": "tests_test_curves_rationale_1",
-      "label": "STORY-301 Step 1 \u2014 response curve provider (interpolation + loaders).",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "rationale",
-      "norm_label": "story-301 step 1 \u2014 response curve provider (interpolation + loaders).",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L1"
-    },
-    {
-      "id": "tests_test_curves_rationale_77",
-      "label": "Fixture curves are concave / non-decreasing in spend.",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_curves.py",
-      "file_type": "rationale",
-      "norm_label": "fixture curves are concave / non-decreasing in spend.",
-      "source_file": "tests/test_curves.py",
-      "source_location": "L77"
     },
     {
       "id": "tests_test_allocator",
@@ -5260,6 +5452,17 @@
       "community_name": "MetricsJsonCurveProvider",
       "file_type": "code",
       "norm_label": "fixture",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "tests_test_allocator_py_path",
+      "label": "Path",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "MetricsJsonCurveProvider",
+      "file_type": "code",
+      "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
@@ -5308,17 +5511,6 @@
       "source_location": "L94"
     },
     {
-      "id": "abc",
-      "label": "ABC",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "allocator.py",
-      "file_type": "code",
-      "norm_label": "abc",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "src_optimize_allocator",
       "label": "allocator.py",
       "_origin": "ast",
@@ -5350,17 +5542,6 @@
       "norm_label": "ndarray",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "src_optimize_curves",
-      "label": "curves.py",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "allocator.py",
-      "file_type": "code",
-      "norm_label": "curves.py",
-      "source_file": "src/optimize/curves.py",
-      "source_location": "L1"
     },
     {
       "id": "src_optimize_init",
@@ -5405,17 +5586,6 @@
       "norm_label": "start at mins, then fill remaining budget proportional to room (equal-room).",
       "source_file": "src/optimize/allocator.py",
       "source_location": "L285"
-    },
-    {
-      "id": "src_optimize_curves_rationale_1",
-      "label": "Offline response-curve providers for STORY-301 (Step 1). Reads Meridian\u2026",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "allocator.py",
-      "file_type": "rationale",
-      "norm_label": "offline response-curve providers for story-301 (step 1). reads meridian...",
-      "source_file": "src/optimize/curves.py",
-      "source_location": "L1"
     },
     {
       "id": "src_optimize_curves_rationale_34",
@@ -5466,7 +5636,7 @@
       "label": "plot_allocation_teaching.py",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "plot_allocation_teaching.py",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -5477,7 +5647,7 @@
       "label": "ArgumentParser",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "argumentparser",
       "source_file": "",
@@ -5488,7 +5658,7 @@
       "label": "DataFrame",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "dataframe",
       "source_file": "",
@@ -5499,18 +5669,40 @@
       "label": "Path",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
       "source_location": ""
     },
     {
+      "id": "scripts_plot_budget_opt_toy",
+      "label": "plot_budget_opt_toy.py",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "pathlib",
+      "file_type": "code",
+      "norm_label": "plot_budget_opt_toy.py",
+      "source_file": "scripts/plot_budget_opt_toy.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_plot_story_301_fixture_curves",
+      "label": "plot_story_301_fixture_curves.py",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "pathlib",
+      "file_type": "code",
+      "norm_label": "plot_story_301_fixture_curves.py",
+      "source_file": "scripts/plot_story_301_fixture_curves.py",
+      "source_location": "L1"
+    },
+    {
       "id": "scripts_plot_allocation_teaching_rationale_1",
       "label": "STORY-301 Step 4 \u2014 Plotly Express teaching plots for budget allocation. Writes\u2026",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "rationale",
       "norm_label": "story-301 step 4 \u2014 plotly express teaching plots for budget allocation. writes...",
       "source_file": "scripts/plot_allocation_teaching.py",
@@ -5521,11 +5713,33 @@
       "label": "Equal-room fill from mins (matches allocator maximize baseline).",
       "_origin": "ast",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "file_type": "rationale",
       "norm_label": "equal-room fill from mins (matches allocator maximize baseline).",
       "source_file": "scripts/plot_allocation_teaching.py",
       "source_location": "L53"
+    },
+    {
+      "id": "scripts_plot_budget_opt_toy_rationale_1",
+      "label": "STORY-301 Step 0 \u2014 toy diminishing-returns curve (not Meridian, not optimizer).\u2026",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "pathlib",
+      "file_type": "rationale",
+      "norm_label": "story-301 step 0 \u2014 toy diminishing-returns curve (not meridian, not optimizer)....",
+      "source_file": "scripts/plot_budget_opt_toy.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_plot_story_301_fixture_curves_rationale_1",
+      "label": "STORY-301 Step 1 \u2014 Plotly Express of synthetic fixture response curves. Usage\u2026",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "pathlib",
+      "file_type": "rationale",
+      "norm_label": "story-301 step 1 \u2014 plotly express of synthetic fixture response curves. usage...",
+      "source_file": "scripts/plot_story_301_fixture_curves.py",
+      "source_location": "L1"
     },
     {
       "id": "scripts_03_allocate_budget",
@@ -5704,26 +5918,59 @@
       "source_location": "L142"
     },
     {
-      "id": "tests_test_allocator_py_path",
-      "label": "Path",
+      "id": "tests_test_curves",
+      "label": "test_curves.py",
       "_origin": "ast",
       "community": 49,
-      "community_name": "test_cli_run_allocate_writes_json",
+      "community_name": "test_curves.py",
       "file_type": "code",
-      "norm_label": "path",
+      "norm_label": "test_curves.py",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_curves_py_fixture",
+      "label": "fixture",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "code",
+      "norm_label": "fixture",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "runtimeerror",
-      "label": "RuntimeError",
+      "id": "tests_test_curves_py_skipif",
+      "label": "skipif",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "test_qa.py",
+      "community": 49,
+      "community_name": "test_curves.py",
       "file_type": "code",
-      "norm_label": "runtimeerror",
+      "norm_label": "skipif",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "tests_test_curves_rationale_1",
+      "label": "STORY-301 Step 1 \u2014 response curve provider (interpolation + loaders).",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "rationale",
+      "norm_label": "story-301 step 1 \u2014 response curve provider (interpolation + loaders).",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_curves_rationale_77",
+      "label": "Fixture curves are concave / non-decreasing in spend.",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "test_curves.py",
+      "file_type": "rationale",
+      "norm_label": "fixture curves are concave / non-decreasing in spend.",
+      "source_file": "tests/test_curves.py",
+      "source_location": "L77"
     },
     {
       "id": "src_data_qa",
@@ -5755,6 +6002,17 @@
       "community_name": "test_qa.py",
       "file_type": "code",
       "norm_label": "path",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_data_qa_py_runtimeerror",
+      "label": "RuntimeError",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "test_qa.py",
+      "file_type": "code",
+      "norm_label": "runtimeerror",
       "source_file": "",
       "source_location": ""
     },
@@ -7927,6 +8185,18 @@
       "type": "external"
     },
     {
+      "id": "pandas",
+      "label": "pandas",
+      "_origin": "semantic",
+      "community": 10,
+      "community_name": "test_meridian_data.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pandas",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "fig_geometric_adstock_pulse",
       "label": "geometric_adstock_pulse.html",
       "_origin": "semantic",
@@ -8014,18 +8284,6 @@
       "type": "external"
     },
     {
-      "id": "subprocess",
-      "label": "subprocess",
-      "_origin": "semantic",
-      "community": 3,
-      "community_name": "test_csuite_brief.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "subprocess",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "typing",
       "label": "typing",
       "_origin": "semantic",
@@ -8098,54 +8356,6 @@
       "type": "external"
     },
     {
-      "id": "numpy",
-      "label": "numpy",
-      "_origin": "semantic",
-      "community": 37,
-      "community_name": "pathlib",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "numpy",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "pandas",
-      "label": "pandas",
-      "_origin": "semantic",
-      "community": 37,
-      "community_name": "pathlib",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "pandas",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "pathlib",
-      "label": "pathlib",
-      "_origin": "semantic",
-      "community": 37,
-      "community_name": "pathlib",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "pathlib",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "plotly_express",
-      "label": "plotly_express",
-      "_origin": "semantic",
-      "community": 37,
-      "community_name": "pathlib",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "plotly_express",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "time",
       "label": "time",
       "_origin": "semantic",
@@ -8154,6 +8364,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "time",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "json",
+      "label": "json",
+      "_origin": "semantic",
+      "community": 41,
+      "community_name": "curves.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "json",
       "source_file": "",
       "type": "external"
     },
@@ -8182,14 +8404,62 @@
       "type": "external"
     },
     {
+      "id": "numpy",
+      "label": "numpy",
+      "_origin": "semantic",
+      "community": 44,
+      "community_name": "pathlib",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "numpy",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "pathlib",
+      "label": "pathlib",
+      "_origin": "semantic",
+      "community": 44,
+      "community_name": "pathlib",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pathlib",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "plotly_express",
+      "label": "plotly_express",
+      "_origin": "semantic",
+      "community": 44,
+      "community_name": "pathlib",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "plotly_express",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "plotly_subplots",
       "label": "plotly_subplots",
       "_origin": "semantic",
       "community": 44,
-      "community_name": "plot_allocation_teaching.py",
+      "community_name": "pathlib",
       "external": true,
       "file_type": "concept",
       "norm_label": "plotly_subplots",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "sys",
+      "label": "sys",
+      "_origin": "semantic",
+      "community": 44,
+      "community_name": "pathlib",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "sys",
       "source_file": "",
       "type": "external"
     },
@@ -8206,26 +8476,14 @@
       "type": "external"
     },
     {
-      "id": "json",
-      "label": "json",
-      "_origin": "semantic",
-      "community": 45,
-      "community_name": "03_allocate_budget.py",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "json",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "sys",
-      "label": "sys",
+      "id": "subprocess",
+      "label": "subprocess",
       "_origin": "semantic",
       "community": 5,
       "community_name": "test_qa.py",
       "external": true,
       "file_type": "concept",
-      "norm_label": "sys",
+      "norm_label": "subprocess",
       "source_file": "",
       "type": "external"
     },
@@ -8250,6 +8508,39 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "matplotlib_pyplot",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "os",
+      "label": "os",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "os",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "re",
+      "label": "re",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "re",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "types",
+      "label": "types",
+      "community": 3,
+      "community_name": "test_csuite_brief.py",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "types",
       "source_file": "",
       "type": "external"
     }
@@ -8568,39 +8859,39 @@
       "weight": 1.0
     },
     {
-      "source": "scripts_04_csuite_brief_main",
-      "target": "scripts_04_csuite_brief_build_parser",
+      "source": "scripts_04_csuite_brief_fail",
+      "target": "scripts_04_csuite_brief_redact",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L54",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
       "source": "scripts_04_csuite_brief_main",
-      "target": "src_report_brief_render_offline",
+      "target": "src_report_brief_render_live",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L67",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
       "source": "scripts_04_csuite_brief_main",
-      "target": "src_report_facts_build_fact_pack",
+      "target": "scripts_04_csuite_brief_fail",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L67",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -8612,7 +8903,55 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L72",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "scripts_04_csuite_brief_build_parser",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "src_report_facts_build_fact_pack",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "src_report_brief_render_offline",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "src_report_brief_load_api_key",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -9600,6 +9939,66 @@
       "weight": 1.0
     },
     {
+      "source": "src_report_brief_load_api_key",
+      "target": "src_report_brief_missingapikey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_brief_build_messages",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L212",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_schema_emit_brief_json_schema",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_brief_tool_input",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L227",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_facts_numbers_match",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
       "source": "src_report_brief_render_offline",
       "target": "src_report_brief_shift_bullet",
       "relation": "calls",
@@ -9608,7 +10007,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L72",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -9620,7 +10019,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L73",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -9632,7 +10031,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L74",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -9644,7 +10043,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L80",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -9656,7 +10055,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L81",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -9668,7 +10067,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/report/brief.py",
-      "source_location": "L88",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_tool_input",
+      "target": "src_report_brief_field",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/report/brief.py",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -9852,6 +10263,42 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_csuite_brief_matching_payload",
+      "target": "src_report_facts_build_fact_pack",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_matching_payload",
+      "target": "tests_test_csuite_brief_allocation",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_matching_payload",
+      "target": "src_report_brief_render_offline",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_csuite_brief_test_cli_failed_allocation_exits_nonzero",
       "target": "tests_test_csuite_brief_run",
       "relation": "calls",
@@ -9860,19 +10307,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L114",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_test_csuite_brief_test_cli_prints_offline_brief_and_writes_json",
-      "target": "tests_test_csuite_brief_run",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L86",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -9884,7 +10319,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L99",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -9896,7 +10331,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L99",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -9908,11 +10343,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L99",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
-      "source": "tests_test_csuite_brief_test_cli_without_offline_exits_2",
+      "source": "tests_test_csuite_brief_test_cli_prints_offline_brief_and_writes_json",
       "target": "tests_test_csuite_brief_run",
       "relation": "calls",
       "_origin": "ast",
@@ -9920,7 +10355,139 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L121",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_env_key_used_before_file",
+      "target": "src_report_brief_load_api_key",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L211",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_failed_allocation_does_not_call_model",
+      "target": "tests_test_csuite_brief_cli",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L221",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "target": "tests_test_csuite_brief_matching_payload",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "target": "src_report_brief_render_live",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "target": "tests_test_csuite_brief_fake_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "target": "src_report_facts_numbers_match",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "target": "src_report_schema_emit_brief_json_schema",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "target": "tests_test_csuite_brief_matching_payload",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "target": "src_report_brief_render_live",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "target": "tests_test_csuite_brief_fake_client",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "target": "tests_test_csuite_brief_cli",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -9932,7 +10499,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L77",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -9944,11 +10511,59 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L77",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
       "source": "tests_test_csuite_brief_test_lock_failure_refuses_the_brief",
+      "target": "src_report_brief_render_offline",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "target": "src_report_brief_load_api_key",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
+      "target": "tests_test_csuite_brief_allocation",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
+      "target": "src_report_facts_build_fact_pack",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
       "target": "src_report_brief_render_offline",
       "relation": "calls",
       "_origin": "ast",
@@ -9961,42 +10576,6 @@
     },
     {
       "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
-      "target": "tests_test_csuite_brief_allocation",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L64",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
-      "target": "src_report_facts_build_fact_pack",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L66",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
-      "target": "src_report_brief_render_offline",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L67",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_test_csuite_brief_test_null_delta_does_not_invent_lift",
       "target": "src_report_facts_numbers_match",
       "relation": "calls",
       "_origin": "ast",
@@ -10004,7 +10583,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L69",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -10016,7 +10595,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L40",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -10028,7 +10607,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L40",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -10040,7 +10619,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L41",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -10052,7 +10631,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L44",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -10064,7 +10643,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L55",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -11756,7 +12335,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/report/brief.py",
-      "source_location": "L38",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -11768,7 +12347,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/report/brief.py",
-      "source_location": "L123",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -11780,7 +12359,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/report/brief.py",
-      "source_location": "L50",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -11792,7 +12371,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/report/brief.py",
-      "source_location": "L152",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -11804,7 +12383,19 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/report/brief.py",
-      "source_location": "L141",
+      "source_location": "L152",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_tool_input",
+      "target": "src_report_brief_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "src/report/brief.py",
+      "source_location": "L237",
       "weight": 1.0
     },
     {
@@ -11828,7 +12419,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L26",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -11996,7 +12587,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -12008,7 +12599,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L17",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -12020,7 +12623,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L18",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -12032,7 +12635,43 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L25",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "src_report_brief_load_api_key",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "src_report_brief_missingapikey",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "src_report_brief_render_live",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12044,7 +12683,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -12056,7 +12695,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L26",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -12637,6 +13276,18 @@
     },
     {
       "source": "src_report_brief",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/report/brief.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
       "target": "src_report_facts_numbers_match",
       "relation": "imports",
       "_origin": "ast",
@@ -12644,7 +13295,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/report/brief.py",
-      "source_location": "L13",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -12656,7 +13307,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/report/brief.py",
-      "source_location": "L14",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_schema_emit_brief_json_schema",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/report/brief.py",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -12686,6 +13349,18 @@
     {
       "source": "src_report_init",
       "target": "src_report_brief_build_messages",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/report/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_init",
+      "target": "src_report_brief_render_live",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12848,7 +13523,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L10",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -12860,7 +13535,43 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L12",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "src_report_brief_load_api_key",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "src_report_brief_missingapikey",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "src_report_brief_render_live",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -12872,7 +13583,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -12884,7 +13595,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L13",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -12896,7 +13607,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L13",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -12908,12 +13619,24 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L14",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
       "source": "tests_test_csuite_brief",
-      "target": "json",
+      "target": "src_report_schema_emit_brief_json_schema",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "importlib_util",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12925,7 +13648,7 @@
     },
     {
       "source": "tests_test_csuite_brief",
-      "target": "subprocess",
+      "target": "json",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12937,7 +13660,7 @@
     },
     {
       "source": "tests_test_csuite_brief",
-      "target": "sys",
+      "target": "subprocess",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12945,6 +13668,18 @@
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13724,7 +14459,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L19",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "typing",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -13736,7 +14483,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -13748,7 +14495,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L26",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -14077,19 +14824,19 @@
     },
     {
       "source": "src_report_brief",
-      "target": "typing",
+      "target": "pathlib",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/report/brief.py",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
       "source": "src_report_brief",
-      "target": "src_report_facts",
+      "target": "typing",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14101,6 +14848,30 @@
     },
     {
       "source": "src_report_brief",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/report/brief.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_facts",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/report/brief.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
       "target": "src_report_schema",
       "relation": "imports_from",
       "_origin": "ast",
@@ -14108,7 +14879,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/report/brief.py",
-      "source_location": "L14",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -14197,6 +14968,30 @@
     },
     {
       "source": "tests_test_csuite_brief",
+      "target": "types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "unittest_mock",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
       "target": "src_report_brief",
       "relation": "imports_from",
       "_origin": "ast",
@@ -14204,7 +14999,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -14216,7 +15011,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L13",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -14228,7 +15023,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L14",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -14240,7 +15035,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14517,6 +15312,30 @@
       "context": "parameter_type",
       "source_file": "scripts/03_allocate_budget.py",
       "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_fail",
+      "target": "baseexception",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "scripts_04_csuite_brief_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -14876,7 +15695,31 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/report/brief.py",
-      "source_location": "L157",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_load_api_key",
+      "target": "src_report_brief_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "src/report/brief.py",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_brief_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "src/report/brief.py",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -14936,7 +15779,43 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L103",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_env_key_used_before_file",
+      "target": "monkeypatch",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_env_key_used_before_file",
+      "target": "tests_test_csuite_brief_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_failed_allocation_does_not_call_model",
+      "target": "tests_test_csuite_brief_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -14948,7 +15827,31 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L75",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "target": "monkeypatch",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "target": "tests_test_csuite_brief_py_path",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -15260,7 +16163,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L37",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -15621,6 +16524,18 @@
       "context": "return_type",
       "source_file": "src/optimize/curves.py",
       "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_field",
+      "target": "src_report_brief_py_any",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "src/report/brief.py",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -16682,7 +17597,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L37",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "scripts_04_csuite_brief_redact",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_04_csuite_brief",
+      "target": "scripts_04_csuite_brief_fail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -16693,7 +17630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/04_csuite_brief.py",
-      "source_location": "L53",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -17490,13 +18427,24 @@
     },
     {
       "source": "src_report_brief",
+      "target": "src_report_brief_format_brief",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
       "target": "src_report_brief_headline",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L123",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -17507,7 +18455,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L141",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -17518,7 +18466,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L152",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -17529,7 +18477,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L157",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_brief_missingapikey",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_brief_load_api_key",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_brief_render_live",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_brief_tool_input",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief",
+      "target": "src_report_brief_field",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -17540,7 +18543,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L38",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -17551,18 +18554,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L50",
-      "weight": 1.0
-    },
-    {
-      "source": "src_report_brief",
-      "target": "src_report_brief_format_brief",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/report/brief.py",
-      "source_location": "L93",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -17837,18 +18829,95 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L103",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
       "source": "tests_test_csuite_brief",
-      "target": "tests_test_csuite_brief_test_cli_without_offline_exits_2",
+      "target": "tests_test_csuite_brief_cli",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L120",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_fake_client",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_matching_payload",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_test_live_accepts_matching_tool_payload",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L165",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_test_live_rejects_drifted_spend_or_kpi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_test_env_key_used_before_file",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_csuite_brief",
+      "target": "tests_test_csuite_brief_test_failed_allocation_does_not_call_model",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -17859,7 +18928,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L22",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -17870,7 +18939,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L26",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -17881,7 +18950,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L39",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -17892,7 +18961,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L63",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -17903,7 +18972,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L75",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -17914,7 +18983,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L85",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -18964,7 +20033,7 @@
     },
     {
       "source": "src_data_qa_unrepairedanomalieserror",
-      "target": "runtimeerror",
+      "target": "src_data_qa_py_runtimeerror",
       "relation": "inherits",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18993,6 +20062,17 @@
       "confidence_score": 1.0,
       "source_file": "src/optimize/curves.py",
       "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_missingapikey",
+      "target": "src_report_brief_py_runtimeerror",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -19909,36 +20989,69 @@
       "weight": 1.0
     },
     {
-      "source": "src_report_brief_rationale_39",
-      "target": "src_report_brief_build_messages",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/report/brief.py",
-      "source_location": "L39",
-      "weight": 1.0
-    },
-    {
-      "source": "src_report_brief_rationale_51",
-      "target": "src_report_brief_render_offline",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/report/brief.py",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "src_report_brief_rationale_94",
+      "source": "src_report_brief_rationale_105",
       "target": "src_report_brief_format_brief",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/report/brief.py",
-      "source_location": "L94",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_rationale_181",
+      "target": "src_report_brief_missingapikey",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_rationale_185",
+      "target": "src_report_brief_load_api_key",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_rationale_207",
+      "target": "src_report_brief_render_live",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_rationale_50",
+      "target": "src_report_brief_build_messages",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "src_report_brief_rationale_62",
+      "target": "src_report_brief_render_offline",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/report/brief.py",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -20439,6 +21552,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_csuite_brief_fake_client",
+      "target": "tests_test_csuite_brief_fake_client_create",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "assignment",
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
       "source": "scripts_plot_allocation_teaching_bar_frame",
       "target": "src_optimize_curves_metricsjsoncurveprovider",
       "relation": "uses",
@@ -20555,7 +21680,7 @@
       "confidence_score": 0.95,
       "context": "parameter_type",
       "source_file": "src/report/brief.py",
-      "source_location": "L93",
+      "source_location": "L104",
       "weight": 0.8
     },
     {
@@ -20739,6 +21864,18 @@
       "weight": 0.8
     },
     {
+      "source": "src_report_brief_render_live",
+      "target": "src_report_schema_csuitebrief",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "return_type",
+      "source_file": "src/report/brief.py",
+      "source_location": "L206",
+      "weight": 0.8
+    },
+    {
       "source": "tests_test_allocator_fixture_provider",
       "target": "src_optimize_curves_metricsjsoncurveprovider",
       "relation": "uses",
@@ -20763,6 +21900,17 @@
       "weight": 0.8
     },
     {
+      "source": "scripts_04_csuite_brief_main",
+      "target": "src_report_brief_missingapikey",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "scripts/04_csuite_brief.py",
+      "source_location": "L102",
+      "weight": 0.8
+    },
+    {
       "source": "tests_test_csuite_brief_test_cli_prints_offline_brief_and_writes_json",
       "target": "src_report_schema_csuitebrief",
       "relation": "uses",
@@ -20770,7 +21918,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L98",
+      "source_location": "L110",
+      "weight": 0.8
+    },
+    {
+      "source": "tests_test_csuite_brief_test_missing_key_names_env_and_file",
+      "target": "src_report_brief_missingapikey",
+      "relation": "uses",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "tests/test_csuite_brief.py",
+      "source_location": "L199",
       "weight": 0.8
     },
     {
@@ -20781,7 +21940,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "tests/test_csuite_brief.py",
-      "source_location": "L42",
+      "source_location": "L54",
       "weight": 0.8
     },
     {
@@ -22573,5 +23732,5 @@
       "source_file": ".cursor/skills/secret-hygiene/SKILL.md"
     }
   ],
-  "built_at_commit": "0d1939f42aff3ce2f15ca3d047dde5904e9146fa"
+  "built_at_commit": "4e6ad57c52629da8384524d09de4584da62b290b"
 }
