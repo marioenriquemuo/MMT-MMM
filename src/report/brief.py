@@ -37,6 +37,7 @@ _SYSTEM = f"""You write a short C-suite budget brief from a fact pack.
 Use only the fact pack in the user message. Do not read media CSVs or invent spends or KPI.
 Fill: headline, 3 to 6 bullets, shifts (one per channel), predicted_incremental_kpi, incremental_kpi_delta_vs_baseline, caveats.
 Bullets must cover budget shifts, saturation flags (near_ceiling, at_floor, or ok), and predicted KPI lift.
+In the headline and bullets, call figures incremental KPI and spend units. Do not use $, dollars, or revenue there.
 If incremental_kpi_delta_vs_baseline is null, say the lift vs baseline was not computed. Do not invent a lift.
 Caveats must include: {CAVEAT_KPI}
 Caveats must include: {CAVEAT_RANK}

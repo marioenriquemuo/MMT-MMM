@@ -206,13 +206,15 @@ python -m pytest tests/test_curves.py tests/test_allocator.py -q
 
 Modules: `src/optimize/curves.py`, `src/optimize/allocator.py`. CLI: `scripts/03_allocate_budget.py`.
 
-## STORY-302 / C-suite brief (step 0–3)
+## STORY-302 / C-suite brief (step 0–4)
 
 Teaching figures for budget shift, saturation, and KPI lift. The recommended mix is fixed (alpha 27, beta 18, gamma 15) because equal-room on this fixture is 20/20/20 and SLSQP does not leave that point.
 
-Offline rendering stays `--offline`. Without that flag the CLI calls Anthropic with a forced `emit_brief` tool, then rejects the brief if the numbers drift from the fact pack. Default model id: `claude-sonnet-4-5` (`--model` overrides it).
+`--offline` fills the brief from the allocation JSON. Without that flag the CLI calls Anthropic (`claude-sonnet-4-5`, override with `--model`) and forces the `emit_brief` tool. A drifted number is rejected and the brief file is not written. Headline and bullets call figures incremental KPI and spend units (no `$`, dollars, or revenue).
 
-Key load order: environment variable `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The CLI never prints the key.
+**Caveat:** Meridian channel rank vs Path-C is still an open issue — do not treat the brief as Path-C ground truth.
+
+Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The CLI does not print the key.
 
 ```bash
 conda activate mmt-mmm

@@ -70,6 +70,11 @@ def test_offline_brief_validates_and_locks_numbers():
     assert ".csv" not in messages["user"]
     assert "incremental KPI" in messages["system"]
     assert "Path-C" in messages["system"]
+    assert "Do not use $, dollars, or revenue" in messages["system"]
+    prose = " ".join([brief.headline, *brief.bullets])
+    assert "$" not in prose
+    assert "dollar" not in prose.lower()
+    assert "revenue" not in prose.lower()
 
 
 def test_null_delta_does_not_invent_lift():

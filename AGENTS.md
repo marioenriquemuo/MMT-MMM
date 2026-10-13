@@ -37,7 +37,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/optimize/allocator.py` | STORY-301 SLSQP budget optimizer (bounds + target KPI) |
 | `src/report/facts.py` | STORY-302 fact pack from an allocation plan |
 | `src/report/schema.py` | STORY-302 pydantic brief + JSON schema |
-| `src/report/brief.py` | STORY-302 offline brief from the fact pack |
+| `src/report/brief.py` | STORY-302 offline + live brief from the fact pack |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
 | `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
 | `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
@@ -68,7 +68,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
-- **STORY-302 in progress (step 0–3)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack, schema, offline brief, and live Anthropic `emit_brief` in `src/report/` (`scripts/04_csuite_brief.py`, default model `claude-sonnet-4-5`). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit).
+- **STORY-302 done (feature tip, step 0–4)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack, schema, and brief in `src/report/`; CLI `scripts/04_csuite_brief.py` (`--offline` or live, model `claude-sonnet-4-5`). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit). Not merged.
 
 ## Skills
 

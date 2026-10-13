@@ -45,7 +45,7 @@ MMT&MMM/
 │   ├── optimize/             # STORY-301 curves + SLSQP allocator
 │   │   ├── curves.py         # offline response-curve provider
 │   │   └── allocator.py      # maximize KPI / hit target under bounds
-│   └── report/               # STORY-302 fact pack, schema, offline brief
+│   └── report/               # STORY-302 fact pack, schema, brief
 │       ├── facts.py
 │       ├── schema.py
 │       └── brief.py
@@ -54,7 +54,7 @@ MMT&MMM/
 ├── scripts/03_allocate_budget.py       # STORY-301 CLI → allocation.json
 ├── scripts/plot_allocation_teaching.py # STORY-301 Plotly teaching figures
 ├── scripts/plot_story_302_concepts.py  # STORY-302 Plotly teaching figures
-├── scripts/04_csuite_brief.py          # STORY-302 offline brief CLI
+├── scripts/04_csuite_brief.py          # STORY-302 brief CLI (--offline or live)
 ├── tests/                    # + curves / allocator bounds tests
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
@@ -88,7 +88,7 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this st
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
-| STORY-302 | In progress (step 0–3) | Teaching plots, fact pack, offline brief, live Anthropic `emit_brief` (`claude-sonnet-4-5`) with number lock |
+| STORY-302 | Done (feature tip, step 0–4) | Plots, fact pack, offline + live `emit_brief` (`claude-sonnet-4-5`), number lock. Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 
