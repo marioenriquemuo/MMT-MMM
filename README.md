@@ -235,6 +235,26 @@ python -m pytest tests/test_csuite_facts.py tests/test_csuite_brief.py -q
 
 Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. Fixture plan: `tests/fixtures/story_302_allocation.json`.
 
+## STORY-401 / Streamlit dashboard
+
+Local dashboard. Moving a slider reruns `optimize_budget` and both Plotly charts on every Streamlit rerun. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief for the same numbers. Changing a slider clears the cached live brief.
+
+The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. Slider ranges come from that file’s spend knots: one total budget, plus a min and a max per channel. Defaults are a feasible maximize (budget between the sum of the mins and the sum of the maxes). Infeasible bounds show the allocator error and do not call Claude.
+
+**Caveat:** numbers are incremental KPI, not revenue dollars. Meridian channel rank vs Path-C is still an open issue — do not treat the dashboard as Path-C ground truth.
+
+Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The app does not print the key.
+
+```bash
+conda activate mmt-mmm
+cd "/home/mario/dev/MMT&MMM"
+streamlit run app.py
+
+python -m pytest tests/test_dashboard_view.py -q
+```
+
+Math: `src/dashboard/view.py` (pytest, no browser). `app.py` is layout only.
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.
