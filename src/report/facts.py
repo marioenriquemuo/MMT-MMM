@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import math
 import re
+from decimal import Decimal, ROUND_HALF_UP
 from typing import Any, Mapping
 
 import numpy as np
@@ -97,39 +98,49 @@ def numbers_match(fact_pack: Mapping[str, Any], brief: Any) -> bool:
     """True when the brief matches the fact pack.
 
     Structured fields use absolute tolerance ``1e-6`` (``None`` matches only
-    ``None``). Headline and bullet numbers use absolute tolerance ``1e-4``
-    and must each be a fact-pack spend, delta, share (fraction or percent),
-    or KPI. ``saturation_flag`` must match exactly. A token with no allowed
-    value returns False. Text with no numbers is skipped.
+    ``None``). A headline or bullet token must sit within ``1e-4`` of a
+    fact-pack spend, delta, share (fraction or percent), or KPI, or equal
+    that number or its absolute value rounded half-up to the token's places.
+    ``saturation_flag`` must match exactly. Text with no numbers is skipped.
     """
+    return first_mismatch(fact_pack, brief) is None
+
+
+def first_mismatch(fact_pack: Mapping[str, Any], brief: Any) -> str | None:
+    """One-line reason for the first lock failure, or None when it holds."""
     payload = brief.model_dump() if hasattr(brief, "model_dump") else brief
-    if not _same(
-        payload.get("predicted_incremental_kpi"),
-        fact_pack.get("expected_incremental_kpi"),
-    ):
-        return False
-    if not _same(
-        payload.get("incremental_kpi_delta_vs_baseline"),
-        fact_pack.get("incremental_kpi_delta_vs_baseline"),
-    ):
-        return False
+    brief_kpi = payload.get("predicted_incremental_kpi")
+    fact_kpi = fact_pack.get("expected_incremental_kpi")
+    if not _same(brief_kpi, fact_kpi):
+        return f"structured expected_incremental_kpi: brief {brief_kpi!r} != fact {fact_kpi!r}"
+    brief_delta = payload.get("incremental_kpi_delta_vs_baseline")
+    fact_delta = fact_pack.get("incremental_kpi_delta_vs_baseline")
+    if not _same(brief_delta, fact_delta):
+        return (
+            "structured incremental_kpi_delta_vs_baseline: "
+            f"brief {brief_delta!r} != fact {fact_delta!r}"
+        )
 
     shifts = payload.get("shifts") or []
     by_channel = {row["channel"]: row for row in shifts}
     facts = fact_pack["channels"]
     if set(by_channel) != set(facts):
-        return False
+        return f"structured channels: brief {sorted(by_channel)} != fact {sorted(facts)}"
     for ch, fact in facts.items():
         shift = by_channel[ch]
-        if not _same(shift.get("baseline_spend"), fact["baseline_spend"]):
-            return False
-        if not _same(shift.get("recommended_spend"), fact["recommended_spend"]):
-            return False
-        if not _same(shift.get("spend_delta"), fact["spend_delta"]):
-            return False
+        for key, fact_key in (
+            ("baseline_spend", "baseline_spend"),
+            ("recommended_spend", "recommended_spend"),
+            ("spend_delta", "spend_delta"),
+        ):
+            if not _same(shift.get(key), fact[fact_key]):
+                return f"structured {key} {ch}: brief {shift.get(key)!r} != fact {fact[fact_key]!r}"
         if shift.get("saturation_flag") != fact["saturation_flag"]:
-            return False
-    return _prose_numbers_ok(payload, fact_pack)
+            return (
+                f"structured saturation_flag {ch}: "
+                f"brief {shift.get('saturation_flag')!r} != fact {fact['saturation_flag']!r}"
+            )
+    return _first_prose_mismatch(payload, fact_pack)
 
 
 # --- Equal-room / flags ---
@@ -190,19 +201,35 @@ def _allowed_numbers(fact_pack: Mapping[str, Any]) -> list[float]:
     return allowed
 
 
-def _prose_numbers_ok(payload: Mapping[str, Any], fact_pack: Mapping[str, Any]) -> bool:
+def _first_prose_mismatch(payload: Mapping[str, Any], fact_pack: Mapping[str, Any]) -> str | None:
     texts = [str(payload.get("headline") or "")]
     texts.extend(str(item) for item in (payload.get("bullets") or []))
     allowed = _allowed_numbers(fact_pack)
     for text in texts:
         for match in _NUMBER_TOKEN.finditer(text):
             token = match.group(0)
+            if _token_is_allowed(token, allowed):
+                continue
             value = float(token[:-1] if token.endswith("%") else token)
-            if not any(
-                math.isclose(value, item, rel_tol=0.0, abs_tol=_PROSE_TOL) for item in allowed
-            ):
-                return False
-    return True
+            closest = min(allowed, key=lambda item: abs(value - item))
+            return f"prose token {token} != fact {closest!r}"
+    return None
+
+
+def _token_is_allowed(token: str, allowed: list[float]) -> bool:
+    """True if ``token`` is within tol of a fact, or that fact rounded to the token's places."""
+    body = token[:-1] if token.endswith("%") else token
+    places = len(body.split(".", 1)[1]) if "." in body else 0
+    shown = Decimal(body)
+    if any(math.isclose(float(shown), item, rel_tol=0.0, abs_tol=_PROSE_TOL) for item in allowed):
+        return True
+    quant = Decimal("1").scaleb(-places)
+    for item in allowed:
+        for candidate in (item, abs(item)):
+            rounded = Decimal(str(candidate)).quantize(quant, rounding=ROUND_HALF_UP)
+            if rounded == shown:
+                return True
+    return False
 
 
 def _same(left: Any, right: Any) -> bool:

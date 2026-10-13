@@ -89,6 +89,30 @@ def test_null_delta_does_not_invent_lift():
     assert "+" not in lift
 
 
+def test_prose_accepts_rounded_lift_and_rejects_invented_numbers():
+    pack = build_fact_pack(_allocation())
+    brief = render_offline(pack)
+    rounded = brief.model_dump()
+    rounded["headline"] = "Lift vs baseline is +0.12"
+    assert numbers_match(pack, rounded) is True
+
+    structured = brief.model_dump()
+    structured["incremental_kpi_delta_vs_baseline"] = 0.12
+    assert numbers_match(pack, structured) is False
+
+    magnitude = brief.model_dump()
+    magnitude["bullets"] = [*brief.bullets, "Decrease beta by 2 spend units."]
+    assert numbers_match(pack, magnitude) is True
+
+    invented = brief.model_dump()
+    invented["bullets"] = [*brief.bullets, "Move 40 to a new channel."]
+    assert numbers_match(pack, invented) is False
+
+    invented_pct = brief.model_dump()
+    invented_pct["bullets"] = [*brief.bullets, "Lift is 12%."]
+    assert numbers_match(pack, invented_pct) is False
+
+
 def test_lock_rejects_flag_and_unknown_prose_numbers():
     pack = build_fact_pack(_allocation())
     brief = render_offline(pack)

@@ -14,7 +14,7 @@ from typing import Any, Mapping
 
 from pydantic import ValidationError
 
-from src.report.facts import numbers_match
+from src.report.facts import first_mismatch, numbers_match
 from src.report.schema import CsuiteBrief, emit_brief_json_schema
 
 # --- Live call defaults ---
@@ -38,6 +38,8 @@ Use only the fact pack in the user message. Do not read media CSVs or invent spe
 Fill: headline, 3 to 6 bullets, shifts (one per channel), predicted_incremental_kpi, incremental_kpi_delta_vs_baseline, caveats.
 Bullets must cover budget shifts, saturation flags (near_ceiling, at_floor, or ok), and predicted KPI lift.
 In the headline and bullets, call figures incremental KPI and spend units. Do not use $, dollars, or revenue there.
+Copy predicted_incremental_kpi, incremental_kpi_delta_vs_baseline, and every shift number and saturation_flag exactly from the fact pack. Do not round those fields.
+In the headline and bullets only, cite those same fact-pack numbers. You may round one of them to fewer decimal places. Keep the minus sign on a decrease. Do not turn the KPI delta into a percent.
 If incremental_kpi_delta_vs_baseline is null, say the lift vs baseline was not computed. Do not invent a lift.
 Caveats must include: {CAVEAT_KPI}
 Caveats must include: {CAVEAT_RANK}
@@ -219,7 +221,10 @@ def render_live(
         tools=[
             {
                 "name": _TOOL_NAME,
-                "description": "Emit the C-suite brief using only fact-pack numbers.",
+                "description": (
+                    "Emit the C-suite brief. Copy shift numbers, saturation flags, "
+                    "and both KPI fields exactly. Round only inside headline and bullets."
+                ),
                 "input_schema": emit_brief_json_schema(),
             }
         ],
@@ -230,8 +235,9 @@ def render_live(
         brief = CsuiteBrief.model_validate(payload)
     except ValidationError as exc:
         raise ValueError(f"emit_brief schema failed: {exc}") from exc
-    if not numbers_match(fact_pack, brief):
-        raise RuntimeError("brief numbers do not match the fact pack")
+    reason = first_mismatch(fact_pack, brief)
+    if reason is not None:
+        raise RuntimeError(f"brief numbers do not match the fact pack: {reason}")
     return brief
 
 
