@@ -24,7 +24,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
 | `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest) |
-| `README.md` | Human overview + Miniconda setup + STORY-101–301 how-to |
+| `README.md` | Human overview + Miniconda setup + STORY-101–302 how-to |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian learnings + open rank-recovery issue |
@@ -35,15 +35,20 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/models/meridian_data.py` | STORY-201 clean parquet → Meridian national `InputData` |
 | `src/optimize/curves.py` | STORY-301 offline response-curve provider |
 | `src/optimize/allocator.py` | STORY-301 SLSQP budget optimizer (bounds + target KPI) |
+| `src/report/facts.py` | STORY-302 fact pack from an allocation plan |
+| `src/report/schema.py` | STORY-302 pydantic brief + JSON schema |
+| `src/report/brief.py` | STORY-302 offline + live brief from the fact pack |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
 | `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
 | `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
 | `scripts/plot_allocation_teaching.py` | STORY-301 Plotly teaching figures |
+| `scripts/plot_story_302_concepts.py` | STORY-302 Plotly teaching figures (shift, saturation, lift) |
+| `scripts/04_csuite_brief.py` | STORY-302 brief → `reports/csuite_brief.json` (`--offline` or live) |
 | `tests/` | Generator, transforms, ETL, QA, Meridian, curves, allocator, `<1s` perf |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
 | `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
-| `reports/` | `metrics.json`, `allocation.json` |
-| `reports/figures/` | Plotly HTML + Meridian PPC + `story_301_*.html` |
+| `reports/` | `metrics.json`, `allocation.json`, `csuite_brief.json` |
+| `reports/figures/` | Plotly HTML + Meridian PPC + `story_301_*.html` + `story_302_*.html` |
 | `docs/graphify-archify.md` | Index of graphify + archify artifacts |
 | `graphify-out/` | Knowledge graph outputs |
 | `.archify/` | Architecture diagram runs |
@@ -63,6 +68,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
+- **STORY-302 done (feature tip, step 0–4)** — teaching figures `scripts/plot_story_302_concepts.py` (`reports/figures/story_302_*.html`); fact pack, schema, and brief in `src/report/`; CLI `scripts/04_csuite_brief.py` (`--offline` or live, model `claude-sonnet-4-5`). Structured fields stay exact; headline and bullets may round a fact (lift 0.12). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit). **Caveat:** incremental KPI, not revenue; Meridian ≠ Path-C. Not merged.
 
 ## Skills
 

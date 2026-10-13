@@ -1,0 +1,209 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "From a spend plan to a C-suite brief",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-mmt-story302-20261013-161023/mmt-story302.html",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "157659b31bf03051a3c9e1cdc575c200d0057c0e"
+    }
+  },
+  "lanes": [
+    { "id": "brief", "label": "C-suite brief" },
+    { "id": "stop", "label": "Stop", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "read", "label": "Read the plan", "fromCol": 0, "toCol": 1 },
+    { "id": "ask", "label": "Ask Claude", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "check", "label": "Check, then print", "fromCol": 4, "toCol": 5, "variant": "security" }
+  ],
+  "mainPath": ["plan", "pack", "prompt", "claude", "lock", "printed"],
+  "nodes": [
+    {
+      "id": "plan",
+      "lane": "brief",
+      "col": 0,
+      "type": "database",
+      "label": "Allocation JSON",
+      "sublabel": "the spend plan",
+      "width": 128,
+      "sources": [
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 82,
+          "end_line": 92,
+          "label": "read allocation JSON"
+        }
+      ]
+    },
+    {
+      "id": "pack",
+      "lane": "brief",
+      "col": 1,
+      "type": "backend",
+      "label": "Fact pack",
+      "sublabel": "shifts, flags, KPI",
+      "sources": [
+        {
+          "path": "src/report/facts.py",
+          "line": 30,
+          "end_line": 94,
+          "label": "build_fact_pack"
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "lane": "brief",
+      "col": 2,
+      "type": "backend",
+      "label": "Prompt",
+      "sublabel": "fact pack only",
+      "sources": [
+        {
+          "path": "src/report/brief.py",
+          "line": 35,
+          "end_line": 46,
+          "label": "system prompt"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 52,
+          "end_line": 58,
+          "label": "fact pack JSON"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "lane": "brief",
+      "col": 3,
+      "type": "cloud",
+      "label": "Claude",
+      "sublabel": "emit_brief",
+      "sources": [
+        {
+          "path": "src/report/brief.py",
+          "line": 204,
+          "end_line": 232,
+          "label": "forced emit_brief"
+        }
+      ]
+    },
+    {
+      "id": "lock",
+      "lane": "brief",
+      "col": 4,
+      "type": "security",
+      "label": "Number lock",
+      "sublabel": "fields stay exact",
+      "width": 128,
+      "sources": [
+        {
+          "path": "src/report/facts.py",
+          "line": 97,
+          "end_line": 105,
+          "label": "numbers_match"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 233,
+          "end_line": 241,
+          "label": "validate then lock"
+        }
+      ]
+    },
+    {
+      "id": "printed",
+      "lane": "brief",
+      "col": 5,
+      "type": "frontend",
+      "label": "Printed brief",
+      "sublabel": "stdout, then file",
+      "width": 128,
+      "sources": [
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 110,
+          "end_line": 117,
+          "label": "print and write"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 107,
+          "end_line": 131,
+          "label": "format_brief"
+        }
+      ]
+    },
+    {
+      "id": "reject",
+      "lane": "stop",
+      "col": 4,
+      "type": "security",
+      "label": "Reject",
+      "sublabel": "exit 1, no file",
+      "sources": [
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 75,
+          "end_line": 77,
+          "label": "exit 1"
+        },
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 105,
+          "end_line": 106,
+          "label": "no write on error"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 238,
+          "end_line": 240,
+          "label": "lock raises"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "id": "plan-pack", "from": "plan", "to": "pack", "label": "build", "role": "main" },
+    { "id": "pack-prompt", "from": "pack", "to": "prompt", "label": "JSON only", "role": "main" },
+    { "id": "prompt-claude", "from": "prompt", "to": "claude", "label": "ask", "role": "main", "variant": "emphasis" },
+    { "id": "claude-lock", "from": "claude", "to": "lock", "label": "payload", "role": "main" },
+    { "id": "lock-printed", "from": "lock", "to": "printed", "label": "pass", "role": "main", "variant": "emphasis" },
+    {
+      "id": "lock-reject",
+      "from": "lock",
+      "to": "reject",
+      "label": "fail",
+      "role": "error",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "How to read the numbers",
+      "items": [
+        "Numbers are incremental KPI, not revenue dollars.",
+        "Meridian channel rank vs Path-C is still open — not Path-C ground truth."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "What the lock allows",
+      "items": [
+        "Structured spend, delta, KPI, and saturation flags stay exact.",
+        "Headline and bullets may round a fact, such as lift 0.12.",
+        "A made-up number is rejected and the brief file is not written.",
+        "With --offline the same lock runs locally; Claude is not called."
+      ]
+    }
+  ]
+}

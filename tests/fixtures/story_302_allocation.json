@@ -1,0 +1,16 @@
+{
+  "channels": {"alpha": 27.0, "beta": 18.0, "gamma": 15.0},
+  "total_spend": 60.0,
+  "expected_incremental_kpi": 33.45,
+  "incremental_kpi_delta_vs_baseline": 0.11666666666666714,
+  "constraints": {
+    "mode": "maximize",
+    "total_budget": 60.0,
+    "target_kpi": null,
+    "min_spend": {"alpha": 5.0, "beta": 5.0, "gamma": 5.0},
+    "max_spend": {"alpha": 30.0, "beta": 30.0, "gamma": 30.0},
+    "channels": ["alpha", "beta", "gamma"]
+  },
+  "solver": {"success": true, "message": "teaching fixture (not a live SLSQP run)"},
+  "curve_source": "tests/fixtures/synthetic_response_curves.json"
+}

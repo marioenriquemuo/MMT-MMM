@@ -28,3 +28,5 @@ dependencies:
       # Tested combo: google-meridian==2.1.0 + arviz 0.19.x + matplotlib 3.10.x + pymc 6.x.
       # pip may still adjust arviz; keep matplotlib <3.11 for Meridian/arviz coexistence.
       - google-meridian==2.1.0
+      # STORY-302 live brief. Pin matches the tested mmt-mmm install.
+      - anthropic==1.13.0

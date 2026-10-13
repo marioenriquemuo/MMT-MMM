@@ -206,6 +206,35 @@ python -m pytest tests/test_curves.py tests/test_allocator.py -q
 
 Modules: `src/optimize/curves.py`, `src/optimize/allocator.py`. CLI: `scripts/03_allocate_budget.py`.
 
+## STORY-302 / C-suite brief (step 0–4)
+
+Teaching figures for budget shift, saturation, and KPI lift. The recommended mix is fixed (alpha 27, beta 18, gamma 15) because equal-room on this fixture is 20/20/20 and SLSQP does not leave that point.
+
+`--offline` fills the brief from the allocation JSON. Without that flag the CLI calls Anthropic (`claude-sonnet-4-5`, override with `--model`) and forces the `emit_brief` tool. The fact-pack lock keeps structured spend, delta, KPI, and saturation flags exact. Headline and bullets may round a fact-pack number (for example lift `0.12`). A number that is not that rounding is rejected and the brief file is not written. Headline and bullets call figures incremental KPI and spend units (no `$`, dollars, or revenue).
+
+**Caveat:** Meridian channel rank vs Path-C is still an open issue — do not treat the brief as Path-C ground truth. Numbers are incremental KPI, not revenue dollars.
+
+Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The CLI does not print the key.
+
+```bash
+conda activate mmt-mmm
+python scripts/plot_story_302_concepts.py
+# → reports/figures/story_302_budget_shifts.html
+# → reports/figures/story_302_saturation.html
+# → reports/figures/story_302_kpi_lift.html
+
+python scripts/04_csuite_brief.py \
+  --allocation tests/fixtures/story_302_allocation.json --offline
+
+python scripts/04_csuite_brief.py \
+  --allocation tests/fixtures/story_302_allocation.json
+# live; writes reports/csuite_brief.json only after the number lock passes
+
+python -m pytest tests/test_csuite_facts.py tests/test_csuite_brief.py -q
+```
+
+Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. Fixture plan: `tests/fixtures/story_302_allocation.json`.
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

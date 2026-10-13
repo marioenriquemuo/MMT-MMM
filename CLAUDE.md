@@ -29,7 +29,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 ```
 MMT&MMM/
 ├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest, google-meridian)
-├── README.md                 # setup + STORY-101–301 how-to
+├── README.md                 # setup + STORY-101–302 how-to
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -42,18 +42,24 @@ MMT&MMM/
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 │   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
-│   └── optimize/             # STORY-301 curves + SLSQP allocator
-│       ├── curves.py         # offline response-curve provider
-│       └── allocator.py      # maximize KPI / hit target under bounds
+│   ├── optimize/             # STORY-301 curves + SLSQP allocator
+│   │   ├── curves.py         # offline response-curve provider
+│   │   └── allocator.py      # maximize KPI / hit target under bounds
+│   └── report/               # STORY-302 fact pack, schema, brief
+│       ├── facts.py
+│       ├── schema.py
+│       └── brief.py
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
 ├── scripts/02_model_spike.py           # STORY-201 Meridian smoke/full MCMC
 ├── scripts/03_allocate_budget.py       # STORY-301 CLI → allocation.json
 ├── scripts/plot_allocation_teaching.py # STORY-301 Plotly teaching figures
+├── scripts/plot_story_302_concepts.py  # STORY-302 Plotly teaching figures
+├── scripts/04_csuite_brief.py          # STORY-302 brief CLI (--offline or live)
 ├── tests/                    # + curves / allocator bounds tests
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
-├── reports/                  # metrics.json, allocation.json
-├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html
+├── reports/                  # metrics.json, allocation.json, csuite_brief.json
+├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -77,11 +83,12 @@ Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transf
 
 ## Sprint 2 progress
 
-Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this story: `cursor/story-301-budget-opt-702b` (PR #9).
+Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/story-301-budget-opt-702b` (PR #9), `cursor/story-302-csuite-brief-702b` (PR #10).
 
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
+| STORY-302 | Done (feature tip, step 0–4) | Plots; fact pack; `scripts/04_csuite_brief.py` (`--offline` or live `emit_brief`, `claude-sonnet-4-5`). Structured fields exact; headline/bullets may round (lift 0.12). Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 

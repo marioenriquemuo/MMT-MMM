@@ -1,0 +1,37 @@
+{
+  "headline": "Move alpha up: 27 vs baseline 20.",
+  "bullets": [
+    "Budget shift: alpha 20 → 27 (+7); beta 20 → 18 (-2); gamma 20 → 15 (-5).",
+    "Saturation: alpha near_ceiling, beta ok, gamma ok.",
+    "Predicted incremental KPI is 33.45, lift vs baseline +0.116667."
+  ],
+  "shifts": [
+    {
+      "channel": "alpha",
+      "baseline_spend": 20.0,
+      "recommended_spend": 27.0,
+      "spend_delta": 7.0,
+      "saturation_flag": "near_ceiling"
+    },
+    {
+      "channel": "beta",
+      "baseline_spend": 20.0,
+      "recommended_spend": 18.0,
+      "spend_delta": -2.0,
+      "saturation_flag": "ok"
+    },
+    {
+      "channel": "gamma",
+      "baseline_spend": 20.0,
+      "recommended_spend": 15.0,
+      "spend_delta": -5.0,
+      "saturation_flag": "ok"
+    }
+  ],
+  "predicted_incremental_kpi": 33.45,
+  "incremental_kpi_delta_vs_baseline": 0.11666666666666714,
+  "caveats": [
+    "Numbers are incremental KPI, not revenue dollars.",
+    "Meridian channel rank vs Path-C is still an open issue — do not treat this as Path-C ground truth."
+  ]
+}
