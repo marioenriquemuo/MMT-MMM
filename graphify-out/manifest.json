@@ -102,21 +102,21 @@
     "semantic_hash": "98c524508d475b44f0997e0a56ee4a0f"
   },
   "AGENTS.md": {
-    "mtime": 1791919596.4374495,
-    "seen": 1791919641.5026214,
-    "ast_hash": "46ede6f54c7d40685c295f3746d956ac",
+    "mtime": 1791920708.535977,
+    "seen": 1791920745.5894403,
+    "ast_hash": "b198e8040f1ed6a132ba63f4862e1e02",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791919608.093439,
-    "seen": 1791919641.5026224,
-    "ast_hash": "2cedaa01630f0fdcf8f726ac80d1a5a2",
+    "mtime": 1791920680.9605277,
+    "seen": 1791920745.589441,
+    "ast_hash": "a25a9269e8596e730b2a8af7400bceb0",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791919593.8051202,
-    "seen": 1791919641.5026236,
-    "ast_hash": "d77db91aa5d11a689405ea79a5a580aa",
+    "mtime": 1791920679.4454846,
+    "seen": 1791920745.589442,
+    "ast_hash": "00f8e3eae5c52e24d81de8485ce83f17",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
@@ -408,15 +408,15 @@
     "semantic_hash": ""
   },
   "src/report/__init__.py": {
-    "mtime": 1791919554.1580675,
-    "seen": 1791919641.502574,
-    "ast_hash": "0aaf8b7bcb87c2e3fa5a8c0d3ccd9273",
+    "mtime": 1791920679.3387337,
+    "seen": 1791920745.5893977,
+    "ast_hash": "bb531016c9f80de87834fae29aef2efa",
     "semantic_hash": ""
   },
   "src/report/facts.py": {
-    "mtime": 1791919554.6353877,
-    "seen": 1791919641.5025752,
-    "ast_hash": "bac9c6c794d43c5ac7ccad9fbd0a9d25",
+    "mtime": 1791919667.534923,
+    "seen": 1791920745.5893998,
+    "ast_hash": "d3e0f20f52c24af1f1b18e25a36d0320",
     "semantic_hash": ""
   },
   "src/report/schema.py": {
@@ -432,9 +432,9 @@
     "semantic_hash": ""
   },
   "tests/test_csuite_facts.py": {
-    "mtime": 1791919554.6515193,
-    "seen": 1791919641.5025804,
-    "ast_hash": "ceddfe5e1a1f9bb0deb1b472ab04f668",
+    "mtime": 1791919667.6838374,
+    "seen": 1791920745.5894067,
+    "ast_hash": "bac8034f9273ae4ea4ef6a0892960bb8",
     "semantic_hash": ""
   },
   "reports/figures/story_302_budget_shifts.html": {
@@ -453,6 +453,30 @@
     "mtime": 1791919609.803258,
     "seen": 1791919641.5026374,
     "ast_hash": "c8eb2a3a9a5c2ce1b8caeff0f1b19740",
+    "semantic_hash": ""
+  },
+  "reports/csuite_brief.json": {
+    "mtime": 1791920743.8937128,
+    "seen": 1791920745.589368,
+    "ast_hash": "bc4c0d794f6feb7cfca93ece7d26c69f",
+    "semantic_hash": ""
+  },
+  "scripts/04_csuite_brief.py": {
+    "mtime": 1791920721.4257772,
+    "seen": 1791920745.589375,
+    "ast_hash": "10729554ffcbdf80e92c38a5e35463c0",
+    "semantic_hash": ""
+  },
+  "src/report/brief.py": {
+    "mtime": 1791920728.1250951,
+    "seen": 1791920745.5893989,
+    "ast_hash": "b64bff505f158c59b4f9ff7f51d7a723",
+    "semantic_hash": ""
+  },
+  "tests/test_csuite_brief.py": {
+    "mtime": 1791920679.2855487,
+    "seen": 1791920745.5894055,
+    "ast_hash": "141db0c5a11d2c891f33257a76cd37c9",
     "semantic_hash": ""
   }
 }

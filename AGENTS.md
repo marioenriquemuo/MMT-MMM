@@ -37,15 +37,17 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/optimize/allocator.py` | STORY-301 SLSQP budget optimizer (bounds + target KPI) |
 | `src/report/facts.py` | STORY-302 fact pack from an allocation plan |
 | `src/report/schema.py` | STORY-302 pydantic brief + JSON schema |
+| `src/report/brief.py` | STORY-302 offline brief from the fact pack |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
 | `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
 | `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
 | `scripts/plot_allocation_teaching.py` | STORY-301 Plotly teaching figures |
 | `scripts/plot_story_302_concepts.py` | STORY-302 Plotly teaching figures (shift, saturation, lift) |
+| `scripts/04_csuite_brief.py` | STORY-302 offline brief → `reports/csuite_brief.json` |
 | `tests/` | Generator, transforms, ETL, QA, Meridian, curves, allocator, `<1s` perf |
 | `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` |
 | `data/processed/` | `clean_spend.parquet` (+ optional `qa_repair_log.csv`) |
-| `reports/` | `metrics.json`, `allocation.json` |
+| `reports/` | `metrics.json`, `allocation.json`, `csuite_brief.json` |
 | `reports/figures/` | Plotly HTML + Meridian PPC + `story_301_*.html` + `story_302_*.html` |
 | `docs/graphify-archify.md` | Index of graphify + archify artifacts |
 | `graphify-out/` | Knowledge graph outputs |
@@ -66,7 +68,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
-- **STORY-302 in progress (step 0–1)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack + brief schema in `src/report/`. No Anthropic client and no `scripts/04_csuite_brief.py` yet.
+- **STORY-302 in progress (step 0–2)** — teaching figures `scripts/plot_story_302_concepts.py`; fact pack, schema, and offline brief in `src/report/` (`scripts/04_csuite_brief.py --offline`). No Anthropic client yet.
 
 ## Skills
 
