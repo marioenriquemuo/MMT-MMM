@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "7662ed4f-40b1-42d4-b735-4a2d06e183d8",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/home/mario/dev/MMT&MMM/.archify/workflow-mmt-story302-20261013-161023/candidate.json",
+  "output": "/home/mario/dev/MMT&MMM/.archify/workflow-mmt-story302-20261013-161023/mmt-story302.html",
+  "specification": {
+    "sha256": "9d09ebabf1598d4abd18a6a9abf1aadaca8aa6eed2f9480f3c856a41e49b0d79",
+    "bytes": 5550
+  },
+  "artifact": {
+    "sha256": "dc4a83e7dba2bb41321f717d2715c7b79805892cba33af1e14186750363817f5",
+    "bytes": 757397
+  }
+}

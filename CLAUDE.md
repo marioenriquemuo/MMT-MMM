@@ -29,7 +29,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 ```
 MMT&MMM/
 ├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest, google-meridian)
-├── README.md                 # setup + STORY-101–301 how-to
+├── README.md                 # setup + STORY-101–302 how-to
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -83,12 +83,12 @@ Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transf
 
 ## Sprint 2 progress
 
-Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this story: `cursor/story-301-budget-opt-702b` (PR #9).
+Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/story-301-budget-opt-702b` (PR #9), `cursor/story-302-csuite-brief-702b` (PR #10).
 
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
-| STORY-302 | Done (feature tip, step 0–4) | Plots, fact pack, offline + live `emit_brief` (`claude-sonnet-4-5`), number lock. Not merged |
+| STORY-302 | Done (feature tip, step 0–4) | Plots; fact pack; `scripts/04_csuite_brief.py` (`--offline` or live `emit_brief`, `claude-sonnet-4-5`). Structured fields exact; headline/bullets may round (lift 0.12). Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 

@@ -102,21 +102,21 @@
     "semantic_hash": "98c524508d475b44f0997e0a56ee4a0f"
   },
   "AGENTS.md": {
-    "mtime": 1791921795.45326,
-    "seen": 1791921883.5677218,
-    "ast_hash": "6da9ed5d726ceb6687962d5ad0802c32",
+    "mtime": 1791925928.8307188,
+    "seen": 1791925979.9231346,
+    "ast_hash": "9a5e66b1164eb4ead47fbae31ea3394c",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1791921781.1782324,
-    "seen": 1791921883.567725,
-    "ast_hash": "68cf1a7d6f5bd257db24d099900849a4",
+    "mtime": 1791925928.8249443,
+    "seen": 1791925979.9231358,
+    "ast_hash": "c7e97681116f7d15709ef0375513ba31",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791921781.0953197,
-    "seen": 1791921883.567729,
-    "ast_hash": "44ab6bcb652e6d08f1ce878a63b4eb22",
+    "mtime": 1791925928.1028466,
+    "seen": 1791925979.9231365,
+    "ast_hash": "8ce5681b755b747722f933bd7712a614",
     "semantic_hash": ""
   },
   "data/raw/DATA_CARD.md": {
@@ -210,9 +210,9 @@
     "semantic_hash": "9378bd03d56baaf78bd738ab3848f142"
   },
   "docs/graphify-archify.md": {
-    "mtime": 1791825256.7660947,
-    "seen": 1791919641.5026257,
-    "ast_hash": "25f52dfe2b5062a506917b1384633cef",
+    "mtime": 1791925928.9067678,
+    "seen": 1791925979.9231389,
+    "ast_hash": "4b96f1c7d5a7c883da76253cfbf2dcae",
     "semantic_hash": ""
   },
   "reports/figures/geometric_adstock_pulse.html": {
@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "src/report/facts.py": {
-    "mtime": 1791919667.534923,
-    "seen": 1791920745.5893998,
-    "ast_hash": "d3e0f20f52c24af1f1b18e25a36d0320",
+    "mtime": 1791924732.5879147,
+    "seen": 1791925979.9230852,
+    "ast_hash": "9bf3926c30f1bf4338eb35969d0db5d1",
     "semantic_hash": ""
   },
   "src/report/schema.py": {
@@ -432,9 +432,9 @@
     "semantic_hash": ""
   },
   "tests/test_csuite_facts.py": {
-    "mtime": 1791919667.6838374,
-    "seen": 1791920745.5894067,
-    "ast_hash": "bac8034f9273ae4ea4ef6a0892960bb8",
+    "mtime": 1791923695.7176461,
+    "seen": 1791925979.923093,
+    "ast_hash": "bba0ea239c91de7ce2e70801c20c057f",
     "semantic_hash": ""
   },
   "reports/figures/story_302_budget_shifts.html": {
@@ -456,8 +456,8 @@
     "semantic_hash": ""
   },
   "reports/csuite_brief.json": {
-    "mtime": 1791921879.0507805,
-    "seen": 1791921883.5675092,
+    "mtime": 1791925865.120694,
+    "seen": 1791925979.923055,
     "ast_hash": "bc4c0d794f6feb7cfca93ece7d26c69f",
     "semantic_hash": ""
   },
@@ -468,15 +468,15 @@
     "semantic_hash": ""
   },
   "src/report/brief.py": {
-    "mtime": 1791921720.75191,
-    "seen": 1791921883.567575,
-    "ast_hash": "4a2b404f8349d562a8c2294e34ffa9d4",
+    "mtime": 1791924710.4241674,
+    "seen": 1791925979.9230843,
+    "ast_hash": "4a26888e85da4b8118327cfca93448df",
     "semantic_hash": ""
   },
   "tests/test_csuite_brief.py": {
-    "mtime": 1791921781.8762248,
-    "seen": 1791921883.5675938,
-    "ast_hash": "571398029f8c886bd9dd97a03639104d",
+    "mtime": 1791924710.6371648,
+    "seen": 1791925979.9230914,
+    "ast_hash": "b43bff0b61748cdf8231e94d8ea279d5",
     "semantic_hash": ""
   }
 }
