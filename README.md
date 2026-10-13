@@ -206,6 +206,22 @@ python -m pytest tests/test_curves.py tests/test_allocator.py -q
 
 Modules: `src/optimize/curves.py`, `src/optimize/allocator.py`. CLI: `scripts/03_allocate_budget.py`.
 
+## STORY-302 / C-suite brief (step 0–1)
+
+Teaching figures for budget shift, saturation, and KPI lift. The recommended mix is fixed (alpha 27, beta 18, gamma 15) because equal-room on this fixture is 20/20/20 and SLSQP does not leave that point. Fact pack + brief schema only — no model client and no CLI yet.
+
+```bash
+conda activate mmt-mmm
+python scripts/plot_story_302_concepts.py
+# → reports/figures/story_302_budget_shifts.html
+# → reports/figures/story_302_saturation.html
+# → reports/figures/story_302_kpi_lift.html
+
+python -m pytest tests/test_csuite_facts.py -q
+```
+
+Modules: `src/report/facts.py` (fact pack from allocation JSON), `src/report/schema.py` (pydantic brief + JSON schema). Fixture plan: `tests/fixtures/story_302_allocation.json`.
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

@@ -42,18 +42,22 @@ MMT&MMM/
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 │   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
-│   └── optimize/             # STORY-301 curves + SLSQP allocator
-│       ├── curves.py         # offline response-curve provider
-│       └── allocator.py      # maximize KPI / hit target under bounds
+│   ├── optimize/             # STORY-301 curves + SLSQP allocator
+│   │   ├── curves.py         # offline response-curve provider
+│   │   └── allocator.py      # maximize KPI / hit target under bounds
+│   └── report/               # STORY-302 fact pack + brief schema (no client yet)
+│       ├── facts.py
+│       └── schema.py
 ├── scripts/plot_adstock_validation.py  # Plotly Express figures (not Jupyter)
 ├── scripts/02_model_spike.py           # STORY-201 Meridian smoke/full MCMC
 ├── scripts/03_allocate_budget.py       # STORY-301 CLI → allocation.json
 ├── scripts/plot_allocation_teaching.py # STORY-301 Plotly teaching figures
+├── scripts/plot_story_302_concepts.py  # STORY-302 Plotly teaching figures
 ├── tests/                    # + curves / allocator bounds tests
 ├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
 ├── reports/                  # metrics.json, allocation.json
-├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html
+├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -82,6 +86,7 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature work for this st
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
+| STORY-302 | In progress (step 0–1) | Teaching plots + fact pack / pydantic brief schema. No Anthropic client or CLI yet |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth.
 
