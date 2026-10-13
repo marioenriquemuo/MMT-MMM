@@ -21,19 +21,20 @@ Regenerated after STORY-302 (`graphify update .`; includes `src/report/` + `scri
 
 ## archify
 
-**Current:** repository-backed workflow of STORY-302 — allocation JSON → fact pack → prompt → Claude `emit_brief` → number lock → printed brief, or reject (exit 1, no file).
+**Current:** repository-backed picture of the MVP that exists in this repo — practice spend → line up weeks → check the media → clean weekly file → Meridian → response curves → budget rules → search spends → spend plan (or empty channels) → fact pack → prompt → Claude `emit_brief` → number lock → printed brief, or reject. No product UI.
 
 | Artifact | Path |
 | --- | --- |
-| HTML diagram | [`.archify/workflow-mmt-story302-20261013-161023/mmt-story302.html`](../.archify/workflow-mmt-story302-20261013-161023/mmt-story302.html) |
-| Candidate JSON | [`.archify/workflow-mmt-story302-20261013-161023/candidate.json`](../.archify/workflow-mmt-story302-20261013-161023/candidate.json) |
+| HTML diagram | [`.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html`](../.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html) |
+| Candidate JSON | [`.archify/architecture-mmt-mvp-20261013-164444/candidate.json`](../.archify/architecture-mmt-mvp-20261013-164444/candidate.json) |
 
-Pinned revision for evidence: `157659b31bf03051a3c9e1cdc575c200d0057c0e` (STORY-302 tip with the prose rounding lock).
+Pinned revision for evidence: `3dffd009a6bf344822e0d2cdf7f61687a4ed45b2` (sprint-2 tip after the STORY-302 merge).
 
-**Wording style:** plain-language node/edge labels (e.g. “Fact pack”, “Number lock”, “Reject”). A card states incremental KPI is not revenue, and Meridian channel rank vs Path-C is still open.
+**Wording style:** plain-language labels (e.g. “Check the media”, “Empty channels”, “Number lock”). A card says the figures are incremental KPI, not revenue, and that Meridian channel rank vs Path-C is still open.
 
 Prior runs kept for history:
 
+- STORY-302 brief only: [`.archify/workflow-mmt-story302-20261013-161023/`](../.archify/workflow-mmt-story302-20261013-161023/)
 - STORY-301: [`.archify/architecture-mmt-story301-20261012-120314/`](../.archify/architecture-mmt-story301-20261012-120314/)
 - STORY-101→201: [`.archify/architecture-mmt-story101-201-20261009-171324/`](../.archify/architecture-mmt-story101-201-20261009-171324/)
 - STORY-101→104: [`.archify/architecture-mmt-story101-104-20261009-151448/`](../.archify/architecture-mmt-story101-104-20261009-151448/)

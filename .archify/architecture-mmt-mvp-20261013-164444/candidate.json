@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "From practice ads to a budget brief",
+    "subtitle": "Clean the spend \u2192 fit curves \u2192 stay in budget \u2192 write the plan \u2192 print a brief, or stop.",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "link_mode": "local-only",
+      "revision": "3dffd009a6bf344822e0d2cdf7f61687a4ed45b2"
+    }
+  },
+  "components": [
+    {
+      "id": "spend",
+      "type": "database",
+      "label": "Practice spend",
+      "sublabel": "synthetic weekly ads",
+      "pos": [
+        48,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/data/generator.py",
+          "line": 40,
+          "end_line": 40,
+          "label": "CSV path"
+        },
+        {
+          "path": "src/data/generator.py",
+          "line": 239,
+          "end_line": 284,
+          "label": "generate"
+        },
+        {
+          "path": "src/data/generator.py",
+          "line": 329,
+          "end_line": 333,
+          "label": "write CSV"
+        }
+      ]
+    },
+    {
+      "id": "etl",
+      "type": "backend",
+      "label": "Line up weeks",
+      "sublabel": "fill gaps",
+      "pos": [
+        244,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/data/etl.py",
+          "line": 130,
+          "end_line": 145,
+          "label": "run_etl"
+        }
+      ]
+    },
+    {
+      "id": "qa",
+      "type": "security",
+      "label": "Check the media",
+      "sublabel": "repair or stop",
+      "pos": [
+        440,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/data/qa.py",
+          "line": 309,
+          "end_line": 332,
+          "label": "run_qa"
+        },
+        {
+          "path": "src/data/qa.py",
+          "line": 341,
+          "end_line": 347,
+          "label": "exit 1 if stuck"
+        }
+      ]
+    },
+    {
+      "id": "qastop",
+      "type": "security",
+      "label": "Stop",
+      "sublabel": "media still bad",
+      "pos": [
+        440,
+        196
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/data/qa.py",
+          "line": 316,
+          "end_line": 325,
+          "label": "no write if stuck"
+        },
+        {
+          "path": "src/data/qa.py",
+          "line": 344,
+          "end_line": 347,
+          "label": "exit 1"
+        }
+      ]
+    },
+    {
+      "id": "parquet",
+      "type": "database",
+      "label": "Clean weekly file",
+      "sublabel": "parquet",
+      "pos": [
+        636,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/data/etl.py",
+          "line": 28,
+          "end_line": 28,
+          "label": "parquet path"
+        },
+        {
+          "path": "src/data/qa.py",
+          "line": 329,
+          "end_line": 331,
+          "label": "overwrite if clean"
+        },
+        {
+          "path": "src/models/meridian_data.py",
+          "line": 20,
+          "end_line": 22,
+          "label": "Meridian reads it"
+        }
+      ]
+    },
+    {
+      "id": "fit",
+      "type": "backend",
+      "label": "Fit the mix",
+      "sublabel": "Meridian",
+      "pos": [
+        832,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/models/meridian_data.py",
+          "line": 124,
+          "end_line": 129,
+          "label": "national InputData"
+        },
+        {
+          "path": "scripts/02_model_spike.py",
+          "line": 420,
+          "end_line": 429,
+          "label": "load and sample"
+        }
+      ]
+    },
+    {
+      "id": "curves",
+      "type": "database",
+      "label": "Response curves",
+      "sublabel": "metrics.json",
+      "pos": [
+        1028,
+        48
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "scripts/02_model_spike.py",
+          "line": 41,
+          "end_line": 41,
+          "label": "metrics path"
+        },
+        {
+          "path": "scripts/02_model_spike.py",
+          "line": 481,
+          "end_line": 496,
+          "label": "write curves"
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "type": "security",
+      "label": "Budget rules",
+      "sublabel": "cap, floor, target",
+      "pos": [
+        1028,
+        400
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "scripts/03_allocate_budget.py",
+          "line": 67,
+          "end_line": 98,
+          "label": "budget flags"
+        }
+      ]
+    },
+    {
+      "id": "solver",
+      "type": "backend",
+      "label": "Search spends",
+      "sublabel": "SLSQP",
+      "pos": [
+        832,
+        400
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/optimize/allocator.py",
+          "line": 30,
+          "end_line": 72,
+          "label": "optimize_budget"
+        },
+        {
+          "path": "src/optimize/allocator.py",
+          "line": 83,
+          "end_line": 144,
+          "label": "maximize"
+        },
+        {
+          "path": "src/optimize/allocator.py",
+          "line": 160,
+          "end_line": 232,
+          "label": "hit a target"
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "type": "security",
+      "label": "Empty channels",
+      "sublabel": "search failed",
+      "pos": [
+        832,
+        548
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/optimize/allocator.py",
+          "line": 410,
+          "end_line": 427,
+          "label": "channels cleared"
+        },
+        {
+          "path": "src/report/facts.py",
+          "line": 33,
+          "end_line": 42,
+          "label": "no fact pack"
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "type": "database",
+      "label": "Spend plan",
+      "sublabel": "allocation.json",
+      "pos": [
+        636,
+        400
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/optimize/allocator.py",
+          "line": 386,
+          "end_line": 408,
+          "label": "ok result"
+        },
+        {
+          "path": "scripts/03_allocate_budget.py",
+          "line": 127,
+          "end_line": 142,
+          "label": "write JSON"
+        }
+      ]
+    },
+    {
+      "id": "pack",
+      "type": "backend",
+      "label": "Fact pack",
+      "sublabel": "shifts, flags, KPI",
+      "pos": [
+        636,
+        760
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/report/facts.py",
+          "line": 30,
+          "end_line": 94,
+          "label": "build_fact_pack"
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "type": "backend",
+      "label": "Prompt",
+      "sublabel": "fact pack only",
+      "pos": [
+        832,
+        760
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/report/brief.py",
+          "line": 35,
+          "end_line": 46,
+          "label": "system prompt"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 52,
+          "end_line": 58,
+          "label": "pack JSON"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "type": "cloud",
+      "label": "Claude",
+      "sublabel": "emit_brief",
+      "pos": [
+        1028,
+        760
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/report/brief.py",
+          "line": 204,
+          "end_line": 232,
+          "label": "forced tool"
+        }
+      ]
+    },
+    {
+      "id": "lock",
+      "type": "security",
+      "label": "Number lock",
+      "sublabel": "fields stay exact",
+      "pos": [
+        1028,
+        940
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/report/facts.py",
+          "line": 97,
+          "end_line": 105,
+          "label": "numbers_match"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 233,
+          "end_line": 241,
+          "label": "validate then lock"
+        }
+      ]
+    },
+    {
+      "id": "reject",
+      "type": "security",
+      "label": "Reject",
+      "sublabel": "exit 1, no file",
+      "pos": [
+        832,
+        940
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/report/brief.py",
+          "line": 238,
+          "end_line": 240,
+          "label": "lock raises"
+        },
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 105,
+          "end_line": 106,
+          "label": "no write on error"
+        }
+      ]
+    },
+    {
+      "id": "printed",
+      "type": "backend",
+      "label": "Printed brief",
+      "sublabel": "then save the file",
+      "pos": [
+        1028,
+        1120
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "scripts/04_csuite_brief.py",
+          "line": 110,
+          "end_line": 117,
+          "label": "print and write"
+        },
+        {
+          "path": "src/report/brief.py",
+          "line": 107,
+          "end_line": 131,
+          "label": "format_brief"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "1 \u00b7 Measure",
+      "wraps": [
+        "spend",
+        "etl",
+        "qa",
+        "qastop",
+        "parquet",
+        "fit",
+        "curves"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "2 \u00b7 Allocate",
+      "wraps": [
+        "rules",
+        "solver",
+        "plan",
+        "empty"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "3 \u00b7 Explain",
+      "wraps": [
+        "pack",
+        "prompt",
+        "claude",
+        "lock",
+        "reject",
+        "printed"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "spend-etl",
+      "from": "spend",
+      "to": "etl",
+      "label": "rows"
+    },
+    {
+      "id": "etl-qa",
+      "from": "etl",
+      "to": "qa",
+      "label": "check"
+    },
+    {
+      "id": "qa-stop",
+      "from": "qa",
+      "to": "qastop",
+      "label": "stuck",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "qa-parquet",
+      "from": "qa",
+      "to": "parquet",
+      "label": "ok"
+    },
+    {
+      "id": "parquet-fit",
+      "from": "parquet",
+      "to": "fit",
+      "label": "fit"
+    },
+    {
+      "id": "fit-curves",
+      "from": "fit",
+      "to": "curves",
+      "label": "save"
+    },
+    {
+      "id": "curves-rules",
+      "from": "curves",
+      "to": "rules",
+      "label": "curves",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "rules-solver",
+      "from": "rules",
+      "to": "solver",
+      "label": "bounds"
+    },
+    {
+      "id": "solver-plan",
+      "from": "solver",
+      "to": "plan",
+      "label": "fits"
+    },
+    {
+      "id": "solver-empty",
+      "from": "solver",
+      "to": "empty",
+      "label": "fails",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "plan-pack",
+      "from": "plan",
+      "to": "pack",
+      "label": "plan",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "pack-prompt",
+      "from": "pack",
+      "to": "prompt",
+      "label": "JSON"
+    },
+    {
+      "id": "prompt-claude",
+      "from": "prompt",
+      "to": "claude",
+      "label": "ask",
+      "variant": "emphasis"
+    },
+    {
+      "id": "claude-lock",
+      "from": "claude",
+      "to": "lock",
+      "label": "payload",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "lock-printed",
+      "from": "lock",
+      "to": "printed",
+      "label": "pass",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "lock-reject",
+      "from": "lock",
+      "to": "reject",
+      "label": "fail",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "How to read the numbers",
+      "items": [
+        "Figures are incremental KPI, not revenue dollars.",
+        "Meridian channel rank vs Path-C is still open.",
+        "Do not treat the plan or the brief as Path-C ground truth."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "What is built",
+      "items": [
+        "Practice spend is lined up, checked, and fit with Meridian.",
+        "The search writes a spend plan, or clears channels when it fails.",
+        "Sentences may round a fact. Locked fields stay exact.",
+        "A failed plan never becomes a brief. Charts are HTML files, not a product UI."
+      ]
+    }
+  ]
+}
