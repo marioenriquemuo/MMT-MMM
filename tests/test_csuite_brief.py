@@ -89,6 +89,29 @@ def test_null_delta_does_not_invent_lift():
     assert "+" not in lift
 
 
+def test_lock_rejects_flag_and_unknown_prose_numbers():
+    pack = build_fact_pack(_allocation())
+    brief = render_offline(pack)
+    assert numbers_match(pack, brief)
+
+    flagged = brief.model_dump()
+    flagged["shifts"][0]["saturation_flag"] = "ok"
+    assert flagged["shifts"][0]["channel"] == "alpha"
+    assert numbers_match(pack, flagged) is False
+
+    bad_share = brief.model_dump()
+    bad_share["bullets"] = [*brief.bullets, "Alpha takes 99% of the budget."]
+    assert numbers_match(pack, bad_share) is False
+
+    bad_lift = brief.model_dump()
+    bad_lift["bullets"] = [*brief.bullets[:-1], "Predicted lift is 12.5."]
+    assert numbers_match(pack, bad_lift) is False
+
+    allowed_share = brief.model_dump()
+    allowed_share["bullets"] = [*brief.bullets, "Alpha share is 45%."]
+    assert numbers_match(pack, allowed_share) is True
+
+
 def test_lock_failure_refuses_the_brief(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setattr("src.report.brief.numbers_match", lambda *_args, **_kwargs: False)
     pack = build_fact_pack(_allocation())

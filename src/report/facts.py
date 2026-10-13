@@ -8,6 +8,7 @@ recompute KPI — those two fields are copied from the plan.
 from __future__ import annotations
 
 import math
+import re
 from typing import Any, Mapping
 
 import numpy as np
@@ -18,6 +19,8 @@ _NEAR_CEILING = 0.90
 _FLOOR_TOL = 1e-6
 _CONCENTRATION = 0.70
 _NUMBER_TOL = 1e-6
+_PROSE_TOL = 1e-4
+_NUMBER_TOKEN = re.compile(r"[+-]?(?:\d+\.\d+|\d+)%?")
 
 
 # --- Public API ---
@@ -91,11 +94,13 @@ def build_fact_pack(allocation: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def numbers_match(fact_pack: Mapping[str, Any], brief: Any) -> bool:
-    """True when brief KPI and per-channel spends match the fact pack.
+    """True when the brief matches the fact pack.
 
-    Pure comparison. ``brief`` may be a mapping or any object with
-    ``model_dump()``. A drifted number returns False. Tolerance is
-    ``1e-6`` absolute; ``None`` matches only ``None``.
+    Structured fields use absolute tolerance ``1e-6`` (``None`` matches only
+    ``None``). Headline and bullet numbers use absolute tolerance ``1e-4``
+    and must each be a fact-pack spend, delta, share (fraction or percent),
+    or KPI. ``saturation_flag`` must match exactly. A token with no allowed
+    value returns False. Text with no numbers is skipped.
     """
     payload = brief.model_dump() if hasattr(brief, "model_dump") else brief
     if not _same(
@@ -122,7 +127,9 @@ def numbers_match(fact_pack: Mapping[str, Any], brief: Any) -> bool:
             return False
         if not _same(shift.get("spend_delta"), fact["spend_delta"]):
             return False
-    return True
+        if shift.get("saturation_flag") != fact["saturation_flag"]:
+            return False
+    return _prose_numbers_ok(payload, fact_pack)
 
 
 # --- Equal-room / flags ---
@@ -161,7 +168,41 @@ def _concentration_note(spends: Mapping[str, float], total_spend: float) -> str 
     share = spend / total_spend
     if share < _CONCENTRATION:
         return None
-    return f"{channel} holds {share:.0%} of total spend (>= 70%)"
+    # Percent form of share_of_budget so the note survives the prose number lock.
+    return f"{channel} holds {share * 100:.6g}% of total spend"
+
+
+def _allowed_numbers(fact_pack: Mapping[str, Any]) -> list[float]:
+    allowed: list[float] = []
+    for fact in fact_pack["channels"].values():
+        allowed.append(float(fact["baseline_spend"]))
+        allowed.append(float(fact["recommended_spend"]))
+        allowed.append(float(fact["spend_delta"]))
+        share = float(fact["share_of_budget"])
+        allowed.append(share)
+        allowed.append(share * 100.0)
+    kpi = fact_pack.get("expected_incremental_kpi")
+    if kpi is not None:
+        allowed.append(float(kpi))
+    delta = fact_pack.get("incremental_kpi_delta_vs_baseline")
+    if delta is not None:
+        allowed.append(float(delta))
+    return allowed
+
+
+def _prose_numbers_ok(payload: Mapping[str, Any], fact_pack: Mapping[str, Any]) -> bool:
+    texts = [str(payload.get("headline") or "")]
+    texts.extend(str(item) for item in (payload.get("bullets") or []))
+    allowed = _allowed_numbers(fact_pack)
+    for text in texts:
+        for match in _NUMBER_TOKEN.finditer(text):
+            token = match.group(0)
+            value = float(token[:-1] if token.endswith("%") else token)
+            if not any(
+                math.isclose(value, item, rel_tol=0.0, abs_tol=_PROSE_TOL) for item in allowed
+            ):
+                return False
+    return True
 
 
 def _same(left: Any, right: Any) -> bool:

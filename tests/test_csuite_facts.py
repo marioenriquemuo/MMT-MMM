@@ -35,7 +35,7 @@ def _brief_from(pack: dict) -> CsuiteBrief:
     return CsuiteBrief(
         headline="Shift budget toward alpha",
         bullets=[
-            "Alpha moves onto the 90% ceiling.",
+            "Alpha moves onto the ceiling.",
             "Beta and gamma give spend back.",
             "Predicted lift is the KPI difference.",
         ],
@@ -96,7 +96,7 @@ def test_floor_flag_and_concentration_note():
     assert pack["channels"]["gamma"]["saturation_flag"] == "at_floor"
     assert pack["channels"]["alpha"]["saturation_flag"] == "ok"
     assert pack["channels"]["alpha"]["share_of_budget"] == pytest.approx(0.80)
-    assert pack["concentration_note"] == "alpha holds 80% of total spend (>= 70%)"
+    assert pack["concentration_note"] == "alpha holds 80% of total spend"
     assert pack["incremental_kpi_delta_vs_baseline"] is None
 
 
