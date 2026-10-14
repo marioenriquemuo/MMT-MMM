@@ -31,6 +31,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `LICENSE` | MIT, Mario Muñoz, 2026 |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
+| `docs/learnings/` | Story learnings + [`open-gaps.md`](docs/learnings/open-gaps.md) registry |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian learnings + open rank-recovery issue |
 | `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
 | `src/data/etl.py` | STORY-103 load / align / impute / Pandera / Parquet |

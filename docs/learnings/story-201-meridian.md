@@ -73,7 +73,7 @@ are intentionally short — that is expected, not a model bug.
    for their definition
 
 Track as an **open issue** for a later recovery / calibration story. Do not bury it in
-passing notes.
+passing notes. Registry id: **`GAP-201-RANK`** in [`open-gaps.md`](open-gaps.md).
 
 ---
 
