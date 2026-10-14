@@ -1,7 +1,8 @@
 """STORY-401 Streamlit layout.
 
-Sliders and number boxes set the percent mix and the charts. **Update
-insights** is the only control that calls Claude. Run with ``streamlit run app.py``.
+Sliders and number boxes set the total budget and each partner's min and max
+percent. The optimizer chooses the spend. **Update insights** is the only
+control that calls Claude. Run with ``streamlit run app.py``.
 """
 
 from __future__ import annotations
@@ -22,9 +23,9 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.dashboard.view import (  # noqa: E402
     build_dashboard,
-    clamp_percent,
+    clamp_max_percent,
+    clamp_min_percent,
     default_curves_path,
-    equal_percents,
     format_units,
     slider_bounds,
 )
@@ -170,7 +171,8 @@ def main() -> None:
     st.set_page_config(page_title="Budget dashboard", layout="wide")
     st.markdown(_PURE_CSS, unsafe_allow_html=True)
     st.sidebar.caption(
-        "Percents set the mix. Update insights calls Claude."
+        "Min and max percents bound each partner. The optimizer chooses the spend. "
+        "Update insights calls Claude."
     )
 
     curves_path = st.sidebar.text_input(
@@ -197,42 +199,54 @@ def main() -> None:
         fmt="%,.2f",
     )
     partners = list(spec["channels"])
-    defaults = equal_percents(partners)
     for channel in partners:
-        slider_key = f"pct::{curves_path}::{channel}::s"
-        if slider_key not in st.session_state:
-            st.session_state[slider_key] = float(defaults[channel])
-            st.session_state[f"pct::{curves_path}::{channel}::n"] = float(defaults[channel])
+        for bound, default in (("min", 0.0), ("max", 100.0)):
+            slider_key = f"{bound}::{curves_path}::{channel}::s"
+            if slider_key not in st.session_state:
+                st.session_state[slider_key] = default
+                st.session_state[f"{bound}::{curves_path}::{channel}::n"] = default
 
-    percents: dict[str, float] = {}
+    mins: dict[str, float] = {}
+    maxes: dict[str, float] = {}
     for channel in partners:
-        def _room(requested: float, channel: str = channel) -> float:
+        def _clamp_min(requested: float, channel: str = channel) -> float:
             others = sum(
-                float(st.session_state[f"pct::{curves_path}::{other}::n"])
+                float(st.session_state[f"min::{curves_path}::{other}::n"])
                 for other in partners
                 if other != channel
             )
-            return clamp_percent(requested, others)
+            this_max = float(st.session_state[f"max::{curves_path}::{channel}::n"])
+            return clamp_min_percent(requested, others, this_max)
 
-        percents[channel] = _synced_number(
-            f"{channel} %",
+        def _clamp_max(requested: float, channel: str = channel) -> float:
+            this_min = float(st.session_state[f"min::{curves_path}::{channel}::n"])
+            return clamp_max_percent(requested, this_min)
+
+        mins[channel] = _synced_number(
+            f"{channel} min %",
             0.0,
             100.0,
-            defaults[channel],
+            0.0,
             0.01,
-            key=f"pct::{curves_path}::{channel}",
+            key=f"min::{curves_path}::{channel}",
             fmt="%.2f",
-            clamp=_room,
+            clamp=_clamp_min,
         )
-        st.sidebar.caption(
-            f"{channel} investment {format_units(budget * percents[channel] / 100.0)}"
+        maxes[channel] = _synced_number(
+            f"{channel} max %",
+            0.0,
+            100.0,
+            100.0,
+            0.01,
+            key=f"max::{curves_path}::{channel}",
+            fmt="%.2f",
+            clamp=_clamp_max,
         )
-    st.sidebar.caption(f"Unallocated {100.0 - sum(percents.values()):.2f}%")
 
     signature = (
         str(path),
         float(budget),
-        tuple((channel, percents[channel]) for channel in partners),
+        tuple((channel, mins[channel], maxes[channel]) for channel in partners),
     )
     if st.session_state.get("slider_sig") != signature:
         st.session_state["live_brief"] = None
@@ -240,7 +254,7 @@ def main() -> None:
         st.session_state["slider_sig"] = signature
 
     try:
-        result = build_dashboard(path, budget, percents)
+        result = build_dashboard(path, budget, mins, maxes)
     except (OSError, ValueError) as exc:
         st.error(str(exc))
         return
@@ -255,8 +269,9 @@ def main() -> None:
             [
                 {
                     "channel": row["channel"],
-                    "percent": f"{row['percent']:.2f}",
-                    "investment": format_units(row["recommended_spend"]),
+                    "min %": f"{row['min_percent']:.2f}",
+                    "max %": f"{row['max_percent']:.2f}",
+                    "recommended spend": format_units(row["recommended_spend"]),
                     "saturation_flag": row["saturation_flag"],
                     "incremental_kpi": format_units(row["incremental_kpi"]),
                 }

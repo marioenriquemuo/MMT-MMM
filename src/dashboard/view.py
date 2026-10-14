@@ -1,7 +1,8 @@
 """Dashboard math for STORY-401.
 
-Loads offline curves, turns partner percents into spend, and builds
-the fact pack, offline brief, and Plotly figures. Does not call Claude.
+Loads offline curves, turns min/max percents into spend bounds, and runs
+``optimize_budget``. Builds the fact pack, offline brief, and Plotly figures.
+Does not call Claude.
 """
 
 from __future__ import annotations
@@ -13,9 +14,10 @@ from typing import Any, Mapping
 import pandas as pd
 import plotly.express as px
 
+from src.optimize.allocator import optimize_budget
 from src.optimize.curves import MetricsJsonCurveProvider
 from src.report.brief import format_brief, render_offline
-from src.report.facts import _concentration_note, _saturation_flag
+from src.report.facts import build_fact_pack
 
 # --- Thresholds ---
 
@@ -64,19 +66,8 @@ def slider_bounds(curves_path: str | Path) -> dict[str, Any]:
     }
 
 
-def equal_percents(partners: list[str]) -> dict[str, float]:
-    """Split 100% across partners. The last one absorbs the rounding remainder."""
-    names = list(partners)
-    if not names:
-        return {}
-    share = 100.0 / len(names)
-    out = {name: share for name in names}
-    out[names[-1]] = 100.0 - sum(out[name] for name in names[:-1])
-    return out
-
-
 def clamp_percent(requested: float, others: float) -> float:
-    """Keep one partner inside the percent still left (``100 - others``)."""
+    """Keep one percent inside the room still left (``100 - others``)."""
     room = 100.0 - float(others)
     if room < 0.0:
         room = 0.0
@@ -88,8 +79,36 @@ def clamp_percent(requested: float, others: float) -> float:
     return value
 
 
+def clamp_min_percent(requested: float, others: float, this_max: float) -> float:
+    """Min percent: room left by the other mins, and not above this partner's max."""
+    value = clamp_percent(requested, others)
+    cap = float(this_max)
+    if cap < 0.0:
+        cap = 0.0
+    if cap > 100.0:
+        cap = 100.0
+    if value > cap:
+        value = cap
+    return value
+
+
+def clamp_max_percent(requested: float, this_min: float) -> float:
+    """Max percent stays in 0–100 and cannot fall below this partner's min."""
+    value = float(requested)
+    if value < 0.0:
+        value = 0.0
+    if value > 100.0:
+        value = 100.0
+    floor = float(this_min)
+    if floor < 0.0:
+        floor = 0.0
+    if value < floor:
+        value = floor
+    return value
+
+
 def clamp_percents(percents: Mapping[str, float]) -> dict[str, float]:
-    """Walk partners in order. Each one keeps only the room earlier ones left."""
+    """Walk mins in order. Each one keeps only the room earlier ones left."""
     out: dict[str, float] = {}
     used = 0.0
     for name, requested in percents.items():
@@ -108,36 +127,55 @@ def partner_investments(budget: float, percents: Mapping[str, float]) -> dict[st
 def build_dashboard(
     curves_path: str | Path,
     total_budget: float,
-    percents: Mapping[str, float],
+    min_pct: Mapping[str, float],
+    max_pct: Mapping[str, float],
 ) -> dict[str, Any]:
-    """Turn partner percents into spends, KPI, a brief, and figures.
+    """Maximize KPI inside min/max percents of the budget.
 
-    Recommended spend is the percent mix. Before-the-move spend is an equal
-    split of that invested total. Does not call the optimizer or Claude.
-    Percents that add up past 100 are clamped in partner order.
+    Recommended spend is the optimizer result. Before-the-move spend is the
+    equal-room baseline. Mins that add up past 100 are clamped in channel
+    order, and a min cannot sit above its max. Does not call Claude.
     """
     provider = MetricsJsonCurveProvider(curves_path)
     names = provider.channels()
     if not names:
         return _failed("curve file has no channels")
-    ordered = {name: float(percents.get(name, 0.0)) for name in names}
-    mix = clamp_percents(ordered)
+    maxes = {
+        name: clamp_max_percent(float(max_pct.get(name, 100.0)), 0.0) for name in names
+    }
+    mins: dict[str, float] = {}
+    used = 0.0
+    for name in names:
+        value = clamp_min_percent(float(min_pct.get(name, 0.0)), used, maxes[name])
+        mins[name] = value
+        used += value
     budget = float(total_budget)
-    spends = partner_investments(budget, mix)
-    invested = float(sum(spends.values()))
-    baseline_each = invested / len(names)
-    baselines = {name: baseline_each for name in names}
+    min_spend = partner_investments(budget, mins)
+    max_spend = partner_investments(budget, maxes)
+    allocation = optimize_budget(
+        provider,
+        total_budget=budget,
+        min_spend=min_spend,
+        max_spend=max_spend,
+        curve_source=str(curves_path),
+    )
+    if not allocation.get("success"):
+        message = str(allocation.get("message") or "allocator failed")
+        return _failed(message, mins=mins, maxes=maxes)
     try:
-        fact_pack = _mix_fact_pack(provider, spends, baselines)
+        fact_pack = build_fact_pack(allocation)
         offline_brief = format_brief(render_offline(fact_pack))
     except (ValueError, RuntimeError) as exc:
-        return _failed(str(exc))
+        return _failed(str(exc), mins=mins, maxes=maxes)
 
-    maxes = {name: float(provider.spend_grid(name).max()) for name in names}
+    spends = {
+        name: float(row["recommended_spend"]) for name, row in fact_pack["channels"].items()
+    }
     rows = [
         {
             "channel": name,
-            "percent": mix[name],
+            "min_percent": mins[name],
+            "max_percent": maxes[name],
             "recommended_spend": spends[name],
             "saturation_flag": fact_pack["channels"][name]["saturation_flag"],
             "incremental_kpi": provider.incremental_kpi(name, spends[name]),
@@ -145,48 +183,18 @@ def build_dashboard(
         for name in names
     ]
     return {
-        "percents": mix,
-        "unallocated_percent": 100.0 - sum(mix.values()),
+        "min_percent": mins,
+        "max_percent": maxes,
         "fact_pack": fact_pack,
         "offline_brief": offline_brief,
         "response_figure": _response_figure(provider, spends),
-        "saturation_figure": _saturation_figure(spends, maxes),
+        "saturation_figure": _saturation_figure(spends, max_spend),
         "spend_move_figure": _spend_move_figure(fact_pack),
         "kpi_move_figure": _kpi_move_figure(provider, fact_pack),
         "error": None,
         "rows": rows,
         "expected_incremental_kpi": fact_pack.get("expected_incremental_kpi"),
         "lift_vs_baseline": fact_pack.get("incremental_kpi_delta_vs_baseline"),
-    }
-
-
-def _mix_fact_pack(
-    provider: MetricsJsonCurveProvider,
-    spends: Mapping[str, float],
-    baselines: Mapping[str, float],
-) -> dict[str, Any]:
-    channels: dict[str, dict[str, Any]] = {}
-    kpi_after = 0.0
-    kpi_before = 0.0
-    invested = float(sum(spends.values()))
-    for name, spend in spends.items():
-        base = float(baselines[name])
-        rec = float(spend)
-        grid = provider.spend_grid(name)
-        kpi_after += provider.incremental_kpi(name, rec)
-        kpi_before += provider.incremental_kpi(name, base)
-        channels[name] = {
-            "recommended_spend": rec,
-            "baseline_spend": base,
-            "spend_delta": rec - base,
-            "share_of_budget": (rec / invested) if invested else 0.0,
-            "saturation_flag": _saturation_flag(rec, float(grid.min()), float(grid.max())),
-        }
-    return {
-        "channels": channels,
-        "concentration_note": _concentration_note(spends, float(sum(spends.values()))),
-        "expected_incremental_kpi": kpi_after,
-        "incremental_kpi_delta_vs_baseline": kpi_after - kpi_before,
     }
 
 
@@ -341,10 +349,14 @@ def _slider_step(lo: float, hi: float) -> float:
     return float(10**exp)
 
 
-def _failed(message: str) -> dict[str, Any]:
+def _failed(
+    message: str,
+    mins: Mapping[str, float] | None = None,
+    maxes: Mapping[str, float] | None = None,
+) -> dict[str, Any]:
     return {
-        "percents": {},
-        "unallocated_percent": None,
+        "min_percent": dict(mins or {}),
+        "max_percent": dict(maxes or {}),
         "fact_pack": None,
         "offline_brief": None,
         "response_figure": None,

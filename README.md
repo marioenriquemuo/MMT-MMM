@@ -237,7 +237,7 @@ Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. F
 
 ## STORY-401 / Streamlit dashboard
 
-Local dashboard. The total budget and each partner percent have a slider and a number box on the same value. Partner percents cannot add up to more than 100; a change that would pass 100 keeps only the room left, and the rest is unallocated. Investment is that percent of the budget, in spend units. The charts compare an equal split of the invested total with this percent mix. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief. Changing a slider or number clears the cached live brief.
+Local dashboard. The total budget and each partner’s min % and max % (0–100) have a slider and a number box on the same value. A partner’s min cannot pass its max, and the minimum percents cannot add up past 100 (a change that would pass 100 keeps only the room left). Each max stays at most 100; the maxes may sum past 100. Those percents are spend bounds (`min_spend = percent / 100 × budget`). `optimize_budget` chooses the investment. The charts compare the equal-room baseline with that recommendation. If the bounds are infeasible, the page shows the allocator error and does not call Claude. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief. Changing a slider or number clears the cached live brief.
 
 The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. The budget slider range comes from that file’s spend knots.
 

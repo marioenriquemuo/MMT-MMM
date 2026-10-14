@@ -92,7 +92,7 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/st
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
 | STORY-302 | Done (feature tip, step 0–4) | Plots; fact pack; `scripts/04_csuite_brief.py` (`--offline` or live `emit_brief`, `claude-sonnet-4-5`). Structured fields exact; headline/bullets may round (lift 0.12). Not merged |
-| STORY-401 | Done (feature tip) | `streamlit run app.py`. Budget and partner percents (slider + number box) set the mix. **Update insights** calls Claude. Key file: `Secret/anthropic_api_key`. Not merged |
+| STORY-401 | Done (feature tip) | `streamlit run app.py`. Budget plus each partner’s min/max % (slider + number, 0–100). Optimizer chooses the spend inside those bounds. **Update insights** calls Claude. Key file: `Secret/anthropic_api_key`. Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth. The dashboard shows those same curves. Numbers are incremental KPI, not revenue.
 
