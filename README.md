@@ -237,9 +237,9 @@ Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. F
 
 ## STORY-401 / Streamlit dashboard
 
-Local dashboard. Moving a slider reruns `optimize_budget` and the Plotly charts on every Streamlit rerun. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief for the same numbers. Changing a slider clears the cached live brief.
+Local dashboard. The total budget and each partner percent have a slider and a number box on the same value. Partner percents cannot add up to more than 100; a change that would pass 100 keeps only the room left, and the rest is unallocated. Investment is that percent of the budget, in spend units. The charts compare an equal split of the invested total with this percent mix. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief. Changing a slider or number clears the cached live brief.
 
-The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. Slider ranges come from that file’s spend knots: one total budget, plus a min and a max per channel. Defaults are a feasible maximize (budget between the sum of the mins and the sum of the maxes). Infeasible bounds show the allocator error and do not call Claude.
+The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. The budget slider range comes from that file’s spend knots.
 
 **Caveat:** numbers are incremental KPI, not revenue dollars. Meridian channel rank vs Path-C is still an open issue — do not treat the dashboard as Path-C ground truth.
 
