@@ -1,0 +1,19 @@
+# Direct dependencies only. Do not treat this as a transitive freeze.
+# Supported install: conda env `mmt-mmm` from environment.yml.
+numpy
+pandas
+scipy
+scikit-learn
+pymc
+arviz
+matplotlib>=3.8,<3.11
+jupyter
+plotly
+pyyaml
+pydantic
+pandera
+pyarrow
+pytest
+google-meridian==2.1.0
+anthropic==1.13.0
+streamlit==1.65.0
