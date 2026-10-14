@@ -14,7 +14,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Secrets | `Secret/` gitignored — never read into commits or paste into PRs |
 | Docker | `Dockerfile` (micromamba + `environment.yml`) for the dashboard and allocator on port 8501. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |
 | Working branch | `sprint-2-mvp-optimization-agentic-ui` (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment); Sprint 1 archived on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
-| Remotes | `origin` (Origin), `github` (GitHub mirror) |
+| Remotes | `origin` (Origin `mario-mu-oz-dev/MMT-MMM`), `github` (`marioenriquemuo/martech-mmm-ai-allocator`, public) |
 | Status | Sprint 1 done on `main`; Sprint 2: STORY-301 budget allocator on feature branch (PR #9); Meridian rank caveat still open — `docs/learnings/story-201-meridian.md` |
 
 ## What we build
