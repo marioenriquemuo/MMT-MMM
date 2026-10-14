@@ -23,7 +23,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | Path | Role |
 | --- | --- |
 | `/home/mario/dev/MMT&MMM` | Canonical local checkout (quote the `&`) |
-| `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest) |
+| `environment.yml` | Conda env `mmt-mmm` (Python 3.12 + Bayesian MMM + plotly + pandera + pyarrow + pytest + streamlit) |
 | `README.md` | Human overview + Miniconda setup + STORY-101–302 how-to |
 | `CLAUDE.md` | Project brief / conventions / sprint status |
 | `AGENTS.md` | This file — agent entrypoint |
@@ -38,6 +38,8 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/report/facts.py` | STORY-302 fact pack from an allocation plan |
 | `src/report/schema.py` | STORY-302 pydantic brief + JSON schema |
 | `src/report/brief.py` | STORY-302 offline + live brief from the fact pack |
+| `src/dashboard/view.py` | STORY-401 allocator + Plotly figures + offline brief (no Claude) |
+| `app.py` | STORY-401 Streamlit layout (`streamlit run app.py`) |
 | `scripts/plot_adstock_validation.py` | Plotly Express validation figures (not Jupyter) |
 | `scripts/02_model_spike.py` | STORY-201 Meridian smoke / fuller MCMC spike |
 | `scripts/03_allocate_budget.py` | STORY-301 CLI → `reports/allocation.json` |
@@ -69,6 +71,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
 - **STORY-302 done (feature tip, step 0–4)** — teaching figures `scripts/plot_story_302_concepts.py` (`reports/figures/story_302_*.html`); fact pack, schema, and brief in `src/report/`; CLI `scripts/04_csuite_brief.py` (`--offline` or live, model `claude-sonnet-4-5`). Structured fields stay exact; headline and bullets may round a fact (lift 0.12). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit). **Caveat:** incremental KPI, not revenue; Meridian ≠ Path-C. Not merged.
+- **STORY-401 done (feature tip)** — `conda activate mmt-mmm` then `streamlit run app.py`. Total budget and each partner’s min % and max % have a slider and a number box (0–100). Mins cannot sum past 100 and a min cannot pass its max; those percents are spend bounds. `optimize_budget` chooses the spend. Charts compare the equal-room baseline with that recommendation. Infeasible bounds show the allocator error and do not call Claude. **Update insights** is the only Claude call (`render_live`); before that click, commentary is the offline brief. Changing a control clears the live brief. Key filename: `Secret/anthropic_api_key` (or `ANTHROPIC_API_KEY`). **Caveat:** incremental KPI, not revenue; Meridian ≠ Path-C. Not merged.
 
 ## Skills
 
@@ -107,6 +110,7 @@ python -m src.data.etl
 python -m src.data.qa
 # Fuller Meridian spike (slow on CPU): python scripts/02_model_spike.py --mode full
 # Budget allocate (synthetic fixture): python scripts/03_allocate_budget.py --curves tests/fixtures/synthetic_response_curves.json --budget 60 --min-spend 5 --max-spend 30
+# Dashboard: streamlit run app.py
 ```
 
 ## Definition of done (agent tasks)

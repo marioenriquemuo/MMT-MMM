@@ -30,3 +30,5 @@ dependencies:
       - google-meridian==2.1.0
       # STORY-302 live brief. Pin matches the tested mmt-mmm install.
       - anthropic==1.13.0
+      # STORY-401 local dashboard. Pin matches the tested mmt-mmm install.
+      - streamlit==1.65.0

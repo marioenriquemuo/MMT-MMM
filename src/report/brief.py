@@ -112,12 +112,12 @@ def format_brief(brief: CsuiteBrief) -> str:
     lines.append("Shifts:")
     for shift in brief.shifts:
         lines.append(
-            f"  {shift.channel}  baseline {shift.baseline_spend:g}  "
-            f"recommended {shift.recommended_spend:g}  "
-            f"delta {shift.spend_delta:+g}  {shift.saturation_flag}"
+            f"  {shift.channel}  baseline {_fmt(shift.baseline_spend)}  "
+            f"recommended {_fmt(shift.recommended_spend)}  "
+            f"delta {_fmt(shift.spend_delta, signed=True)}  {shift.saturation_flag}"
         )
     delta = brief.incremental_kpi_delta_vs_baseline
-    delta_txt = "not computed" if delta is None else f"{delta:+.6g}"
+    delta_txt = "not computed" if delta is None else _fmt(delta, signed=True)
     lines.extend(
         [
             "",
@@ -134,29 +134,45 @@ def format_brief(brief: CsuiteBrief) -> str:
 # --- Sentence builders ---
 
 
+def _fmt(value: float, *, signed: bool = False) -> str:
+    """Fixed-point text within the prose lock's 1e-4 absolute tolerance.
+
+    ``g`` switches to scientific notation, and the lock then reads only the
+    mantissa. Four decimal places stay inside that tolerance for these spends.
+    """
+    text = f"{float(value):.4f}"
+    if "." in text:
+        text = text.rstrip("0").rstrip(".")
+    if text in {"-0", "-"}:
+        text = "0"
+    if signed and not text.startswith("-"):
+        return f"+{text}"
+    return text
+
+
 def _headline(channels: Mapping[str, Mapping[str, Any]]) -> str:
     channel, row = max(
         channels.items(),
         key=lambda item: abs(float(item[1]["spend_delta"])),
     )
-    delta = float(row["spend_delta"])
-    if delta > 0:
-        direction = "up"
-    elif delta < 0:
+    shown_delta = _fmt(row["spend_delta"], signed=True)
+    if shown_delta.startswith("-"):
         direction = "down"
-    else:
+    elif shown_delta in {"+0", "0"}:
         direction = "unchanged"
+    else:
+        direction = "up"
     return (
-        f"Move {channel} {direction}: {float(row['recommended_spend']):g} "
-        f"vs baseline {float(row['baseline_spend']):g}."
+        f"Move {channel} {direction}: {_fmt(row['recommended_spend'])} "
+        f"vs baseline {_fmt(row['baseline_spend'])}."
     )
 
 
 def _shift_bullet(channels: Mapping[str, Mapping[str, Any]]) -> str:
     parts = [
         (
-            f"{ch} {float(row['baseline_spend']):g} → "
-            f"{float(row['recommended_spend']):g} ({float(row['spend_delta']):+g})"
+            f"{ch} {_fmt(row['baseline_spend'])} → "
+            f"{_fmt(row['recommended_spend'])} ({_fmt(row['spend_delta'], signed=True)})"
         )
         for ch, row in channels.items()
     ]
@@ -171,10 +187,13 @@ def _saturation_bullet(channels: Mapping[str, Mapping[str, Any]]) -> str:
 def _lift_bullet(kpi: float, delta: Any) -> str:
     if delta is None:
         return (
-            f"Expected incremental KPI is {kpi:g}. "
+            f"Expected incremental KPI is {_fmt(kpi)}. "
             "Lift vs baseline was not computed."
         )
-    return f"Predicted incremental KPI is {kpi:g}, lift vs baseline {float(delta):+.6g}."
+    return (
+        f"Predicted incremental KPI is {_fmt(kpi)}, "
+        f"lift vs baseline {_fmt(float(delta), signed=True)}."
+    )
 
 
 # --- Live Anthropic path ---

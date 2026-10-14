@@ -235,6 +235,28 @@ python -m pytest tests/test_csuite_facts.py tests/test_csuite_brief.py -q
 
 Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. Fixture plan: `tests/fixtures/story_302_allocation.json`.
 
+## STORY-401 / Streamlit dashboard
+
+Local dashboard. The total budget and each partner’s min % and max % (0–100) have a slider and a number box on the same value. A partner’s min cannot pass its max, and the minimum percents cannot add up past 100 (a change that would pass 100 keeps only the room left). Each max stays at most 100; the maxes may sum past 100. Those percents are spend bounds (`min_spend = percent / 100 × budget`). `optimize_budget` chooses the investment. The charts compare the equal-room baseline with that recommendation. If the bounds are infeasible, the page shows the allocator error and does not call Claude. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief. Changing a slider or number clears the cached live brief.
+
+The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. The budget slider range comes from that file’s spend knots.
+
+**Caveat:** numbers are incremental KPI, not revenue dollars. Meridian channel rank vs Path-C is still an open issue — do not treat the dashboard as Path-C ground truth.
+
+Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`. The app does not print the key.
+
+```bash
+conda activate mmt-mmm
+cd "/home/mario/dev/MMT&MMM"
+streamlit run app.py
+
+python -m pytest tests/test_dashboard_view.py -q
+```
+
+The dashboard is not a static HTML file (`streamlit run app.py` serves it); static HTML that can be opened directly stays the archify diagram and `reports/figures/*.html`.
+
+Math: `src/dashboard/view.py` (pytest, no browser). `app.py` is layout only.
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.

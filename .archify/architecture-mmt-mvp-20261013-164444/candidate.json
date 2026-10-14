@@ -3,14 +3,14 @@
   "diagram_type": "architecture",
   "meta": {
     "title": "From practice ads to a budget brief",
-    "subtitle": "Clean the spend \u2192 fit curves \u2192 stay in budget \u2192 write the plan \u2192 print a brief, or stop.",
+    "subtitle": "Measure, allocate, explain. Sliders rerun the search. Update insights calls Claude.",
     "locale": "en",
     "quality_profile": "showcase",
     "output": ".archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html",
     "repository": {
       "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
       "link_mode": "local-only",
-      "revision": "3dffd009a6bf344822e0d2cdf7f61687a4ed45b2"
+      "revision": "8d4adcba56412f50c90ea01e27d952306c723a66"
     }
   },
   "components": [
@@ -223,7 +223,7 @@
       "sublabel": "cap, floor, target",
       "pos": [
         1028,
-        400
+        560
       ],
       "size": [
         140,
@@ -245,7 +245,7 @@
       "sublabel": "SLSQP",
       "pos": [
         832,
-        400
+        560
       ],
       "size": [
         140,
@@ -279,7 +279,7 @@
       "sublabel": "search failed",
       "pos": [
         832,
-        548
+        708
       ],
       "size": [
         140,
@@ -307,7 +307,7 @@
       "sublabel": "allocation.json",
       "pos": [
         636,
-        400
+        560
       ],
       "size": [
         140,
@@ -335,7 +335,7 @@
       "sublabel": "shifts, flags, KPI",
       "pos": [
         636,
-        760
+        960
       ],
       "size": [
         140,
@@ -357,7 +357,7 @@
       "sublabel": "fact pack only",
       "pos": [
         832,
-        760
+        960
       ],
       "size": [
         140,
@@ -385,7 +385,7 @@
       "sublabel": "emit_brief",
       "pos": [
         1028,
-        760
+        960
       ],
       "size": [
         140,
@@ -407,7 +407,7 @@
       "sublabel": "fields stay exact",
       "pos": [
         1028,
-        940
+        1140
       ],
       "size": [
         140,
@@ -435,7 +435,7 @@
       "sublabel": "exit 1, no file",
       "pos": [
         832,
-        940
+        1140
       ],
       "size": [
         140,
@@ -463,7 +463,7 @@
       "sublabel": "then save the file",
       "pos": [
         1028,
-        1120
+        1320
       ],
       "size": [
         140,
@@ -481,6 +481,180 @@
           "line": 107,
           "end_line": 131,
           "label": "format_brief"
+        }
+      ]
+    },
+    {
+      "id": "sliders",
+      "type": "frontend",
+      "label": "Sliders",
+      "sublabel": "budget and limits",
+      "pos": [
+        48,
+        360
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "app.py",
+          "line": 104,
+          "end_line": 130,
+          "label": "budget and channel sliders"
+        },
+        {
+          "path": "src/dashboard/view.py",
+          "line": 39,
+          "end_line": 60,
+          "label": "ranges from spend knots"
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "type": "backend",
+      "label": "Local allocator",
+      "sublabel": "no Claude",
+      "pos": [
+        244,
+        360
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "app.py",
+          "line": 142,
+          "end_line": 146,
+          "label": "rerun on slider change"
+        },
+        {
+          "path": "src/dashboard/view.py",
+          "line": 75,
+          "end_line": 84,
+          "label": "optimize_budget"
+        }
+      ]
+    },
+    {
+      "id": "charts",
+      "type": "frontend",
+      "label": "Plotly charts",
+      "sublabel": "curves and saturation",
+      "pos": [
+        440,
+        360
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/dashboard/view.py",
+          "line": 124,
+          "end_line": 153,
+          "label": "marker at recommended spend"
+        },
+        {
+          "path": "src/dashboard/view.py",
+          "line": 156,
+          "end_line": 178,
+          "label": "90% near-ceiling line"
+        },
+        {
+          "path": "app.py",
+          "line": 165,
+          "end_line": 166,
+          "label": "st.plotly_chart"
+        }
+      ]
+    },
+    {
+      "id": "offline",
+      "type": "frontend",
+      "label": "Commentary",
+      "sublabel": "offline, before click",
+      "pos": [
+        636,
+        360
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/dashboard/view.py",
+          "line": 86,
+          "end_line": 88,
+          "label": "render_offline"
+        },
+        {
+          "path": "app.py",
+          "line": 168,
+          "end_line": 169,
+          "label": "show the brief"
+        }
+      ]
+    },
+    {
+      "id": "insights",
+      "type": "frontend",
+      "label": "Update insights",
+      "sublabel": "button only",
+      "pos": [
+        1028,
+        816
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "app.py",
+          "line": 170,
+          "end_line": 171,
+          "label": "button"
+        },
+        {
+          "path": "app.py",
+          "line": 63,
+          "end_line": 71,
+          "label": "render_live"
+        }
+      ]
+    },
+    {
+      "id": "dasherr",
+      "type": "security",
+      "label": "Show the error",
+      "sublabel": "do not call Claude",
+      "pos": [
+        244,
+        520
+      ],
+      "size": [
+        140,
+        72
+      ],
+      "sources": [
+        {
+          "path": "src/dashboard/view.py",
+          "line": 82,
+          "end_line": 84,
+          "label": "failed allocation"
+        },
+        {
+          "path": "app.py",
+          "line": 148,
+          "end_line": 150,
+          "label": "error and return"
         }
       ]
     }
@@ -519,6 +693,16 @@
         "lock",
         "reject",
         "printed"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "4 \u00b7 Dashboard",
+      "wraps": [
+        "sliders",
+        "local",
+        "charts",
+        "offline"
       ]
     }
   ],
@@ -635,6 +819,57 @@
       "to": "reject",
       "label": "fail",
       "variant": "security"
+    },
+    {
+      "id": "curves-sliders",
+      "from": "curves",
+      "to": "sliders",
+      "label": "knots",
+      "fromSide": "top",
+      "toSide": "top"
+    },
+    {
+      "id": "sliders-local",
+      "from": "sliders",
+      "to": "local",
+      "label": "limits"
+    },
+    {
+      "id": "local-charts",
+      "from": "local",
+      "to": "charts",
+      "label": "fits"
+    },
+    {
+      "id": "charts-offline",
+      "from": "charts",
+      "to": "offline",
+      "label": "then"
+    },
+    {
+      "id": "offline-insights",
+      "from": "offline",
+      "to": "insights",
+      "label": "click",
+      "variant": "dashed"
+    },
+    {
+      "id": "insights-claude",
+      "from": "insights",
+      "to": "claude",
+      "label": "ask",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "local-dasherr",
+      "from": "local",
+      "to": "dasherr",
+      "label": "infeasible",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top"
     }
   ],
   "cards": [
@@ -653,8 +888,8 @@
       "items": [
         "Practice spend is lined up, checked, and fit with Meridian.",
         "The search writes a spend plan, or clears channels when it fails.",
-        "Sentences may round a fact. Locked fields stay exact.",
-        "A failed plan never becomes a brief. Charts are HTML files, not a product UI."
+        "Sliders rerun the local allocator, charts, and offline commentary.",
+        "Update insights is the only dashboard step that calls Claude."
       ]
     }
   ]

@@ -3,7 +3,7 @@
   "bullets": [
     "Budget shift: alpha 20 → 27 (+7); beta 20 → 18 (-2); gamma 20 → 15 (-5).",
     "Saturation: alpha near_ceiling, beta ok, gamma ok.",
-    "Predicted incremental KPI is 33.45, lift vs baseline +0.116667."
+    "Predicted incremental KPI is 33.45, lift vs baseline +0.1167."
   ],
   "shifts": [
     {
