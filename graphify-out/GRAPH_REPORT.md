@@ -1,17 +1,17 @@
 # Graph Report - MMT&MMM  (2026-10-14)
 
 ## Corpus Check
-- 74 files · ~47,216 words
+- 79 files · ~50,496 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 20 file(s) not represented in the graph (top: (none) 9, .mdc 5, .csv 3)
+- Unclassified: 27 file(s) not represented in the graph (top: (none) 9, .csv 9, .mdc 5)
 
 ## Summary
-- 766 nodes · 1511 edges · 55 communities (43 shown, 12 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 55 edges (avg confidence: 0.92)
+- 826 nodes · 1615 edges · 56 communities (43 shown, 13 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 55 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f8a945e4`
+- Built from commit: `0962bd2a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - /graphify
 - generator.py
 - test_csuite_brief.py
-- STORY-201 learnings — Meridian Bayesian MMM spike
+- Open gaps registry
 - test_qa.py
 - What You Must Do When Invoked
 - MMT&MMM Project Conventions
@@ -32,7 +32,7 @@
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native AGENTS.md integration
 - graphify reference: incremental update and cluster-only
-- test_meridian_data.py
+- controls.py
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
 - extraction-spec.md
@@ -54,20 +54,21 @@
 - transformations.py
 - hill_saturation
 - test_transformations.py
-- MetricsJsonCurveProvider
+- optimize_budget
 - facts.py
 - allocator.py
 - .mean_grid
 - plot_allocation_teaching.py
 - long_pulse
-- test_curves.py
-- Path-C synthetic multi-channel marketing panel
 - curves.py
+- mmt-mmm
+- MetricsJsonCurveProvider
 - brief.py
 - view.py
 - pathlib
 - How to test this marketing mix modeling tool
 - graphify-out artifacts
+- notebooks/README.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `MetricsJsonCurveProvider` - 46 edges
@@ -84,14 +85,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `mmt-mmm` --semantically_similar_to--> `mmt-mmm conda env`  [INFERRED] [semantically similar]
   environment.yml → AGENTS.md
-- `test_clamp_outside_range()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
-  tests/test_curves.py → src/optimize/curves.py
-- `test_exact_knots()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
-  tests/test_curves.py → src/optimize/curves.py
-- `test_midpoint_interpolation()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
-  tests/test_curves.py → src/optimize/curves.py
-- `test_unknown_channel_raises()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
-  tests/test_curves.py → src/optimize/curves.py
+- `/graphify` --conceptually_related_to--> `archify`  [INFERRED]
+  .cursor/skills/graphify/SKILL.md → AGENTS.md
+- `geometric_adstock` --semantically_similar_to--> `weibull_adstock`  [INFERRED] [semantically similar]
+  CLAUDE.md → README.md
+- `_curve_frame()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
+  scripts/plot_allocation_teaching.py → src/optimize/curves.py
+- `_bar_frame()` --uses--> `MetricsJsonCurveProvider`  [INFERRED]
+  scripts/plot_allocation_teaching.py → src/optimize/curves.py
 
 ## Import Cycles
 - None detected.
@@ -106,7 +107,7 @@
 - **Sprint 1 Core Data Engine stories** — agents_sprint_1_core_data_engine, agents_story_101, agents_story_102, agents_story_103 [EXTRACTED 1.00]
 - **Secret Hygiene Across Project Docs** — _cursor_skills_secret_hygiene_skill_secret_hygiene, _cursor_skills_mmt_mmm_skill_secret_folder [INFERRED 0.85]
 
-## Communities (55 total, 12 thin omitted)
+## Communities (56 total, 13 thin omitted)
 
 ### Community 0 - "weibull_adstock"
 Cohesion: 0.14
@@ -117,20 +118,20 @@ Cohesion: 0.11
 Nodes (19): FalkorDB Export, GraphML Export (--graphml), Neo4j Export, SVG Export (--svg), Token Reduction Benchmark, Wiki Export (--wiki), AGENTS.md Graphify Integration, Cluster-Only Mode (+11 more)
 
 ### Community 2 - "generator.py"
-Cohesion: 0.10
-Nodes (35): pandas, ground_truth.json, assert_valid(), _baseline_sales(), coerce_integer_columns(), generate(), _impressions_clicks(), main() (+27 more)
+Cohesion: 0.06
+Nodes (54): archify, data/raw/, github remote, origin remote, Path-C synthetic multi-channel DGP, sprint-1-core-data-engine, STORY-101, STORY-103 (+46 more)
 
 ### Community 3 - "test_csuite_brief.py"
-Cohesion: 0.16
-Nodes (23): CompletedProcess, build_messages(), Force the ``emit_brief`` tool, validate, then lock numbers. Raises…, System and user prompt. The user turn is the fact pack JSON only., render_live(), numbers_match(), True when the brief matches the fact pack. Structured fields use absolute…, _allocation() (+15 more)
+Cohesion: 0.13
+Nodes (28): CompletedProcess, build_messages(), System and user prompt. The user turn is the fact pack JSON only., numbers_match(), True when the brief matches the fact pack. Structured fields use absolute…, subprocess, _allocation(), _cli() (+20 more)
 
-### Community 4 - "STORY-201 learnings — Meridian Bayesian MMM spike"
-Cohesion: 0.11
-Nodes (16): archify, graphify, graphify + archify artifacts, How to run, Likely investigation axes (post-POC), Meridian is a local pip library, National weekly adapter, Open issue — rank recovery vs Path-C is inconsistent (+8 more)
+### Community 4 - "Open gaps registry"
+Cohesion: 0.05
+Nodes (38): archify, graphify, graphify + archify artifacts, Closed / not listed, GAP-201-RANK, GAP-402-DOCKERIGNORE, GAP-402-LOOM, GAP-402-RENAME (+30 more)
 
 ### Community 5 - "test_qa.py"
 Cohesion: 0.09
-Nodes (48): detect_anomalies(), load_panel(), main(), _prior_activity(), DataFrame, Path, RuntimeError, STORY-104 media QA: detect + repair channel-day anomalies (pre-Meridian gate).… (+40 more)
+Nodes (48): pandas, STORY-103 ETL: raw channel-day spend panel → validated clean Parquet. Why this…, detect_anomalies(), load_panel(), main(), _prior_activity(), DataFrame, Path (+40 more)
 
 ### Community 6 - "What You Must Do When Invoked"
 Cohesion: 0.13
@@ -141,16 +142,16 @@ Cohesion: 0.12
 Nodes (24): ELI5 Teacher, Four-Phase Teaching Structure, archify Skill, MMT&MMM Project Conventions, Secret/ Local-Only Path, Ponytail Audit, ponytail: Comment Marker, Ponytail Debt (+16 more)
 
 ### Community 8 - "02_model_spike.py"
-Cohesion: 0.15
-Nodes (24): matplotlib, matplotlib_pyplot, Namespace, _analyzer(), _build_mmm(), _core_rhat_rows(), _jsonable(), main() (+16 more)
+Cohesion: 0.07
+Nodes (47): argparse, InputData, matplotlib, matplotlib_pyplot, meridian_data_input_data, Namespace, _analyzer(), _build_mmm() (+39 more)
 
 ### Community 9 - "Semantic Extraction Spec"
 Cohesion: 0.25
 Nodes (8): Confidence Score Rubric, DEEP_MODE, Deterministic Node ID Format, Hyperedges, Semantic Extraction Spec, semantically_similar_to Relation, EXTRACTED/INFERRED/AMBIGUOUS Audit Trail, Honesty Rules
 
 ### Community 10 - "build_fact_pack"
-Cohesion: 0.15
-Nodes (24): BaseModel, pydantic, build_fact_pack(), Channel shifts, saturation flags, and copied KPI fields. Raises ``ValueError``…, STORY-302 C-suite brief (fact pack, schema, offline and live render)., ChannelFact, ChannelShift, CsuiteBrief (+16 more)
+Cohesion: 0.14
+Nodes (25): BaseModel, pydantic, build_fact_pack(), Channel shifts, saturation flags, and copied KPI fields. Raises ``ValueError``…, STORY-302 C-suite brief (fact pack, schema, offline and live render)., ChannelFact, ChannelShift, CsuiteBrief (+17 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -172,13 +173,13 @@ Nodes (3): For git commit hook, For native AGENTS.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
-### Community 16 - "test_meridian_data.py"
-Cohesion: 0.16
-Nodes (22): InputData, meridian_data_input_data, load_clean_panel(), load_meridian_input(), panel_to_national_wide(), DataFrame, Path, STORY-201: map QA'd ``clean_spend.parquet`` → Meridian national ``InputData``.… (+14 more)
+### Community 16 - "controls.py"
+Cohesion: 0.12
+Nodes (33): Column, DatetimeIndex, pandera_pandas, build_figure(), main(), STORY-501 teaching figure: one month of date-level controls. Writes…, July 2023: quincena, holiday, and organic clicks on the same dates., Series (+25 more)
 
 ### Community 26 - "test_etl.py"
-Cohesion: 0.12
-Nodes (29): pandera_errors, pandera_pandas, align_date_channel_grid(), impute_panel(), load_raw(), main(), DataFrame, Path (+21 more)
+Cohesion: 0.13
+Nodes (27): pandera_errors, align_date_channel_grid(), impute_panel(), load_raw(), main(), DataFrame, Path, Apply locked STORY-103 fill rules on an aligned panel. * Media (``spend``,… (+19 more)
 
 ### Community 27 - "Incremental Update (--update)"
 Cohesion: 0.27
@@ -197,8 +198,8 @@ Cohesion: 0.50
 Nodes (4): Cross-Repo Graph, graphify clone, graphify merge-graphs, Per-Subfolder CLI Extract
 
 ### Community 31 - "04_csuite_brief.py"
-Cohesion: 0.14
-Nodes (20): BaseException, re, build_parser(), _fail(), main(), Any, ArgumentParser, STORY-302 — C-suite brief from an allocation JSON. ``--offline`` fills the… (+12 more)
+Cohesion: 0.15
+Nodes (19): _update_insights(), BaseException, build_parser(), _fail(), main(), Any, ArgumentParser, STORY-302 — C-suite brief from an allocation JSON. ``--offline`` fills the… (+11 more)
 
 ### Community 32 - "Parameter recovery note (STORY-201)"
 Cohesion: 0.40
@@ -214,7 +215,7 @@ Nodes (14): reports/figures/, STORY-102, Plotly Express over Jupyter for Sprint 
 
 ### Community 37 - "03_allocate_budget.py"
 Cohesion: 0.19
-Nodes (12): argparse, json, build_parser(), main(), _parse_spend_arg(), Any, ArgumentParser, Path (+4 more)
+Nodes (12): json, build_parser(), main(), _parse_spend_arg(), Any, ArgumentParser, Path, Library entrypoint (also used by tests). Writes JSON when ``out`` is set. (+4 more)
 
 ### Community 38 - "transformations.py"
 Cohesion: 0.19
@@ -228,17 +229,17 @@ Nodes (13): Shared modeling primitives (transforms, Meridian adapter, inference)
 Cohesion: 0.23
 Nodes (13): geometric_adstock(), Apply one-parameter geometric adstock along ``axis``. Recurrence (carryover of…, Tests for STORY-102 geometric + Weibull adstock + Hill (Steps 2–4)., 100 then zeros, theta=0.5 → 100, 50, 25, 12.5, …, Shape (channels, T) with axis=-1 adstocks each channel independently., test_2d_channels_by_time(), test_length_preserved(), test_matches_recursive_definition() (+5 more)
 
-### Community 41 - "MetricsJsonCurveProvider"
+### Community 41 - "optimize_budget"
 Cohesion: 0.16
-Nodes (21): optimize_budget(), Allocate spend across channels (maximize KPI or hit a KPI target). Exactly one…, MetricsJsonCurveProvider, Linear-interpolated curves from Meridian metrics or synthetic fixture JSON., fixture_provider(), fixture, Path, STORY-301 Steps 2–3 — SLSQP allocator bounds, budget sum, target KPI. (+13 more)
+Nodes (18): optimize_budget(), Allocate spend across channels (maximize KPI or hit a KPI target). Exactly one…, fixture_provider(), fixture, Path, STORY-301 Steps 2–3 — SLSQP allocator bounds, budget sum, target KPI., SLSQP failure after solve must match early-gate empty-channel shape., test_cli_run_allocate_writes_json() (+10 more)
 
 ### Community 42 - "facts.py"
 Cohesion: 0.16
 Nodes (17): decimal, math, _allowed_numbers(), _bound(), _concentration_note(), _equal_room(), first_mismatch(), _first_prose_mismatch() (+9 more)
 
 ### Community 43 - "allocator.py"
-Cohesion: 0.23
-Nodes (20): scipy_optimize, _bounds_dict(), _bounds_gate(), _constraints(), _curve_max_spends(), _fail_result(), _feasible_start(), _maximize() (+12 more)
+Cohesion: 0.15
+Nodes (25): scipy_optimize, _bounds_dict(), _bounds_gate(), _constraints(), _curve_max_spends(), _fail_result(), _feasible_start(), _maximize() (+17 more)
 
 ### Community 44 - ".mean_grid"
 Cohesion: 0.40
@@ -252,17 +253,17 @@ Nodes (13): plotly_subplots, _bar_frame(), build_curves_figure(), build_parser()
 Cohesion: 0.40
 Nodes (5): long_pulse(), pulse(), fixture, Impulse of 100 on day 0, zeros after (hand-checkable decay)., Longer impulse for Weibull tail / peak-timing checks.
 
-### Community 47 - "test_curves.py"
-Cohesion: 0.11
-Nodes (24): CurveArrays, _extract_means_map(), load_curve_means(), load_curve_means_json(), _looks_like_arrays(), Any, Path, Load curve arrays from a JSON file path. (+16 more)
+### Community 47 - "curves.py"
+Cohesion: 0.19
+Nodes (15): ABC, CurveArrays, _extract_means_map(), load_curve_means(), load_curve_means_json(), _looks_like_arrays(), Any, Path (+7 more)
 
-### Community 48 - "Path-C synthetic multi-channel marketing panel"
-Cohesion: 0.08
-Nodes (32): archify, data/raw/, github remote, martech-mmm-ai-allocator, mmt-mmm conda env, No leakage, origin remote, Path-C synthetic multi-channel DGP (+24 more)
+### Community 48 - "mmt-mmm"
+Cohesion: 0.17
+Nodes (12): martech-mmm-ai-allocator, mmt-mmm conda env, No leakage, Agentic explain layer, Allocator layer, Top-down Bayesian MMM, Bottom-up touchpoint calibration, mmt-mmm (+4 more)
 
-### Community 49 - "curves.py"
-Cohesion: 0.20
-Nodes (8): ABC, CurveProvider, Offline response-curve providers for STORY-301 (Step 1). Reads Meridian…, Spend → incremental KPI per channel (offline or future live)., Channel names available on this provider., Interpolated incremental KPI at ``spend`` for ``channel``., Budget optimization helpers (STORY-301). Step 1: offline response-curve…, typing
+### Community 49 - "MetricsJsonCurveProvider"
+Cohesion: 0.15
+Nodes (15): main(), STORY-301 Step 1 — Plotly Express of synthetic fixture response curves. Usage…, MetricsJsonCurveProvider, Linear-interpolated curves from Meridian metrics or synthetic fixture JSON., fixture_provider(), fixture, skipif, STORY-301 Step 1 — response curve provider (interpolation + loaders). (+7 more)
 
 ### Community 50 - "brief.py"
 Cohesion: 0.30
@@ -270,35 +271,35 @@ Nodes (13): os, _field(), _fmt(), _headline(), _lift_bullet(), Any, C-suite brie
 
 ### Community 51 - "view.py"
 Cohesion: 0.08
-Nodes (55): _commentary(), main(), _clamp_max(), _clamp_min(), STORY-401 Streamlit layout. Sliders and number boxes set the total budget and…, Slider and number box on one session value. ``clamp`` runs on each edit., _redact(), _synced_number() (+47 more)
+Nodes (53): _commentary(), main(), _clamp_max(), _clamp_min(), STORY-401 Streamlit layout. Sliders and number boxes set the total budget and…, Slider and number box on one session value. ``clamp`` runs on each edit., _redact(), _synced_number() (+45 more)
 
 ### Community 52 - "pathlib"
-Cohesion: 0.16
-Nodes (14): pathlib, plotly_express, STORY-301 Step 0 — toy diminishing-returns curve (not Meridian, not optimizer).…, main(), STORY-301 Step 1 — Plotly Express of synthetic fixture response curves. Usage…, _equal_room_baseline(), _kpi(), _long_frame() (+6 more)
+Cohesion: 0.20
+Nodes (12): pathlib, plotly_express, STORY-301 Step 0 — toy diminishing-returns curve (not Meridian, not optimizer).…, _equal_room_baseline(), _kpi(), _long_frame(), main(), DataFrame (+4 more)
 
 ### Community 53 - "How to test this marketing mix modeling tool"
 Cohesion: 0.25
 Nodes (7): 1. What you are testing, 2. Install once, 3. Automated test, 4. Dashboard test, no API key, 5. Optional live test, 6. What a good result is not, How to test this marketing mix modeling tool
 
 ## Knowledge Gaps
-- **96 isolated node(s):** `1. What you are testing`, `2. Install once`, `3. Automated test`, `4. Dashboard test, no API key`, `5. Optional live test` (+91 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 307 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **114 isolated node(s):** `1. What you are testing`, `2. Install once`, `3. Automated test`, `4. Dashboard test, no API key`, `5. Optional live test` (+109 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 336 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `/graphify` connect `/graphify` to `What You Must Do When Invoked`, `Semantic Extraction Spec`, `Path-C synthetic multi-channel marketing panel`, `graphify-out artifacts`, `Incremental Update (--update)`, `Whisper Video/Audio Transcription`, `save-result Feedback Loop`, `graphify merge-graphs`?**
-  _High betweenness centrality (0.158) - this node is a cross-community bridge._
+- **Why does `/graphify` connect `/graphify` to `generator.py`, `What You Must Do When Invoked`, `Semantic Extraction Spec`, `graphify-out artifacts`, `Incremental Update (--update)`, `Whisper Video/Audio Transcription`, `save-result Feedback Loop`, `graphify merge-graphs`?**
+  _High betweenness centrality (0.148) - this node is a cross-community bridge._
 - **Are the 24 inferred relationships involving `MetricsJsonCurveProvider` (e.g. with `_bar_frame()` and `build_curves_figure()`) actually correct?**
   _`MetricsJsonCurveProvider` has 24 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `1. What you are testing`, `2. Install once`, `3. Automated test` to the rest of the system?**
-  _96 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _114 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `weibull_adstock` be split into smaller, more focused modules?**
   _Cohesion score 0.14035087719298245 - nodes in this community are weakly interconnected._
 - **Should `/graphify` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `generator.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.1036036036036036 - nodes in this community are weakly interconnected._
-- **Should `STORY-201 learnings — Meridian Bayesian MMM spike` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06233766233766234 - nodes in this community are weakly interconnected._
+- **Should `test_csuite_brief.py` be split into smaller, more focused modules?**
+  _Cohesion score 0.12873563218390804 - nodes in this community are weakly interconnected._
