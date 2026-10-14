@@ -1,7 +1,7 @@
 # Open gaps registry
 
 Single list of **current open gaps** for Sprint planning and future review.
-Only items evidenced in-repo or in Project-store Bugbot/DoD notes. Status values: `open`.
+Only items evidenced in-repo or in Project-store Bugbot/DoD notes. Status values: `open` | `closed`.
 
 Baseline tip when this registry was first filled: `188e496` (Merge STORY-402 public-ready packaging).
 Index: [`README.md`](README.md).
@@ -52,11 +52,11 @@ Index: [`README.md`](README.md).
 | Field | Value |
 | --- | --- |
 | Story | STORY-402 |
-| Status | `open` |
+| Status | `closed` (2026-10-14) |
 | Severity | Medium (portfolio DoD gap; intentional) |
-| Description | GitHub mirror remains **private**; STORY-402 DoD text asked for a public-ready publish path. Visibility was intentionally left unchanged. |
-| Evidence | README: GitHub listed as private. Bugbot `docs/story-402-bugbot.md` intentional gap #3 (visibility remains private). Tip `188e496`. |
-| Done when | Mario explicitly publishes (or documents a permanent private decision) and README/AGENTS visibility wording matches reality. |
+| Description | GitHub mirror was private; STORY-402 DoD asked for a public-ready publish path. Mario confirmed publish — repo is public. Rename remains a separate open gap (`GAP-402-RENAME`). |
+| Evidence | GitHub public API `GET https://api.github.com/repos/marioenriquemuo/MMT-MMM` → `"private": false`, `full_name: marioenriquemuo/MMT-MMM`. README Local workspace table updated to public. Prior: Bugbot `docs/story-402-bugbot.md` intentional gap #3 at tip `188e496`. |
+| Done when | Mario explicitly publishes (or documents a permanent private decision) and README/AGENTS visibility wording matches reality. **Met** 2026-10-14. |
 
 ---
 
@@ -88,6 +88,7 @@ Index: [`README.md`](README.md).
 
 ## Closed / not listed
 
+- `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub `marioenriquemuo/MMT-MMM` is public (`"private": false` via public API). See entry above. `GAP-402-RENAME` stays open.
 - STORY-402 packaging paths (`app/streamlit_app.py`, `Dockerfile`, `LICENSE`, `requirements.txt`, `.env.example`, `docs/how-to-test.md`) — Bugbot PASS at `188e496`.
 - Secret hygiene — Bugbot scanned clean; not an open gap.
 - No other unfinished items were marked `open` in `docs/learnings/` beyond GAP-201-RANK’s deep dive.
