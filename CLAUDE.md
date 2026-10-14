@@ -13,9 +13,9 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Core libs | numpy, pandas, scipy, scikit-learn, pymc, arviz, matplotlib, jupyter, plotly, pyyaml, pydantic, pandera, pyarrow, pytest, streamlit |
 | Secrets | `Secret/` gitignored — never read into commits or paste into PRs |
 | Docker | `Dockerfile` (micromamba + `environment.yml`) for the dashboard and allocator on port 8501. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |
-| Working branch | `sprint-2-mvp-optimization-agentic-ui` (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment); Sprint 1 archived on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
+| Working branch | `sprint-3-exogenous-multitenant-mmt` (Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration); Sprint 2 archived on `sprint-2-mvp-optimization-agentic-ui` @ tag `sprint-2-mvp`; Sprint 1 on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
 | Remotes | `origin` (Origin `mario-mu-oz-dev/MMT-MMM`), `github` (`marioenriquemuo/martech-mmm-ai-allocator`, public) |
-| Status | Sprint 1 done on `main`; Sprint 2: STORY-301 budget allocator on feature branch (PR #9); Meridian rank caveat still open — `docs/learnings/story-201-meridian.md` |
+| Status | Sprint 1–2 MVP on `main` / tag `sprint-2-mvp`; Sprint 3 active on `sprint-3-exogenous-multitenant-mmt` — brief `docs/sprints/sprint-3.md`; Meridian rank caveat still open — `docs/learnings/open-gaps.md` |
 
 ## What we build
 
@@ -91,9 +91,9 @@ Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transf
 
 **STORY-201 open issue:** channel rank recovery vs Path-C is inconsistent (Spearman ≈ −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md). All open gaps: [`docs/learnings/open-gaps.md`](docs/learnings/open-gaps.md).
 
-## Sprint 2 progress
+## Sprint 2 progress (archived @ tag `sprint-2-mvp`)
 
-Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/story-301-budget-opt-702b` (PR #9), `cursor/story-302-csuite-brief-702b` (PR #10), `cursor/story-401-streamlit-dash-702b`.
+Working branch at close: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/story-301-budget-opt-702b` (PR #9), `cursor/story-302-csuite-brief-702b` (PR #10), `cursor/story-401-streamlit-dash-702b`.
 
 | Story | Status | Notes |
 | --- | --- | --- |
@@ -102,6 +102,18 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/st
 | STORY-401 | Done (feature tip) | `streamlit run app/streamlit_app.py`. Budget plus each partner’s min/max % (slider + number, 0–100). Optimizer chooses the spend inside those bounds. **Update insights** calls Claude. Key file: `Secret/anthropic_api_key`. Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth. The dashboard shows those same curves. Numbers are incremental KPI, not revenue.
+
+## Sprint 3 progress
+
+Working branch: `sprint-3-exogenous-multitenant-mmt`. Brief: [`docs/sprints/sprint-3.md`](docs/sprints/sprint-3.md).
+
+| Story | Status | Notes |
+| --- | --- | --- |
+| STORY-501 | Planned | Exogenous controls + organic ETL (`src/data/etl.py`) |
+| STORY-502 | Planned | Multi-tenant isolation (`data/clients/{client_id}/`, `config/clients.yaml`, `--client_id`) |
+| STORY-503 | Planned | MMT geo-experiment prior calibration (`src/models/calibration.py`) |
+
+Stories sourced from local sprint backlog under `Secret/` (gitignored). Open gaps that may overlap: `GAP-201-RANK` (see `docs/learnings/open-gaps.md`).
 
 ## Key conventions
 

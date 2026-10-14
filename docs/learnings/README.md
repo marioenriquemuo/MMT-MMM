@@ -19,3 +19,12 @@ Use [`open-gaps.md`](open-gaps.md) as the checklist. At tip `188e496` (pre-regis
 - [ ] `GAP-COMM-KPI` — standing communication caveat: incremental KPI ≠ revenue dollars
 
 Do not invent gaps here. Add a row only when README, CLAUDE/AGENTS, a learning doc, metrics, or a Bugbot review already evidences it.
+
+## Sprint 3 themes vs open gaps
+
+Sprint 3 working branch is `sprint-3` (exo controls, multi-tenant isolation, MMT geo-experiment calibration). That framing does **not** schedule stories yet. Gaps that may be touched by those themes (not committed work):
+
+- `GAP-201-RANK` — calibration / recovery honesty (MMT anchors could inform a later fix; not assumed)
+- `GAP-COMM-KPI` — still applies to any new lift / calibration narrative
+
+Exogenous media (organic, holidays, quincenas, inventory) and multi-tenant isolation have no rows in [`open-gaps.md`](open-gaps.md) today — add only when evidenced.

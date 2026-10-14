@@ -66,9 +66,9 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 
 ## Sprint status
 
-Working branch: **`sprint-2-mvp-optimization-agentic-ui`** (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment), cut from `main`.
+Working branch: **`sprint-3-exogenous-multitenant-mmt`** (Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration). Brief: `docs/sprints/sprint-3.md`.
 
-Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-core-data-engine` kept at the same tip.
+Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-core-data-engine` kept. Sprint 2 MVP archived on `sprint-2-mvp-optimization-agentic-ui` (tag `sprint-2-mvp`).
 
 - **STORY-101 done** — Path-C generator, integer counts, `DATA_CARD.md`
 - **STORY-102 done** — shared transforms; generator imports them; Plotly figures (Jupyter DoD adapted away); perf gate
@@ -98,7 +98,7 @@ Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-sh
 | `origin` | `https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git` |
 | `github` | `https://github.com/marioenriquemuo/martech-mmm-ai-allocator.git` |
 
-- Sprint integration work lands on `sprint-2-mvp-optimization-agentic-ui` (cut from `main`); push both remotes when asked
+- Sprint integration work lands on `sprint-3-exogenous-multitenant-mmt`; push both remotes when asked
 - Feature branches: `cursor/<short-topic>-…` when opening separate PRs
 - One concern per PR when practical (env, docs, model code)
 - Do not commit `Secret/`, `.conda/`, `*.egg-info/`, or notebook checkpoints

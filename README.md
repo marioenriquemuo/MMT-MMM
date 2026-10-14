@@ -54,7 +54,7 @@ Topics: marketing-mix-modeling, bayesian-mmm, incrementality, media-mix, budget-
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
 | Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
 | GitHub | [martech-mmm-ai-allocator](https://github.com/marioenriquemuo/martech-mmm-ai-allocator) (public) — remote `github` |
-| Working branch | `sprint-2-mvp-optimization-agentic-ui` — tip: `git push origin HEAD && git push github HEAD` |
+| Working branch | `sprint-3-exogenous-multitenant-mmt` — tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
 | Docker | Image (`Dockerfile`) for the dashboard and allocator. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |
@@ -93,6 +93,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate, Meridian week grain |
 | `docs/learnings/` | Story learnings + [`open-gaps.md`](docs/learnings/open-gaps.md) registry (Sprint planning) |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian spike learnings + **open rank-recovery issue** |
+| `docs/sprints/sprint-3.md` | Sprint 3 brief (exogenous controls, multi-tenant, MMT calibration) |
 | `docs/how-to-test.md` | Click-through for the dashboard, no statistics background |
 | `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |
 
@@ -100,7 +101,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 
 - Project Agent Skills: `.cursor/skills/*/SKILL.md` (see `AGENTS.md`)
 - Always-on Cursor rules: `.cursor/rules/*.mdc`
-- Sprint 2 work lands on `sprint-2-mvp-optimization-agentic-ui`; feature branches `cursor/<topic>-…` when useful
+- Sprint 3 work lands on `sprint-3-exogenous-multitenant-mmt`; feature branches `cursor/<topic>-…` when useful
 - Push intentional commits to both `origin` and `github`
 - Never commit `Secret/`, credentials, or local conda env directories
 
