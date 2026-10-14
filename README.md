@@ -91,6 +91,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `CLAUDE.md` | Project brief and conventions for Claude/Cursor |
 | `AGENTS.md` | Agent entrypoint: layout, golden rules, skills/rules index |
 | `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate, Meridian week grain |
+| `docs/learnings/` | Story learnings + [`open-gaps.md`](docs/learnings/open-gaps.md) registry (Sprint planning) |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian spike learnings + **open rank-recovery issue** |
 | `docs/how-to-test.md` | Click-through for the dashboard, no statistics background |
 | `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |

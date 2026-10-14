@@ -71,7 +71,7 @@ MMT&MMM/
 ├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
 ├── docs/how-to-test.md       # dashboard click-through, no statistics background
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
-├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
+├── docs/learnings/           # story learnings + open-gaps.md registry (Sprint planning)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
 ├── .archify/                 # architecture diagram runs
 └── .cursor/                  # skills + rules
@@ -89,7 +89,7 @@ MMT&MMM/
 
 Path-C DGP calls `geometric_adstock` / `hill_saturation` from `src.models.transformations` (single source of truth). Validation plots are Plotly Express HTML under `reports/figures/` — Jupyter notebooks are not required for Sprint 1 DoD.
 
-**STORY-201 open issue:** channel rank recovery vs Path-C is inconsistent (Spearman ≈ −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md).
+**STORY-201 open issue:** channel rank recovery vs Path-C is inconsistent (Spearman ≈ −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md). All open gaps: [`docs/learnings/open-gaps.md`](docs/learnings/open-gaps.md).
 
 ## Sprint 2 progress
 
