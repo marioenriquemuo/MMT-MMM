@@ -6,6 +6,7 @@ only control that calls Claude. Run with ``streamlit run app.py``.
 
 from __future__ import annotations
 
+import html
 import re
 import sys
 from pathlib import Path
@@ -57,6 +58,56 @@ def _slider(label: str, lo: float, hi: float, default: float, step: float, key: 
     )
 
 
+# --- Pure CSS (CDN from the Pure start page; widgets stay Streamlit) ---
+
+_PURE_CSS = """
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+<style>
+.stApp, [data-testid="stHeader"], [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+[data-testid="stSidebar"] { border-right: 1px solid #ddd; }
+[data-testid="stSlider"],
+.pure-menu-heading,
+.pure-menu + p { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+button[data-testid="stBaseButton-secondary"] {
+  background: #1f8dd6;
+  color: #fff;
+  border: 1px solid #1f8dd6;
+  border-radius: 2px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.brief-card {
+  padding: .5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px #ddd;
+  background: #fff;
+}
+.brief-card pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+</style>
+<div class="pure-menu pure-menu-horizontal">
+<span class="pure-menu-heading">Budget dashboard</span>
+</div>
+<p>Numbers are incremental KPI, not revenue. Meridian channel rank vs Path-C is still an open issue.</p>
+"""
+
+
+def _commentary(text: str) -> None:
+    st.markdown(
+        '<div class="pure-g"><div class="pure-u-1"><div class="brief-card"><pre>'
+        + html.escape(text)
+        + "</pre></div></div></div>",
+        unsafe_allow_html=True,
+    )
+
+
 # --- Layout ---
 
 
@@ -78,11 +129,7 @@ def _update_insights(fact_pack: dict) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="Budget dashboard", layout="wide")
-    st.title("Budget dashboard")
-    st.caption(
-        "Numbers are incremental KPI, not revenue. "
-        "Meridian channel rank vs Path-C is still an open issue."
-    )
+    st.markdown(_PURE_CSS, unsafe_allow_html=True)
     st.sidebar.caption(
         "Sliders rerun the local allocator. Update insights calls Claude."
     )
@@ -166,12 +213,12 @@ def main() -> None:
     st.plotly_chart(result["saturation_figure"], width="stretch")
 
     st.subheader("Commentary")
-    st.text(result["offline_brief"])
+    _commentary(result["offline_brief"])
     if st.button("Update insights"):
         _update_insights(result["fact_pack"])
     if st.session_state.get("live_brief"):
         st.subheader("Live insights")
-        st.text(st.session_state["live_brief"])
+        _commentary(st.session_state["live_brief"])
     if st.session_state.get("live_error"):
         st.error(st.session_state["live_error"])
 

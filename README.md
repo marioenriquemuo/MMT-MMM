@@ -253,6 +253,8 @@ streamlit run app.py
 python -m pytest tests/test_dashboard_view.py -q
 ```
 
+The dashboard is not a static HTML file (`streamlit run app.py` serves it); static HTML that can be opened directly stays the archify diagram and `reports/figures/*.html`.
+
 Math: `src/dashboard/view.py` (pytest, no browser). `app.py` is layout only.
 
 ## Stack direction
