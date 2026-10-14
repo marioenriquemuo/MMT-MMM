@@ -22,7 +22,7 @@ Do not invent gaps here. Add a row only when README, CLAUDE/AGENTS, a learning d
 
 ## Sprint 3 themes vs open gaps
 
-Sprint 3 working branch is `sprint-3` (exo controls, multi-tenant isolation, MMT geo-experiment calibration). That framing does **not** schedule stories yet. Gaps that may be touched by those themes (not committed work):
+Working branch: `sprint-3-exogenous-multitenant-mmt`. Brief: [`docs/sprints/sprint-3.md`](../sprints/sprint-3.md) (STORY-501/502/503 from local sprint file). Gaps that may be touched by those themes (not auto-closed):
 
 - `GAP-201-RANK` — calibration / recovery honesty (MMT anchors could inform a later fix; not assumed)
 - `GAP-COMM-KPI` — still applies to any new lift / calibration narrative
