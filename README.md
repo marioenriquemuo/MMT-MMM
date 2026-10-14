@@ -1,6 +1,44 @@
-# MMT&MMM — martech-mmm-ai-allocator
+# MMT&MMM — marketing mix modeling with a Bayesian MMM
 
-Enterprise measurement and optimization engine: Unified Measurement Architecture that fuses top-down Bayesian Marketing Mix Modeling (MMM) with bottom-up touchpoint calibration, then turns incremental-lift estimates into plain-English budget allocation strategies.
+martech-mmm-ai-allocator is a marketing measurement workspace. Google Meridian estimates incrementality, and the figure you read is incremental lift. Adstock and saturation shape the response curves. Media mix optimization turns those curves into a budget allocation. Unified measurement here also includes touchpoint calibration. The executive dashboard is where you try a split.
+
+You set one total budget and a floor and ceiling for each media partner. The allocator recommends a mix aimed at a higher incremental KPI. Charts show the curves, where extra spend flattens, and how the mix moves versus an equal split. A short commentary ships with the page. A live Claude rewrite is optional and is the only step that needs an API key.
+
+The data is synthetic Path-C. Figures are incremental KPI, not currency and not client revenue. This repo does not claim ROI dollars or a guaranteed lift. Meridian channel rank versus that synthetic ground truth is still open (Spearman about −0.6). Details: [`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md).
+
+```mermaid
+flowchart LR
+  panel[Synthetic panel] --> etl[ETL and QA]
+  etl --> mmm[Meridian MMM]
+  mmm --> curves[Response curves]
+  curves --> alloc[SLSQP allocator]
+  alloc --> facts[Fact pack and number lock]
+  facts --> brief[Offline or Claude brief]
+  facts --> dash[Streamlit executive dashboard]
+```
+
+Full diagram: [`.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html`](.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html).
+
+## 5-minute quickstart
+
+```bash
+cd "/home/mario/dev/MMT&MMM"
+conda env create -f environment.yml
+conda activate mmt-mmm
+python -m pytest tests/ -q
+streamlit run app/streamlit_app.py
+```
+
+**[Test the tool (no statistics background)](docs/how-to-test.md)**
+
+Walkthrough: add a 2-minute Loom URL here.
+
+Released under the MIT license (`LICENSE`).
+
+<!--
+GitHub description: Bayesian marketing mix modeling, incrementality, and media-budget allocation with Google Meridian.
+Topics: marketing-mix-modeling, bayesian-mmm, incrementality, media-mix, budget-allocation, google-meridian, marketing-measurement
+-->
 
 ## Product (short)
 
@@ -19,7 +57,7 @@ Enterprise measurement and optimization engine: Unified Measurement Architecture
 | Working branch | `sprint-2-mvp-optimization-agentic-ui` — tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
-| Docker | Later (deploy/CI only) |
+| Docker | Image (`Dockerfile`) for the dashboard and allocator. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |
 
 ## Local setup (Miniconda)
 
@@ -54,6 +92,7 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 | `AGENTS.md` | Agent entrypoint: layout, golden rules, skills/rules index |
 | `data/raw/DATA_CARD.md` | Raw panel grain, KPI rules, ETL fill rules, STORY-104 QA gate, Meridian week grain |
 | `docs/learnings/story-201-meridian.md` | STORY-201 Meridian spike learnings + **open rank-recovery issue** |
+| `docs/how-to-test.md` | Click-through for the dashboard, no statistics background |
 | `docs/graphify-archify.md` | Index of graphify knowledge graph + archify diagrams |
 
 ## Skills, rules, and PRs
@@ -248,15 +287,15 @@ Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`
 ```bash
 conda activate mmt-mmm
 cd "/home/mario/dev/MMT&MMM"
-streamlit run app.py
+streamlit run app/streamlit_app.py
 
 python -m pytest tests/test_dashboard_view.py -q
 ```
 
-The dashboard is not a static HTML file (`streamlit run app.py` serves it); static HTML that can be opened directly stays the archify diagram and `reports/figures/*.html`.
+The dashboard is not a static HTML file (`streamlit run app/streamlit_app.py` serves it); static HTML that can be opened directly stays the archify diagram and `reports/figures/*.html`.
 
-Math: `src/dashboard/view.py` (pytest, no browser). `app.py` is layout only.
+Math: `src/dashboard/view.py` (pytest, no browser). `app/streamlit_app.py` is layout only.
 
 ## Stack direction
 
-Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`). Docker is deferred; local work uses the conda env only.
+Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`, the supported install). Full Meridian MCMC is a conda/CPU job. The Docker image is for the dashboard and allocator, and the first build is heavy.

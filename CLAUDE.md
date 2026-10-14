@@ -12,7 +12,7 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 | Env | Conda env `mmt-mmm` from `environment.yml` (Miniconda at `~/miniconda3`) |
 | Core libs | numpy, pandas, scipy, scikit-learn, pymc, arviz, matplotlib, jupyter, plotly, pyyaml, pydantic, pandera, pyarrow, pytest, streamlit |
 | Secrets | `Secret/` gitignored — never read into commits or paste into PRs |
-| Docker | Later (deploy/CI); not required for local MMM work |
+| Docker | `Dockerfile` (micromamba + `environment.yml`) for the dashboard and allocator on port 8501. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |
 | Working branch | `sprint-2-mvp-optimization-agentic-ui` (Sprint 2 — MVP Optimization, Agentic AI & UI Deployment); Sprint 1 archived on `main` + `sprint-1-core-data-engine` @ tag `sprint-1-milestone-1` |
 | Remotes | `origin` (Origin), `github` (GitHub mirror) |
 | Status | Sprint 1 done on `main`; Sprint 2: STORY-301 budget allocator on feature branch (PR #9); Meridian rank caveat still open — `docs/learnings/story-201-meridian.md` |
@@ -29,8 +29,14 @@ Working brief for Claude/Cursor on **martech-mmm-ai-allocator** (Origin: `mario-
 ```
 MMT&MMM/
 ├── environment.yml           # conda env mmt-mmm (+ plotly, pandera, pyarrow, pytest, streamlit, google-meridian)
+├── requirements.txt          # direct deps only; conda is the supported install
+├── Dockerfile                # micromamba image: dashboard + allocator (first build is heavy)
+├── .dockerignore             # excludes Secret/, .git, .env, __pycache__, .conda
+├── .env.example              # ANTHROPIC_API_KEY= (offline path needs no key)
+├── LICENSE                   # MIT, Mario Muñoz, 2026
 ├── README.md                 # setup + STORY-101–401 how-to
-├── app.py                    # STORY-401 Streamlit layout (`streamlit run app.py`)
+├── app/streamlit_app.py      # STORY-401 Streamlit layout (`streamlit run app/streamlit_app.py`)
+├── notebooks/README.md       # points at scripts/ and reports/figures/; no .ipynb
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
 ├── .python-version           # 3.12
@@ -63,6 +69,7 @@ MMT&MMM/
 ├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
 ├── reports/                  # metrics.json, allocation.json, csuite_brief.json
 ├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
+├── docs/how-to-test.md       # dashboard click-through, no statistics background
 ├── docs/graphify-archify.md  # index of graphify + archify artifacts
 ├── docs/learnings/           # story learnings (STORY-201 Meridian + open recovery issue)
 ├── graphify-out/             # knowledge graph (HTML/JSON/report)
@@ -92,7 +99,7 @@ Working branch: `sprint-2-mvp-optimization-agentic-ui`. Feature tips: `cursor/st
 | --- | --- | --- |
 | STORY-301 | Done (feature tip) | Offline curves → SLSQP allocator; CLI + `reports/allocation.json`; Plotly teaching figures; fail clears `channels` to `{}` |
 | STORY-302 | Done (feature tip, step 0–4) | Plots; fact pack; `scripts/04_csuite_brief.py` (`--offline` or live `emit_brief`, `claude-sonnet-4-5`). Structured fields exact; headline/bullets may round (lift 0.12). Not merged |
-| STORY-401 | Done (feature tip) | `streamlit run app.py`. Budget plus each partner’s min/max % (slider + number, 0–100). Optimizer chooses the spend inside those bounds. **Update insights** calls Claude. Key file: `Secret/anthropic_api_key`. Not merged |
+| STORY-401 | Done (feature tip) | `streamlit run app/streamlit_app.py`. Budget plus each partner’s min/max % (slider + number, 0–100). Optimizer chooses the spend inside those bounds. **Update insights** calls Claude. Key file: `Secret/anthropic_api_key`. Not merged |
 
 Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-C caveat as above; do not treat allocations as Path-C ground truth. The dashboard shows those same curves. Numbers are incremental KPI, not revenue.
 
@@ -118,7 +125,7 @@ python -m pytest tests/ -q
 python -m src.data.etl
 python -m src.data.qa
 # Dashboard (sliders are local; Update insights calls Claude):
-streamlit run app.py
+streamlit run app/streamlit_app.py
 ```
 
 See `AGENTS.md` for agent golden rules and the skills/rules index.

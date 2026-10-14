@@ -2,7 +2,7 @@
 
 Sliders and number boxes set the total budget and each partner's min and max
 percent. The optimizer chooses the spend. **Update insights** is the only
-control that calls Claude. Run with ``streamlit run app.py``.
+control that calls Claude. Run with ``streamlit run app/streamlit_app.py``.
 """
 
 from __future__ import annotations
@@ -17,7 +17,8 @@ import streamlit as st
 
 # --- Paths ---
 
-REPO_ROOT = Path(__file__).resolve().parent
+# Streamlit puts app/ on sys.path. Insert the repo root so `import src` works.
+REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 

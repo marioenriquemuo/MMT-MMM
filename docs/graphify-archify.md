@@ -17,7 +17,7 @@ Scoped via [`.graphifyignore`](../.graphifyignore) (excludes bulky `.cursor/skil
 | Graph JSON | [`graphify-out/graph.json`](../graphify-out/graph.json) |
 | Token benchmark | [`graphify-out/benchmark.txt`](../graphify-out/benchmark.txt) |
 
-Regenerated after STORY-401 (`graphify update .`; includes `app.py` and `src/dashboard/`, plus the STORY-302 brief path and the STORY-301 allocator). Re-run `graphify update .` after code changes.
+Regenerated after STORY-401 (`graphify update .`; includes `app/streamlit_app.py` and `src/dashboard/`, plus the STORY-302 brief path and the STORY-301 allocator). Re-run `graphify update .` after code changes.
 
 ## archify
 
