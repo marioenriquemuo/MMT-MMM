@@ -54,7 +54,7 @@ Topics: marketing-mix-modeling, bayesian-mmm, incrementality, media-mix, budget-
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
 | Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
 | GitHub | [martech-mmm-ai-allocator](https://github.com/marioenriquemuo/martech-mmm-ai-allocator) (public) — remote `github` |
-| Working branch | `sprint-3-exogenous-multitenant-mmt` — tip: `git push origin HEAD && git push github HEAD` |
+| Working branch | `sprint-3-exogenous-multitenant-mmt` — **Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration** (goal: exo traffic/holidays/quincenas/inventory, multi-tenant isolation, MMT geo-experiment anchors). Tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
 | Docker | Image (`Dockerfile`) for the dashboard and allocator. Full Meridian MCMC is a conda/CPU job. The first image build is heavy. |

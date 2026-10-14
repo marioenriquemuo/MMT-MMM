@@ -3,6 +3,7 @@
 | Item | Value |
 | --- | --- |
 | Working branch | `sprint-3-exogenous-multitenant-mmt` |
+| Goal | Upgrade the data ingestion pipeline to handle organic traffic, holidays, quincenas, and inventory gaps, establish multi-tenant client isolation, and integrate MMT geo-experiment calibration anchors. |
 | Builds on | Sprint 1–2 MVP on `main` / `sprint-2-mvp-optimization-agentic-ui` (tag `sprint-2-mvp`) |
 | Duration (local sprint file) | 1 week (Days 15–21) |
 | Story points (local sprint file) | 18 |

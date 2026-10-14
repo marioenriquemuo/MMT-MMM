@@ -105,7 +105,12 @@ Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-
 
 ## Sprint 3 progress
 
-Working branch: `sprint-3-exogenous-multitenant-mmt`. Brief: [`docs/sprints/sprint-3.md`](docs/sprints/sprint-3.md).
+| Item | Value |
+| --- | --- |
+| Name | Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration |
+| Working branch | `sprint-3-exogenous-multitenant-mmt` |
+| Goal | Upgrade the data ingestion pipeline to handle organic traffic, holidays, quincenas, and inventory gaps, establish multi-tenant client isolation, and integrate MMT geo-experiment calibration anchors. |
+| Brief | [`docs/sprints/sprint-3.md`](docs/sprints/sprint-3.md) |
 
 | Story | Status | Notes |
 | --- | --- | --- |

@@ -66,7 +66,9 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 
 ## Sprint status
 
-Working branch: **`sprint-3-exogenous-multitenant-mmt`** (Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration). Brief: `docs/sprints/sprint-3.md`.
+Working branch: **`sprint-3-exogenous-multitenant-mmt`** — Sprint 3 — Exogenous Controls, Multi-Tenant Architecture & MMT Calibration. Brief: `docs/sprints/sprint-3.md`.
+
+**Sprint 3 goal:** Upgrade the data ingestion pipeline to handle organic traffic, holidays, quincenas, and inventory gaps, establish multi-tenant client isolation, and integrate MMT geo-experiment calibration anchors.
 
 Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-core-data-engine` kept. Sprint 2 MVP archived on `sprint-2-mvp-optimization-agentic-ui` (tag `sprint-2-mvp`).
 
