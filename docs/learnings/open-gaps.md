@@ -39,11 +39,11 @@ Index: [`README.md`](README.md).
 | Field | Value |
 | --- | --- |
 | Story | STORY-402 |
-| Status | `open` |
+| Status | `closed` (2026-10-14) |
 | Severity | Medium (portfolio DoD gap; intentional) |
-| Description | Product name in prose is `martech-mmm-ai-allocator`, but the GitHub remote repo is still `marioenriquemuo/MMT-MMM`, not renamed to `marioenriquemuo/martech-mmm-ai-allocator`. |
-| Evidence | `git remote -v` → `github` = `https://github.com/marioenriquemuo/MMT-MMM.git`. README Local workspace table + AGENTS remotes table. Bugbot `docs/story-402-bugbot.md` DoD #4 PASS with gap / intentional gap #1. |
-| Done when | GitHub repository exists as `marioenriquemuo/martech-mmm-ai-allocator` (or remotes/docs updated to the chosen canonical name) without breaking dual-remote push. |
+| Description | Product name in prose is `martech-mmm-ai-allocator`; GitHub remote was `marioenriquemuo/MMT-MMM`. Mario renamed the public GitHub repo and updated the local `github` remote URL. Origin stays `mario-mu-oz-dev/MMT-MMM`. |
+| Evidence | GitHub public API `GET https://api.github.com/repos/marioenriquemuo/martech-mmm-ai-allocator` → `"private": false`, `full_name: marioenriquemuo/martech-mmm-ai-allocator`. Local `git remote -v` → `github` = `https://github.com/marioenriquemuo/martech-mmm-ai-allocator.git`. README / AGENTS remotes updated. Prior gap: Bugbot `docs/story-402-bugbot.md` DoD #4 at tip `188e496`. |
+| Done when | GitHub repository exists as `marioenriquemuo/martech-mmm-ai-allocator` (or remotes/docs updated to the chosen canonical name) without breaking dual-remote push. **Met** 2026-10-14. |
 
 ---
 
@@ -54,8 +54,8 @@ Index: [`README.md`](README.md).
 | Story | STORY-402 |
 | Status | `closed` (2026-10-14) |
 | Severity | Medium (portfolio DoD gap; intentional) |
-| Description | GitHub mirror was private; STORY-402 DoD asked for a public-ready publish path. Mario confirmed publish — repo is public. Rename remains a separate open gap (`GAP-402-RENAME`). |
-| Evidence | GitHub public API `GET https://api.github.com/repos/marioenriquemuo/MMT-MMM` → `"private": false`, `full_name: marioenriquemuo/MMT-MMM`. README Local workspace table updated to public. Prior: Bugbot `docs/story-402-bugbot.md` intentional gap #3 at tip `188e496`. |
+| Description | GitHub mirror was private; STORY-402 DoD asked for a public-ready publish path. Mario confirmed publish — repo is public (now at `marioenriquemuo/martech-mmm-ai-allocator` after rename). |
+| Evidence | GitHub public API → `"private": false` for `marioenriquemuo/martech-mmm-ai-allocator` (and the prior `MMT-MMM` name before rename). README Local workspace table lists GitHub as public. Prior: Bugbot `docs/story-402-bugbot.md` intentional gap #3 at tip `188e496`. |
 | Done when | Mario explicitly publishes (or documents a permanent private decision) and README/AGENTS visibility wording matches reality. **Met** 2026-10-14. |
 
 ---
@@ -88,7 +88,8 @@ Index: [`README.md`](README.md).
 
 ## Closed / not listed
 
-- `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub `marioenriquemuo/MMT-MMM` is public (`"private": false` via public API). See entry above. `GAP-402-RENAME` stays open.
+- `GAP-402-RENAME` — closed 2026-10-14; GitHub is `marioenriquemuo/martech-mmm-ai-allocator` (public). Local `github` remote updated. Origin unchanged.
+- `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub mirror is public (`"private": false` via public API). See entry above.
 - STORY-402 packaging paths (`app/streamlit_app.py`, `Dockerfile`, `LICENSE`, `requirements.txt`, `.env.example`, `docs/how-to-test.md`) — Bugbot PASS at `188e496`.
 - Secret hygiene — Bugbot scanned clean; not an open gap.
 - No other unfinished items were marked `open` in `docs/learnings/` beyond GAP-201-RANK’s deep dive.

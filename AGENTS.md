@@ -96,7 +96,7 @@ Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-sh
 | Remote | URL |
 | --- | --- |
 | `origin` | `https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git` |
-| `github` | `https://github.com/marioenriquemuo/MMT-MMM.git` |
+| `github` | `https://github.com/marioenriquemuo/martech-mmm-ai-allocator.git` |
 
 - Sprint integration work lands on `sprint-2-mvp-optimization-agentic-ui` (cut from `main`); push both remotes when asked
 - Feature branches: `cursor/<short-topic>-…` when opening separate PRs

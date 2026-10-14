@@ -13,8 +13,8 @@ Use [`open-gaps.md`](open-gaps.md) as the checklist. At tip `188e496` (pre-regis
 
 - [ ] `GAP-201-RANK` — Meridian iROAS rank vs Path-C (Spearman ≈ −0.6)
 - [ ] `GAP-402-LOOM` — README Loom walkthrough still a placeholder
-- [ ] `GAP-402-RENAME` — GitHub remote is still `marioenriquemuo/MMT-MMM` (not `martech-mmm-ai-allocator`)
-- [x] `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub `marioenriquemuo/MMT-MMM` is public
+- [x] `GAP-402-RENAME` — closed 2026-10-14; GitHub is `marioenriquemuo/martech-mmm-ai-allocator`
+- [x] `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub repo is public
 - [ ] `GAP-402-DOCKERIGNORE` — `.dockerignore` omits `.pytest_cache` / `.cursor` (Low)
 - [ ] `GAP-COMM-KPI` — standing communication caveat: incremental KPI ≠ revenue dollars
 

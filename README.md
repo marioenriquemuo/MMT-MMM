@@ -53,7 +53,7 @@ Topics: marketing-mix-modeling, bayesian-mmm, incrementality, media-mix, budget-
 | --- | --- |
 | Path | `/home/mario/dev/MMT&MMM` (quote the `&` in shells) |
 | Origin | [MMT-MMM](https://cursor.com/codebase/mario-mu-oz-dev/MMT-MMM) (private) — remote `origin` |
-| GitHub | [MMT-MMM](https://github.com/marioenriquemuo/MMT-MMM) (public) — remote `github` |
+| GitHub | [martech-mmm-ai-allocator](https://github.com/marioenriquemuo/martech-mmm-ai-allocator) (public) — remote `github` |
 | Working branch | `sprint-2-mvp-optimization-agentic-ui` — tip: `git push origin HEAD && git push github HEAD` |
 | Secrets | `Secret/` — **gitignored; never commit** |
 | Python env | Miniconda env `mmt-mmm` via `environment.yml` |
