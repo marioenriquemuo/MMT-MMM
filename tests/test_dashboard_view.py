@@ -7,7 +7,12 @@ from pathlib import Path
 import pytest
 
 import src.dashboard.view as dashboard_view
-from src.dashboard.view import build_dashboard, default_curves_path, slider_bounds
+from src.dashboard.view import (
+    build_dashboard,
+    default_curves_path,
+    format_units,
+    slider_bounds,
+)
 
 REPO = Path(__file__).resolve().parents[1]
 FIXTURE = REPO / "tests" / "fixtures" / "synthetic_response_curves.json"
@@ -32,8 +37,16 @@ def test_figures_and_spends_respect_bounds(monkeypatch: pytest.MonkeyPatch):
     assert out["error"] is None
     assert out["response_figure"] is not None
     assert out["saturation_figure"] is not None
+    assert out["spend_move_figure"] is not None
+    assert out["kpi_move_figure"] is not None
     assert len(out["response_figure"].data) > 0
     assert len(out["saturation_figure"].data) > 0
+    assert len(out["spend_move_figure"].data) > 0
+    assert len(out["kpi_move_figure"].data) > 0
+    assert "before the move" in out["spend_move_figure"].layout.title.text
+    assert "before the move" in out["kpi_move_figure"].layout.title.text
+    assert format_units(2860810.3805) == "2,860,810.38"
+    assert "$" not in format_units(2860810.3805)
     assert any(
         abs(float(shape.y0) - 90.0) < 1e-6
         for shape in out["saturation_figure"].layout.shapes
@@ -88,6 +101,8 @@ def test_infeasible_returns_error_without_claude(monkeypatch: pytest.MonkeyPatch
     assert out["offline_brief"] is None
     assert out["response_figure"] is None
     assert out["saturation_figure"] is None
+    assert out["spend_move_figure"] is None
+    assert out["kpi_move_figure"] is None
 
 
 def test_default_curves_path_prefers_metrics(tmp_path: Path):

@@ -1,7 +1,7 @@
 """Dashboard math for STORY-401.
 
 Loads offline curves, runs ``optimize_budget`` in maximize mode, and builds
-the fact pack, offline brief, and two Plotly figures. Does not call Claude.
+the fact pack, offline brief, and Plotly figures. Does not call Claude.
 """
 
 from __future__ import annotations
@@ -25,6 +25,11 @@ _NEAR_CEILING_PCT = 90.0
 
 
 # --- Public API ---
+
+
+def format_units(value: float) -> str:
+    """Thousands separators and 2 decimals. No currency symbol."""
+    return f"{float(value):,.2f}"
 
 
 def default_curves_path(root: str | Path | None = None) -> Path:
@@ -111,6 +116,8 @@ def build_dashboard(
         "offline_brief": offline_brief,
         "response_figure": _response_figure(provider, spends),
         "saturation_figure": _saturation_figure(spends, maxes),
+        "spend_move_figure": _spend_move_figure(fact_pack),
+        "kpi_move_figure": _kpi_move_figure(provider, fact_pack),
         "error": None,
         "rows": rows,
         "expected_incremental_kpi": fact_pack.get("expected_incremental_kpi"),
@@ -150,7 +157,7 @@ def _response_figure(provider: MetricsJsonCurveProvider, spends: Mapping[str, fl
             name=f"{channel} recommended",
             marker={"size": 14, "symbol": "diamond"},
         )
-    return fig
+    return _show_units(fig, numeric_x=True)
 
 
 def _saturation_figure(spends: Mapping[str, float], max_spend: Mapping[str, float]):
@@ -175,6 +182,86 @@ def _saturation_figure(spends: Mapping[str, float], max_spend: Mapping[str, floa
     )
     top = max(100.0, max(percents) if percents else 100.0)
     fig.update_yaxes(range=[0, top])
+    return _show_units(fig)
+
+
+def _spend_move_figure(fact_pack: Mapping[str, Any]):
+    rows = []
+    for channel, fact in fact_pack["channels"].items():
+        rows.append(
+            {
+                "channel": channel,
+                "when": "Before the move",
+                "spend": float(fact["baseline_spend"]),
+            }
+        )
+        rows.append(
+            {
+                "channel": channel,
+                "when": "After the move",
+                "spend": float(fact["recommended_spend"]),
+            }
+        )
+    fig = px.bar(
+        pd.DataFrame(rows),
+        x="channel",
+        y="spend",
+        color="when",
+        barmode="group",
+        title="Spend before the move vs after the move",
+        labels={"spend": "Spend", "channel": "Channel", "when": ""},
+        category_orders={"when": ["Before the move", "After the move"]},
+    )
+    return _show_units(fig)
+
+
+def _kpi_move_figure(provider: MetricsJsonCurveProvider, fact_pack: Mapping[str, Any]):
+    rows = []
+    for channel, fact in fact_pack["channels"].items():
+        rows.append(
+            {
+                "channel": channel,
+                "when": "Before the move",
+                "incremental_kpi": provider.incremental_kpi(
+                    channel, float(fact["baseline_spend"])
+                ),
+            }
+        )
+        rows.append(
+            {
+                "channel": channel,
+                "when": "After the move",
+                "incremental_kpi": provider.incremental_kpi(
+                    channel, float(fact["recommended_spend"])
+                ),
+            }
+        )
+    fig = px.bar(
+        pd.DataFrame(rows),
+        x="channel",
+        y="incremental_kpi",
+        color="when",
+        barmode="group",
+        title="KPI before the move vs after the move",
+        labels={
+            "incremental_kpi": "Incremental KPI",
+            "channel": "Channel",
+            "when": "",
+        },
+        category_orders={"when": ["Before the move", "After the move"]},
+    )
+    return _show_units(fig)
+
+
+def _show_units(fig, *, numeric_x: bool = False):
+    """Tick and hover text only. Trace values stay full precision."""
+    fig.update_yaxes(tickformat=",.2f")
+    if numeric_x:
+        fig.update_xaxes(tickformat=",.2f")
+        hover = "%{x:,.2f}<br>%{y:,.2f}<extra>%{fullData.name}</extra>"
+    else:
+        hover = "%{x}<br>%{y:,.2f}<extra>%{fullData.name}</extra>"
+    fig.update_traces(hovertemplate=hover)
     return fig
 
 
@@ -196,6 +283,8 @@ def _failed(allocation: dict[str, Any], message: str) -> dict[str, Any]:
         "offline_brief": None,
         "response_figure": None,
         "saturation_figure": None,
+        "spend_move_figure": None,
+        "kpi_move_figure": None,
         "error": message,
         "rows": [],
         "expected_incremental_kpi": None,

@@ -23,11 +23,13 @@ if str(REPO_ROOT) not in sys.path:
 from src.dashboard.view import (  # noqa: E402
     build_dashboard,
     default_curves_path,
+    format_units,
     slider_bounds,
 )
 from src.report.brief import format_brief, load_api_key, render_live  # noqa: E402
 
 _SECRET_RE = re.compile(r"sk-[A-Za-z0-9_-]{8,}")
+_NUMBER_RE = re.compile(r"[+-]?\d+(?:\.\d+)?")
 
 
 # --- Redaction ---
@@ -42,7 +44,7 @@ def _redact(text: str, secret: str | None) -> str:
 def _slider(label: str, lo: float, hi: float, default: float, step: float, key: str) -> float:
     lo_f, hi_f = float(lo), float(hi)
     if hi_f <= lo_f:
-        st.sidebar.caption(f"{label}: {lo_f:g}")
+        st.sidebar.caption(f"{label}: {format_units(lo_f)}")
         return lo_f
     step_f = float(step) if step and step > 0 else (hi_f - lo_f) / 100.0
     value = min(max(float(default), lo_f), hi_f)
@@ -53,6 +55,7 @@ def _slider(label: str, lo: float, hi: float, default: float, step: float, key: 
             max_value=hi_f,
             value=value,
             step=step_f,
+            format="%,.2f",
             key=key,
         )
     )
@@ -100,9 +103,10 @@ button[data-testid="stBaseButton-secondary"] {
 
 
 def _commentary(text: str) -> None:
+    shown = _NUMBER_RE.sub(lambda match: format_units(float(match.group(0))), text)
     st.markdown(
         '<div class="pure-g"><div class="pure-u-1"><div class="brief-card"><pre>'
-        + html.escape(text)
+        + html.escape(shown)
         + "</pre></div></div></div>",
         unsafe_allow_html=True,
     )
@@ -197,20 +201,43 @@ def main() -> None:
         return
 
     st.subheader("Allocation")
-    st.dataframe(pd.DataFrame(result["rows"]), hide_index=True)
     st.dataframe(
         pd.DataFrame(
             [
                 {
-                    "expected_incremental_kpi": result["expected_incremental_kpi"],
-                    "lift_vs_baseline": result["lift_vs_baseline"],
+                    "channel": row["channel"],
+                    "recommended_spend": format_units(row["recommended_spend"]),
+                    "saturation_flag": row["saturation_flag"],
+                    "incremental_kpi": format_units(row["incremental_kpi"]),
+                }
+                for row in result["rows"]
+            ]
+        ),
+        hide_index=True,
+    )
+    lift = result["lift_vs_baseline"]
+    st.dataframe(
+        pd.DataFrame(
+            [
+                {
+                    "expected_incremental_kpi": format_units(
+                        result["expected_incremental_kpi"]
+                    ),
+                    "lift_vs_baseline": "" if lift is None else format_units(lift),
                 }
             ]
         ),
         hide_index=True,
     )
+    st.caption(
+        "Incremental KPI is units, not dollars, euros, or revenue. "
+        "Spend is the curve file’s spend units, not a currency."
+    )
     st.plotly_chart(result["response_figure"], width="stretch")
     st.plotly_chart(result["saturation_figure"], width="stretch")
+    st.plotly_chart(result["spend_move_figure"], width="stretch")
+    st.plotly_chart(result["kpi_move_figure"], width="stretch")
+    st.caption("The Update insights button does not change these numbers.")
 
     st.subheader("Commentary")
     _commentary(result["offline_brief"])
