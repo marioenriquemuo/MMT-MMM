@@ -8,7 +8,7 @@
     "quality_profile": "showcase",
     "repository": {
       "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
-      "revision": "0753a7e2bbfc215581bc147e22222f340ca42947",
+      "revision": "8a2eca33afd503a365e5d05c8b1094e447aa3cac",
       "link_mode": "local-only"
     }
   },
@@ -25,11 +25,24 @@
       ]
     },
     {
+      "id": "clients",
+      "type": "security",
+      "label": "Client partitions",
+      "sublabel": "default pathc",
+      "pos": [260, 40],
+      "size": [180, 70],
+      "sources": [
+        { "path": "src/data/tenants.py", "line": 104, "end_line": 115, "label": "load_client" },
+        { "path": "src/data/tenants.py", "line": 121, "end_line": 131, "label": "reject other client" },
+        { "path": "config/clients.yaml", "line": 1, "end_line": 12, "label": "pathc and wellness" }
+      ]
+    },
+    {
       "id": "etl",
       "type": "backend",
       "label": "ETL",
       "sublabel": "python -m src.data.etl",
-      "pos": [300, 40],
+      "pos": [540, 40],
       "size": [180, 70],
       "sources": [
         { "path": "src/data/etl.py", "line": 130, "end_line": 145, "label": "run_etl spend panel" },
@@ -41,7 +54,7 @@
       "type": "database",
       "label": "Exogenous controls",
       "sublabel": "one row per date",
-      "pos": [300, 200],
+      "pos": [540, 200],
       "size": [180, 78],
       "sources": [
         { "path": "src/data/controls.py", "line": 125, "end_line": 156, "label": "build_controls" },
@@ -53,10 +66,10 @@
       "type": "backend",
       "label": "Media QA",
       "sublabel": "hard-fail gate",
-      "pos": [600, 40],
+      "pos": [820, 40],
       "size": [160, 70],
       "sources": [
-        { "path": "src/data/qa.py", "line": 309, "end_line": 329, "label": "run_qa overwrite" }
+        { "path": "src/data/qa.py", "line": 311, "end_line": 334, "label": "run_qa overwrite" }
       ]
     },
     {
@@ -65,7 +78,7 @@
       "label": "Meridian",
       "sublabel": "spend panel only",
       "tag": "controls not in the fit",
-      "pos": [880, 40],
+      "pos": [1080, 40],
       "size": [200, 70],
       "sources": [
         { "path": "src/models/meridian_data.py", "line": 1, "end_line": 22, "label": "clean_spend only" },
@@ -117,7 +130,7 @@
       "sources": [
         { "path": "src/report/brief.py", "line": 64, "end_line": 70, "label": "render_offline" },
         { "path": "src/report/brief.py", "line": 223, "end_line": 232, "label": "render_live" },
-        { "path": "scripts/04_csuite_brief.py", "line": 92, "end_line": 101, "label": "CLI chooses path" }
+        { "path": "scripts/04_csuite_brief.py", "line": 76, "end_line": 101, "label": "CLI chooses path" }
       ]
     },
     {
@@ -129,13 +142,14 @@
       "size": [180, 78],
       "sources": [
         { "path": "src/dashboard/view.py", "line": 127, "end_line": 139, "label": "build_dashboard" },
-        { "path": "app/streamlit_app.py", "line": 258, "end_line": 258, "label": "local allocator" },
-        { "path": "app/streamlit_app.py", "line": 310, "end_line": 310, "label": "Update insights" }
+        { "path": "app/streamlit_app.py", "line": 278, "end_line": 278, "label": "local allocator" },
+        { "path": "app/streamlit_app.py", "line": 330, "end_line": 330, "label": "Update insights" }
       ]
     }
   ],
   "connections": [
-    { "id": "pathc-to-etl", "from": "pathc", "to": "etl", "label": "synthetic CSV", "variant": "emphasis" },
+    { "id": "pathc-to-clients", "from": "pathc", "to": "clients", "label": "client id", "variant": "emphasis" },
+    { "id": "clients-to-etl", "from": "clients", "to": "etl", "label": "client files" },
     { "id": "etl-to-qa", "from": "etl", "to": "qa", "label": "spend panel" },
     {
       "id": "etl-to-controls",
@@ -153,7 +167,7 @@
       "label": "response curves",
       "fromSide": "bottom",
       "toSide": "top",
-      "via": [[980, 320], [100, 320]]
+      "via": [[1180, 320], [100, 320]]
     },
     { "id": "curves-to-allocator", "from": "curves", "to": "allocator", "label": "curve knots" },
     { "id": "allocator-to-facts", "from": "allocator", "to": "facts", "label": "allocation" },
@@ -185,6 +199,16 @@
         "Meridian reads the post-QA spend panel only.",
         "GAP-501-MODEL and GAP-501-API stay open.",
         "GAP-201-RANK stays open."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Client wall",
+      "items": [
+        "Default client is pathc. No flag still uses today's files.",
+        "pathc keeps data/raw, data/processed, and reports.",
+        "wellness uses only data/clients/wellness/.",
+        "Industry separation is this wall, not a second model."
       ]
     },
     {
