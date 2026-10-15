@@ -61,8 +61,8 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `docs/graphify-archify.md` | Index of graphify + archify artifacts |
 | `graphify-out/` | Knowledge graph outputs |
 | `.archify/architecture-mmt-project/architecture-mmt-project.html` | Current project architecture diagram |
-| `.cursor/skills/` | Project Agent Skills (`SKILL.md` per skill) |
-| `.cursor/rules/` | Always-on Cursor rules (`.mdc`) |
+| `.cursor/skills/` | Repo-only skills: `mmt-mmm`, `secret-hygiene`, `archify` |
+| `.cursor/rules/` | Repo-only rules: `graphify`, `secret-hygiene` |
 | `Secret/` | Local-only; **gitignored** — never commit |
 
 ## Sprint status
@@ -85,15 +85,18 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 
 ## Skills
 
-Cursor discovers project skills from `.cursor/skills/*/SKILL.md` (already in repo):
+User skills in `~/.cursor/skills/` apply here. Do not vendor them into `.cursor/skills/`.
 
-- Shared: `ponytail`, `ponytail-*`, `graphify`, `eli5-teacher`, `skill-author`, `text-review-documentation`
-- Project: `mmt-mmm`, `secret-hygiene`
-- Diagrams: `archify`
+- Global: `ponytail`, `ponytail-*`, `graphify`, `eli5-teacher`, `skill-author`, `text-review-documentation`, `ai-workstation-advisor`
+- Repo only: `mmt-mmm`, `secret-hygiene`, `archify`
 
 ## Rules
 
-Generic behavioral rules under `.cursor/rules/` (simplicity, terse comms, get-shit-done, Karpathy guidelines, graphify orientation, secret hygiene) — adapted without forex lab locks.
+Prefer `~/.cursor/rules/*.mdc` (simplicity, terse comms, get-shit-done, Karpathy, text review). Do not copy those into this repo.
+
+Repo-only `.cursor/rules/`: `graphify.mdc` (this `graphify-out/`), `secret-hygiene.mdc` (this `Secret/`).
+
+Cursor User Rules (Customize → Rules) also apply. Cloud agents do not load `~/.cursor/rules`.
 
 ## Remotes and PR conventions
 

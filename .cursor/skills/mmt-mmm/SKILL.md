@@ -20,27 +20,19 @@ description: >-
 - Never stage, commit, push, or paste `Secret/` contents into PRs, cards, or chat logs.
 - Treat sprint JSON and credentials under `Secret/` as machine-local only.
 
-## Agent skills in this repo
+## Agent skills
 
-Project skills live under `.cursor/skills/<name>/SKILL.md` (Cursor discovers them automatically).
+Use `~/.cursor/skills/` when the skill already exists there. Do not copy it into this repo.
 
-Shared tooling vendored from Mario’s user skills (same set forex-research relies on via `~/.cursor/skills/`):
+User skills (global): `ponytail` (+ audit/debt/gain/help/review), `graphify`, `eli5-teacher`, `skill-author`, `text-review-documentation`, `ai-workstation-advisor`.
 
-- `ponytail` (+ audit/debt/gain/help/review)
-- `graphify`
-- `eli5-teacher`
-- `skill-author`
-- `text-review-documentation`
-
-Installed from GitHub:
-
-- `archify` — https://github.com/tt-a1i/archify (`npx skills add tt-a1i/archify --skill archify --agent cursor --copy --yes`, then moved into `.cursor/skills/`)
-
-Project-specific:
+Project skills under `.cursor/skills/<name>/SKILL.md`:
 
 - `mmt-mmm` (this file)
 - `secret-hygiene`
+- `archify` — https://github.com/tt-a1i/archify (not in `~/.cursor/skills/`)
 
 ## Rules companion
 
-Always-on agent rules live in `.cursor/rules/*.mdc` (simplicity, terse comms, Karpathy guidelines, graphify orientation, secret hygiene).
+Generic rules: `~/.cursor/rules/` (do not copy them here).
+Repo-only: `.cursor/rules/graphify.mdc`, `.cursor/rules/secret-hygiene.mdc`.

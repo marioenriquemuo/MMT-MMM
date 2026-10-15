@@ -103,8 +103,8 @@ Env name and Python pin: `mmt-mmm` / 3.12 (see `environment.yml`, `.python-versi
 
 ## Skills, rules, and PRs
 
-- Project Agent Skills: `.cursor/skills/*/SKILL.md` (see `AGENTS.md`)
-- Always-on Cursor rules: `.cursor/rules/*.mdc`
+- Shared skills: `~/.cursor/skills/`. Repo skills: `.cursor/skills/` (`mmt-mmm`, `secret-hygiene`, `archify`). See `AGENTS.md`.
+- Shared rules: `~/.cursor/rules/`. Repo rules: `graphify`, `secret-hygiene`.
 - Sprint 3 work lands on `sprint-3-exogenous-multitenant-mmt`; feature branches `cursor/<topic>-…` when useful
 - Push intentional commits to both `origin` and `github`
 - Never commit `Secret/`, credentials, or local conda env directories

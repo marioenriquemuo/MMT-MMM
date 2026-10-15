@@ -16,4 +16,4 @@ Only use Read/Grep/Glob directly when:
 
 After modifying code files, run `graphify update .` to keep the graph current (AST-only, no API cost).
 
-See project skill `.cursor/skills/graphify/SKILL.md`.
+See the user skill `~/.cursor/skills/graphify/SKILL.md`.
