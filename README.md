@@ -207,9 +207,9 @@ python scripts/02_model_spike.py --mode smoke
 
 # Fuller DoD (CPU; can take a long time): R-hat < 1.05 gate + artifacts
 python scripts/02_model_spike.py --mode full
-# → reports/metrics.json  (includes recovery_spearman + dod.directional_recovery; not a hard fail)
-# → reports/figures/posterior_predictive.png
-# → reports/parameter_recovery.md
+# → data/clients/pathc/models/metrics.json  (includes recovery_spearman + dod.directional_recovery; not a hard fail)
+# → data/clients/pathc/models/posterior_predictive.png
+# → data/clients/pathc/models/parameter_recovery.md
 ```
 
 Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions`, spend=`spend`). Weekly KPI is **sum of daily units** (flow aggregation). Override MCMC sizes with `--n-chains` / `--n-adapt` / `--n-burnin` / `--n-keep`. Daily grain: `--freq D` (much slower).
@@ -219,7 +219,7 @@ Adapter: `src/models/meridian_data.py` (KPI=`baseline_sales`, media=`impressions
 ## STORY-301 / budget allocator
 
 Constrained budget optimizer on offline response curves (`scipy.optimize` SLSQP).
-Reads Meridian `reports/metrics.json` `response_curves.means` (or a synthetic fixture).
+Reads Meridian `data/clients/pathc/models/metrics.json` `response_curves.means` (or a synthetic fixture).
 **Caveat:** allocator trusts those curves even though Meridian channel-rank recovery vs Path-C is still open ([`docs/learnings/story-201-meridian.md`](docs/learnings/story-201-meridian.md)) — do not treat allocations as Path-C ground truth.
 
 On failure (`solver.success=false` — infeasible bounds/target or post-solve check), `channels` is an empty object `{}` so callers do not read a partial plan.
@@ -239,7 +239,7 @@ python scripts/03_allocate_budget.py \
 
 # Meridian metrics → reports/allocation.json
 python scripts/03_allocate_budget.py \
-  --curves reports/metrics.json \
+  --curves data/clients/pathc/models/metrics.json \
   --budget 100000 --min-spend 0 \
   --out reports/allocation.json
 
@@ -286,7 +286,7 @@ Modules: `src/report/facts.py`, `src/report/schema.py`, `src/report/brief.py`. F
 
 Local dashboard. The total budget and each partner’s min % and max % (0–100) have a slider and a number box on the same value. A partner’s min cannot pass its max, and the minimum percents cannot add up past 100 (a change that would pass 100 keeps only the room left). Each max stays at most 100; the maxes may sum past 100. Those percents are spend bounds (`min_spend = percent / 100 × budget`). `optimize_budget` chooses the investment. The charts compare the equal-room baseline with that recommendation. If the bounds are infeasible, the page shows the allocator error and does not call Claude. **Update insights** is the only control that calls Claude (`render_live` on the current fact pack). Before that click, commentary is the offline brief. Changing a slider or number clears the cached live brief.
 
-The sidebar curve file defaults to `reports/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. The budget slider range comes from that file’s spend knots.
+The sidebar curve file defaults to `data/clients/pathc/models/metrics.json` when that file exists, otherwise `tests/fixtures/synthetic_response_curves.json`. The budget slider range comes from that file’s spend knots.
 
 **Caveat:** numbers are incremental KPI, not revenue dollars. Meridian channel rank vs Path-C is still an open issue — do not treat the dashboard as Path-C ground truth.
 

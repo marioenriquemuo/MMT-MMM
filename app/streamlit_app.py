@@ -190,7 +190,7 @@ def main() -> None:
     except TenantError as exc:
         st.error(str(exc))
         return
-    metrics = client["roots"]["reports"] / "metrics.json"
+    metrics = client["roots"]["models"] / "metrics.json"
     fallback = REPO_ROOT / "tests" / "fixtures" / "synthetic_response_curves.json"
     curves_path = st.sidebar.text_input(
         "Curve file",

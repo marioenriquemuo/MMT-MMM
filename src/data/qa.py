@@ -20,7 +20,7 @@ import pandas as pd
 
 from src.data.etl import SpendPanelSchema
 from src.data.generator import CHANNELS
-from src.data.tenants import load_client
+from src.data.tenants import load_client, resolve_client_path
 
 # --- Constants (locked v1 thresholds) ---
 
@@ -361,5 +361,6 @@ if __name__ == "__main__":
     parser.add_argument("--client_id", default="pathc")
     cli = parser.parse_args()
     processed = load_client(cli.client_id)["roots"]["processed"]
-    panel = processed / "clean_spend.parquet"
-    raise SystemExit(main(panel, panel, processed / "qa_repair_log.csv"))
+    panel = resolve_client_path(cli.client_id, processed / "clean_spend.parquet")
+    repair_log = resolve_client_path(cli.client_id, processed / "qa_repair_log.csv")
+    raise SystemExit(main(panel, panel, repair_log))

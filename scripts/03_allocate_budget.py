@@ -9,7 +9,7 @@ Examples::
         --budget 60 --min-spend 5 --max-spend 30
 
     python scripts/03_allocate_budget.py \\
-        --curves reports/metrics.json \\
+        --curves data/clients/pathc/models/metrics.json \\
         --target-kpi 1000 --min-spend 0 --max-spend 50000 \\
         --out reports/allocation.json
 """
@@ -67,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--curves",
         type=Path,
         default=None,
-        help="Response-curve JSON (default: this client's reports/metrics.json)",
+        help="Response-curve JSON (default: this client's models/metrics.json)",
     )
     mode = p.add_mutually_exclusive_group(required=True)
     mode.add_argument(
@@ -144,12 +144,12 @@ def run_allocate(
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    reports = load_client(args.client_id)["roots"]["reports"]
+    client = load_client(args.client_id)
     args.curves = resolve_client_path(
-        args.client_id, args.curves or reports / "metrics.json"
+        args.client_id, args.curves or client["roots"]["models"] / "metrics.json"
     )
     args.out = resolve_client_path(
-        args.client_id, args.out or reports / "allocation.json"
+        args.client_id, args.out or client["roots"]["reports"] / "allocation.json"
     )
     min_spend = _parse_spend_arg(args.min_spend)
     max_spend = _parse_spend_arg(args.max_spend)

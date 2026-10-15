@@ -133,13 +133,14 @@ def impute_panel(df: pd.DataFrame) -> pd.DataFrame:
 def run_etl(
     raw_path: str | Path = DEFAULT_RAW_PATH,
     out_path: str | Path = DEFAULT_OUT_PATH,
+    channels: tuple[str, ...] = CHANNELS,
 ) -> pd.DataFrame:
     """Load → align → impute → validate → write Parquet; return the clean frame."""
     raw_path = Path(raw_path)
     out_path = Path(out_path)
 
     df = load_raw(raw_path)
-    df = align_date_channel_grid(df)
+    df = align_date_channel_grid(df, channels)
     df = impute_panel(df)
     df = SpendPanelSchema.validate(df)
 
@@ -158,24 +159,23 @@ def main(argv: list[str] | None = None) -> None:
     processed = client["roots"]["processed"]
     raw_csv = resolve_client_path(args.client_id, raw_root / "synthetic_ad_spend.csv")
     out_path = resolve_client_path(args.client_id, processed / "clean_spend.parquet")
-    df = run_etl(raw_csv, out_path)
+    df = run_etl(raw_csv, out_path, channels=tuple(client["channels"]))
     print(
         f"Wrote {out_path} "
         f"({len(df)} rows, {df['date'].nunique()} days × {df['channel'].nunique()} channels)"
     )
     controls_dir = raw_root / "controls"
-    organic = controls_dir / "organic_seo_clicks.csv"
+    organic = resolve_client_path(
+        args.client_id, controls_dir / "organic_seo_clicks.csv"
+    )
     if not organic.is_file():
         return
-    controls = build_controls(
-        df,
-        organic,
-        controls_dir / "brand_search_volume.csv",
-        controls_dir / "crm_email_volume.csv",
-        controls_dir / "holidays.csv",
-        controls_dir / "price_drops.csv",
-        controls_dir / "stockouts.csv",
-    )
+    brand = resolve_client_path(args.client_id, controls_dir / "brand_search_volume.csv")
+    crm = resolve_client_path(args.client_id, controls_dir / "crm_email_volume.csv")
+    holidays = resolve_client_path(args.client_id, controls_dir / "holidays.csv")
+    price_drops = resolve_client_path(args.client_id, controls_dir / "price_drops.csv")
+    stockouts = resolve_client_path(args.client_id, controls_dir / "stockouts.csv")
+    controls = build_controls(df, organic, brand, crm, holidays, price_drops, stockouts)
     controls_path = resolve_client_path(
         args.client_id, processed / "exogenous_controls.parquet"
     )

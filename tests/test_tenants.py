@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
+from src.data.etl import run_etl
 from src.data.tenants import (
     REPO_ROOT,
     TenantError,
@@ -85,3 +88,22 @@ def test_list_processed_does_not_return_other_client():
         assert all(marker.resolve() != path for path in pathc_files)
     finally:
         marker.unlink(missing_ok=True)
+
+
+def test_symlink_into_other_client_raises():
+    target = load_client("pathc")["roots"]["raw"] / "synthetic_ad_spend.csv"
+    scratch = load_client("wellness")["roots"]["raw"] / "scratch-link-to-pathc.csv"
+    scratch.symlink_to(target)
+    try:
+        with pytest.raises(TenantError):
+            resolve_client_path("wellness", scratch)
+    finally:
+        scratch.unlink(missing_ok=True)
+
+
+def test_wellness_etl_grid_keeps_client_channels(tmp_path: Path):
+    raw = load_client("wellness")["roots"]["raw"] / "synthetic_ad_spend.csv"
+    out = tmp_path / "clean_spend.parquet"
+    df = run_etl(raw, out, channels=tuple(load_client("wellness")["channels"]))
+    assert set(df["channel"]) == {"meta", "google"}
+    assert out.is_file()

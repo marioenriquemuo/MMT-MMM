@@ -416,9 +416,9 @@ def main() -> int:
         args.parquet or client["roots"]["processed"] / "clean_spend.parquet",
     )
     models = client["roots"]["models"]
-    metrics_path = models / "metrics.json"
-    ppc_path = models / "posterior_predictive.png"
-    recovery_path = models / "parameter_recovery.md"
+    metrics_path = resolve_client_path(args.client_id, models / "metrics.json")
+    ppc_path = resolve_client_path(args.client_id, models / "posterior_predictive.png")
+    recovery_path = resolve_client_path(args.client_id, models / "parameter_recovery.md")
     ground_truth = resolve_client_path(
         args.client_id,
         client["roots"]["raw"] / "ground_truth.json",
