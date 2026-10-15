@@ -1,0 +1,12 @@
+pathc:
+  currency: USD
+  channels: [meta, google, tiktok, tv]
+  regions: [national]
+  raw: data/raw
+  processed: data/processed
+  models: data/clients/pathc/models
+  reports: reports
+wellness:
+  currency: USD
+  channels: [meta, google]
+  regions: [national]

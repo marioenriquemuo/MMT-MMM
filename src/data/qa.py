@@ -12,6 +12,7 @@ Pipeline: load → repair → hard-fail if unrepaired → Pandera validate → o
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -19,6 +20,7 @@ import pandas as pd
 
 from src.data.etl import SpendPanelSchema
 from src.data.generator import CHANNELS
+from src.data.tenants import load_client
 
 # --- Constants (locked v1 thresholds) ---
 
@@ -355,4 +357,9 @@ def main(
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description="STORY-104 media QA for one client")
+    parser.add_argument("--client_id", default="pathc")
+    cli = parser.parse_args()
+    processed = load_client(cli.client_id)["roots"]["processed"]
+    panel = processed / "clean_spend.parquet"
+    raise SystemExit(main(panel, panel, processed / "qa_repair_log.csv"))

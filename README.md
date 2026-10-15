@@ -8,7 +8,8 @@ The data is synthetic Path-C. Figures are incremental KPI, not currency and not 
 
 ```mermaid
 flowchart LR
-  panel[Path-C panel] --> etl[ETL]
+  panel[Path-C panel] --> wall[Client wall]
+  wall --> etl[ETL]
   etl --> spend[Spend panel]
   etl --> controls[Date-level controls]
   spend --> qa[Media QA]
@@ -21,7 +22,7 @@ flowchart LR
   facts --> dash[Streamlit dashboard]
 ```
 
-Controls are not in the Meridian fit yet. Full diagram: [`.archify/architecture-mmt-project/architecture-mmt-project.html`](.archify/architecture-mmt-project/architecture-mmt-project.html).
+Controls are not in the Meridian fit yet. Default client is `pathc`. Industry separation is this filesystem wall, not a second model. Full diagram: [`.archify/architecture-mmt-project/architecture-mmt-project.html`](.archify/architecture-mmt-project/architecture-mmt-project.html).
 
 ## 5-minute quickstart
 
@@ -30,7 +31,7 @@ cd "/home/mario/dev/MMT&MMM"
 conda env create -f environment.yml
 conda activate mmt-mmm
 python -m pytest tests/ -q
-streamlit run app/streamlit_app.py
+streamlit run app/streamlit_app.py -- --client_id pathc
 ```
 
 **[Test the tool (no statistics background)](docs/how-to-test.md)**
@@ -294,7 +295,7 @@ Key: `ANTHROPIC_API_KEY`, else one line in gitignored `Secret/anthropic_api_key`
 ```bash
 conda activate mmt-mmm
 cd "/home/mario/dev/MMT&MMM"
-streamlit run app/streamlit_app.py
+streamlit run app/streamlit_app.py -- --client_id pathc
 
 python -m pytest tests/test_dashboard_view.py -q
 ```
@@ -316,6 +317,16 @@ conda activate mmt-mmm
 python -m src.data.etl
 # → data/processed/clean_spend.parquet
 # → data/processed/exogenous_controls.parquet
+```
+
+## STORY-502 / client wall
+
+Default client is `pathc` (`config/clients.yaml`). No `--client_id` still reads and writes today's Path-C files. `pathc` keeps `data/raw`, `data/processed`, and `reports`; models go to `data/clients/pathc/models`. Client `wellness` uses only `data/clients/wellness/` (`raw`, `processed`, `models`, `reports`). A few-row fixture lives in that raw tree. Regions are labels. This wall is the industry separation, not a second model.
+
+```bash
+python -m src.data.etl --client_id pathc
+python -m src.data.qa --client_id pathc
+streamlit run app/streamlit_app.py -- --client_id pathc
 ```
 
 ## Stack direction

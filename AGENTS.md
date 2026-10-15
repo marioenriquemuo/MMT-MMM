@@ -36,6 +36,7 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `src/data/generator.py` | STORY-101 Path-C synthetic multi-channel DGP |
 | `src/data/etl.py` | STORY-103 spend panel; STORY-501 `main` also writes controls |
 | `src/data/controls.py` | STORY-501 date-level exogenous controls (CSV or frames) |
+| `src/data/tenants.py` | STORY-502 client filesystem wall (`--client_id`, default `pathc`) |
 | `src/data/qa.py` | STORY-104 media detect / repair / hard-fail gate |
 | `src/models/transformations.py` | STORY-102 geometric / Weibull adstock + Hill saturation |
 | `src/models/meridian_data.py` | STORY-201 clean parquet → Meridian national `InputData` |
@@ -54,7 +55,9 @@ Not a trading lab. Do not import forex-research lab protocol, DSR gates, or Back
 | `scripts/plot_story_302_concepts.py` | STORY-302 Plotly teaching figures (shift, saturation, lift) |
 | `scripts/04_csuite_brief.py` | STORY-302 brief → `reports/csuite_brief.json` (`--offline` or live) |
 | `tests/` | Generator, transforms, ETL, controls, QA, Meridian, curves, allocator, `<1s` perf |
-| `data/raw/` | Committed CSV + ground truth + `DATA_CARD.md` + `controls/` |
+| `config/clients.yaml` | `pathc` and `wellness`: currency, channels, regions |
+| `data/raw/` | Path-C corpus: CSV + ground truth + `DATA_CARD.md` + `controls/` |
+| `data/clients/` | `pathc/models`; `wellness/{raw,processed,models,reports}` |
 | `data/processed/` | `clean_spend.parquet`, `exogenous_controls.parquet` (+ optional `qa_repair_log.csv`) |
 | `reports/` | `metrics.json`, `allocation.json`, `csuite_brief.json` |
 | `reports/figures/` | Plotly HTML + Meridian PPC + `story_301_*.html` + `story_302_*.html` |
@@ -78,6 +81,7 @@ Sprint 1 is complete on `main` (tag `sprint-1-milestone-1`); branch `sprint-1-co
 - **STORY-103 done** — Pandera schema; date×channel align; zero-fill media / ffill KPI; `clean_spend.parquet`
 - **STORY-104 done** — media QA detect/repair + audit; overwrite parquet; hard-fail if unrepaired
 - **STORY-501 done (feature tip)** — `python -m src.data.etl` writes `clean_spend.parquet` (date × channel) and `exogenous_controls.parquet` (one row per date: organic, brand search, CRM, holiday, quincena, price drop, stockout). Do not sum controls across channels. `baseline_sales` stays on the spend panel. Quincena is day 15 or the last calendar day of the month. Brand search can be a mediator; inventory can be a result of demand. CSV or in-memory frames, not a live API. Controls are not in the Meridian fit. `GAP-201-RANK` stays open. New open items: `GAP-501-API`, `GAP-501-MODEL`.
+- **STORY-502 done (feature tip)** — Default client `pathc`. Four directories per client: raw, processed, models, reports. `pathc` keeps `data/raw`, `data/processed`, and `reports` (`models` at `data/clients/pathc/models`). `wellness` uses only `data/clients/wellness/`. `--client_id` defaults to `pathc`. Industry separation is this filesystem wall, not a second model. Regions are labels.
 - **STORY-201 spike done** — Meridian national weekly (`google-meridian`, adapter, `scripts/02_model_spike.py`, DoD artifacts under `reports/`); learnings in `docs/learnings/story-201-meridian.md` (**open:** rank recovery vs Path-C, Spearman ≈ −0.6)
 - **STORY-301 done (feature tip)** — offline response curves → SLSQP allocator (`src/optimize/`, `scripts/03_allocate_budget.py`); teaching figures under `reports/figures/story_301_*.html`; on solver failure `channels` is `{}` (no partial plan). **Caveat:** allocations follow Meridian/fixture curves, not Path-C ground truth.
 - **STORY-302 done (feature tip, step 0–4)** — teaching figures `scripts/plot_story_302_concepts.py` (`reports/figures/story_302_*.html`); fact pack, schema, and brief in `src/report/`; CLI `scripts/04_csuite_brief.py` (`--offline` or live, model `claude-sonnet-4-5`). Structured fields stay exact; headline and bullets may round a fact (lift 0.12). Key: `ANTHROPIC_API_KEY` or gitignored `Secret/anthropic_api_key` (never commit). **Caveat:** incremental KPI, not revenue; Meridian ≠ Path-C. Not merged.
@@ -123,7 +127,7 @@ python -m src.data.etl   # clean_spend.parquet and exogenous_controls.parquet
 python -m src.data.qa
 # Fuller Meridian spike (slow on CPU): python scripts/02_model_spike.py --mode full
 # Budget allocate (synthetic fixture): python scripts/03_allocate_budget.py --curves tests/fixtures/synthetic_response_curves.json --budget 60 --min-spend 5 --max-spend 30
-# Dashboard: streamlit run app/streamlit_app.py
+# Dashboard: streamlit run app/streamlit_app.py -- --client_id pathc
 # Docker (dashboard + allocator; first build is heavy). Full Meridian MCMC stays conda/CPU:
 # docker build -t mmt-mmm .
 ```

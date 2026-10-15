@@ -9,9 +9,8 @@ Examples::
     python scripts/02_model_spike.py --mode smoke --fail-on-rhat
     python scripts/02_model_spike.py --mode full
 
-Fuller mode writes ``reports/metrics.json``,
-``reports/figures/posterior_predictive.png``, and
-``reports/parameter_recovery.md``. Exits non-zero if max R-hat on core
+Fuller mode writes metrics, the posterior predictive plot, and the
+parameter-recovery note under that client's ``models/``. Exits non-zero if max R-hat on core
 params ≥ 1.05. Smoke mode prints ``SMOKE_RHAT_WARN`` when R-hat is high but
 still exits 0 unless ``--fail-on-rhat``. Parameter-recovery Spearman is
 recorded in metrics / DoD flags only — never a hard fail for this spike.
@@ -34,13 +33,9 @@ import pandas as pd
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.models.meridian_data import DEFAULT_PARQUET, load_meridian_input  # noqa: E402
+from src.data.tenants import load_client, resolve_client_path  # noqa: E402
+from src.models.meridian_data import load_meridian_input  # noqa: E402
 
-REPORTS = REPO_ROOT / "reports"
-FIGURES = REPORTS / "figures"
-METRICS_PATH = REPORTS / "metrics.json"
-PPC_PATH = FIGURES / "posterior_predictive.png"
-RECOVERY_PATH = REPORTS / "parameter_recovery.md"
 GROUND_TRUTH = REPO_ROOT / "data" / "raw" / "ground_truth.json"
 
 
@@ -108,7 +103,13 @@ def _parse_args() -> argparse.Namespace:
         default="smoke",
         help="smoke = short chains; full = DoD MCMC + artifacts",
     )
-    p.add_argument("--parquet", type=Path, default=DEFAULT_PARQUET)
+    p.add_argument("--client_id", default="pathc")
+    p.add_argument(
+        "--parquet",
+        type=Path,
+        default=None,
+        help="Processed panel. Default: this client's clean_spend.parquet",
+    )
     p.add_argument(
         "--freq",
         choices=("W", "D"),
@@ -338,8 +339,11 @@ def recovery_rank_stats(
     }
 
 
-def _parameter_recovery(iroas: dict[str, float]) -> tuple[str, dict]:
-    truth = json.loads(GROUND_TRUTH.read_text()) if GROUND_TRUTH.is_file() else {}
+def _parameter_recovery(
+    iroas: dict[str, float],
+    ground_truth: Path = GROUND_TRUTH,
+) -> tuple[str, dict]:
+    truth = json.loads(ground_truth.read_text()) if ground_truth.is_file() else {}
     contrib = truth.get("sales_meta", {}).get("channel_contribution_means", {})
     beta = truth.get("media_beta", {})
     decay = truth.get("adstock_decay", {})
@@ -406,6 +410,20 @@ def _parameter_recovery(iroas: dict[str, float]) -> tuple[str, dict]:
 
 def main() -> int:
     args = _parse_args()
+    client = load_client(args.client_id)
+    parquet = resolve_client_path(
+        args.client_id,
+        args.parquet or client["roots"]["processed"] / "clean_spend.parquet",
+    )
+    models = client["roots"]["models"]
+    metrics_path = models / "metrics.json"
+    ppc_path = models / "posterior_predictive.png"
+    recovery_path = models / "parameter_recovery.md"
+    ground_truth = resolve_client_path(
+        args.client_id,
+        client["roots"]["raw"] / "ground_truth.json",
+    )
+    args.parquet = parquet
     cfg = _mcmc_cfg(args)
     print(f"mode={args.mode} freq={args.freq} parquet={args.parquet}")
     print(f"mcmc={cfg}")
@@ -453,18 +471,17 @@ def main() -> int:
         return 0
 
     # --- Fuller DoD artifacts ---
-    REPORTS.mkdir(parents=True, exist_ok=True)
-    FIGURES.mkdir(parents=True, exist_ok=True)
+    models.mkdir(parents=True, exist_ok=True)
 
     iroas = _roi_by_channel(mmm)
     print("iROAS (posterior mean):", iroas)
     response = _response_curve_summary(mmm)
     post_sum = _posterior_summaries(mmm)
-    _write_ppc(mmm, PPC_PATH)
+    _write_ppc(mmm, ppc_path)
 
-    recovery_md, recovery_stats = _parameter_recovery(iroas)
-    RECOVERY_PATH.write_text(recovery_md)
-    print(f"wrote {RECOVERY_PATH}")
+    recovery_md, recovery_stats = _parameter_recovery(iroas, ground_truth)
+    recovery_path.write_text(recovery_md)
+    print(f"wrote {recovery_path}")
 
     metrics = {
         "story": "STORY-201",
@@ -480,21 +497,21 @@ def main() -> int:
         "posterior_summaries": post_sum,
         "response_curves": response,
         "artifacts": {
-            "metrics": str(METRICS_PATH.relative_to(REPO_ROOT)),
-            "posterior_predictive": str(PPC_PATH.relative_to(REPO_ROOT)),
-            "parameter_recovery": str(RECOVERY_PATH.relative_to(REPO_ROOT)),
+            "metrics": str(metrics_path.relative_to(REPO_ROOT)),
+            "posterior_predictive": str(ppc_path.relative_to(REPO_ROOT)),
+            "parameter_recovery": str(recovery_path.relative_to(REPO_ROOT)),
         },
         "dod": {
             "rhat_lt_1_05": rhat_info["rhat_pass"],
             "metrics_json": True,
-            "ppc_png": PPC_PATH.is_file(),
-            "parameter_recovery": RECOVERY_PATH.is_file(),
+            "ppc_png": ppc_path.is_file(),
+            "parameter_recovery": recovery_path.is_file(),
             # Status only — mismatch must not be read as a silent green recovery.
             "directional_recovery": recovery_stats["directional_recovery"],
         },
     }
-    METRICS_PATH.write_text(json.dumps(_jsonable(metrics), indent=2) + "\n")
-    print(f"wrote {METRICS_PATH}")
+    metrics_path.write_text(json.dumps(_jsonable(metrics), indent=2) + "\n")
+    print(f"wrote {metrics_path}")
 
     if not rhat_info["rhat_pass"]:
         print(

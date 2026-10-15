@@ -35,7 +35,7 @@ MMT&MMM/
 ├── .env.example              # ANTHROPIC_API_KEY= (offline path needs no key)
 ├── LICENSE                   # MIT, Mario Muñoz, 2026
 ├── README.md                 # setup + STORY-101–401 how-to
-├── app/streamlit_app.py      # STORY-401 Streamlit layout (`streamlit run app/streamlit_app.py`)
+├── app/streamlit_app.py      # STORY-401 layout (`streamlit run app/streamlit_app.py -- --client_id pathc`)
 ├── notebooks/README.md       # points at scripts/ and reports/figures/; no .ipynb
 ├── CLAUDE.md                 # this file
 ├── AGENTS.md                 # agent entrypoint
@@ -47,6 +47,7 @@ MMT&MMM/
 │   ├── data/generator.py     # STORY-101 Path-C synthetic DGP
 │   ├── data/etl.py           # STORY-103 spend panel; STORY-501 main also writes controls
 │   ├── data/controls.py      # STORY-501 date-level exogenous controls
+│   ├── data/tenants.py       # STORY-502 client filesystem wall
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 │   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
@@ -66,7 +67,9 @@ MMT&MMM/
 ├── scripts/plot_story_302_concepts.py  # STORY-302 Plotly teaching figures
 ├── scripts/04_csuite_brief.py          # STORY-302 brief CLI (--offline or live)
 ├── tests/                    # + curves / allocator bounds tests
-├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD, controls/
+├── config/clients.yaml       # pathc + wellness (currency, channels, regions)
+├── data/raw/                 # pathc corpus: synthetic_ad_spend.csv, ground_truth.json, DATA_CARD, controls/
+├── data/clients/             # pathc/models; wellness raw/processed/models/reports
 ├── data/processed/           # clean_spend.parquet, exogenous_controls.parquet (+ optional qa_repair_log.csv)
 ├── reports/                  # metrics.json, allocation.json, csuite_brief.json
 ├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
@@ -117,7 +120,7 @@ Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-
 | Story | Status | Notes |
 | --- | --- | --- |
 | STORY-501 | Done (feature tip) | `python -m src.data.etl` writes `clean_spend.parquet` (date × channel) and `exogenous_controls.parquet` (one row per date). Quincena is day 15 or the last calendar day. CSV or in-memory frames, not a live API. Not in the Meridian fit. Open: `GAP-501-API`, `GAP-501-MODEL`. |
-| STORY-502 | Planned | Multi-tenant isolation (`data/clients/{client_id}/`, `config/clients.yaml`, `--client_id`) |
+| STORY-502 | Done (feature tip) | Default client `pathc` keeps today's raw/processed/reports. `wellness` is only `data/clients/wellness/`. Four dirs: raw, processed, models, reports. `--client_id` (default `pathc`). The wall is the separation, not a second model. |
 | STORY-503 | Planned | MMT geo-experiment prior calibration (`src/models/calibration.py`) |
 
 Stories sourced from local sprint backlog under `Secret/` (gitignored). Open gaps that may overlap: `GAP-201-RANK` (see `docs/learnings/open-gaps.md`).
@@ -144,7 +147,7 @@ python -m pytest tests/ -q
 python -m src.data.etl   # clean_spend.parquet and exogenous_controls.parquet
 python -m src.data.qa
 # Dashboard (sliders are local; Update insights calls Claude):
-streamlit run app/streamlit_app.py
+streamlit run app/streamlit_app.py -- --client_id pathc
 ```
 
 See `AGENTS.md` for agent golden rules and the skills/rules index.

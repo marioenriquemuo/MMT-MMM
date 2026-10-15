@@ -26,6 +26,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from src.data.tenants import load_client, resolve_client_path  # noqa: E402
 from src.report.brief import (  # noqa: E402
     DEFAULT_MODEL,
     MissingApiKey,
@@ -36,22 +37,17 @@ from src.report.brief import (  # noqa: E402
 )
 from src.report.facts import build_fact_pack  # noqa: E402
 
-# --- Paths ---
-
-DEFAULT_ALLOCATION = REPO_ROOT / "tests" / "fixtures" / "story_302_allocation.json"
-DEFAULT_OUT = REPO_ROOT / "reports" / "csuite_brief.json"
-
-
 # --- CLI ---
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="STORY-302 C-suite brief")
+    parser.add_argument("--client_id", default="pathc")
     parser.add_argument(
         "--allocation",
         type=Path,
-        default=DEFAULT_ALLOCATION,
-        help="Allocation JSON (default: tests/fixtures/story_302_allocation.json)",
+        default=None,
+        help="Allocation JSON (default: this client's reports/allocation.json)",
     )
     parser.add_argument(
         "--offline",
@@ -79,7 +75,11 @@ def _fail(exc: BaseException, secret: str | None) -> int:
 
 def main(argv: list[str] | None = None, *, client: Any = None) -> int:
     args = build_parser().parse_args(argv)
-    path = args.allocation
+    reports = load_client(args.client_id)["roots"]["reports"]
+    path = resolve_client_path(
+        args.client_id, args.allocation or reports / "allocation.json"
+    )
+    out_path = resolve_client_path(args.client_id, reports / "csuite_brief.json")
     if not path.is_file():
         print(f"allocation file not found: {path}", file=sys.stderr)
         return 1
@@ -108,12 +108,12 @@ def main(argv: list[str] | None = None, *, client: Any = None) -> int:
         return _fail(exc, secret)
 
     print(format_brief(brief), flush=True)
-    DEFAULT_OUT.parent.mkdir(parents=True, exist_ok=True)
-    DEFAULT_OUT.write_text(
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
         json.dumps(brief.model_dump(mode="json"), indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(f"Wrote {DEFAULT_OUT}", file=sys.stderr)
+    print(f"Wrote {out_path}", file=sys.stderr)
     return 0
 
 

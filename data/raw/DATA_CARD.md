@@ -71,6 +71,10 @@ The same command also writes `data/processed/exogenous_controls.parquet`. Contro
 
 `brand_search_volume` can be a mediator (media can cause brand search). `inventory_oos_flag` can be a result of demand.
 
+## STORY-502 client wall
+
+Default client is `pathc`. These Path-C files stay in `data/raw` and `data/processed`; reports stay in `reports`. Models for `pathc` are `data/clients/pathc/models`. Client `wellness` is only `data/clients/wellness/` with `raw`, `processed`, `models`, and `reports`. Industry separation is that filesystem wall, not a second model. `regions` in `config/clients.yaml` is a label.
+
 ## STORY-104 media QA (post-ETL)
 
 | Item | Value |

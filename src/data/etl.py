@@ -14,15 +14,14 @@ Pipeline: load → align → impute → Pandera validate → Parquet (``pyarrow`
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import pandas as pd
 import pandera.pandas as pa
 
-from src.data.controls import (
-    DEFAULT_OUT_PATH as CONTROLS_OUT_PATH,
-    write_aligned_controls,
-)
+from src.data.controls import build_controls, write_controls
+from src.data.tenants import load_client, resolve_client_path
 from src.data.generator import CHANNELS, COLUMNS
 
 # --- Paths ---
@@ -149,15 +148,39 @@ def run_etl(
     return df
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
     """CLI: write the clean spend panel, then the date-level controls parquet."""
-    df = run_etl()
+    parser = argparse.ArgumentParser(description="STORY-103/501 ETL for one client")
+    parser.add_argument("--client_id", default="pathc")
+    args = parser.parse_args(argv)
+    client = load_client(args.client_id)
+    raw_root = client["roots"]["raw"]
+    processed = client["roots"]["processed"]
+    raw_csv = resolve_client_path(args.client_id, raw_root / "synthetic_ad_spend.csv")
+    out_path = resolve_client_path(args.client_id, processed / "clean_spend.parquet")
+    df = run_etl(raw_csv, out_path)
     print(
-        f"Wrote {DEFAULT_OUT_PATH} "
+        f"Wrote {out_path} "
         f"({len(df)} rows, {df['date'].nunique()} days × {df['channel'].nunique()} channels)"
     )
-    controls = write_aligned_controls(df)
-    print(f"Wrote {CONTROLS_OUT_PATH} ({len(controls)} rows)")
+    controls_dir = raw_root / "controls"
+    organic = controls_dir / "organic_seo_clicks.csv"
+    if not organic.is_file():
+        return
+    controls = build_controls(
+        df,
+        organic,
+        controls_dir / "brand_search_volume.csv",
+        controls_dir / "crm_email_volume.csv",
+        controls_dir / "holidays.csv",
+        controls_dir / "price_drops.csv",
+        controls_dir / "stockouts.csv",
+    )
+    controls_path = resolve_client_path(
+        args.client_id, processed / "exogenous_controls.parquet"
+    )
+    write_controls(controls, controls_path)
+    print(f"Wrote {controls_path} ({len(controls)} rows)")
 
 
 if __name__ == "__main__":

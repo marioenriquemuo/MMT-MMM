@@ -25,11 +25,9 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
+from src.data.tenants import load_client, resolve_client_path  # noqa: E402
 from src.optimize.allocator import optimize_budget  # noqa: E402
 from src.optimize.curves import MetricsJsonCurveProvider  # noqa: E402
-
-DEFAULT_CURVES = REPO_ROOT / "tests" / "fixtures" / "synthetic_response_curves.json"
-DEFAULT_OUT = REPO_ROOT / "reports" / "allocation.json"
 
 
 # --- CLI parsing helpers ---
@@ -64,11 +62,12 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         description="STORY-301: allocate budget (maximize KPI) or hit a KPI target."
     )
+    p.add_argument("--client_id", default="pathc")
     p.add_argument(
         "--curves",
         type=Path,
-        default=DEFAULT_CURVES,
-        help=f"Response-curve JSON (default: {DEFAULT_CURVES.relative_to(REPO_ROOT)})",
+        default=None,
+        help="Response-curve JSON (default: this client's reports/metrics.json)",
     )
     mode = p.add_mutually_exclusive_group(required=True)
     mode.add_argument(
@@ -99,8 +98,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--out",
         type=Path,
-        default=DEFAULT_OUT,
-        help=f"Output allocation JSON (default: {DEFAULT_OUT.relative_to(REPO_ROOT)})",
+        default=None,
+        help="Output allocation JSON (default: this client's reports/allocation.json)",
     )
     return p
 
@@ -145,6 +144,13 @@ def run_allocate(
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    reports = load_client(args.client_id)["roots"]["reports"]
+    args.curves = resolve_client_path(
+        args.client_id, args.curves or reports / "metrics.json"
+    )
+    args.out = resolve_client_path(
+        args.client_id, args.out or reports / "allocation.json"
+    )
     min_spend = _parse_spend_arg(args.min_spend)
     max_spend = _parse_spend_arg(args.max_spend)
     if min_spend is None:

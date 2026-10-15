@@ -1,0 +1,5 @@
+date,channel,spend,impressions,clicks,baseline_sales
+2024-01-15,meta,10,1000,20,100
+2024-01-15,google,12,1100,22,100
+2024-01-16,meta,0,0,0,100
+2024-01-16,google,8,800,10,100

@@ -2,11 +2,13 @@
 
 Sliders and number boxes set the total budget and each partner's min and max
 percent. The optimizer chooses the spend. **Update insights** is the only
-control that calls Claude. Run with ``streamlit run app/streamlit_app.py``.
+control that calls Claude. Run with
+``streamlit run app/streamlit_app.py -- --client_id pathc``.
 """
 
 from __future__ import annotations
 
+import argparse
 import html
 import re
 import sys
@@ -26,10 +28,10 @@ from src.dashboard.view import (  # noqa: E402
     build_dashboard,
     clamp_max_percent,
     clamp_min_percent,
-    default_curves_path,
     format_units,
     slider_bounds,
 )
+from src.data.tenants import TenantError, load_client, resolve_client_path  # noqa: E402
 from src.report.brief import format_brief, load_api_key, render_live  # noqa: E402
 
 _SECRET_RE = re.compile(r"sk-[A-Za-z0-9_-]{8,}")
@@ -168,6 +170,13 @@ def _update_insights(fact_pack: dict) -> None:
         st.session_state["live_error"] = _redact(f"{type(exc).__name__}: {exc}", secret)
 
 
+def _client_id() -> str:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("--client_id", default="pathc")
+    args, _unknown = parser.parse_known_args()
+    return args.client_id
+
+
 def main() -> None:
     st.set_page_config(page_title="Budget dashboard", layout="wide")
     st.markdown(_PURE_CSS, unsafe_allow_html=True)
@@ -176,11 +185,22 @@ def main() -> None:
         "Update insights calls Claude."
     )
 
+    try:
+        client = load_client(_client_id())
+    except TenantError as exc:
+        st.error(str(exc))
+        return
+    metrics = client["roots"]["reports"] / "metrics.json"
+    fallback = REPO_ROOT / "tests" / "fixtures" / "synthetic_response_curves.json"
     curves_path = st.sidebar.text_input(
         "Curve file",
-        value=str(default_curves_path(REPO_ROOT)),
+        value=str(metrics if metrics.is_file() else fallback),
     )
-    path = Path(curves_path)
+    try:
+        path = resolve_client_path(client["client_id"], curves_path)
+    except TenantError as exc:
+        st.error(str(exc))
+        return
     if not path.is_file():
         st.error(f"Curve file not found: {path}")
         return

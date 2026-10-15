@@ -21,7 +21,7 @@ Regenerated after STORY-501 (`graphify update .`). Re-run `graphify update .` af
 
 ## archify
 
-**Current:** [`.archify/architecture-mmt-project/architecture-mmt-project.html`](../.archify/architecture-mmt-project/architecture-mmt-project.html). Path-C panel → ETL (`clean_spend.parquet` and date-level `exogenous_controls.parquet`) → media QA → Meridian national weekly fit on the spend panel only → response curves → SLSQP allocator → fact pack and number lock → offline or Claude brief, and the Streamlit dashboard. Controls are not in the Meridian fit.
+**Current:** [`.archify/architecture-mmt-project/architecture-mmt-project.html`](../.archify/architecture-mmt-project/architecture-mmt-project.html). Client partitions (default `pathc`) → ETL (`clean_spend.parquet` and date-level `exogenous_controls.parquet`) → media QA → Meridian national weekly fit on the spend panel only → response curves → SLSQP allocator → fact pack and number lock → offline or Claude brief, and the Streamlit dashboard. Controls are not in the Meridian fit. The client wall is the industry separation, not a second model.
 
 | Artifact | Path |
 | --- | --- |
