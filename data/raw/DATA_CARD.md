@@ -63,6 +63,14 @@ Those are planned later; this file stays channel-level only.
 
 **Fill rules (locked):** after date×channel alignment, missing `spend` / `impressions` / `clicks` → **0** (pause / absent from export). Missing `baseline_sales` → **forward-fill** site-wide daily KPI. Raw `synthetic_ad_spend.csv` stays clean/locked.
 
+## STORY-501 exogenous controls (date grain)
+
+The same command also writes `data/processed/exogenous_controls.parquet`. Controls are **date-level** (one row per date, not per channel). A missing auxiliary day is **zero-filled**. `quincena_flag` is 1 on day 15 or the last calendar day of the month. `holiday_flag`, `price_drop_flag`, and `inventory_oos_flag` are one flag each from the CSVs under `data/raw/controls/`.
+
+`baseline_sales` stays on the spend panel. Do not sum control columns across channels.
+
+`brand_search_volume` can be a mediator (media can cause brand search). `inventory_oos_flag` can be a result of demand.
+
 ## STORY-104 media QA (post-ETL)
 
 | Item | Value |

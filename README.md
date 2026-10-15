@@ -298,6 +298,21 @@ The dashboard is not a static HTML file (`streamlit run app/streamlit_app.py` se
 
 Math: `src/dashboard/view.py` (pytest, no browser). `app/streamlit_app.py` is layout only.
 
+## STORY-501 / exogenous controls
+
+`python -m src.data.etl` writes `data/processed/clean_spend.parquet` (date × channel) and `data/processed/exogenous_controls.parquet` (one row per date). `baseline_sales` stays on the spend panel. Do not sum control columns across channels.
+
+Columns on the controls matrix: `organic_seo_clicks`, `brand_search_volume`, `crm_email_volume`, `holiday_flag`, `quincena_flag`, `price_drop_flag`, `inventory_oos_flag`.
+
+`brand_search_volume` can be a mediator (media can cause brand search). `inventory_oos_flag` can be a result of demand. These columns are aligned for later conditioning. They are not in the Meridian fit. Priors, holdout, and `GAP-201-RANK` stay open ([`docs/learnings/open-gaps.md`](docs/learnings/open-gaps.md)). Grain: [`data/raw/DATA_CARD.md`](data/raw/DATA_CARD.md).
+
+```bash
+conda activate mmt-mmm
+python -m src.data.etl
+# → data/processed/clean_spend.parquet
+# → data/processed/exogenous_controls.parquet
+```
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`, the supported install). Full Meridian MCMC is a conda/CPU job. The Docker image is for the dashboard and allocator, and the first build is heavy.
