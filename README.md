@@ -8,16 +8,20 @@ The data is synthetic Path-C. Figures are incremental KPI, not currency and not 
 
 ```mermaid
 flowchart LR
-  panel[Synthetic panel] --> etl[ETL and QA]
-  etl --> mmm[Meridian MMM]
+  panel[Path-C panel] --> etl[ETL]
+  etl --> spend[Spend panel]
+  etl --> controls[Date-level controls]
+  spend --> qa[Media QA]
+  qa --> mmm[Meridian MMM]
+  controls -.->|not in the fit| mmm
   mmm --> curves[Response curves]
   curves --> alloc[SLSQP allocator]
   alloc --> facts[Fact pack and number lock]
   facts --> brief[Offline or Claude brief]
-  facts --> dash[Streamlit executive dashboard]
+  facts --> dash[Streamlit dashboard]
 ```
 
-Full diagram: [`.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html`](.archify/architecture-mmt-mvp-20261013-164444/mmt-mvp.html).
+Controls are not in the Meridian fit yet. Full diagram: [`.archify/architecture-mmt-project/architecture-mmt-project.html`](.archify/architecture-mmt-project/architecture-mmt-project.html).
 
 ## 5-minute quickstart
 
@@ -161,6 +165,7 @@ conda env update -f environment.yml --prune   # pulls pandera + pyarrow
 
 python -m src.data.etl
 # → data/processed/clean_spend.parquet
+# → data/processed/exogenous_controls.parquet (STORY-501, one row per date)
 
 python -m pytest tests/test_etl.py -q
 ```

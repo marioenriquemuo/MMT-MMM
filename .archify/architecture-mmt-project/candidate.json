@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MMT project",
+    "locale": "en",
+    "output": ".archify/architecture-mmt-project/architecture-mmt-project.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
+      "revision": "0753a7e2bbfc215581bc147e22222f340ca42947",
+      "link_mode": "local-only"
+    }
+  },
+  "components": [
+    {
+      "id": "pathc",
+      "type": "database",
+      "label": "Path-C panel",
+      "sublabel": "synthetic channel-day CSV",
+      "pos": [20, 40],
+      "size": [160, 70],
+      "sources": [
+        { "path": "src/data/generator.py", "line": 239, "end_line": 242, "label": "generate dates" }
+      ]
+    },
+    {
+      "id": "etl",
+      "type": "backend",
+      "label": "ETL",
+      "sublabel": "python -m src.data.etl",
+      "pos": [300, 40],
+      "size": [180, 70],
+      "sources": [
+        { "path": "src/data/etl.py", "line": 130, "end_line": 145, "label": "run_etl spend panel" },
+        { "path": "src/data/etl.py", "line": 152, "end_line": 160, "label": "main writes controls" }
+      ]
+    },
+    {
+      "id": "controls",
+      "type": "database",
+      "label": "Exogenous controls",
+      "sublabel": "one row per date",
+      "pos": [300, 200],
+      "size": [180, 78],
+      "sources": [
+        { "path": "src/data/controls.py", "line": 125, "end_line": 156, "label": "build_controls" },
+        { "path": "src/data/controls.py", "line": 173, "end_line": 180, "label": "write_aligned_controls" }
+      ]
+    },
+    {
+      "id": "qa",
+      "type": "backend",
+      "label": "Media QA",
+      "sublabel": "hard-fail gate",
+      "pos": [600, 40],
+      "size": [160, 70],
+      "sources": [
+        { "path": "src/data/qa.py", "line": 309, "end_line": 329, "label": "run_qa overwrite" }
+      ]
+    },
+    {
+      "id": "meridian",
+      "type": "backend",
+      "label": "Meridian",
+      "sublabel": "spend panel only",
+      "tag": "controls not in the fit",
+      "pos": [880, 40],
+      "size": [200, 70],
+      "sources": [
+        { "path": "src/models/meridian_data.py", "line": 1, "end_line": 22, "label": "clean_spend only" },
+        { "path": "src/models/meridian_data.py", "line": 124, "end_line": 132, "label": "weekly InputData" }
+      ]
+    },
+    {
+      "id": "curves",
+      "type": "backend",
+      "label": "Response curves",
+      "sublabel": "metrics or fixture",
+      "pos": [20, 370],
+      "size": [160, 70],
+      "sources": [
+        { "path": "src/optimize/curves.py", "line": 113, "end_line": 120, "label": "curve provider" }
+      ]
+    },
+    {
+      "id": "allocator",
+      "type": "backend",
+      "label": "SLSQP allocator",
+      "sublabel": "bounds and budget",
+      "pos": [300, 370],
+      "size": [180, 70],
+      "sources": [
+        { "path": "src/optimize/allocator.py", "line": 30, "end_line": 40, "label": "optimize_budget" }
+      ]
+    },
+    {
+      "id": "facts",
+      "type": "backend",
+      "label": "Fact pack",
+      "sublabel": "number lock",
+      "pos": [600, 370],
+      "size": [180, 70],
+      "sources": [
+        { "path": "src/report/facts.py", "line": 30, "end_line": 40, "label": "build_fact_pack" },
+        { "path": "src/report/facts.py", "line": 97, "end_line": 106, "label": "numbers_match" },
+        { "path": "src/report/brief.py", "line": 102, "end_line": 104, "label": "lock before text" }
+      ]
+    },
+    {
+      "id": "brief",
+      "type": "backend",
+      "label": "C-suite brief",
+      "sublabel": "offline or Claude",
+      "pos": [880, 370],
+      "size": [200, 70],
+      "sources": [
+        { "path": "src/report/brief.py", "line": 64, "end_line": 70, "label": "render_offline" },
+        { "path": "src/report/brief.py", "line": 223, "end_line": 232, "label": "render_live" },
+        { "path": "scripts/04_csuite_brief.py", "line": 92, "end_line": 101, "label": "CLI chooses path" }
+      ]
+    },
+    {
+      "id": "dashboard",
+      "type": "frontend",
+      "label": "Streamlit dashboard",
+      "sublabel": "Update insights calls Claude",
+      "pos": [600, 520],
+      "size": [180, 78],
+      "sources": [
+        { "path": "src/dashboard/view.py", "line": 127, "end_line": 139, "label": "build_dashboard" },
+        { "path": "app/streamlit_app.py", "line": 258, "end_line": 258, "label": "local allocator" },
+        { "path": "app/streamlit_app.py", "line": 310, "end_line": 310, "label": "Update insights" }
+      ]
+    }
+  ],
+  "connections": [
+    { "id": "pathc-to-etl", "from": "pathc", "to": "etl", "label": "synthetic CSV", "variant": "emphasis" },
+    { "id": "etl-to-qa", "from": "etl", "to": "qa", "label": "spend panel" },
+    {
+      "id": "etl-to-controls",
+      "from": "etl",
+      "to": "controls",
+      "label": "date-level parquet",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    { "id": "qa-to-meridian", "from": "qa", "to": "meridian", "label": "media + KPI" },
+    {
+      "id": "meridian-to-curves",
+      "from": "meridian",
+      "to": "curves",
+      "label": "response curves",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [[980, 320], [100, 320]]
+    },
+    { "id": "curves-to-allocator", "from": "curves", "to": "allocator", "label": "curve knots" },
+    { "id": "allocator-to-facts", "from": "allocator", "to": "facts", "label": "allocation" },
+    { "id": "facts-to-brief", "from": "facts", "to": "brief", "label": "number lock" },
+    {
+      "id": "facts-to-dashboard",
+      "from": "facts",
+      "to": "dashboard",
+      "label": "same plan",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Date-level controls",
+      "items": [
+        "One row per date. Do not sum across channels.",
+        "Quincena is day 15 or the last calendar day.",
+        "CSV or in-memory frames, not a live API.",
+        "Brand search can be a mediator. Inventory can be a result of demand."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Not in the fit yet",
+      "items": [
+        "Meridian reads the post-QA spend panel only.",
+        "GAP-501-MODEL and GAP-501-API stay open.",
+        "GAP-201-RANK stays open."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "What the numbers are",
+      "items": [
+        "Incremental KPI, not revenue dollars.",
+        "baseline_sales stays on the spend panel."
+      ]
+    }
+  ]
+}

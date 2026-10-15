@@ -86,10 +86,36 @@ Index: [`README.md`](README.md).
 
 ---
 
+## GAP-501-API
+
+| Field | Value |
+| --- | --- |
+| Story | STORY-501 |
+| Status | `open` |
+| Severity | Medium (ingestion scope) |
+| Description | Auxiliary controls load from CSV or in-memory frames. There is no live Search Console or CRM API. |
+| Evidence | `src/data/controls.py` `build_controls` (path or DataFrame). `data/raw/controls/`. README STORY-501. No network client in the ETL command. |
+| Done when | A story adds a real client without putting keys in git. |
+
+---
+
+## GAP-501-MODEL
+
+| Field | Value |
+| --- | --- |
+| Story | STORY-501 |
+| Status | `open` |
+| Severity | High (measurement use) |
+| Description | `exogenous_controls.parquet` is aligned to the spend-panel dates and is not passed into Meridian. |
+| Evidence | `src/data/etl.py` `main` writes the parquet. `src/models/meridian_data.py` reads `clean_spend.parquet` only. README STORY-501. |
+| Done when | A later fit conditions on an explicit, parsimonious subset and records priors plus a holdout. |
+
+---
+
 ## Closed / not listed
 
 - `GAP-402-RENAME` — closed 2026-10-14; GitHub is `marioenriquemuo/martech-mmm-ai-allocator` (public). Local `github` remote updated. Origin unchanged.
 - `GAP-402-VISIBILITY` — closed 2026-10-14; GitHub mirror is public (`"private": false` via public API). See entry above.
 - STORY-402 packaging paths (`app/streamlit_app.py`, `Dockerfile`, `LICENSE`, `requirements.txt`, `.env.example`, `docs/how-to-test.md`) — Bugbot PASS at `188e496`.
 - Secret hygiene — Bugbot scanned clean; not an open gap.
-- No other unfinished items were marked `open` in `docs/learnings/` beyond GAP-201-RANK’s deep dive.
+- STORY-501 left `GAP-201-RANK` open. New open items are `GAP-501-API` and `GAP-501-MODEL` only. Month-end quincena and the synthetic holiday list are decided.

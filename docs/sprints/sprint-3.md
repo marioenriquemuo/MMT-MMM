@@ -13,7 +13,7 @@
 
 Sprint 1–2 delivered a single-tenant measurement → allocation → explain path:
 
-1. **Path-C synthetic DGP** + shared adstock/saturation transforms → ETL/QA → `clean_spend.parquet`
+1. **Path-C synthetic DGP** + shared adstock/saturation transforms → ETL/QA → `clean_spend.parquet`, plus STORY-501 date-level `exogenous_controls.parquet` (not in the Meridian fit yet)
 2. **Meridian national weekly** MMM spike (`scripts/02_model_spike.py`) → response curves
 3. **SLSQP allocator** (`src/optimize/`) → `reports/allocation.json`
 4. **Fact pack + Claude brief** (`src/report/`, `scripts/04_csuite_brief.py`)
@@ -29,7 +29,7 @@ Sprint 3 hardens that stack for enterprise use: control for non-media confounder
 
 **Technical intent:** Extend the ingestion / alignment layer so non-media regressors land on the same time index as spend and conversions, then condition the measurement model on those controls.
 
-**Today:** Path-C + ETL/QA produce a media×date panel for one synthetic brand; Meridian spike is national weekly media + KPI. No first-class holiday/organic/inventory control matrices in the shipped pipeline.
+**Today:** `python -m src.data.etl` writes `clean_spend.parquet` (date × channel) and `exogenous_controls.parquet` (one row per date) from CSV or in-memory frames, not a live API. Quincena is day 15 or the last calendar day of the month. Do not sum controls across channels. `baseline_sales` stays on the spend panel. Brand search can be a mediator. Inventory can be a result of demand. Meridian still fits the post-QA spend panel only.
 
 **Architecture “done” (likely):** Aux inputs aligned without null holes; control columns available as regression conditioning for Meridian (or the agreed Bayesian stack); tests prove date alignment with spend/KPI. Detailed DoD lives with STORY-501 below.
 
@@ -59,8 +59,8 @@ Stories below are **not invented** — they come from the local Sprint 3 backlog
 
 ### STORY-501 — Exogenous Control Variables & Organic Traffic ETL Pipeline (5 pts)
 
-- Expand ETL (`src/data/etl.py`) for non-paid controls: organic SEO / brand search / CRM volume, holidays, LATAM pay cycles (quincenas), price drops, inventory stockouts.
-- **DoD (summary):** Aux CSV/API inputs processed; holiday/payday/OOS control vectors injected; unit tests prove alignment with spend/KPI time series (no null holes); clean exogenous matrices ready for regression conditioning.
+- Done on `cursor/story-501-exogenous-etl-702b`. ETL `main` writes the date-level control matrix (`organic_seo_clicks`, `brand_search_volume`, `crm_email_volume`, `holiday_flag`, `quincena_flag`, `price_drop_flag`, `inventory_oos_flag`). Tests cover alignment with the spend panel and no nulls.
+- Still open: `GAP-501-API` (no live Search Console or CRM API) and `GAP-501-MODEL` (controls are not passed into Meridian). `GAP-201-RANK` stays open.
 
 ### STORY-502 — Multi-Tenant Data & Model Isolation Directory Structure (5 pts)
 
@@ -82,6 +82,8 @@ From [`docs/learnings/open-gaps.md`](../learnings/open-gaps.md):
 | **GAP-402-LOOM** | `open` | Portfolio DoD; not required for Sprint 3 workstreams. |
 | **GAP-402-DOCKERIGNORE** | `open` | Optional housekeeping; not required for Sprint 3 workstreams. |
 | **GAP-COMM-KPI** | `open` | Standing communication caveat (incremental KPI ≠ revenue); keep visible in copy/UI. |
+| **GAP-501-API** | `open` | Controls load from CSV or frames. No live Search Console or CRM API. |
+| **GAP-501-MODEL** | `open` | `exogenous_controls.parquet` is aligned and not passed into Meridian. |
 | GAP-402-RENAME / GAP-402-VISIBILITY | `closed` | No Sprint 3 action. |
 
 ## Remotes

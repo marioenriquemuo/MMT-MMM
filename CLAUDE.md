@@ -45,7 +45,8 @@ MMT&MMM/
 ├── Secret/                   # local-only (gitignored)
 ├── src/
 │   ├── data/generator.py     # STORY-101 Path-C synthetic DGP
-│   ├── data/etl.py           # STORY-103 load/align/impute/Parquet
+│   ├── data/etl.py           # STORY-103 spend panel; STORY-501 main also writes controls
+│   ├── data/controls.py      # STORY-501 date-level exogenous controls
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 │   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
@@ -65,8 +66,8 @@ MMT&MMM/
 ├── scripts/plot_story_302_concepts.py  # STORY-302 Plotly teaching figures
 ├── scripts/04_csuite_brief.py          # STORY-302 brief CLI (--offline or live)
 ├── tests/                    # + curves / allocator bounds tests
-├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD
-├── data/processed/           # clean_spend.parquet (+ optional qa_repair_log.csv)
+├── data/raw/                 # synthetic_ad_spend.csv, ground_truth.json, DATA_CARD, controls/
+├── data/processed/           # clean_spend.parquet, exogenous_controls.parquet (+ optional qa_repair_log.csv)
 ├── reports/                  # metrics.json, allocation.json, csuite_brief.json
 ├── reports/figures/          # Plotly HTML + Meridian PPC + story_301_*.html + story_302_*.html
 ├── docs/how-to-test.md       # dashboard click-through, no statistics background
@@ -111,10 +112,11 @@ Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-
 | Working branch | `sprint-3-exogenous-multitenant-mmt` |
 | Goal | Upgrade the data ingestion pipeline to handle organic traffic, holidays, quincenas, and inventory gaps, establish multi-tenant client isolation, and integrate MMT geo-experiment calibration anchors. |
 | Brief | [`docs/sprints/sprint-3.md`](docs/sprints/sprint-3.md) |
+| Architecture | [`.archify/architecture-mmt-project/architecture-mmt-project.html`](.archify/architecture-mmt-project/architecture-mmt-project.html) |
 
 | Story | Status | Notes |
 | --- | --- | --- |
-| STORY-501 | Planned | Exogenous controls + organic ETL (`src/data/etl.py`) |
+| STORY-501 | Done (feature tip) | `python -m src.data.etl` writes `clean_spend.parquet` (date × channel) and `exogenous_controls.parquet` (one row per date). Quincena is day 15 or the last calendar day. CSV or in-memory frames, not a live API. Not in the Meridian fit. Open: `GAP-501-API`, `GAP-501-MODEL`. |
 | STORY-502 | Planned | Multi-tenant isolation (`data/clients/{client_id}/`, `config/clients.yaml`, `--client_id`) |
 | STORY-503 | Planned | MMT geo-experiment prior calibration (`src/models/calibration.py`) |
 
@@ -139,7 +141,7 @@ conda activate mmt-mmm
 python -c "import numpy, pandas, scipy, sklearn, pymc, arviz, matplotlib, plotly, yaml, pydantic, pandera, pyarrow; print('ok', pymc.__version__)"
 python -c "import meridian; print('meridian', meridian.__version__)"
 python -m pytest tests/ -q
-python -m src.data.etl
+python -m src.data.etl   # clean_spend.parquet and exogenous_controls.parquet
 python -m src.data.qa
 # Dashboard (sliders are local; Update insights calls Claude):
 streamlit run app/streamlit_app.py
