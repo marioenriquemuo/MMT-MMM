@@ -19,6 +19,10 @@ from pathlib import Path
 import pandas as pd
 import pandera.pandas as pa
 
+from src.data.controls import (
+    DEFAULT_OUT_PATH as CONTROLS_OUT_PATH,
+    write_aligned_controls,
+)
 from src.data.generator import CHANNELS, COLUMNS
 
 # --- Paths ---
@@ -146,12 +150,14 @@ def run_etl(
 
 
 def main() -> None:
-    """CLI entry: ``python -m src.data.etl``."""
+    """CLI: write the clean spend panel, then the date-level controls parquet."""
     df = run_etl()
     print(
         f"Wrote {DEFAULT_OUT_PATH} "
         f"({len(df)} rows, {df['date'].nunique()} days × {df['channel'].nunique()} channels)"
     )
+    controls = write_aligned_controls(df)
+    print(f"Wrote {CONTROLS_OUT_PATH} ({len(controls)} rows)")
 
 
 if __name__ == "__main__":

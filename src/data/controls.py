@@ -170,6 +170,16 @@ def write_controls(
     return path
 
 
+def write_aligned_controls(
+    panel: TableSource,
+    path: str | Path = DEFAULT_OUT_PATH,
+) -> pd.DataFrame:
+    """Build controls on the panel dates from ``data/raw/controls/``, validate, and write."""
+    df = build_controls(panel)
+    write_controls(df, path)
+    return df
+
+
 # --- Smoke ---
 
 
