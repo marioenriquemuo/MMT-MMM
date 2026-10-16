@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "receiptId": "44de679d-8b95-45e5-86cd-2623ef089097",
+  "receiptId": "50cc5a30-52a6-40ca-8fea-ea01d751ef97",
   "status": "current",
   "command": "deliver",
   "type": "architecture",
   "input": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/candidate.json",
   "output": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
   "specification": {
-    "sha256": "43d5ec24c06a41da6afe24aaaef852ebaf4207b854819dfff843a83dbec52e88",
-    "bytes": 7400
+    "sha256": "3f7f60c5c4635b94709c08cd40ad2ca92ccc5ca02351d7b1a06944ac56c9ca6d",
+    "bytes": 8411
   },
   "artifact": {
-    "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-    "bytes": 766628
+    "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+    "bytes": 769148
   }
 }

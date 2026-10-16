@@ -5,16 +5,16 @@
   "status": "pass",
   "type": "architecture",
   "quality": "showcase",
-  "startedAt": "2026-10-15T20:59:57.403Z",
+  "startedAt": "2026-10-16T00:04:12.130Z",
   "specification": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/candidate.json",
-    "sha256": "43d5ec24c06a41da6afe24aaaef852ebaf4207b854819dfff843a83dbec52e88",
-    "bytes": 7400
+    "sha256": "3f7f60c5c4635b94709c08cd40ad2ca92ccc5ca02351d7b1a06944ac56c9ca6d",
+    "bytes": 8411
   },
   "artifact": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
-    "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-    "bytes": 766628
+    "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+    "bytes": 769148
   },
   "stages": {
     "validate": {
@@ -40,8 +40,8 @@
         "ok": true,
         "command": "validate",
         "specification": {
-          "sha256": "43d5ec24c06a41da6afe24aaaef852ebaf4207b854819dfff843a83dbec52e88",
-          "bytes": 7400
+          "sha256": "3f7f60c5c4635b94709c08cd40ad2ca92ccc5ca02351d7b1a06944ac56c9ca6d",
+          "bytes": 8411
         },
         "validation": {
           "checksPassed": 9,
@@ -56,7 +56,7 @@
     "deliver": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 416,
+      "durationMs": 707,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -72,19 +72,19 @@
       ],
       "receipt": {
         "schemaVersion": 1,
-        "receiptId": "44de679d-8b95-45e5-86cd-2623ef089097",
+        "receiptId": "50cc5a30-52a6-40ca-8fea-ea01d751ef97",
         "ok": true,
         "command": "deliver",
         "type": "architecture",
         "input": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/candidate.json",
         "output": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
         "specification": {
-          "sha256": "43d5ec24c06a41da6afe24aaaef852ebaf4207b854819dfff843a83dbec52e88",
-          "bytes": 7400
+          "sha256": "3f7f60c5c4635b94709c08cd40ad2ca92ccc5ca02351d7b1a06944ac56c9ca6d",
+          "bytes": 8411
         },
         "artifact": {
-          "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-          "bytes": 766628
+          "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+          "bytes": 769148
         },
         "validation": {
           "checksPassed": 9,
@@ -97,8 +97,8 @@
         "evidence": {
           "verified": true,
           "repository": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
-          "revision": "8a2eca33afd503a365e5d05c8b1094e447aa3cac",
-          "references": 22,
+          "revision": "58434b44594b91775fc87fe359c4015e38edd1f2",
+          "references": 25,
           "linkMode": "local-only"
         },
         "update": {
@@ -117,7 +117,7 @@
     "check": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 132,
+      "durationMs": 221,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -129,8 +129,8 @@
         "ok": true,
         "file": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
         "artifact": {
-          "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-          "bytes": 766628
+          "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+          "bytes": 769148
         },
         "checks": [
           {
@@ -200,13 +200,13 @@
             "minLabelRouteClearance": 65,
             "desktopReadabilityIssues": 0,
             "viewportHeightIssues": 0,
-            "minProjectedNodeTextPx": 7.5,
+            "minProjectedNodeTextPx": 6.565853658536585,
             "maxBends": 2,
             "routesOverSuggestedBends": 0,
-            "maxStretch": 1,
+            "maxStretch": 1.2,
             "routesOverSuggestedStretch": 0,
             "minSegmentPx": 50,
-            "minInteriorSegmentPx": 1080,
+            "minInteriorSegmentPx": 600,
             "shortSegmentCount": 0,
             "shortEndpointSegmentCount": 0,
             "shortInteriorSegmentCount": 0,
@@ -235,14 +235,14 @@
           "desktopReadability": {
             "budgetBasis": "recognized-declared-wide",
             "readerContract": "declared-wide-v1",
-            "availableDiagramWidth": 1237.5,
-            "actualBudgetPx": 1237.5,
-            "actualReaderWidth": 1267.5,
-            "desiredReaderWidth": 1267.5,
+            "availableDiagramWidth": 1346,
+            "actualBudgetPx": 1346,
+            "actualReaderWidth": 1376,
+            "desiredReaderWidth": 1567.5,
             "viewportCap": 1376,
-            "limit": "source-size",
+            "limit": "viewport-cap",
             "requestedTargetPx": 7.5,
-            "requestedTargetMet": true,
+            "requestedTargetMet": false,
             "hardFloorPx": 6,
             "hardFloorMet": true,
             "minimumOwner": {
@@ -252,19 +252,19 @@
               "to": "clients"
             },
             "minimumSourceTextPx": 8,
-            "minimumProjectedTextPx": 7.5,
-            "semanticTextCount": 32
+            "minimumProjectedTextPx": 6.565853658536585,
+            "semanticTextCount": 35
           },
           "issues": []
         },
         "provenance": "current",
-        "deliveryReceiptId": "44de679d-8b95-45e5-86cd-2623ef089097"
+        "deliveryReceiptId": "50cc5a30-52a6-40ca-8fea-ea01d751ef97"
       }
     },
     "browser-check": {
       "status": "pass",
       "exitCode": 0,
-      "durationMs": 2038,
+      "durationMs": 2438,
       "command": [
         "/home/mario/.local/share/cursor-agent/versions/2026.10.01-e373342/node",
         "/home/mario/dev/MMT&MMM/.cursor/skills/archify/bin/archify.mjs",
@@ -282,11 +282,11 @@
         "status": "pass",
         "visualReview": "not-requested",
         "provenance": "current",
-        "deliveryReceiptId": "44de679d-8b95-45e5-86cd-2623ef089097",
+        "deliveryReceiptId": "50cc5a30-52a6-40ca-8fea-ea01d751ef97",
         "artifact": {
           "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
-          "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-          "bytes": 766628
+          "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+          "bytes": 769148
         },
         "state": {
           "detail": "read",
@@ -323,14 +323,14 @@
                 "bodyPaddingPx": 12,
                 "headerPx": 52,
                 "diagramChromePx": 78,
-                "svgPx": 679,
+                "svgPx": 547,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 6.565853658536585,
+              "minimumProjectedNonEdgeTextPx": 7.386585365853658,
+              "minimumProjectedEdgeTextPx": 6.565853658536585,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -375,14 +375,14 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 760,
+                "svgPx": 612,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 7.3463414634146345,
+              "minimumProjectedNonEdgeTextPx": 8.264634146341464,
+              "minimumProjectedEdgeTextPx": 7.3463414634146345,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -421,17 +421,17 @@
               "readerOverflow": null,
               "readerFit": "intrinsic-height",
               "ok": true,
-              "readerWidth": 1735,
-              "diagramWidth": 1705,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
               "pageComposition": {
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 860,
+                "svgPx": 742,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -479,11 +479,11 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 68,
                 "diagramChromePx": 94,
-                "svgPx": 944,
+                "svgPx": 759,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -584,14 +584,14 @@
                 "bodyPaddingPx": 12,
                 "headerPx": 52,
                 "diagramChromePx": 78,
-                "svgPx": 679,
+                "svgPx": 547,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 6.565853658536585,
+              "minimumProjectedNonEdgeTextPx": 7.386585365853658,
+              "minimumProjectedEdgeTextPx": 6.565853658536585,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -636,14 +636,14 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 760,
+                "svgPx": 612,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 7.3463414634146345,
+              "minimumProjectedNonEdgeTextPx": 8.264634146341464,
+              "minimumProjectedEdgeTextPx": 7.3463414634146345,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -682,17 +682,17 @@
               "readerOverflow": null,
               "readerFit": "intrinsic-height",
               "ok": true,
-              "readerWidth": 1735,
-              "diagramWidth": 1705,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
               "pageComposition": {
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 860,
+                "svgPx": 742,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -740,11 +740,11 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 68,
                 "diagramChromePx": 94,
-                "svgPx": 944,
+                "svgPx": 759,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -797,14 +797,14 @@
                 "bodyPaddingPx": 12,
                 "headerPx": 52,
                 "diagramChromePx": 78,
-                "svgPx": 679,
+                "svgPx": 547,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 6.565853658536585,
+              "minimumProjectedNonEdgeTextPx": 7.386585365853658,
+              "minimumProjectedEdgeTextPx": 6.565853658536585,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -849,14 +849,14 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 760,
+                "svgPx": 612,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
-              "minimumProjectedNodeTextPx": 8,
-              "minimumProjectedNonEdgeTextPx": 9,
-              "minimumProjectedEdgeTextPx": 8,
+              "viewBoxWidth": 1640,
+              "minimumProjectedNodeTextPx": 7.3463414634146345,
+              "minimumProjectedNonEdgeTextPx": 8.264634146341464,
+              "minimumProjectedEdgeTextPx": 7.3463414634146345,
               "minimumProjectedNodeText": "client id",
               "minimumProjectedNodeTextDetail": "edge",
               "minimumProjectedNodeTextOwner": {
@@ -895,17 +895,17 @@
               "readerOverflow": null,
               "readerFit": "intrinsic-height",
               "ok": true,
-              "readerWidth": 1735,
-              "diagramWidth": 1705,
+              "readerWidth": 1856,
+              "diagramWidth": 1826,
               "pageComposition": {
                 "bodyPaddingPx": 64,
                 "headerPx": 60,
                 "diagramChromePx": 84,
-                "svgPx": 860,
+                "svgPx": 742,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -953,11 +953,11 @@
                 "bodyPaddingPx": 64,
                 "headerPx": 68,
                 "diagramChromePx": 94,
-                "svgPx": 944,
+                "svgPx": 759,
                 "cardsPx": 0,
                 "viewBoxHeight": 666
               },
-              "viewBoxWidth": 1320,
+              "viewBoxWidth": 1640,
               "minimumProjectedNodeTextPx": 8,
               "minimumProjectedNonEdgeTextPx": 9,
               "minimumProjectedEdgeTextPx": 8,
@@ -1004,8 +1004,8 @@
     "browserCheckReceipt": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.browser-check.json"
   },
   "visualReview": "not-requested",
-  "finishedAt": "2026-10-15T21:00:00.119Z",
-  "durationMs": 2715,
+  "finishedAt": "2026-10-16T00:04:15.682Z",
+  "durationMs": 3552,
   "update": {
     "status": "update_available",
     "installedVersion": "3.0.1",

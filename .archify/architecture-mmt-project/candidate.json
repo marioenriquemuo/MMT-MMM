@@ -8,7 +8,7 @@
     "quality_profile": "showcase",
     "repository": {
       "url": "https://origin.cursor.com/mario-mu-oz-dev/MMT-MMM.git",
-      "revision": "8a2eca33afd503a365e5d05c8b1094e447aa3cac",
+      "revision": "58434b44594b91775fc87fe359c4015e38edd1f2",
       "link_mode": "local-only"
     }
   },
@@ -73,12 +73,25 @@
       ]
     },
     {
+      "id": "calibration",
+      "type": "backend",
+      "label": "ROI prior",
+      "sublabel": "national geo bounds",
+      "pos": [1100, 40],
+      "size": [200, 70],
+      "sources": [
+        { "path": "src/models/calibration.py", "line": 155, "end_line": 168, "label": "model spec" },
+        { "path": "src/models/calibration.py", "line": 221, "end_line": 230, "label": "resolve and write" },
+        { "path": "scripts/02_model_spike.py", "line": 458, "end_line": 466, "label": "optional calibration" }
+      ]
+    },
+    {
       "id": "meridian",
       "type": "backend",
       "label": "Meridian",
       "sublabel": "spend panel only",
       "tag": "controls not in the fit",
-      "pos": [1080, 40],
+      "pos": [1400, 40],
       "size": [200, 70],
       "sources": [
         { "path": "src/models/meridian_data.py", "line": 1, "end_line": 22, "label": "clean_spend only" },
@@ -159,7 +172,16 @@
       "fromSide": "bottom",
       "toSide": "top"
     },
-    { "id": "qa-to-meridian", "from": "qa", "to": "meridian", "label": "media + KPI" },
+    {
+      "id": "qa-to-meridian",
+      "from": "qa",
+      "to": "meridian",
+      "label": "media + KPI",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [[900, 170], [1500, 170]]
+    },
+    { "id": "calibration-to-meridian", "from": "calibration", "to": "meridian", "label": "roi prior" },
     {
       "id": "meridian-to-curves",
       "from": "meridian",
@@ -167,7 +189,7 @@
       "label": "response curves",
       "fromSide": "bottom",
       "toSide": "top",
-      "via": [[1180, 320], [100, 320]]
+      "via": [[1500, 320], [100, 320]]
     },
     { "id": "curves-to-allocator", "from": "curves", "to": "allocator", "label": "curve knots" },
     { "id": "allocator-to-facts", "from": "allocator", "to": "facts", "label": "allocation" },
@@ -190,6 +212,15 @@
         "Quincena is day 15 or the last calendar day.",
         "CSV or in-memory frames, not a live API.",
         "Brand search can be a mediator. Inventory can be a result of demand."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "ROI prior",
+      "items": [
+        "National roi bounds become a log-normal roi_m.",
+        "A bogota row does not move that prior.",
+        "No posterior sample. GAP-201-RANK stays open."
       ]
     },
     {

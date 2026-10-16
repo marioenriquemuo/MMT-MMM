@@ -7,13 +7,13 @@
   "quality": "showcase",
   "specification": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/candidate.json",
-    "sha256": "43d5ec24c06a41da6afe24aaaef852ebaf4207b854819dfff843a83dbec52e88",
-    "bytes": 7400
+    "sha256": "3f7f60c5c4635b94709c08cd40ad2ca92ccc5ca02351d7b1a06944ac56c9ca6d",
+    "bytes": 8411
   },
   "artifact": {
     "path": "/home/mario/dev/MMT&MMM/.archify/architecture-mmt-project/architecture-mmt-project.html",
-    "sha256": "fb05971ca31657e18b263aacea55f84eb3561d451b0a6efbd090d4cafc43dd66",
-    "bytes": 766628
+    "sha256": "c59c247fc1c1199b65df9e6c99795e48f10549c76dd8d7ef72ec707191e2e31a",
+    "bytes": 769148
   },
   "gates": {
     "validate": "pass",
@@ -45,5 +45,5 @@
     "eventKey": "archify@sha256:ffedc53390c9da6e859f41e432c5d2d0615a23cf00a503181f07efbba88a7ce8"
   },
   "visualReview": "not-requested",
-  "durationMs": 2715
+  "durationMs": 3552
 }
