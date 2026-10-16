@@ -218,6 +218,20 @@ def build_report(client: dict[str, Any], rows: list[dict[str, Any]]) -> tuple[di
     return report, ok
 
 
+def gate_reasons(report: dict[str, Any]) -> list[str]:
+    """Why ``build_report`` rejected a calibrated channel. Empty when the gate passes."""
+    reasons: list[str] = []
+    for row in report["channels"]:
+        if not row["calibrated"]:
+            continue
+        channel = row["channel"]
+        if row["inside_experiment_interval"] is not True:
+            reasons.append(f"{channel}: central interval misses the experiment bounds")
+        if not row["scale_tightened"]:
+            reasons.append(f"{channel}: scale is not tighter than the default prior")
+    return reasons
+
+
 def run(client_id: str, experiments: str | Path, out: str | Path) -> int:
     """Resolve both paths, write the delta report, and return 0 or 1."""
     client = load_client(client_id)

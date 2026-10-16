@@ -456,13 +456,24 @@ def main() -> int:
     max_lag = 8 if args.freq == "W" else 28
     spec_override = None
     if calibration_path is not None:
-        from src.models.calibration import load_experiments, model_spec, region_label
+        from src.models.calibration import (
+            build_report,
+            gate_reasons,
+            load_experiments,
+            model_spec,
+        )
 
+        rows = load_experiments(calibration_path)
+        report, ok = build_report(client, rows)
+        if not ok:
+            for reason in gate_reasons(report):
+                print(reason, file=sys.stderr)
+            return 1
         spec_override = model_spec(
             channels,
-            load_experiments(calibration_path),
+            rows,
             max_lag=max_lag,
-            region=region_label(client),
+            region=report["region"],
         )
     mmm = _build_mmm(input_data, max_lag=max_lag, spec_override=spec_override)
     mmm.sample_prior(cfg["n_prior"], seed=args.seed)

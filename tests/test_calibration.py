@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import pytest
@@ -135,3 +136,35 @@ def test_exit_1_when_scale_does_not_shrink(tmp_path: Path):
     assert run("pathc", src, out) == 1
     meta = json.loads(out.read_text(encoding="utf-8"))["channels"][0]
     assert meta["scale_tightened"] is False
+
+
+def test_spike_refuses_wide_experiment_before_sampling(tmp_path: Path, monkeypatch, capsys):
+    src = tmp_path / "wide.json"
+    src.write_text(
+        json.dumps({"experiments": [_roi("meta", "national", 0.01, 100.0, 0.5)]}),
+        encoding="utf-8",
+    )
+    from tests.test_model_spike_helpers import _load_spike
+
+    spike = _load_spike()
+
+    def _no_model(*_args, **_kwargs):
+        raise AssertionError("Meridian model was constructed")
+
+    monkeypatch.setattr(spike, "_build_mmm", _no_model)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "02_model_spike.py",
+            "--mode",
+            "smoke",
+            "--client_id",
+            "pathc",
+            "--calibration",
+            str(src),
+        ],
+    )
+    assert spike.main() == 1
+    err = capsys.readouterr().err
+    assert "meta: scale is not tighter than the default prior" in err
