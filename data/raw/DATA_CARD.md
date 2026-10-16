@@ -75,6 +75,10 @@ The same command also writes `data/processed/exogenous_controls.parquet`. Contro
 
 Default client is `pathc`. These Path-C files stay in `data/raw` and `data/processed`; reports stay in `reports`. Models for `pathc` are `data/clients/pathc/models`. Client `wellness` is only `data/clients/wellness/` with `raw`, `processed`, `models`, and `reports`. Industry separation is that filesystem wall, not a second model. `regions` in `config/clients.yaml` is a label.
 
+## STORY-503 geo-experiment prior
+
+`data/raw/calibration/geo_experiment.json` holds synthetic national ROI bounds for `meta` and `google`, plus one `bogota` row that the national prior ignores. These numbers are not Path-C ground truth. `python -m src.models.calibration` writes `reports/calibration_delta.json` and does not sample a posterior. `GAP-201-RANK` stays open.
+
 ## STORY-104 media QA (post-ETL)
 
 | Item | Value |

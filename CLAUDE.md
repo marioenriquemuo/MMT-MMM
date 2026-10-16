@@ -51,6 +51,7 @@ MMT&MMM/
 │   ├── data/qa.py            # STORY-104 media detect/repair + hard-fail gate
 │   ├── models/transformations.py  # STORY-102 geometric/Weibull/Hill
 │   ├── models/meridian_data.py    # STORY-201 parquet → Meridian InputData
+│   ├── models/calibration.py      # STORY-503 geo-experiment ROI prior
 │   ├── optimize/             # STORY-301 curves + SLSQP allocator
 │   │   ├── curves.py         # offline response-curve provider
 │   │   └── allocator.py      # maximize KPI / hit target under bounds
@@ -121,7 +122,7 @@ Allocator trusts Meridian (or fixture) response curves — same Meridian≠Path-
 | --- | --- | --- |
 | STORY-501 | Done (feature tip) | `python -m src.data.etl` writes `clean_spend.parquet` (date × channel) and `exogenous_controls.parquet` (one row per date). Quincena is day 15 or the last calendar day. CSV or in-memory frames, not a live API. Not in the Meridian fit. Open: `GAP-501-API`, `GAP-501-MODEL`. |
 | STORY-502 | Done (feature tip) | Default client `pathc` keeps today's raw/processed/reports. `wellness` is only `data/clients/wellness/`. Four dirs: raw, processed, models, reports. `--client_id` (default `pathc`). The wall is the separation, not a second model. |
-| STORY-503 | Planned | MMT geo-experiment prior calibration (`src/models/calibration.py`) |
+| STORY-503 | Done (feature tip) | National ROI prior from geo-experiment bounds (`src/models/calibration.py`). Does not refit Meridian. `GAP-201-RANK` stays open. |
 
 Stories sourced from local sprint backlog under `Secret/` (gitignored). Open gaps that may overlap: `GAP-201-RANK` (see `docs/learnings/open-gaps.md`).
 

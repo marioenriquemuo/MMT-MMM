@@ -1,0 +1,28 @@
+{
+  "experiments": [
+    {
+      "channel": "meta",
+      "region": "bogota",
+      "metric": "roi",
+      "low": 0.05,
+      "high": 20.0,
+      "confidence": 0.5
+    },
+    {
+      "channel": "google",
+      "region": "national",
+      "metric": "roi",
+      "low": 0.4,
+      "high": 1.0,
+      "confidence": 0.9
+    },
+    {
+      "channel": "meta",
+      "region": "national",
+      "metric": "roi",
+      "low": 0.5,
+      "high": 1.5,
+      "confidence": 0.9
+    }
+  ]
+}

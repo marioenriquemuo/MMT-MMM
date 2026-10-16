@@ -7,6 +7,7 @@ Examples::
     python -m src.data.etl && python -m src.data.qa
     python scripts/02_model_spike.py --mode smoke
     python scripts/02_model_spike.py --mode smoke --fail-on-rhat
+    python scripts/02_model_spike.py --mode smoke --calibration data/raw/calibration/geo_experiment.json
     python scripts/02_model_spike.py --mode full
 
 Fuller mode writes metrics, the posterior predictive plot, and the
@@ -105,6 +106,12 @@ def _parse_args() -> argparse.Namespace:
     )
     p.add_argument("--client_id", default="pathc")
     p.add_argument(
+        "--calibration",
+        type=Path,
+        default=None,
+        help="Geo-experiment JSON. Omit to keep PriorDistribution()",
+    )
+    p.add_argument(
         "--parquet",
         type=Path,
         default=None,
@@ -156,20 +163,21 @@ def _analyzer(mmm):
     return analyzer.Analyzer(mmm)
 
 
-def _build_mmm(input_data, *, max_lag: int = 8):
+def _build_mmm(input_data, *, max_lag: int = 8, spec_override=None):
     from meridian.model import model, prior_distribution, spec
 
-    model_spec = spec.ModelSpec(
-        prior=prior_distribution.PriorDistribution(),
-        media_effects_dist="log_normal",
-        hill_before_adstock=False,
-        max_lag=max_lag,
-        unique_sigma_for_each_geo=False,
-        media_prior_type="roi",
-        adstock_decay_spec="geometric",
-        enable_aks=False,
-    )
-    return model.Meridian(input_data=input_data, model_spec=model_spec)
+    if spec_override is None:
+        spec_override = spec.ModelSpec(
+            prior=prior_distribution.PriorDistribution(),
+            media_effects_dist="log_normal",
+            hill_before_adstock=False,
+            max_lag=max_lag,
+            unique_sigma_for_each_geo=False,
+            media_prior_type="roi",
+            adstock_decay_spec="geometric",
+            enable_aks=False,
+        )
+    return model.Meridian(input_data=input_data, model_spec=spec_override)
 
 
 def _core_rhat_rows(rhat_df: pd.DataFrame) -> pd.DataFrame:
@@ -423,6 +431,12 @@ def main() -> int:
         args.client_id,
         client["roots"]["raw"] / "ground_truth.json",
     )
+    calibration_path = None
+    if args.calibration is not None:
+        calibration_path = resolve_client_path(args.client_id, args.calibration)
+        if not calibration_path.is_file():
+            print(f"missing {calibration_path}", file=sys.stderr)
+            return 2
     args.parquet = parquet
     cfg = _mcmc_cfg(args)
     print(f"mode={args.mode} freq={args.freq} parquet={args.parquet}")
@@ -436,13 +450,21 @@ def main() -> int:
         return 2
 
     input_data = load_meridian_input(args.parquet, freq=args.freq)
-    print(
-        f"InputData: times={input_data.kpi.shape[1]} "
-        f"channels={list(input_data.media.coords['media_channel'].values)}"
-    )
+    channels = [str(c) for c in input_data.media.coords["media_channel"].values]
+    print(f"InputData: times={input_data.kpi.shape[1]} channels={channels}")
 
     max_lag = 8 if args.freq == "W" else 28
-    mmm = _build_mmm(input_data, max_lag=max_lag)
+    spec_override = None
+    if calibration_path is not None:
+        from src.models.calibration import load_experiments, model_spec, region_label
+
+        spec_override = model_spec(
+            channels,
+            load_experiments(calibration_path),
+            max_lag=max_lag,
+            region=region_label(client),
+        )
+    mmm = _build_mmm(input_data, max_lag=max_lag, spec_override=spec_override)
     mmm.sample_prior(cfg["n_prior"], seed=args.seed)
     print("sampling posterior…")
     mmm.sample_posterior(

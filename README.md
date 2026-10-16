@@ -329,6 +329,20 @@ python -m src.data.qa --client_id pathc
 streamlit run app/streamlit_app.py -- --client_id pathc
 ```
 
+## STORY-503 / geo-experiment prior
+
+`python -m src.models.calibration` reads that client's `raw/calibration/geo_experiment.json` and writes `reports/calibration_delta.json`. For `pathc` those paths are `data/raw/calibration/geo_experiment.json` and `reports/calibration_delta.json`. National `roi` bounds become a log-normal `roi_m` prior. A `bogota` row does not move the national prior. Wellness has no experiment file, so its report leaves every channel on the default prior. The command does not sample a posterior. The fixture numbers are not Path-C ground truth, and `GAP-201-RANK` stays open.
+
+```bash
+conda activate mmt-mmm
+python -m src.models.calibration
+# → reports/calibration_delta.json
+
+python scripts/02_model_spike.py --mode smoke \
+  --calibration data/raw/calibration/geo_experiment.json
+# omit --calibration to keep PriorDistribution()
+```
+
 ## Stack direction
 
 Python Bayesian MMM (`google-meridian` + scientific stack in `environment.yml`, the supported install). Full Meridian MCMC is a conda/CPU job. The Docker image is for the dashboard and allocator, and the first build is heavy.
